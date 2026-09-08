@@ -1,0 +1,135 @@
+{
+  "framework_id": "CBF 2.0",
+  "niche": "uapf-niche-childrens-facts",
+  "overlay": "OV-CFACT",
+  "parent_overlay": "OV-CHILD",
+  "source_of_truth": "../../SKILL.md",
+
+  "host_profile": "CB-FACT",
+  "narrative_frame_max_fraction": 0.16666666666666666,
+
+  "knowledge_depth": {
+    "KD-1": {"bands": ["AB-1", "AB-2-L1", "AB-2-L2"], "facts_per_spread": [1, 2], "words_per_spread": [30, 80]},
+    "KD-2": {"bands": ["AB-2-L2", "AB-2-L3"], "facts_per_spread": [4, 6], "words_per_spread": [80, 180]},
+    "KD-3": {"bands": ["AB-3"], "facts_per_spread": [6, 8], "words_per_spread": [150, 300]}
+  },
+  "facts_per_spread_hard_cap": 8,
+  "wow_callout_max_words": 30,
+  "quick_quiz_max_words": 40,
+  "quick_quiz_use_fraction": [0.30, 0.50],
+
+  "trim_geometry": {
+    "default_trim_in": [8.5, 11.0],
+    "default_bleed_in": [8.625, 11.25],
+    "square_trim_in": [8.5, 8.5],
+    "square_bleed_in": [8.625, 8.75],
+    "bleed_add_width_in": 0.125,
+    "bleed_add_height_in": 0.25,
+    "bleed_flag_default": "ON",
+    "odd_pages_bleed": "right",
+    "even_pages_bleed": "left",
+    "export_crop_marks": false
+  },
+
+  "type_floors_pt": {
+    "AB-1_KD-1":    {"body": [18, 24], "callout_wow": 20, "gloss": 14, "caption": 12},
+    "AB-2-L1_L2":   {"body": [14, 16], "callout_wow": 16, "gloss": 12, "caption": 11},
+    "AB-2-L3_KD-2": {"body": [13, 15], "callout_wow": 15, "gloss": 11, "caption": 10},
+    "AB-3_KD-3":    {"body": [11, 14], "callout_wow": 14, "gloss": 10, "caption": 9}
+  },
+
+  "gloss_density_per_spread": {
+    "KD-1": [0, 1],
+    "KD-2": [1, 3],
+    "KD-3": [2, 4]
+  },
+  "stretch_word_limit_per_spread": {
+    "AB-1_KD-1": [0, 1],
+    "AB-2-L1_L2": [1, 2],
+    "AB-2-L3_KD-2": [2, 3],
+    "AB-3_KD-3": [2, 4]
+  },
+
+  "sections": {
+    "min_count": 4,
+    "max_count": 8,
+    "spreads_per_section_min": 4,
+    "spreads_per_section_max": 10,
+    "section_accent_colors": [4, 8]
+  },
+
+  "page_count_targets": {
+    "KD-1_AB-1": {"pages": [24, 32], "min_facts": [10, 20]},
+    "KD-2_AB-2": {"pages": [48, 80], "min_facts": [50, 100]},
+    "KD-3_AB-3": {"pages": [80, 128], "min_facts": [100, 200]},
+    "kdp_min_pages": 24,
+    "page_count_must_be_even": true,
+    "standard_color_starts_page": 72
+  },
+
+  "color": {
+    "mode": "full color premium",
+    "monochrome_allowed": false,
+    "selective_allowed": false,
+    "one_accent_per_section": true,
+    "accent_aa_contrast_required": true,
+    "colorblind_sim_before_gate3": true
+  },
+
+  "fact_verification": {
+    "sources_required_per_fact": 2,
+    "authoritative_source_classes": ["peer-reviewed/institution", "major reference database/encyclopedia", "official government/scientific agency", "recent cited nonfiction book"],
+    "wikipedia_sole_source": false,
+    "wikipedia_as_corroborating": true,
+    "verification_log_required_at_gate2": true
+  },
+
+  "superlatives": {
+    "risk_levels": ["volatile", "semi-stable", "fixed"],
+    "volatile_date_stamp_inline": true,
+    "volatile_source_recency_years": 3,
+    "unverifiable_within_years": 5,
+    "unverifiable_action": "soften or remove"
+  },
+
+  "number_lock": {
+    "approximate_requires_hedge": true,
+    "hedge_words": ["about", "roughly", "scientists estimate", "more than"],
+    "unit_no_mixing_within_fact": true,
+    "count_claim_reconciled_vs_manuscript": true
+  },
+
+  "layout_laws": {
+    "no_orphan_facts": true,
+    "sidebar_max_spread_fraction": 0.40,
+    "diagram_labels_real_typeset_only": true,
+    "diagram_requires_title": true,
+    "photo_or_illustration_treatment_locked": true,
+    "quiz_answers_same_spread": true,
+    "gloss_on_same_spread_as_stretch_word": true,
+    "quiet_zone_padding_body_in": 0.25,
+    "quiet_zone_padding_caption_in": 0.20
+  },
+
+  "typography": {
+    "font_roles": ["display", "body_learning", "utility_gloss"],
+    "body_alignment": "left",
+    "header_callout_alignment": "center-permitted",
+    "full_justify_ab1_ab2": false,
+    "full_justify_ab3_requires_approval": true,
+    "type_is_real_embedded": true
+  },
+
+  "back_matter": {
+    "glossary_required": true,
+    "source_list_min_per_major_fact": 2,
+    "index_required_kd3": true,
+    "index_recommended_kd2_over_pages": 64,
+    "further_reading_per_section": [3, 5]
+  },
+
+  "read_aloud_test": {
+    "on_bands": ["AB-1", "AB-2-L1"],
+    "off_from": "AB-2-L2"
+  }
+}

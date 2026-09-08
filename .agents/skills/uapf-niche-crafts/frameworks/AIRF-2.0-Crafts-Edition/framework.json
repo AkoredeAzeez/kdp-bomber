@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Crafts Edition",
+  "niche": "uapf-niche-crafts",
+  "overlay": "OV-CRAFT",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_crafts.py"
+  ]
+}

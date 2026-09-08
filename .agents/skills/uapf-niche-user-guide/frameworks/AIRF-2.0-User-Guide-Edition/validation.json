@@ -1,0 +1,59 @@
+{
+  "framework_id": "AIRF 2.0 User Guide Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_user_guide.py; type=manual require agent/terminology-parity inspection.",
+  "gates": {
+    "GATE_1_foundation": [
+      {"id": "trademark_clearance", "type": "manual", "text": "Trademark Clearance Report done; title framing confirmed nominative fair use; verdict CLEAR or operator-approved CAUTION"},
+      {"id": "subtitles_screened", "type": "manual", "text": "All subtitle candidates passed the trademark screen"},
+      {"id": "version_identified", "type": "manual", "text": "Covered product version explicitly identified and recorded; if absent from title, operator confirmed it before proceeding"},
+      {"id": "version_declaration_drafted", "type": "manual", "text": "Version declaration drafted for the Copyright Page"},
+      {"id": "product_architecture_map", "type": "manual", "text": "Product Architecture Map complete (software: navigation + feature categories; hardware: nomenclature + control interfaces)"},
+      {"id": "task_set_mapped", "type": "manual", "text": "Primary user task set identified and mapped to chapter structure"},
+      {"id": "task_oriented_titles", "type": "manual", "text": "Chapter titles reference user actions, not features by name"},
+      {"id": "audience_documented", "type": "manual", "text": "Audience, prerequisites, and system requirements documented"},
+      {"id": "competitor_version_analysis", "type": "manual", "text": "Competitor version analysis complete; competing titles' versions noted"},
+      {"id": "config_announced", "type": "python", "op": "classify_size_band+validate_size_band", "text": "Auto-configuration announced (pathway, page band, visual density, font, spacing, screenshot convention, Design Signature) and internally consistent"},
+      {"id": "trademark_ack_drafted", "type": "manual", "text": "Trademark acknowledgment language drafted for the Copyright Page"},
+      {"id": "warning_format_confirmed", "type": "python", "op": "validate_warning_level", "text": "Warning hierarchy format confirmed (ANSI Z535.6 / ISO/IEC 82079-1)"}
+    ],
+    "GATE_2_per_chapter_development": [
+      {"id": "chapter_title_task", "type": "manual", "text": "Chapter title names a user task, not a product feature"},
+      {"id": "pre_step_block", "type": "manual", "text": "Every procedure has a Pre-Step block listing prerequisites and version"},
+      {"id": "one_action_per_step", "type": "manual", "text": "Every step contains exactly one action verb and one instruction"},
+      {"id": "ui_names_bold_match", "type": "manual", "text": "Every UI element name in steps is bold and matches the product exactly (terminology parity spot check)"},
+      {"id": "warning_hierarchy_used", "type": "python", "op": "validate_warning_level", "text": "Warning boxes use ANSI hierarchy only (DANGER/WARNING/CAUTION/NOTICE/VERSION NOTE); no non-standard advisory formats"},
+      {"id": "warning_placement", "type": "manual", "text": "Warnings placed at the step where the risk occurs, not only in front matter"},
+      {"id": "version_notes_on_diff", "type": "manual", "text": "Version Notes present at all steps that differ from the prior major version"},
+      {"id": "screenshots_present", "type": "manual", "text": "Screenshots (or SCREENSHOT DESCRIPTION blocks) present for every procedure step needing visual reference; callout tables present"},
+      {"id": "anti_ai_language", "type": "manual", "text": "Anti-AI language protocol enforced; no prohibited phrases"},
+      {"id": "chapter_checkpoint", "type": "manual", "text": "Chapter ends with a Chapter Checkpoint (3-5 bullets)"}
+    ],
+    "GATE_3_terminology_parity": [
+      {"id": "terminology_parity_zero_mismatch", "type": "manual", "text": "Technical Communication Authority completed terminology parity check for all UI names in this chapter; zero mismatches"},
+      {"id": "paths_accurate", "type": "manual", "text": "UI/UX Specialist confirmed all menu paths, button sequences, and screen flows accurate for the covered version"},
+      {"id": "warning_placements_reviewed", "type": "python", "op": "validate_warning_level", "text": "All warning placements reviewed for ANSI Z535.6 compliance"},
+      {"id": "procedures_executable", "type": "manual", "text": "Instructional Design Authority confirms procedures are executable as written at the declared skill level"},
+      {"id": "screenshots_current", "type": "manual", "text": "All screenshots/descriptions current to the covered version; no prior-version UI states"},
+      {"id": "version_notes_accurate", "type": "manual", "text": "Version Notes present and accurate wherever prior-version differences exist"},
+      {"id": "safety_accuracy", "type": "manual", "text": "Safety content accuracy 100%; no missing callout, no incorrect hierarchy level"},
+      {"id": "chapter_within_band", "type": "python", "op": "validate_size_band", "text": "Chapter word count and page estimate within page-band targets"}
+    ],
+    "GATE_4_final_certification": [
+      {"id": "task_oriented_throughout", "type": "manual", "text": "All chapters organized by user task, not by feature"},
+      {"id": "version_named_everywhere", "type": "manual", "text": "Covered version named on Title Page, Introduction first paragraph, Copyright Page, and KDP metadata"},
+      {"id": "copyright_disclaimer_complete", "type": "manual", "text": "Copyright Page disclaimer: version, date, no-affiliation statement, trademark acknowledgment, future-version variance"},
+      {"id": "front_matter_order", "type": "python", "op": "check_front_matter_order", "text": "Front matter complete and in order: Title Page, Copyright Page, TOC, Preface, How to Use This Book, Introduction"},
+      {"id": "front_matter_shapes", "type": "manual", "text": "Preface exactly 1 page; How to Use This Book exactly 1 page; Conclusion exactly 1.5 pages"},
+      {"id": "getting_started_first_use", "type": "manual", "text": "Getting Started / Setup chapter enables complete first-use success in one session"},
+      {"id": "appendix_seven_elements", "type": "python", "op": "check_appendix_elements", "text": "All seven Appendix elements present"},
+      {"id": "troubleshooting_top_10", "type": "python", "op": "check_troubleshooting_count", "text": "Troubleshooting appendix covers the top 10 documented user problems"},
+      {"id": "numbering_starts_intro", "type": "manual", "text": "Visible page numbers start at Introduction (page 1); front matter unnumbered"},
+      {"id": "design_signature_no_repeat", "type": "manual", "text": "Design Signature applied consistently; logged in register; no repeat"},
+      {"id": "author_name_consistent", "type": "manual", "text": "Author name consistent across Title Page, Copyright Page, and all metadata"},
+      {"id": "kdp_categories_and_version_keyword", "type": "manual", "text": "KDP categories correct; version number present in metadata keywords"},
+      {"id": "terminology_parity_final", "type": "manual", "text": "Terminology parity confirmed across all chapters; Interface Element Naming Index cross-referenced against all in-text references"},
+      {"id": "no_ai_pattern_language", "type": "manual", "text": "No prohibited AI-pattern language in any chapter"},
+      {"id": "warning_compliance_final", "type": "python", "op": "validate_warning_level", "text": "Warning hierarchy compliance confirmed across all chapters (ANSI Z535.6 / ISO/IEC 82079-1)"}
+    ]
+  }
+}

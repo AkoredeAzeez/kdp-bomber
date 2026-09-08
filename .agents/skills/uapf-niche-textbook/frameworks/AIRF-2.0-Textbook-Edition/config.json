@@ -1,0 +1,130 @@
+{
+  "framework_id": "AIRF 2.0 Textbook Edition",
+  "niche": "uapf-niche-textbook",
+  "overlay": "OV-TEXT",
+  "source_of_truth": "../../SKILL.md",
+  "source_framework": "UTF 1.0",
+  "is_default_template": true,
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "widen_inside_margin_for_gutter": true,
+    "body_font": "Times New Roman",
+    "body_pt_min": 11,
+    "body_pt_max": 12,
+    "body_alignment": "justified",
+    "body_text_color": "black",
+    "chapter_title_pt_min": 18,
+    "chapter_title_pt_max": 22,
+    "total_colors": 2,
+    "color_roles": ["primary", "accent"],
+    "section_heading_color": "accent",
+    "no_em_dashes": true,
+    "no_bullet_lists_in_narrative": true
+  },
+
+  "domains": ["Medical", "STEM", "Business", "Humanities", "Law", "Engineering", "Education", "Arts", "Trade/Vocational"],
+
+  "domain_risk_regime": {
+    "Medical": "HIGH",
+    "STEM": "MEDIUM",
+    "Business": "MEDIUM",
+    "Humanities": "LOW",
+    "Law": "HIGH",
+    "Engineering": "HIGH",
+    "Education": "LOW-MEDIUM",
+    "Arts": "LOW",
+    "Trade/Vocational": "HIGH"
+  },
+
+  "chapter_formula": {
+    "opener_words": [500, 750],
+    "close_words": [500, 750],
+    "learning_objectives_min": 3,
+    "learning_objectives_max": 5,
+    "major_sections_min": 3,
+    "major_sections_max": 5,
+    "feature_boxes_min": 3,
+    "feature_boxes_max": 5,
+    "case_studies_per_chapter": [1, 2],
+    "objectives_assessment_traced": true,
+    "banned_objective_verbs": ["understand", "know"]
+  },
+
+  "page_bands": {
+    "default": {"per_chapter": [20, 30], "chapters": [10, 20], "total": [250, 450]},
+    "engineering": {"per_chapter_min": 23, "chapters": [14, 20], "total": [400, 550]},
+    "compact_professional_reference": {"per_chapter": [15, 22], "chapters": [10, 14], "total": [200, 300]}
+  },
+
+  "visual_levels": {
+    "MINIMAL": [5, 10],
+    "MODERATE": [15, 25],
+    "ABUNDANT": [30, 50],
+    "EXTENSIVE_min": 60
+  },
+
+  "engineering_directive": {
+    "assessment": "NONE",
+    "answer_key": "omitted",
+    "min_pages_per_chapter": 23,
+    "total_pages": [400, 550],
+    "chapters": [14, 20],
+    "image_per_subchapter": true,
+    "image_type": "realistic_photographic",
+    "glossary_required": true,
+    "appendices_required": true,
+    "index_required": true
+  },
+
+  "subtitle": {"combined_char_max": 200, "options_to_generate": [6, 8]},
+
+  "pen_name": {
+    "format": "First M. Last",
+    "honorifics_allowed": false,
+    "candidates_min": 3,
+    "candidates_max": 5,
+    "reused_across_catalog": false
+  },
+
+  "trademark": {
+    "nice_classes": [16, 9, 41],
+    "clearance_ratings": ["CLEAR", "CAUTION", "HIGH RISK", "UNVERIFIED"]
+  },
+
+  "front_matter": {
+    "numbering": "lowercase_roman",
+    "body_numbering_starts_at": "Preface_arabic_1",
+    "unnumbered_pages": ["title", "copyright", "toc"]
+  },
+
+  "assessment": {
+    "answer_key_coverage_required_pct": 100,
+    "engineering_has_assessment": false,
+    "items_original": true
+  },
+
+  "figures": {
+    "background": "#FFFFFF",
+    "caption_position": "beneath",
+    "caption_max_lines": 2,
+    "caption_pattern": "Figure C.N: <headline>",
+    "file_naming": "Fig_CC_NN.png",
+    "referenced_in_prose": true,
+    "no_two_back_to_back": true
+  },
+
+  "print_prep": {"target_dpi": 300, "upscale_x": 2, "white_rgb": [255, 255, 255]},
+
+  "citation_styles_allowed": ["APA", "Chicago", "MLA", "Harvard", "IEEE", "AMA", "Vancouver"],
+
+  "color_pairing_unique_per_catalog": true,
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_toc": true,
+    "ebook_reflowable": true
+  }
+}

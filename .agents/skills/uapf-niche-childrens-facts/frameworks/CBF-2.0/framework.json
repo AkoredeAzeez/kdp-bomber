@@ -1,0 +1,15 @@
+{
+  "framework_id": "CBF 2.0",
+  "niche": "uapf-niche-childrens-facts",
+  "overlay": "OV-CFACT",
+  "parent_overlay": "OV-CHILD",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_childrens_facts.py"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "framework_id": "AIRF 2.0 Travel Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_travel.py; type=manual require agent/render inspection.",
+  "gates": {
+    "GATE_1_configuration": [
+      {"id": "title_locked", "type": "manual", "text": "Exact operator title locked verbatim; no alteration; content language confirmed; operator messages in English"},
+      {"id": "trademark_verdict", "type": "manual", "text": "Trademark clearance verdict recorded (CLEAR/CAUTION/HIGH RISK); non-affiliation plan documented where CAUTION or HIGH RISK"},
+      {"id": "competitor_benchmark", "type": "python", "op": "competitor_stats+recommend_target_pages", "text": "Minimum 10 titles; mean and median computed; recommended target within deployment page budget"},
+      {"id": "author_name", "type": "manual", "text": "Author name generated from fakenamegenerator.com, formatted First Name, Initial(s). Surname"},
+      {"id": "subtitle_candidates", "type": "manual", "text": "3-5 subtitle candidates generated; recommended one carries edition year and compliant keywords; no alcohol/nightlife keywords"},
+      {"id": "edition_year_band", "type": "manual", "text": "Edition-year and season-year band confirmed and recorded"},
+      {"id": "palette_unique", "type": "manual", "text": "Two-accent palette with HEX/CMYK/tint; print-safety passed; no duplicate with prior Pegasus Press titles"},
+      {"id": "body_and_spacing_locked", "type": "manual", "text": "Body size and line spacing locked to audience signal"},
+      {"id": "chapter_map_12", "type": "python", "op": "check_chapter_functions", "text": "Chapter map covers all 12 required functional blocks adapted to destination"},
+      {"id": "page_ledger", "type": "manual", "text": "Estimated page ledger produced with allocation per chapter"},
+      {"id": "uniqueness_fingerprint", "type": "manual", "text": "Catalog uniqueness fingerprint recorded (cover, palette, opener, organization, maps, tables, image sequence)"},
+      {"id": "gate_phrase", "type": "manual", "text": "Gate phrase delivered: Type Proceed"}
+    ],
+    "GATE_2_front_matter": [
+      {"id": "title_page_locked", "type": "manual", "text": "Interior title/half-title page uses exact locked title"},
+      {"id": "copyright_block", "type": "manual", "text": "Copyright page includes year, author, All Rights Reserved, edition, imprint, ISBN placeholder, third-party + non-affiliation + travel/transport/health disclaimers, map/QR notice"},
+      {"id": "preface_one_page", "type": "manual", "text": "Preface occupies exactly one page"},
+      {"id": "how_to_use_one_page", "type": "manual", "text": "How To Use This Guide occupies exactly one page; explains flow, tables, conventions, alcohol-free positioning"},
+      {"id": "live_toc", "type": "manual", "text": "TOC via Word References automatic field; Heading 1/2/3 styles; dotted leaders; right-aligned page numbers; Times New Roman"},
+      {"id": "numbering_restart", "type": "manual", "text": "Next-page section break before Introduction; Arabic numbering restarts at 1; footer unlinked from front matter"},
+      {"id": "intro_opener", "type": "manual", "text": "Introduction chapter opener generated with full-bleed image and Heading 1 title panel"},
+      {"id": "page_count_within_cap", "type": "python", "op": "check_page_budget", "text": "Physical page count within deployment cap; reserve confirmed"}
+    ],
+    "GATE_3_main_content": [
+      {"id": "twelve_functions_present", "type": "python", "op": "check_chapter_functions", "text": "All 12 functional content blocks present and easy to locate"},
+      {"id": "two_entries_per_page", "type": "manual", "text": "Two entries per page double-column layout throughout venue/experience sections; 80-90% fill"},
+      {"id": "entry_containment", "type": "manual", "text": "No venue/experience entry breaks mid-content across a page break"},
+      {"id": "eleven_point_template", "type": "manual", "text": "All entries use eleven-point template: Area/Cost/Best Time meta + Quick Facts table + volatile-fact band"},
+      {"id": "volatile_facts_dated", "type": "manual", "text": "Every volatile fact labelled 'as of [season year]'; none invented"},
+      {"id": "section_dividers", "type": "manual", "text": "Section-divider pages at major transitions with full-width photo and Accent A/B title panel"},
+      {"id": "itinerary_tables", "type": "manual", "text": "3-day, 7-day, 14-day itinerary tables present; Accent B headers; alternating tint rows; repeating headers"},
+      {"id": "content_standards_sweep", "type": "manual", "text": "No alcohol, no pork imagery, no alcohol-centred venue in any itinerary, map, caption, image, or QR destination"},
+      {"id": "openers_unique", "type": "manual", "text": "Every major chapter opens with a unique full-bleed realistic photo and Accent A/B title panel in safe area"},
+      {"id": "map_set_complete", "type": "python", "op": "min_map_count", "text": "One overview plus one map per district chapter (minimum 4-5); single-map book fails this gate"},
+      {"id": "maps_original_proofed", "type": "manual", "text": "All maps original (gpt-image-2), proofed for label spelling, one locked map style; not from Google Maps"},
+      {"id": "qr_codes", "type": "manual", "text": "QR codes beside featured venues; 0.75-1.0 inch square with quiet zone; tested from mock PDF"},
+      {"id": "conclusion_shape", "type": "manual", "text": "Conclusion present, approximately 1.5 pages, honest-review request, no new major facts"},
+      {"id": "page_count_within_cap", "type": "python", "op": "check_page_budget", "text": "Physical page count within cap; reserve confirmed"}
+    ],
+    "GATE_4_release": [
+      {"id": "page_budget_final", "type": "python", "op": "check_page_budget", "text": "Physical page count within deployment budget (studio owner: 100 or fewer); no hidden blank pages"},
+      {"id": "numbering_continuous", "type": "manual", "text": "Arabic numbering starts at Introduction page 1 and runs continuously through Appendix"},
+      {"id": "toc_resolves", "type": "manual", "text": "Live TOC resolves: dotted leaders, correct hierarchy and page numbers; every listed heading exists"},
+      {"id": "front_matter_page_shapes", "type": "manual", "text": "Preface exactly 1 page; How To Use exactly 1 page; Conclusion approximately 1.5 pages"},
+      {"id": "openers_and_safe_area", "type": "manual", "text": "Every major chapter opens with unique full-bleed image + centered Accent A/B panel; text/panels within safe area; only photos/color fields bleed"},
+      {"id": "images_clean", "type": "manual", "text": "All images sharp, unique, culturally accurate, free of text/logos/watermarks/alcohol/pork imagery"},
+      {"id": "maps_original", "type": "manual", "text": "All maps original and newly generated; schematic disclaimer present"},
+      {"id": "qr_scan", "type": "manual", "text": "All QR codes scan correctly from final PDF at print size; no dead links, redirects, or wrong venues"},
+      {"id": "title_unchanged", "type": "manual", "text": "Title unchanged from operator's exact supplied version; trademark verdict recorded; non-affiliation language present where required"},
+      {"id": "volatile_facts_final", "type": "manual", "text": "All volatile facts labelled 'as of [season year]'; none invented; sources current; edition-year marker on copyright + metadata"},
+      {"id": "typography_and_color", "type": "manual", "text": "Times New Roman; heading hierarchy and list alignment correct; two-accent palette consistent; print-safety confirmed"},
+      {"id": "no_em_dashes", "type": "manual", "text": "No em dashes anywhere in book content"},
+      {"id": "content_standards_final", "type": "manual", "text": "Final sweep: no alcohol, no pork, no non-compliant venues, images, or QR destinations"},
+      {"id": "render_clean", "type": "manual", "text": "DOCX and PDF render cleanly: no clipping, overlap, split headings, broken tables, stranded headings, or missing glyphs"},
+      {"id": "rolling_master", "type": "manual", "text": "Rolling master DOCX delivered (not disconnected chapter files); live TOC and page-number fields updated"},
+      {"id": "uniqueness_confirmed", "type": "manual", "text": "Catalog uniqueness fingerprint confirmed; no duplicate of prior Pegasus Press title"}
+    ]
+  }
+}

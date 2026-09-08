@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Medical Edition",
+  "niche": "uapf-niche-medical",
+  "overlay": "OV-MEDT",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_medical.py"
+  ]
+}

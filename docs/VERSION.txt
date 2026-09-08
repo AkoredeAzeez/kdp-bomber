@@ -1,0 +1,21 @@
+Genie package version: 5.5 (master, 2026-08-14)
+
+Highlights since 5.3:
+- Chapter-by-chapter build law: one chapter at a time, delivered as BOTH a
+  DOCX and a PDF preview before the next begins, in full premium color.
+- Page numbering starts at the Introduction (page 1); the Table of Contents
+  is reworked after the whole book is finished and verified in the final PDF.
+- 8.5x11 books: block-letter chapter titles 28pt+, subheads 14-18pt, nothing
+  ever cut off; introductions fill their pages.
+- Cover and A+ production: Codex (native gpt-image-2) is the default engine;
+  block-letter titles, photoreal comprehensive prompts, dense-infographic A+
+  (one module per 970x600 file); reference databases self-build on install.
+- Travel guides: 8.5x11, minimum 4 original maps per guide.
+- Per-niche house formatting standards for cookbooks, textbooks and
+  educational books, travel guides, workbooks, craft and how-to, self-help.
+- Custom formatting: save your own style per niche with
+  "Genie, customize formatting for [niche]"; it survives updates.
+- Clean in-place updater (genie_update.py): update without reinstalling and
+  without losing your books, projects, or databases.
+- First-run bootstrap installs all dependencies automatically on Claude Code,
+  Codex CLI, and Codex in VS Code.

@@ -1,0 +1,11 @@
+claim_id,claim,classification,source_ids,verification,status
+CLM-0001,"The covered product is the 2026 Toyota Tacoma for the US market.",fact,SRC-0001,one primary source sufficient for version identity,VERIFIED
+CLM-0002,"The official 2026 owner manual identifier is OM04051U.",fact,SRC-0001,one primary source sufficient for document identity,VERIFIED
+CLM-0003,"The official 2026 multimedia manual identifier is OM04055U.",fact,SRC-0001,one primary source sufficient for document identity,VERIFIED
+CLM-0004,"Toyota Safety Sense 3.0 is the official driver-support suite name used in the 2026 manual.",fact,SRC-0002,primary manual excerpt,VERIFIED
+CLM-0005,"Toyota Safety Sense functions have recognition and control limits and do not replace attentive driving.",safety fact,SRC-0002,primary manual warning,VERIFIED
+CLM-0006,"The Toyota App can report Toyota Safety Sense software-version and update information.",fact,SRC-0002,primary manual excerpt,VERIFIED
+CLM-0007,"The 2026 lineup includes i-FORCE and available i-FORCE MAX powertrains.",fact,SRC-0003|SRC-0004,two official sources,VERIFIED
+CLM-0008,"Feature availability varies by trim, package, and equipment.",fact,SRC-0001|SRC-0004,two official sources,VERIFIED
+CLM-0009,"Owners should use the vehicle-specific manual and labels for load, towing, tire, and operating limits.",safety consensus,SRC-0001|SRC-0004,primary product documentation,VERIFIED
+CLM-0010,"A user guide must not imply affiliation with Toyota solely because it identifies the Tacoma product.",publishing risk,SRC-0005|SRC-0006,preliminary screen,CAUTION

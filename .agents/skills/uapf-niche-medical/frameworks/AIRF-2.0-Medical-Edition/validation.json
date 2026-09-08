@@ -1,0 +1,69 @@
+{
+  "framework_id": "AIRF 2.0 Medical Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_medical.py; type=manual require agent judgement or render inspection. SKILL.md wins on any disagreement.",
+  "gates": {
+    "GATE_1_phase0_configuration": [
+      {"id": "title_verbatim", "type": "manual", "text": "Exact supplied title preserved verbatim in every location (cover, title page, copyright, TOC, headers, metadata)"},
+      {"id": "eponym_audit_done", "type": "manual", "text": "Eponym Audit completed with resolution table; every eponym in title and planned headings has a confirmed descriptive replacement before TOC lock"},
+      {"id": "trademark_and_series_collision", "type": "manual", "text": "Dated trademark report present; established medical-textbook series collision check done; risk rating CLEAR or explained low-confusion CAUTION"},
+      {"id": "marketplace_language_jurisdiction", "type": "manual", "text": "Amazon marketplace locked; book language locked; guideline jurisdiction assumption stated"},
+      {"id": "learner_and_page_floors", "type": "manual", "text": "Learner level and profile confirmed; page floors noted (min 23 pages/chapter, 400-550 total, 10-20 chapters)"},
+      {"id": "r2_confirmed", "type": "manual", "text": "R2 dual-source verification requirement confirmed and documented in configuration summary"},
+      {"id": "no_practice_questions_confirmed", "type": "manual", "text": "NO-PRACTICE-QUESTIONS operator directive confirmed and documented"},
+      {"id": "hard_rule_22_confirmed", "type": "manual", "text": "Hard Rule 22 (no diagrams, schematics, flowcharts) confirmed and documented"},
+      {"id": "book_identity_code_unique", "type": "manual", "text": "Book Identity Code declared with +OV-MEDT suffix; collision-checked against all prior catalog codes; Forbidden Repetition Rule (Axis A+B+D trio) satisfied"},
+      {"id": "two_color_palette_unique", "type": "manual", "text": "PRIMARY + ACCENT palette assigned, confirmed catalog-unique, recorded in catalog log"},
+      {"id": "subtitle_options_and_limit", "type": "python", "op": "subtitle_length_ok", "text": "6-8 KDP-compliant subtitle options in book language; recommended chosen; title+subtitle under 200 characters"},
+      {"id": "pen_names_no_credentials", "type": "manual", "text": "3-5 pen names in First M. Surname format only; zero credentials of any kind"},
+      {"id": "type_proceed_presented", "type": "manual", "text": "Type Proceed presented at end of Phase 0 before any generation"}
+    ],
+    "GATE_2_toc_architecture": [
+      {"id": "toc_and_page_arithmetic", "type": "python", "op": "validate_book_pages", "text": "TOC in book language; chapter count 10-20; page arithmetic confirms 400-550 achievable at 23 pages min per chapter"},
+      {"id": "chapter_word_budget", "type": "python", "op": "meets_word_floor", "text": "Every chapter blueprint budgets at least 13,000 words of body prose before images, captions, and feature boxes"},
+      {"id": "no_eponym_headings", "type": "manual", "text": "Every chapter title and numbered section heading reviewed; zero eponyms as primary terms"},
+      {"id": "case_based_structure", "type": "manual", "text": "Case-based structure confirmed for every chapter: scenario opener, mechanistic body, case-resolution close"},
+      {"id": "learning_objectives_plan", "type": "python", "op": "learning_objectives_ok", "text": "4-6 objectives per chapter; Bloom Apply/Analyze/Evaluate dominant; traceable to content sections not questions"},
+      {"id": "feature_box_selection", "type": "python", "op": "feature_box_selection_ok", "text": "3-5 feature-box types selected and custom-named from the Medical Feature Box System; Red Flag Alert subject to 100% floor"},
+      {"id": "per_subchapter_image_planned", "type": "manual", "text": "Per-subchapter photorealistic image planned for every numbered subchapter; type is teaching model or clinical setting, never diagram/schematic/flowchart"},
+      {"id": "back_matter_planned", "type": "manual", "text": "Back matter confirmed: Drug Class Reference, Normal Values, Clinical Glossary, References (AMA or APA 7), Index"},
+      {"id": "no_assessment_in_plan", "type": "manual", "text": "No practice/review/graded items in any chapter outline or back-matter plan"},
+      {"id": "type_proceed_presented", "type": "manual", "text": "Type Proceed presented before front-matter generation"}
+    ],
+    "GATE_3_per_chapter": [
+      {"id": "chapter_pages_floor", "type": "python", "op": "validate_chapter_pages", "text": "Chapter is at least 23 pages when clinical exposition, feature boxes, and per-subchapter images are counted"},
+      {"id": "clinical_scenario_opener", "type": "manual", "text": "Chapter opens with a plausible, pathophysiologically coherent fictional clinical scenario per Axis B"},
+      {"id": "learning_objectives_box", "type": "manual", "text": "Learning Objectives Box: PRIMARY tint + solid border, bold PRIMARY header, 4-6 numbered Bloom-verb objectives, all traceable, none vague"},
+      {"id": "no_assessment_items", "type": "manual", "text": "No practice/review/NCLEX/USMLE/knowledge-check/graded items anywhere in the chapter"},
+      {"id": "no_eponym_headings_chapter", "type": "manual", "text": "No eponyms in any heading, subheading, box header, figure caption, or table title; consistent with Phase 0 table"},
+      {"id": "generic_drug_naming", "type": "manual", "text": "All drugs named generic [pharmacological class] at first use; no brand/trade names as primary identifiers"},
+      {"id": "formulary_sentence_present", "type": "manual", "text": "Every dosing-context passage immediately followed by the complete formulary verification sentence, not abbreviated/moved/omitted"},
+      {"id": "r2_verification_done", "type": "manual", "text": "R2 dual-source verification completed for all contraindications, red-flags, interactions, criteria, recommendations; unresolved marked with CITATION NEEDED placeholders and user notified"},
+      {"id": "accuracy_floor_met", "type": "manual", "text": "100% accuracy floor confirmed for contraindications, red-flag lists, interactions, dosing context; no approximated high-stakes claims"},
+      {"id": "one_image_per_subchapter", "type": "python", "op": "image_slot_count", "text": "Every numbered subchapter carries exactly one photorealistic image, six-part recipe applied, Safe-Vocabulary framing line and substitutions present, no diagram/schematic/flowchart"},
+      {"id": "image_labels_within_max", "type": "python", "op": "image_labels_ok", "text": "Verbatim label set is 8-12 maximum; split into two images if more accuracy is needed"},
+      {"id": "figure_referenced_and_captioned", "type": "manual", "text": "Every figure referenced by number in prose; caption below in Axis H style; pure white background for teaching models; alt text present"},
+      {"id": "accent_headings", "type": "manual", "text": "Numbered section headings bold in ACCENT color; correct H2/H3 hierarchy"},
+      {"id": "no_em_dash_no_filler", "type": "manual", "text": "Body justified; no em dashes anywhere; no AI-register filler vocabulary"},
+      {"id": "condensed_disclaimer_when_needed", "type": "manual", "text": "Condensed disclaimer reminder present at chapter opening where chapter contains dosing context, emergency criteria, or contraindication lists"},
+      {"id": "case_resolution_close", "type": "manual", "text": "Chapter close resolves the opening scenario per Axis G with substantive synthesis and a forward bridge"},
+      {"id": "type_proceed_presented", "type": "manual", "text": "Chapter appended to cumulative manuscript; Type Proceed presented before next chapter"}
+    ],
+    "GATE_4_release": [
+      {"id": "trim_and_margins", "type": "manual", "text": "Trim 8.5 x 11 in; margins 0.7 in all sides"},
+      {"id": "fonts_and_styles", "type": "manual", "text": "Times New Roman at correct point sizes; real Word Heading styles; Word TOC field populated, updateable, dot leaders, right-aligned page numbers"},
+      {"id": "front_matter_numbering", "type": "manual", "text": "No visible front-matter page numbers; Preface begins Arabic page 1; numbering continuous to end; front matter in mandatory sequence"},
+      {"id": "full_disclaimer_present", "type": "manual", "text": "Full clinical disclaimer on copyright page with all mandatory OV-MEDT elements; condensed reminder at every dosing/emergency chapter opening"},
+      {"id": "book_page_totals", "type": "python", "op": "validate_book_pages", "text": "Total pages within 400-550; every chapter at least 23; chapter count 10-20"},
+      {"id": "no_assessment_whole_book", "type": "manual", "text": "No practice/NCLEX/USMLE/graded items anywhere in front matter, chapters, boxes, or back matter"},
+      {"id": "eponym_audit_whole_book", "type": "manual", "text": "Zero eponyms as primary terms in any heading, subheading, box header, caption, table title, or glossary primary entry"},
+      {"id": "drug_name_audit_whole_book", "type": "manual", "text": "Zero brand/trade names as primary drug identifiers; generic [class] format at first use per chapter"},
+      {"id": "dosing_audit_whole_book", "type": "manual", "text": "Every dosing-context passage in every chapter and appendix carries the complete formulary verification sentence"},
+      {"id": "r2_and_floor_audit", "type": "manual", "text": "All contraindications, red-flag lists, interactions, and diagnostic criteria dual-source confirmed; all placeholders resolved or clearly marked"},
+      {"id": "image_audit_whole_book", "type": "python", "op": "image_slot_count", "text": "Every numbered subchapter has its compliant photorealistic image; no diagrams/schematics/flowcharts anywhere; captions below and alt text; referenced by number"},
+      {"id": "palette_consistency", "type": "manual", "text": "PRIMARY in all Learning Objectives boxes; ACCENT on all numbered section headings and all table header rows; no third color"},
+      {"id": "identity_code_recorded", "type": "manual", "text": "Book Identity Code with +OV-MEDT confirmed unique and recorded against title, pen name, domain, marketplace, language, edition, account"},
+      {"id": "no_em_dashes_whole_book", "type": "manual", "text": "No em dashes anywhere in the manuscript"},
+      {"id": "render_inspection", "type": "manual", "text": "Document opens cleanly; TOC updates without error; no clipped tables, stretched images, broken headings, or orphaned titles; rendered page by page and inspected"}
+    ]
+  }
+}

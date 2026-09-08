@@ -1,0 +1,82 @@
+{
+ "title": "Demo Word Search",
+ "audience": "seniors",
+ "seed": 7,
+ "puzzles": [
+  {
+   "theme": "Autumn",
+   "words": [
+    "PUMPKIN",
+    "HARVEST",
+    "MAPLE",
+    "SWEATER",
+    "ORCHARD",
+    "CIDER",
+    "ACORN",
+    "BONFIRE",
+    "RAKE",
+    "FROST"
+   ]
+  },
+  {
+   "theme": "Kitchen",
+   "words": [
+    "SKILLET",
+    "WHISK",
+    "OVEN",
+    "SPATULA",
+    "KETTLE",
+    "LADLE",
+    "GRATER",
+    "TIMER",
+    "APRON",
+    "TRAY"
+   ]
+  },
+  {
+   "theme": "Garden",
+   "words": [
+    "TROWEL",
+    "SEEDS",
+    "MULCH",
+    "ROSES",
+    "PRUNER",
+    "COMPOST",
+    "SPROUT",
+    "TULIP",
+    "HOSE",
+    "SOIL"
+   ]
+  },
+  {
+   "theme": "Music",
+   "words": [
+    "MELODY",
+    "RHYTHM",
+    "CHORUS",
+    "TEMPO",
+    "PIANO",
+    "VIOLIN",
+    "SINGER",
+    "HARMONY",
+    "NOTES",
+    "DRUM"
+   ]
+  },
+  {
+   "theme": "Ocean",
+   "words": [
+    "DOLPHIN",
+    "CORAL",
+    "SEAWEED",
+    "TIDE",
+    "ANCHOR",
+    "PEARL",
+    "WAVES",
+    "SAILOR",
+    "SHELLS",
+    "REEF"
+   ]
+  }
+ ]
+}

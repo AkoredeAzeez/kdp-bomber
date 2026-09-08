@@ -1,0 +1,47 @@
+{
+  "framework_id": "AIRF 2.0",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_faith.py; type=manual require agent/theological/live-verification inspection.",
+  "gates": {
+    "GATE_1_tradition_and_copyright": [
+      {"id": "tradition_declared", "type": "manual", "text": "Active Tradition declared and documented in Phase 0 Summary"},
+      {"id": "no_doctrinal_contradiction", "type": "manual", "text": "No doctrinal statement contradicts the declared tradition's mainstream position"},
+      {"id": "citations_complete", "type": "manual", "text": "Every scripture passage carries correct citation (book, chapter, verse, translation abbreviation)"},
+      {"id": "translations_cleared", "type": "manual", "text": "All modern translations confirmed public-domain or rights-cleared with exact attribution lines"},
+      {"id": "translation_ack_page", "type": "manual", "text": "Translation Acknowledgment page present in front matter"},
+      {"id": "quotation_limits", "type": "python", "op": "translation_verse_limit_ok", "text": "Quotation limits for any licensed translation checked and not exceeded (NIV 500, ESV 1000)"},
+      {"id": "no_prosperity_promises", "type": "manual", "text": "No prosperity promises in any unit"},
+      {"id": "no_healing_guarantees", "type": "manual", "text": "No healing guarantees in any unit"},
+      {"id": "no_victim_blaming", "type": "manual", "text": "No spiritual victim-blaming in any unit"}
+    ],
+    "GATE_2_daycount_and_structure": [
+      {"id": "unit_count_contract", "type": "python", "op": "validate_unit_count", "text": "DECLARED UNIT COUNT verified: total complete units = exactly the number stated in the title"},
+      {"id": "four_components_in_order", "type": "manual", "text": "Every unit contains all four required components (Scripture -> Reflection -> Prayer -> Application)"},
+      {"id": "no_stub_units", "type": "manual", "text": "No unit is a stub, filler, or reprint of another unit"},
+      {"id": "parts_sum_to_total", "type": "python", "op": "parts_partition_ok", "text": "Part/section groupings add up to the total unit count"},
+      {"id": "scripture_index_built", "type": "manual", "text": "Scripture Index built and verified against all units"},
+      {"id": "word_targets_met", "type": "python", "op": "word_band_check", "text": "Word-count targets met: each Reflection 200-350 words; each Prayer 50-120 words"},
+      {"id": "no_repeated_angle", "type": "manual", "text": "No two units use the same reflection angle or application prompt"}
+    ],
+    "GATE_3_theological_and_safety": [
+      {"id": "r4_grief_applied", "type": "manual", "text": "R4 grief protocol applied if topic requires it"},
+      {"id": "no_coercive_language", "type": "manual", "text": "No coercive language in any unit, prayer, or prompt"},
+      {"id": "referral_language_present", "type": "manual", "text": "Professional-referral language present where grief, spiritual crisis, or mental health is mentioned"},
+      {"id": "crisis_resources_live", "type": "manual", "text": "Crisis and pastoral support resources verified live for correct contact details and regional suitability"},
+      {"id": "no_replace_medical_care", "type": "manual", "text": "No advice to replace medical or psychological professional care with spiritual practice"},
+      {"id": "interfaith_reviewed", "type": "manual", "text": "Interfaith passages (if any) reviewed for accuracy and respect toward all traditions represented"},
+      {"id": "no_photorealistic_sacred_figures", "type": "manual", "text": "No photorealistic depictions of sacred figures in imagery"}
+    ],
+    "GATE_4_production_and_kdp": [
+      {"id": "front_matter_order", "type": "manual", "text": "Front matter in correct order (per Book Architecture)"},
+      {"id": "back_matter_complete", "type": "manual", "text": "Back matter complete (Conclusion, Scripture Index, Further Reading, Crisis Resources)"},
+      {"id": "typography_tnr", "type": "manual", "text": "Times New Roman throughout, 12 pt body, 1.15 spacing"},
+      {"id": "scripture_block_format", "type": "manual", "text": "Scripture quotations block-indented and italicized with citation"},
+      {"id": "images_generated_when_required", "type": "python", "op": "part_opener_image_count", "text": "All images generated and inserted (one per part opener, at any page count)"},
+      {"id": "images_caption_alt", "type": "manual", "text": "Every image has caption and alt text"},
+      {"id": "toc_populated", "type": "manual", "text": "Automatic TOC populated and updateable"},
+      {"id": "numbering_from_introduction", "type": "manual", "text": "Page numbering begins with Introduction as page 1"},
+      {"id": "uniqueness_audit", "type": "manual", "text": "Uniqueness audit passed: unit sequence, reflection angles, prayer approaches distinct from any prior devotional this session"},
+      {"id": "docx_renders_clean", "type": "manual", "text": "Final DOCX renders cleanly with no clipped tables, broken headings, or orphaned unit labels"}
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "framework_id": "AIRF 2.0 Health Edition",
+  "niche": "uapf-niche-health",
+  "overlay": "OV-HEALTH",
+  "source_of_truth": "../../SKILL.md",
+
+  "risk_regime": {
+    "code": "R2",
+    "mandatory": true,
+    "waivable": false
+  },
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "body_font": "Times New Roman",
+    "body_pt_options": [11, 12, 13, 14],
+    "chapter_heading_pt": 16,
+    "principal_colors": 2,
+    "accent_colors_min": 1,
+    "accent_colors_max": 2,
+    "body_text_color": "black",
+    "body_alignment": "justified",
+    "grayscale_min_gray_diff_pct": 25
+  },
+
+  "typography_by_audience": {
+    "senior_large_print": {"body_pt_min": 13, "body_pt_max": 14, "line_spacing": 1.5},
+    "professional_reference": {"body_pt_min": 11, "body_pt_max": 12, "line_spacing": 1.15}
+  },
+
+  "front_matter": {
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "conclusion_pages": 1.5,
+    "folios_start_at": "Introduction"
+  },
+
+  "chapter_1_is_medical_clearance": true,
+
+  "technique_unit": {
+    "contraindications_before_instructions": true,
+    "universal_modifications": ["seated", "standing_supported", "adaptive"],
+    "image_sequence_min_panels": 3,
+    "image_sequence_multiphase_panels": [4, 5],
+    "same_demonstrator_across_sequence": true,
+    "panel_caption_pattern": "Step N: <action>",
+    "panel_slot_pattern": "IMG-XX-Sn",
+    "hero_per_chapter_opener": true,
+    "single_pose_image_is_failure": true
+  },
+
+  "sub_niches": {
+    "A": "Tai Chi & Qi Gong",
+    "B": "Yoga & Chair Yoga",
+    "C": "Pilates & Core",
+    "D": "Stretching & Flexibility",
+    "E": "Walking & Low-Impact Cardio",
+    "F": "Strength & Resistance",
+    "G": "Balance & Fall Prevention",
+    "H": "Meditation & Breathwork",
+    "I": "Senior Fitness & Adaptive Exercise",
+    "J": "Holistic Wellness & Mind-Body Integration"
+  },
+
+  "audience_segments": [
+    "active_agers_55_80plus",
+    "stress_management_professionals_30_60",
+    "rehabilitation_return_to_movement",
+    "fitness_professionals"
+  ],
+
+  "competitors": {"min_count": 5, "max_count": 10},
+
+  "page_bands": {
+    "gentle_senior_practice": [120, 180],
+    "single_discipline_instruction": [140, 220],
+    "program_driven_fitness": [130, 200],
+    "comprehensive_professional_reference": [220, 350]
+  },
+
+  "evidence_hierarchy_labels": ["established", "preliminary", "traditional", "consensus", "uncertain"],
+
+  "tables": {"header_shaded": true, "alternating_row_tint_when_rows_over": 4},
+
+  "citation_style_default": "APA 7th",
+
+  "content_rules": {
+    "no_weight_loss_promises": true,
+    "no_medical_outcome_claims": true,
+    "no_diagnosis_or_prescription": true,
+    "no_invented_credentials": true,
+    "no_em_dashes": true,
+    "exact_prescription_variables_required": true,
+    "conservative_interpretation_on_conflict": true,
+    "cultural_terminology_with_translation": true,
+    "locked_title_immutable": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true,
+    "premium_interior_mandatory": true
+  }
+}

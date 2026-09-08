@@ -1,0 +1,59 @@
+{
+  "framework_id": "AIRF 2.0 Humor Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_humor.py; type=manual require agent/render/sensitivity inspection.",
+  "gates": [
+    {"gate": "GATE_1_evidence_record", "id": "slot_id_format", "type": "manual", "text": "Slot ID assigned in AUD-OCC-PAIN format"},
+    {"gate": "GATE_1_evidence_record", "id": "three_candidates_within_200", "type": "python", "op": "combined_title_len_ok", "text": "Three candidate titles+subtitles drafted; each combined title+subtitle within 200 characters"},
+    {"gate": "GATE_1_evidence_record", "id": "trademark_all_three", "type": "manual", "text": "Trademark check run on all three candidates; results recorded; no active conflict advances"},
+    {"gate": "GATE_1_evidence_record", "id": "competitor_scan", "type": "manual", "text": "Top-20 competitor scan completed on target marketplace; BSR, reviews, covers, price band, page counts, dates filed"},
+    {"gate": "GATE_1_evidence_record", "id": "categories_reachable", "type": "manual", "text": "One reachable Humor category and one Self-Help category confirmed with realistic top-100 entry"},
+    {"gate": "GATE_1_evidence_record", "id": "rubric_score_decision", "type": "python", "op": "score_slot", "text": "Slot scored on five-criteria rubric; proceed/justify/kill decision correct with no zero in Demand or Differentiation when proceeding"},
+    {"gate": "GATE_1_evidence_record", "id": "seasonal_window", "type": "manual", "text": "Seasonal window stated; manuscript-locked-by date stated; never launch inside final three weeks before peak"},
+    {"gate": "GATE_1_evidence_record", "id": "kill_or_proceed", "type": "manual", "text": "Kill-or-proceed decision written with one paragraph of reasoning; evidence record attached to state ledger and never discarded"},
+
+    {"gate": "GATE_2_auto_configuration", "id": "identity_locked", "type": "manual", "text": "Slot ID, final title, subtitle, marketplace, language confirmed"},
+    {"gate": "GATE_2_auto_configuration", "id": "register_locked", "type": "manual", "text": "Audience segment assigned; exactly one humor register declared and locked for full manuscript"},
+    {"gate": "GATE_2_auto_configuration", "id": "body_and_spacing", "type": "manual", "text": "Body size and line spacing stated with reason; senior override (13-14pt, 1.5 spacing) applied when needed"},
+    {"gate": "GATE_2_auto_configuration", "id": "mascot_decision", "type": "manual", "text": "Named mascot with five-line bible, or themed spot-art set; mascots vary across catalog within segment and language"},
+    {"gate": "GATE_2_auto_configuration", "id": "trim_page_chapter_bounds", "type": "python", "op": "chapter_count_ok+page_band_ok", "text": "Trim 6x9 confirmed; page target within 80-120; chapter count 8-12"},
+    {"gate": "GATE_2_auto_configuration", "id": "pen_name_format", "type": "manual", "text": "Pen name sourced from fakenamegenerator.com in the format First Name, Initial(s). Surname"},
+    {"gate": "GATE_2_auto_configuration", "id": "categories_and_keywords", "type": "python", "op": "keyword_ok", "text": "Three KDP categories stated; seven draft keywords stated, each under 50 characters"},
+
+    {"gate": "GATE_3_toc_contract", "id": "chapter_titles_are_jokes", "type": "manual", "text": "8-12 chapters; every chapter title is a joke that survives being read aloud; every subtitle a second joke"},
+    {"gate": "GATE_3_toc_contract", "id": "toc_layout", "type": "manual", "text": "Localized header, ghost numeral, chapter number + middle dot + title, subtitle-joke line beneath; no page numbers"},
+    {"gate": "GATE_3_toc_contract", "id": "toc_page_fit", "type": "manual", "text": "TOC fits one page up to 10 chapters, or two balanced pages at 11-12 chapters; built on Word machinery only"},
+    {"gate": "GATE_3_toc_contract", "id": "front_matter_plans", "type": "manual", "text": "Dedication (max 30 words), Preface plan, How to Use plan, and Introduction plan stated; localized labels for non-EN"},
+
+    {"gate": "GATE_3a_front_matter", "id": "half_title", "type": "manual", "text": "Half-title art page included"},
+    {"gate": "GATE_3a_front_matter", "id": "copyright_block", "type": "manual", "text": "Copyright page has edition block, copyright line, all-rights text, humor disclaimer, imprint line, ISBN placeholder; all centered"},
+    {"gate": "GATE_3a_front_matter", "id": "dedication_len", "type": "manual", "text": "Dedication humorous, maximum 30 words"},
+    {"gate": "GATE_3a_front_matter", "id": "preface_one_page", "type": "manual", "text": "Preface exactly one page, in-voice, ends on a welcome not a promise"},
+    {"gate": "GATE_3a_front_matter", "id": "how_to_use_closer", "type": "manual", "text": "How to Use exactly one page, left-aligned numbered anti-rules, ends 'that is the whole system'"},
+    {"gate": "GATE_3a_front_matter", "id": "folio_start", "type": "manual", "text": "No folios before Introduction; Introduction opens as printed page 1 with automatic PAGE field"},
+
+    {"gate": "GATE_3b_per_chapter", "id": "register_held", "type": "manual", "text": "Register held; no tonal drift from the locked register (fatal flaw)"},
+    {"gate": "GATE_3b_per_chapter", "id": "joke_diversity", "type": "manual", "text": "At least one observational, one absurdist, one wordplay/misdirection, one situational; no device repeats in chapter"},
+    {"gate": "GATE_3b_per_chapter", "id": "no_banned_humor", "type": "manual", "text": "No banned humor: wine-mom, live-laugh-love mockery, stereotype/punching-down, dated memes, mother-in-law, protected-characteristic mockery"},
+    {"gate": "GATE_3b_per_chapter", "id": "quote_page_valid", "type": "manual", "text": "Quote page present, original joke, attribution as Name Initial./age/absurd job title, within 18 words, age 25-70"},
+    {"gate": "GATE_3b_per_chapter", "id": "content_standards", "type": "manual", "text": "No alcohol, pork, or gambling-positive content in any element; comfort props tea/coffee/chocolate only"},
+    {"gate": "GATE_3b_per_chapter", "id": "sensitivity_signoff", "type": "manual", "text": "No stereotype harmful-reinforcement; Sensitivity Reader sign-off; segment guardrails satisfied"},
+    {"gate": "GATE_3b_per_chapter", "id": "image_quotas_and_constraints", "type": "python", "op": "image_quota_ok", "text": "Per-chapter image quotas met (>=2 inline, >=2 spot, >=1 quote-page); every prompt numbered with mandatory constraints clause; each image carries a joke"},
+    {"gate": "GATE_3b_per_chapter", "id": "closing_beat_warm", "type": "manual", "text": "Closing beat is warm permission, never cynical; the honest turn is one beat only, not instructional"},
+    {"gate": "GATE_3b_per_chapter", "id": "chapter_body_words", "type": "python", "op": "chapter_body_words_ok", "text": "Chapter body 600-900 words; all formatting via named styles only, no direct formatting"},
+
+    {"gate": "GATE_3c_assembly", "id": "conclusion_one_page", "type": "manual", "text": "Conclusion exactly one page, permitted callback present, warm close"},
+    {"gate": "GATE_3c_assembly", "id": "author_bio", "type": "python", "op": "author_bio_words_ok", "text": "Author bio 60-90 words, in-voice, under pen name"},
+    {"gate": "GATE_3c_assembly", "id": "review_request_neutral", "type": "manual", "text": "Review request page: one final joke plus one honest, unincentivized, neutral ask"},
+    {"gate": "GATE_3c_assembly", "id": "whole_book_format", "type": "manual", "text": "6x9, mirrored margins, gutter confirmed at final page count, fonts embedded, folios start at Introduction as page 1"},
+    {"gate": "GATE_3c_assembly", "id": "extent_within_band", "type": "python", "op": "page_band_ok", "text": "Extent confirmed within 80-120 pages"},
+
+    {"gate": "GATE_4_release", "id": "three_covers", "type": "manual", "text": "Three cover candidates A/B/C with one-line rationales; typographic or hand-lettered; no icons, badges, or selling points on front"},
+    {"gate": "GATE_4_release", "id": "front_cover_content", "type": "manual", "text": "Front cover carries title and subtitle only; pen name on copyright page"},
+    {"gate": "GATE_4_release", "id": "spine_and_back", "type": "manual", "text": "Spine (100+ pages) title only top to bottom; back cover 3-5 in-voice hook lines, one line-art element, clear ISBN zone"},
+    {"gate": "GATE_4_release", "id": "covers_unique", "type": "manual", "text": "No two catalog covers look alike; background and lettering variety confirmed"},
+    {"gate": "GATE_4_release", "id": "description_within_4000", "type": "manual", "text": "Listing description: hook, 3-5 joke bullets, interior-experience line, gift close, specs line; within 4000 characters"},
+    {"gate": "GATE_4_release", "id": "keywords_hygiene", "type": "python", "op": "keyword_ok", "text": "Seven keywords, one per 50-character field, from four pools; no trademarks, competitor names, or flagged terms"},
+    {"gate": "GATE_4_release", "id": "price_in_band", "type": "manual", "text": "Price inside validated USD 7.99-14.99 band; computed royalty stated; never priced below band to chase rank"},
+    {"gate": "GATE_4_release", "id": "a_plus_and_release_qc", "type": "manual", "text": "A+ plan (promise banner, interior peek, gift-occasion); interior preflight, wrap dimensions, metadata match, rights and AI-disclosure honest status"}
+  ]
+}

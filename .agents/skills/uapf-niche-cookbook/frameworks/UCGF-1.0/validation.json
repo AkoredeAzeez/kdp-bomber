@@ -1,0 +1,143 @@
+{
+ "framework_id": "UCGF 1.0",
+ "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_cookbook.py; type=manual require agent/render inspection.",
+ "gates": {
+  "GATE_1_configuration": [
+   {
+    "id": "trademark_clean",
+    "type": "manual",
+    "text": "Trademark verdict clean; title classified with evidence; locked title recorded verbatim"
+   },
+   {
+    "id": "subtitle_limits",
+    "type": "manual",
+    "text": "Title+subtitle <=150 chars, keyword early, recipe count stated, no brands/em dashes"
+   },
+   {
+    "id": "categories_valid",
+    "type": "python",
+    "op": "validate_categories",
+    "text": "8-12 categories, each 6-15 recipes, covers breakfast/lunch/dinner/snack"
+   },
+   {
+    "id": "page_projection",
+    "type": "python",
+    "op": "page_estimate+check_page_budget",
+    "text": "Projected pages within deployment budget via governor formula"
+   },
+   {
+    "id": "design_fingerprint_unique",
+    "type": "manual",
+    "text": "Palette pair AND full design fingerprint unique in catalog; recipe set fingerprinted, zero collisions"
+   }
+  ],
+  "GATE_2_structure": [
+   {
+    "id": "live_toc",
+    "type": "manual",
+    "text": "Live auto-TOC lists every category (H1) and recipe (H2)"
+   },
+   {
+    "id": "front_matter_pages",
+    "type": "manual",
+    "text": "Preface 1 page; How to Use 1 page; copyright+disclaimer from template"
+   },
+   {
+    "id": "hero_embedded",
+    "type": "manual",
+    "text": "IMG-00 embedded as finished full-page image, not a prompt/placeholder"
+   },
+   {
+    "id": "folios_start_intro",
+    "type": "manual",
+    "text": "Front matter unnumbered; numbering starts at Introduction"
+   }
+  ],
+  "GATE_3_per_chapter": [
+   {
+    "id": "divider_fullbleed",
+    "type": "manual",
+    "text": "Divider (IMG-D-<cat>) full-bleed with centered title band; art wordless, no white margins"
+   },
+   {
+    "id": "two_recipes_per_page",
+    "type": "manual",
+    "text": "Exactly two recipes per page in the book's archetype; no recipe splits; archetypes not mixed"
+   },
+   {
+    "id": "photo_per_recipe",
+    "type": "manual",
+    "text": "Every recipe carries IMG-Rnn, embedded, bordered, trim-safe; one locked photo style"
+   },
+   {
+    "id": "method_restarts",
+    "type": "manual",
+    "text": "Every method list restarts at 1; no carried-over/manual step numbers"
+   },
+   {
+    "id": "silent_exclusion",
+    "type": "manual",
+    "text": "Zero pork/alcohol or hidden carriers; zero reader-facing mention; no such imagery"
+   },
+   {
+    "id": "metric_and_temps",
+    "type": "manual",
+    "text": "Metric conversion on every quantity; F(C) temps; Per Serving ends with theme nutrient"
+   },
+   {
+    "id": "body_type_and_color",
+    "type": "manual",
+    "text": "Body 11pt Times New Roman; only primary/accent colors; body text black"
+   }
+  ],
+  "GATE_4_release": [
+   {
+    "id": "page_budget_final",
+    "type": "python",
+    "op": "check_page_budget",
+    "text": "Total pages within budget; render shows no overflow/blank/orphan/broken tables/displaced images"
+   },
+   {
+    "id": "title_char_match",
+    "type": "manual",
+    "text": "Locked title matches character-for-character across cover, title page, TOC, metadata, State Block"
+   },
+   {
+    "id": "conclusion_shape",
+    "type": "manual",
+    "text": "Conclusion 1.5 pages, four movements, honest-review request"
+   },
+   {
+    "id": "meal_plan_closure",
+    "type": "manual",
+    "text": "Every meal-plan cell resolves to a book recipe; tables repeat headers, no split rows"
+   },
+   {
+    "id": "image_contract_complete",
+    "type": "python",
+    "op": "image_slot_count",
+    "text": "IMG-00 + one divider per category + one per recipe, all embedded and trim-safe"
+   },
+   {
+    "id": "whole_book_scans",
+    "type": "manual",
+    "text": "Whole-book silent-exclusion re-scan and em-dash scan pass"
+   },
+   {
+    "id": "opener_variation_law",
+    "type": "manual",
+    "text": "Chapter dividers follow THIS book's locked opener archetype from the 9-option menu (9c); title arrangement matches; text sits on the image ONLY in the text-on-image archetype with a scrim and grayscale verification; archetype+arrangement does not repeat any catalog book (check the Design Log)"
+   },
+   {
+    "id": "recipe_arrangement_variation",
+    "type": "manual",
+    "text": "Recipe archetype is one of the twelve (A-L: compact two-column, full-width stacked, ingredient sidebar, magazine band, boxed card, centerline minimalist, icon-cue rail, photo banner, ledger, journal, two-tone split, plated focus), consistent through the book, two recipes per page with per-recipe photos; archetype+palette-family combination does not repeat any catalog cookbook (check the Design Log)"
+   },
+   {
+    "id": "divider_imagery_mode",
+    "type": "manual",
+    "text": "Divider imagery mode (photography vs illustrated recipe art) matches the locked fingerprint; art generated text-free; illustration style consistent within the book"
+   }
+  ]
+ }
+}

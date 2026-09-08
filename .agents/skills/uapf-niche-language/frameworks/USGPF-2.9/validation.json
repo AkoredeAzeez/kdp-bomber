@@ -1,0 +1,56 @@
+{
+  "framework_id": "USGPF 2.9",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_language.py; type=manual require native-speaker audit, render inspection, or live research.",
+  "gates": {
+    "GATE_1_configuration_and_per_unit": [
+      {"id": "routing_confirmed", "type": "manual", "text": "OV-LANG routing signals confirmed and recorded"},
+      {"id": "direction_declaration", "type": "manual", "text": "Direction Declaration locked: SOURCE language+variant and TARGET language+variant (Phase 0 hard requirement, blocks all else)"},
+      {"id": "register_scope", "type": "manual", "text": "Register Scope declared and recorded (formal only, informal only, or both)"},
+      {"id": "script_profile", "type": "manual", "text": "Script and Typographic Profile declared; non-Latin font confirmed; RTL encoding plan confirmed if required"},
+      {"id": "pronunciation_system", "type": "manual", "text": "Pronunciation System Declaration recorded and confirmed appropriate by Domain Master"},
+      {"id": "children_category", "type": "manual", "text": "Children's Category research completed live; routes OV-KIDS if signals present"},
+      {"id": "title_clearance", "type": "manual", "text": "Title Clearance record exists with live sources and date; no conflict pending"},
+      {"id": "language_profile_card", "type": "manual", "text": "Language Profile Card locked"},
+      {"id": "subtitle_limits", "type": "python", "op": "validate_subtitle", "text": "Communicative promise or accurate count; letters/numerals/spaces only; two rendered lines or fewer"},
+      {"id": "byline_locked", "type": "manual", "text": "Byline fetched live from FNG; collision check passed; no credentials or invented biography; locked"},
+      {"id": "design_signature_distinct", "type": "manual", "text": "Title Design Signature cleared catalog-distinctness gate"},
+      {"id": "unit_plan_reviewed", "type": "manual", "text": "Unit plan drafted with per-unit fields; Applied Linguist reviewed"},
+      {"id": "domain_master_read_all", "type": "manual", "text": "Domain Master (native speaker of TARGET) has read every target-language string in the unit"},
+      {"id": "zero_mt_artifacts", "type": "manual", "text": "Zero machine-translation artifacts: any artifact is FAIL; unit returns to revision and re-audits"},
+      {"id": "vocabulary_load", "type": "python", "op": "validate_vocabulary_load", "text": "20-40 new vocabulary items per unit; all labeled for register; match declared regional variant"},
+      {"id": "dialogue_turns", "type": "python", "op": "validate_dialogue_turns", "text": "Dialogue is 8-16 speaker turns; register-labeled at head; Domain Master certified natural"},
+      {"id": "one_grammar_point", "type": "python", "op": "validate_grammar_points", "text": "Exactly one grammar point per unit; 3-5 example sentences; Applied Linguist + Domain Master confirmed"},
+      {"id": "drill_count_and_integrity", "type": "python", "op": "validate_drills", "text": "3-5 drills; every item one correct answer or all alternatives listed in key; no ambiguous items"},
+      {"id": "cultural_note_length", "type": "python", "op": "validate_cultural_note", "text": "Cultural note 100-150 words; factual, specific, sourced in ledger; Cultural Consultant confirmed; no stereotyping"},
+      {"id": "register_labeling", "type": "manual", "text": "Register labeling exhaustive and consistent; correct against declared Register Scope"},
+      {"id": "pronunciation_consistency", "type": "manual", "text": "Pronunciation transcription applied to all new items; declared system applied consistently"},
+      {"id": "compliance_sweep", "type": "manual", "text": "Compliance Sweep PASS: em dashes absent, en dashes absent, curly apostrophes only, no AI voice"},
+      {"id": "content_standards", "type": "manual", "text": "Content Standards Check PASS (no pork, no alcohol, no associated scenarios or imagery)"},
+      {"id": "unit_length_band", "type": "python", "op": "validate_unit_pages", "text": "Unit length on render 4-8 pages; correction via substantive content or scope only, never typography"},
+      {"id": "non_latin_render", "type": "manual", "text": "Non-Latin script rendering verified visually on rasterized render if applicable"},
+      {"id": "box_anatomy", "type": "manual", "text": "COMMUNICATIVE GOAL, vocabulary table, grammar section, drills, CULTURAL NOTE all present and correctly formatted"}
+    ],
+    "GATE_2_back_matter": [
+      {"id": "answer_key_complete", "type": "python", "op": "answer_key_item_count", "text": "ANSWER KEY complete: every drill item in every unit answered; grouped by unit and drill number; unambiguous"},
+      {"id": "glossary_complete", "type": "python", "op": "glossary_size", "text": "GLOSSARY covers every vocabulary item introduced across all units; alphabetical; register labels consistent; Domain Master verified"},
+      {"id": "appendix_a_conjugation", "type": "manual", "text": "APPENDIX A conjugation tables for all verb classes/tenses introduced; sourced; Domain Master verified; no invented forms"},
+      {"id": "appendix_b_pronunciation", "type": "manual", "text": "APPENDIX B covers all phonemes in declared variant; IPA or declared system; source-language approximations accurate"},
+      {"id": "appendix_c_real_sources", "type": "manual", "text": "APPENDIX C: every resource real and verifiable; no invented titles, authors, or institutions"}
+    ],
+    "GATE_3_contents_and_assembly": [
+      {"id": "two_pass_contents", "type": "manual", "text": "Two-pass Contents gate: printed folios equal actual for every entry; no 'undefined' strings"},
+      {"id": "folio_start_intro", "type": "manual", "text": "Live native page number field; front matter carries no visible folio; Introduction is page 1"},
+      {"id": "toc_entries", "type": "manual", "text": "TOC lists Introduction; every unit (H1) and its six elements (H2); ANSWER KEY; GLOSSARY; each Appendix by full title"},
+      {"id": "non_latin_reverify", "type": "manual", "text": "Non-Latin script rendering re-verified on the full assembled artifact"},
+      {"id": "strip_sweep", "type": "manual", "text": "No IMAGE PROMPT blocks in delivered file; table tags balance; marker string absent"}
+    ],
+    "GATE_4_final": [
+      {"id": "full_register_rerun", "type": "manual", "text": "Full gate register re-run on the complete artifact"},
+      {"id": "contrast_verification", "type": "manual", "text": "Every foreground-background pair computes to at least 4.5:1"},
+      {"id": "byline_two_locations", "type": "python", "op": "validate_byline_locations", "text": "Byline appears in exactly two interior locations: title page and copyright attribution; no credentials"},
+      {"id": "resources_confirmed_real", "type": "manual", "text": "Suggested Resources (Appendix C): every citation confirmed real and verifiable"},
+      {"id": "no_invented_claims", "type": "manual", "text": "No invented statistics, claims, or attributions anywhere in manuscript or marketing"},
+      {"id": "zero_correction_standard", "type": "manual", "text": "Operator Zero Correction Standard: delivered manuscript requires no manual formatting correction"}
+    ]
+  }
+}

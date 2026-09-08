@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0",
+  "niche": "uapf-niche-faith",
+  "overlay": "OV-FAITH",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_faith.py"
+  ]
+}

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete Claude Code + Codex Book Image Pipeline — Setup Guide</title>
+<style>
+  :root{
+    --ink:#1a2332; --muted:#5a6b85; --line:#e3e9f2;
+    --blue:#2563eb; --blue-dark:#1e40af; --blue-bg:#eff6ff;
+    --green:#059669; --green-bg:#ecfdf5;
+    --amber:#b45309; --amber-bg:#fffbeb;
+    --red:#b91c1c; --red-bg:#fef2f2;
+    --code-bg:#0f172a; --code-ink:#e2e8f0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:"Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color:var(--ink); margin:0; background:#f5f8fc; line-height:1.65; font-size:16px;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px 80px;}
+  header.hero{
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 55%,#3b82f6 100%);
+    color:#fff; padding:48px 20px 40px; text-align:center;
+  }
+  header.hero h1{margin:0 0 10px; font-size:1.9rem; line-height:1.25;}
+  header.hero p{margin:4px 0; opacity:.92; font-size:1.02rem;}
+  .badges{margin-top:14px;}
+  .badge{
+    display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35);
+    border-radius:999px; padding:4px 14px; font-size:.8rem; margin:3px 4px;
+  }
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:26px 28px; margin:26px 0; box-shadow:0 1px 3px rgba(16,24,40,.06);
+  }
+  h2{
+    font-size:1.35rem; margin:0 0 14px; color:var(--blue-dark);
+    display:flex; align-items:center; gap:10px;
+  }
+  h2 .num{
+    background:var(--blue); color:#fff; border-radius:10px; min-width:38px; height:38px;
+    display:inline-flex; align-items:center; justify-content:center; font-size:1rem; flex:0 0 auto;
+  }
+  h3{font-size:1.05rem; margin:20px 0 8px; color:var(--ink);}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0; padding-left:24px;}
+  li{margin:5px 0;}
+  .toc{background:var(--blue-bg); border:1px solid #bfdbfe; border-radius:12px; padding:18px 24px; margin:26px 0;}
+  .toc a{color:var(--blue-dark); text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  .toc ol{margin:6px 0 0;}
+  pre{
+    background:var(--code-bg); color:var(--code-ink); border-radius:10px;
+    padding:16px 18px; overflow-x:auto; font-size:.86rem; line-height:1.55;
+    font-family:Consolas,"Courier New",monospace; position:relative; margin:12px 0;
+  }
+  code.inline{
+    background:#e8eef8; color:#1e3a8a; border-radius:5px; padding:1px 7px;
+    font-family:Consolas,monospace; font-size:.88em;
+  }
+  .copybtn{
+    position:absolute; top:8px; right:8px; background:#334155; color:#cbd5e1;
+    border:1px solid #475569; border-radius:6px; padding:3px 12px; font-size:.72rem;
+    cursor:pointer;
+  }
+  .copybtn:hover{background:#475569;}
+  .box{border-radius:10px; padding:14px 18px; margin:14px 0; border:1px solid;}
+  .box p{margin:4px 0;}
+  .box .boxtitle{font-weight:700; display:block; margin-bottom:4px;}
+  .tip{background:var(--green-bg); border-color:#a7f3d0;}
+  .tip .boxtitle{color:var(--green);}
+  .warn{background:var(--amber-bg); border-color:#fde68a;}
+  .warn .boxtitle{color:var(--amber);}
+  .danger{background:var(--red-bg); border-color:#fecaca;}
+  .danger .boxtitle{color:var(--red);}
+  .note{background:var(--blue-bg); border-color:#bfdbfe;}
+  .note .boxtitle{color:var(--blue-dark);}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.92rem;}
+  th{background:#1e3a8a; color:#fff; text-align:left; padding:9px 12px;}
+  td{border:1px solid var(--line); padding:9px 12px; background:#fff; vertical-align:top;}
+  tr:nth-child(even) td{background:#f8fafc;}
+  .flow{display:flex; flex-wrap:wrap; gap:8px; align-items:stretch; margin:16px 0;}
+  .fbox{
+    flex:1 1 150px; background:#fff; border:2px solid var(--blue); border-radius:10px;
+    padding:10px 12px; text-align:center; font-size:.85rem;
+  }
+  .fbox b{display:block; color:var(--blue-dark); font-size:.95rem; margin-bottom:3px;}
+  .arrow{align-self:center; color:var(--blue); font-size:1.3rem; font-weight:700;}
+  .check{list-style:none; padding-left:0;}
+  .check li{padding-left:30px; position:relative;}
+  .check li::before{content:"☑"; position:absolute; left:0; color:var(--green); font-size:1.05rem;}
+  footer{
+    text-align:center; color:var(--muted); font-size:.85rem; margin-top:40px;
+    padding-top:18px; border-top:1px solid var(--line);
+  }
+  .step-label{
+    display:inline-block; background:#fde68a; color:#92400e; border-radius:6px;
+    padding:1px 10px; font-size:.78rem; font-weight:700; margin-right:8px; vertical-align:middle;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>📚 The Complete Claude Code + Codex<br>Book Image Pipeline</h1>
+  <p>Battle-tested setup guide — fix every image generation blocker in Claude Code</p>
+  <p style="font-size:.92rem; opacity:.85;">Compiled from a real production system for writing &amp; publishing books with AI</p>
+  <div class="badges">
+    <span class="badge">✅ Verified Working — August 2026</span>
+    <span class="badge">🪟 Windows PC</span>
+    <span class="badge">🧠 Claude Code + Codex CLI</span>
+    <span class="badge">🕐 Setup time: ~15 minutes</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="toc">
+  <strong>📑 Contents</strong>
+  <ol>
+    <li><a href="#problem">What problem this guide solves</a></li>
+    <li><a href="#needs">What you need before starting</a></li>
+    <li><a href="#step1">Step 1 — Fix Codex's settings file (the sandbox fix)</a></li>
+    <li><a href="#step2">Step 2 — Teach Claude Code the permanent IMAGE RULES</a></li>
+    <li><a href="#step3">Step 3 — Restart and test everything</a></li>
+    <li><a href="#step4">Step 4 — Monitor your Codex daily usage</a></li>
+    <li><a href="#optional">Optional — Free backup image engine</a></li>
+    <li><a href="#trouble">Troubleshooting table (every error we met &amp; its fix)</a></li>
+    <li><a href="#security">Golden security rules</a></li>
+    <li><a href="#checklist">Final checklist</a></li>
+  </ol>
+</div>
+
+<!-- ==================== PROBLEM ==================== -->
+<div class="card" id="problem">
+  <h2><span class="num">🎯</span>What problem this guide solves</h2>
+  <p>If you use <strong>Claude Code</strong> to write books and <strong>Codex</strong> to generate images, you may have hit these walls:</p>
+  <ul>
+    <li>🚫 A message like: <em>"Permission for this action was denied by the Claude Code auto mode classifier… [Safety Bypass Flag] The Codex call uses <code class="inline">sandbox=danger-full-access</code>…"</em></li>
+    <li>💾 Codex generates images but <strong>cannot save them</strong> into your book folder</li>
+    <li>📉 Claude Code silently <strong>falls back to HuggingFace</strong> image tools, which die with quota errors</li>
+    <li>🔄 Weird sandbox errors on Windows that block files randomly</li>
+  </ul>
+  <div class="note">
+    <span class="boxtitle">💡 How it works (explain-it-like-I'm-10 version)</span>
+    <p>Claude Code is the <strong>boss</strong> who writes the book. Codex is the <strong>artist</strong> who draws. But Codex runs inside a <strong>fenced play area</strong> (a sandbox). If the fence settings are wrong, the guard blocks everything. This guide sets the fence correctly — and hires a "delivery man" so no image ever gets stuck again.</p>
+  </div>
+  <div class="flow">
+    <div class="fbox"><b>🧠 Claude Code</b>Writes the book, gives orders</div>
+    <div class="arrow">→</div>
+    <div class="fbox"><b>🎨 Codex</b>Generates photorealistic images</div>
+    <div class="arrow">→</div>
+    <div class="fbox"><b>🛵 Delivery step</b>Saves image into book folder</div>
+    <div class="arrow">→</div>
+    <div class="fbox"><b>🗜️ Compression</b>JPEG under 500 KB</div>
+    <div class="arrow">→</div>
+    <div class="fbox"><b>📖 Document</b>Image embedded in the right spot</div>
+  </div>
+</div>
+
+<!-- ==================== NEEDS ==================== -->
+<div class="card" id="needs">
+  <h2><span class="num">🧰</span>What you need before starting</h2>
+  <ul class="check">
+    <li>A <strong>Windows PC</strong></li>
+    <li><strong>Claude Code</strong> installed and signed in</li>
+    <li><strong>Codex CLI</strong> installed and signed in to your OpenAI account</li>
+    <li>Your <strong>book project folder</strong> (e.g. <code class="inline">C:\Users\YourName\Books\my-book</code>)</li>
+    <li>5 minutes of patience 😄</li>
+  </ul>
+</div>
+
+<!-- ==================== STEP 1 ==================== -->
+<div class="card" id="step1">
+  <h2><span class="num">1</span>Fix Codex's settings file (the sandbox fix)</h2>
+
+  <p>This is the fix for the <strong>"Safety Bypass Flag / danger-full-access"</strong> block. Instead of allowing the dangerous switch, we configure Codex to run safely with the right permissions: it may use the <strong>internet</strong> (needed for image generation) and write files <strong>inside your book folders</strong>.</p>
+
+  <h3>1.1 — Open the settings file</h3>
+  <p>Press <strong>Windows key + R</strong>, type this, and press Enter:</p>
+  <pre><button class="copybtn" onclick="cp(this)">Copy</button>notepad %USERPROFILE%\.codex\config.toml</pre>
+  <p>If Notepad asks <em>"Do you want to create a new file?"</em> → click <strong>Yes</strong>.</p>
+
+  <h3>1.2 — Make the file look EXACTLY like this</h3>
+  <p>Replace <code class="inline">YourName/Books</code> with <strong>your real book folder path</strong>:</p>
+  <pre><button class="copybtn" onclick="cp(this)">Copy</button>sandbox_mode = "workspace-write"
+approval_policy = "never"
+
+[sandbox_workspace_write]
+network_access = true
+writable_roots = ["C:/Users/YourName/Books"]</pre>
+
+  <table>
+    <tr><th>Line</th><th>What it does (plain English)</th></tr>
+    <tr><td><code class="inline">sandbox_mode = "workspace-write"</code></td><td>Codex may write files, but only inside your allowed folders — safe.</td></tr>
+    <tr><td><code class="inline">approval_policy = "never"</code></td><td>Codex won't freeze waiting for approvals nobody can answer when a robot runs it.</td></tr>
+    <tr><td><code class="inline">network_access = true</code></td><td>Opens the internet gate — required to generate images.</td></tr>
+    <tr><td><code class="inline">writable_roots = [...]</code></td><td>The star of the show 🌟 — lists the folders Codex is allowed to save files into. Several folders? Separate with commas.</td></tr>
+  </table>
+
+  <div class="danger">
+    <span class="boxtitle">⚠️ Three golden rules for this file (people get burned here!)</span>
+    <p><strong>1. No duplicates.</strong> Each setting must appear <strong>only once</strong>. If you paste the new settings below the old ones, the whole file breaks and Codex ignores everything.</p>
+    <p><strong>2. Forward slashes only.</strong> Write <code class="inline">C:/Users/...</code> — never <code class="inline">C:\Users\...</code>. Backslashes break this file.</p>
+    <p><strong>3. Save it.</strong> Ctrl + S, then close Notepad.</p>
+  </div>
+</div>
+
+<!-- ==================== STEP 2 ==================== -->
+<div class="card" id="step2">
+  <h2><span class="num">2</span>Teach Claude Code the permanent IMAGE RULES</h2>
+
+  <p>Claude Code has a memory file called <strong>CLAUDE.md</strong>. Rules written there apply to <strong>every future chat</strong> — permanently. This is how we stop the HuggingFace fallback, force the image style we want, auto-compress, auto-deliver, and auto-embed.</p>
+
+  <h3>2.1 — Paste this entire block into Claude Code</h3>
+  <p>Open Claude Code <strong>inside your book project folder</strong> and paste:</p>
+  <pre><button class="copybtn" onclick="cp(this)">Copy</button>Set up my permanent book image pipeline.
+
+PART 1 — Add these IMAGE RULES to my CLAUDE.md (permanent, all future sessions):
+
+IMAGE RULES (permanent):
+1. NEVER use HuggingFace image tools (Z-Image-Turbo, FLUX, or any huggingface MCP tool). Never fall back to HuggingFace — not even when quota has reset.
+2. PRIMARY IMAGE ENGINE: Codex, always run from inside the current book project folder with --sandbox workspace-write. NEVER use danger-full-access.
+3. If Codex cannot save the PNG into the project folder because of the sandbox: rescue the image — either extract it from the Codex session (codex-reply / base64) or copy it from the .codex/generated_images folder — and save it into the project folder yourself.
+4. CODEX DELIVERY STEP (critical): Codex's built-in image generator saves images to C:\Users\MYUSERNAME\.codex\generated_images\&lt;thread-id&gt;\ and reports the full path in its reply (sometimes saying "read-only workspace prevented saving" — that is expected on this PC). After EVERY Codex image call: read the generated file path from Codex's reply, copy that PNG into the correct manuscript images/ folder, rename it to the requested name (e.g. IMG-37.png), verify the file exists and is bigger than 0 KB, delete the leftover original, then apply the compression rule. If the reply contains no file path, look for the newest file in .codex\generated_images\ (check subfolders, sort by date).
+5. If image generation completely fails, STOP and show me the exact error. Do not silently switch tools.
+6. STYLE: Every image must be PHOTOREALISTIC — like a real professional photograph (not cartoon, illustration, 3D render, or drawing) — in LANDSCAPE orientation with 16:9 aspect ratio.
+7. COMPRESSION: After every image is saved, automatically compress it: resize to a maximum of 1600 pixels on the longest side, save as JPEG quality 85 (replacing the large PNG), target under 500 KB per image. Do this automatically without asking me.
+8. PLACEMENT: After images are ready, embed each one into the book document exactly where it belongs — directly under the paragraph or section it illustrates — sized to fit the page width neatly, before the book is considered finished.
+
+PART 2 — Verify the Codex config file at C:\Users\MYUSERNAME\.codex\config.toml contains: sandbox_mode "workspace-write", approval_policy "never", network_access true, and writable_roots including this project folder (or its parent). Fix it if anything is missing. Use forward slashes in paths.
+
+PART 3 — TEST now: generate one test image with Codex: "photorealistic close-up of a doctor's hands holding a stethoscope over a medical chart, bright clinic lighting, sharp focus, 16:9 landscape". Deliver it with rule 4, compress it with rule 7, and show me the final file name, dimensions, and size.</pre>
+
+  <div class="tip">
+    <span class="boxtitle">✅ What each rule protects you from</span>
+    <p><strong>Rule 1</strong> kills the HuggingFace quota trap. <strong>Rule 2</strong> keeps Codex safe (no danger-full-access, so no security-guard blocks). <strong>Rules 3–4</strong> mean no image is ever lost even when the Windows sandbox acts up. <strong>Rule 5</strong> stops silent tool-switching. <strong>Rules 6–8</strong> guarantee photorealistic 16:9 images, small file sizes, and images placed exactly where they belong in the book.</p>
+  </div>
+</div>
+
+<!-- ==================== STEP 3 ==================== -->
+<div class="card" id="step3">
+  <h2><span class="num">3</span>Restart and test</h2>
+  <ol>
+    <li><strong>Close Claude Code completely</strong> (all windows/terminals) and open it again in your book project folder — it must re-read the new settings.</li>
+    <li>Ask: <em>"Generate one test image with Codex, deliver it, compress it, and show me where it is."</em></li>
+  </ol>
+  <h3>✅ Success looks like:</h3>
+  <ul class="check">
+    <li>No security-guard / permission-denied messages</li>
+    <li>No HuggingFace anywhere in the logs</li>
+    <li>A photorealistic, landscape 16:9 image sitting in your <code class="inline">images/</code> folder</li>
+    <li>File size under 500 KB (compressed automatically)</li>
+    <li>Image embedded in the document exactly where it belongs</li>
+  </ul>
+  <div class="note">
+    <span class="boxtitle">🔁 From now on, every session</span>
+    <p>Just say things like <em>"Write Chapter 3 with images"</em> — generation, delivery, compression and embedding all happen automatically.</p>
+  </div>
+</div>
+
+<!-- ==================== STEP 4 ==================== -->
+<div class="card" id="step4">
+  <h2><span class="num">4</span>Monitor your Codex daily usage</h2>
+  <p>Codex limits are set by your <strong>OpenAI plan</strong> (not by Claude Code). Limits work like a phone battery: they drain as Codex works and refill on a <strong>rolling ~5-hour window</strong>, plus a weekly cap.</p>
+  <ul>
+    <li>👀 Check your exact remaining usage: <strong>chatgpt.com/codex/settings/usage</strong> (the official Codex Usage Dashboard)</li>
+    <li>🧾 OpenAI does not publish an official images-per-day number — watch your dashboard before and after a batch of ~10 images to learn your personal budget</li>
+    <li>🔋 Practical planning: on a Plus plan, budget a few dozen images per day; a typical book (30–80 images) takes 1–2 days</li>
+  </ul>
+  <div class="tip">
+    <span class="boxtitle">💡 Three separate meters</span>
+    <p>Your Anthropic/Claude plan meter covers the <strong>writing</strong> 🧠. Your OpenAI/Codex meter covers the <strong>images</strong> 🎨. They don't share fuel — when one empties, the other keeps working.</p>
+  </div>
+</div>
+
+<!-- ==================== OPTIONAL ==================== -->
+<div class="card" id="optional">
+  <h2><span class="num">🎁</span>Optional — Free backup image engine (when Codex rests)</h2>
+  <p><span class="step-label">OPTIONAL</span> This works and costs nothing, but be aware: the free tier currently serves a fast, <strong>softer-quality model</strong>. Use it only as an <strong>emergency backup</strong> or for drafts — Codex remains your quality king. 👑</p>
+
+  <h3>Backup option A — Pollinations.ai (automatic, free)</h3>
+  <ol>
+    <li>Go to <strong>enter.pollinations.ai</strong> → free signup (no card) → create a <strong>secret API key</strong> (starts with <code class="inline">sk_</code>) → copy it immediately (shown only once!).</li>
+    <li>Paste this into Claude Code:</li>
+  </ol>
+  <pre><button class="copybtn" onclick="cp(this)">Copy</button>Add Pollinations as my BACKUP image engine:
+
+1. Add this line to .env:  POLLINATIONS_TOKEN=sk_paste_your_key_here
+2. Add a backup engine to my image script that:
+   - URL-encodes the prompt and downloads from the CLASSIC FREE endpoint only:
+     https://image.pollinations.ai/prompt/{prompt}?width=1024&height=576&nologo=true&seed={random}&amp;key={POLLINATIONS_TOKEN}
+   - NEVER uses gen.pollinations.ai image routes (premium, they fail with "insufficient pollen")
+   - On HTTP 429: waits 20 seconds and retries, up to 5 times
+3. Add rule 9 to the IMAGE RULES:
+   9. BACKUP ENGINE: only if Codex hits its usage limit or fails, use Pollinations. Every Pollinations image must be polished automatically after saving: upscale 1.6x with Lanczos, apply UnsharpMask(radius=2, percent=120, threshold=2), then apply the normal compression rule.
+4. Test with one image and show me the result.</pre>
+
+  <h3>Backup option B — Leonardo.ai (manual, high quality)</h3>
+  <ul>
+    <li>Free tier: <strong>150 tokens/day</strong> (≈ 30–50 images) — much better quality than the free Pollinations lane</li>
+    <li>Generate in the browser → download → drop the file into your book's <code class="inline">images/</code> folder → tell Claude Code: <em>"embed this image under the section about X"</em></li>
+  </ul>
+</div>
+
+<!-- ==================== TROUBLESHOOTING ==================== -->
+<div class="card" id="trouble">
+  <h2><span class="num">🛠️</span>Troubleshooting table — every error we met &amp; its fix</h2>
+  <table>
+    <tr><th>Error / symptom</th><th>What it means</th><th>Fix</th></tr>
+    <tr>
+      <td>"Permission denied by Claude Code auto mode classifier… <strong>danger-full-access</strong>"</td>
+      <td>Codex was launched with the unsafe "remove all safety locks" switch, and the security guard blocked it.</td>
+      <td>Step 1 of this guide. Never authorize <code class="inline">danger-full-access</code> — <code class="inline">workspace-write</code> does the job safely.</td>
+    </tr>
+    <tr>
+      <td>"<strong>read-only workspace prevented saving</strong>" — but Codex says the image was generated</td>
+      <td>The image IS on your disk, in <code class="inline">C:\Users\You\.codex\generated_images\…</code> — a known Windows sandbox quirk blocked the final save.</td>
+      <td>IMAGE RULES 3–4 (the delivery step). Claude Code copies the PNG from that folder, renames it, and compresses it. Nothing is ever lost.</td>
+    </tr>
+    <tr>
+      <td>Claude Code falls back to <strong>HuggingFace</strong>, then quota errors</td>
+      <td>HuggingFace MCP tools have tiny quotas.</td>
+      <td>IMAGE RULE 1 bans HuggingFace permanently.</td>
+    </tr>
+    <tr>
+      <td>Codex settings seem ignored after editing config.toml</td>
+      <td>Usually duplicates (same setting twice) or backslashes in paths.</td>
+      <td>One copy of each setting; forward slashes <code class="inline">C:/…</code> only; save and restart Claude Code.</td>
+    </tr>
+    <tr>
+      <td>Images from free tools look <strong>blurry</strong></td>
+      <td>Free tiers often serve weaker models (check with your eyes: soft edges = weak model).</td>
+      <td>Use Codex as primary. Apply the upscale + sharpen polish to backup images.</td>
+    </tr>
+    <tr>
+      <td>"429 RESOURCE_EXHAUSTED… limit: 0" from an image API</td>
+      <td>The provider has removed free image access via API (this happened with Google Gemini in 2026).</td>
+      <td>Don't fight it — that route needs billing. Use Codex + backups instead.</td>
+    </tr>
+    <tr>
+      <td>Files huge, book folder bloated</td>
+      <td>Raw PNGs are often 5+ MB each.</td>
+      <td>IMAGE RULE 7 auto-compresses: max 1600px, JPEG quality 85, under 500 KB.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ==================== SECURITY ==================== -->
+<div class="card" id="security">
+  <h2><span class="num">🔐</span>Golden security rules</h2>
+  <ul>
+    <li>🔑 API keys are like <strong>ATM PINs</strong>. Store them only in the <code class="inline">.env</code> file — never in CLAUDE.md, never in chat logs you share, never committed to git (add <code class="inline">.env</code> to <code class="inline">.gitignore</code>).</li>
+    <li>👁️ Secret keys (like <code class="inline">sk_…</code>) are shown <strong>only once</strong> at creation — copy immediately.</li>
+    <li>♻️ If a key ever leaks: delete/regenerate it at the provider's dashboard. It takes 30 seconds.</li>
+    <li>🚫 Never run Codex with <code class="inline">danger-full-access</code> just to "make things work" — that switch disarms ALL safety locks on your PC.</li>
+  </ul>
+</div>
+
+<!-- ==================== CHECKLIST ==================== -->
+<div class="card" id="checklist">
+  <h2><span class="num">🏁</span>Final checklist</h2>
+  <ul class="check">
+    <li><code class="inline">config.toml</code> has all 4 settings — no duplicates, forward slashes</li>
+    <li>CLAUDE.md contains the full IMAGE RULES (1–8, plus 9 if you added the backup)</li>
+    <li>Claude Code fully restarted inside the book project folder</li>
+    <li>Test image: photorealistic ✅ landscape 16:9 ✅ delivered ✅ under 500 KB ✅ embedded ✅</li>
+    <li>HuggingFace nowhere in sight ⛔</li>
+    <li>You know where your usage dashboard lives 👀</li>
+  </ul>
+  <div class="tip">
+    <span class="boxtitle">🎉 That's it!</span>
+    <p>You now have a self-running book factory: <strong>Claude Code writes → Codex draws → images auto-delivered, compressed and embedded</strong> — with rescue nets for every failure we ever encountered. Happy publishing! 📚✨</p>
+  </div>
+</div>
+
+<footer>
+  Compiled August 2026 · Verified on Windows with Claude Code + Codex CLI ·<br>
+  AI services change their limits often — if something behaves differently, re-check the provider's current docs.<br>
+  <strong>Share freely with your fellow authors. 🙏</strong>
+</footer>
+
+</div>
+
+<script>
+function cp(btn){
+  var pre = btn.parentElement;
+  var txt = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText.replace(/^Copy\s*/,'');
+  txt = txt.replace(/^Copy\s*\n?/,'');
+  function done(){ btn.textContent='Copied ✓'; setTimeout(function(){btn.textContent='Copy';},1600); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ fallback(); });
+  } else { fallback(); }
+  function fallback(){
+    var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta);
+    ta.select(); try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta); done();
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-exam-simulator",
+  "overlay": "OV-EXSIM",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.8,
+    "footer_distance_in": 0.6,
+    "gutter_in": 0,
+    "text_width_dxa": 9936,
+    "running_heads": false,
+    "body_font": "Times New Roman",
+    "body_pt": 11,
+    "line_spacing": 1.15,
+    "justification": "full",
+    "assessment_styles_left_aligned": ["QStem", "QOpt", "AnsNum", "AnsExpl"],
+    "min_reader_pt": 11,
+    "scaffold_min_pt": 10,
+    "color_tier": "PREMIUM COLOR",
+    "paper": "WHITE",
+    "min_contrast_ratio": 4.5
+  },
+
+  "columns": {
+    "count": 2,
+    "column_width_dxa": 4680,
+    "separation_dxa": 576,
+    "separator_rule": true,
+    "full_width_for": ["scenario", "exhibit"]
+  },
+
+  "tables": {
+    "header_primary_fill": true,
+    "header_white_bold_labels": true,
+    "alternating_body_rows": true,
+    "border_pt": 0.5,
+    "cell_padding_vertical_dxa": 100,
+    "cell_padding_horizontal_dxa": 160,
+    "flush_width_dxa": 9936
+  },
+
+  "folio": {
+    "visible_numbering_starts_at": "How to Use This Book",
+    "first_arabic_page": 1,
+    "front_matter_folio_free": ["Title Page", "Copyright and Disclaimer"],
+    "live_field": true
+  },
+
+  "front_matter": {
+    "sequence": ["Title Page", "Copyright and Disclaimer", "Table of Contents", "How to Use This Book"],
+    "title_page_pages": 1,
+    "copyright_pages": 1,
+    "toc_pages": 1,
+    "how_to_use_band_pages": [1.40, 1.55]
+  },
+
+  "title_page": {
+    "verbatim_title": true,
+    "subtitle_states_count": true,
+    "byline_name_only": true
+  },
+
+  "body": {
+    "division_head": "PRACTICE QUESTIONS",
+    "division_head_style": "Heading 1",
+    "division_head_new_page": true,
+    "set_subhead_prefix": "Practice Exam",
+    "set_subhead_style": "Heading 2",
+    "set_subhead_new_page": false,
+    "no_instructional_chapters": true,
+    "numbering": "continuous 1..total across all sets",
+    "instr_line_fields": ["item_range", "instruction_convention", "suggested_time_budget"]
+  },
+
+  "back_matter": {
+    "sequence": ["ANSWERS AND EXPLANATIONS", "SCORE INTERPRETATION GUIDE", "APPENDIX A", "APPENDIX B"],
+    "answers_division": "ANSWERS AND EXPLANATIONS",
+    "answers_two_column": true,
+    "score_guide_band_pages": [1.40, 1.55],
+    "score_guide_organized_by": "performance band",
+    "no_pass_probability": true,
+    "appendix_a": "Exam Blueprint Summary",
+    "appendix_b": "Time-Per-Question Budget"
+  },
+
+  "manuscript_sequence": [
+    "Title page", "Copyright and Disclaimer", "Table of Contents", "How to Use This Book",
+    "PRACTICE QUESTIONS", "ANSWERS AND EXPLANATIONS", "SCORE INTERPRETATION GUIDE",
+    "APPENDIX A", "APPENDIX B"
+  ],
+
+  "assessment": {
+    "total_is_only_operator_setting": true,
+    "default_option_count": 4,
+    "single_defensible_correct_answer": true,
+    "run_cap_default": 1,
+    "two_option_run_cap_default": 3,
+    "two_option_run_cap_min": 2,
+    "quota_balance_tolerance": 1,
+    "explanation_max_words": 50,
+    "rationale_addresses_every_distractor": true,
+    "numbering": "continuous 1..total",
+    "literal_numbering": true,
+    "pattern_guards": {
+      "no_doubled_4perm": true,
+      "no_tripled_2alt": true
+    },
+    "answer_form": "N. Answer: X) full option text",
+    "explanation_form": "Explanation: reasoning"
+  },
+
+  "exhibits": {
+    "default_count": 0,
+    "declared_and_justified_in_blueprint": true,
+    "dimension_labels": ["X", "Y"],
+    "labels_never": ["A", "B", "C", "D"]
+  },
+
+  "subtitle": {
+    "candidate_count": 5,
+    "must_state_total_count": true,
+    "must_contain_phrase": "Practice Questions",
+    "chars_allowed": "letters numerals spaces only",
+    "max_lines": 2
+  },
+
+  "byline": {
+    "source": "Fake Name Generator",
+    "format": "First Name, Initial, period, Surname",
+    "appears_exactly": 2,
+    "no_credentials": true
+  },
+
+  "content_rules": {
+    "no_pork": true,
+    "no_alcohol": true,
+    "exclusion_is_silent": true,
+    "no_em_dash": true,
+    "no_en_dash": true,
+    "ranges_written_with": "to",
+    "curly_apostrophes_only": true,
+    "no_invented_facts": true,
+    "no_pass_probability_claims": true,
+    "no_verbatim_secured_exam_content": true,
+    "nominative_exam_naming_only": true,
+    "title_verbatim_immutable": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

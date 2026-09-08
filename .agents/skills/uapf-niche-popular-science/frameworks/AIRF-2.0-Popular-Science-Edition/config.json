@@ -1,0 +1,102 @@
+{
+  "framework_id": "AIRF 2.0 Popular Science Edition",
+  "niche": "uapf-niche-popular-science",
+  "overlay": "OV-POPSCI",
+  "source_of_truth": "../../SKILL.md",
+
+  "structure_models": ["question-led", "journey", "field-guide"],
+  "default_structure_model": "question-led",
+
+  "chapter": {
+    "words_min": 3500,
+    "words_max": 5500,
+    "count_min": 12,
+    "count_max": 18,
+    "total_words_min": 55000,
+    "total_words_max": 80000,
+    "explainer_stages": ["hook_question", "intuition_building", "mechanism", "evidence_story", "implications", "wonder_payoff"],
+    "evidence_stories_per_chapter_min": 1,
+    "analogy_must_state_break": true,
+    "assumes_only_earlier_chapters": true
+  },
+
+  "phase0": {
+    "central_question_inventory": [10, 20],
+    "subtitle_options": [6, 8],
+    "subtitle_max_combined_chars": 200,
+    "pen_name_candidates": [3, 5],
+    "pen_name_no_invented_credentials": true,
+    "consensus_bands": ["ESTABLISHED", "FRONTIER", "CONTESTED"],
+    "proceed_gate": true
+  },
+
+  "visual_level": {
+    "MODERATE": [15, 25],
+    "ABUNDANT": [30, 50],
+    "exact_data_built_natively": true,
+    "diagram_backgrounds": "pure_white",
+    "style_signature_locked_at_first_figure": true
+  },
+
+  "interior": {
+    "trim_in_options": [[5.5, 8.5], [6, 9]],
+    "field_guide_trim_in_options": [[5, 8]],
+    "body_pt_range": [11, 11.5],
+    "justify_body": true,
+    "feature_devices_max": 5,
+    "feature_devices_min": 3
+  },
+
+  "field_guide_variant": {
+    "structural_unit": "identification_entry",
+    "entry_fields_in_order": [
+      "common_name",
+      "scientific_name_current_taxonomy",
+      "one_line_diagnostic_summary",
+      "description",
+      "habitat",
+      "season_timing",
+      "look_alikes_with_distinguishing_feature",
+      "notes_behavior_range_conservation"
+    ],
+    "organization_options": ["taxonomic", "seasonal", "visual_similarity"],
+    "organization_locked_at_phase0": true,
+    "safety_critical_look_alikes_mandatory": true,
+    "colorblind_safe_redundant_encoding": true
+  },
+
+  "assessment": {
+    "exercises": "none",
+    "supplementary_materials": ["glossary", "further_reading_verified_real", "seasonal_regional_appendices_nature"]
+  },
+
+  "content_rules": {
+    "consensus_discipline": true,
+    "numbers_humanized_but_exact": true,
+    "order_of_magnitude_honesty_absolute": true,
+    "no_mysticism_dressed_as_science": true,
+    "no_teleology_in_evolution": true,
+    "evidence_story_integrity": true,
+    "species_taxonomy_currency_at_production_date": true,
+    "health_brain_no_medical_advice": true,
+    "time_sensitive_claims_dated": true,
+    "no_fabricated_citations": true,
+    "proves_reserved_for_mathematics": true
+  },
+
+  "front_matter": {
+    "science_currency_note_required": true,
+    "medical_disclaimer_if_brain_health_adjacent": true
+  },
+  "back_matter": {
+    "glossary_all_defined_terms": true,
+    "further_reading_verified_real_only": true,
+    "index_print": true,
+    "about_the_author_credential_clean": true
+  },
+
+  "kdp": {
+    "keyword_fields": 7,
+    "no_institution_or_franchise_names": true
+  }
+}

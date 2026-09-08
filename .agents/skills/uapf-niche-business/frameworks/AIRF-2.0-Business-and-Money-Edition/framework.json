@@ -1,0 +1,15 @@
+{
+  "framework_id": "AIRF 2.0 Business and Money Edition",
+  "niche": "uapf-niche-business",
+  "overlay": "OV-BIZ",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "SOURCE.md",
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_business.py"
+  ]
+}

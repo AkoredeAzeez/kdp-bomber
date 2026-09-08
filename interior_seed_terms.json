@@ -1,0 +1,38 @@
+{
+  "_comment": "Interior-bank seeding searches per niche (Amazon best-seller style searches whose result galleries showcase interior pages). PRIMARY niches carry the 50-capture gate; SECONDARY niches are seeded best-effort at 20+ because prose-led listings show fewer interior images. Rating floor 4.3 applies everywhere.",
+  "primary": {
+    "childrens": ["kids books about feelings ages 3-5", "bedtime stories for toddlers ages 2-4", "search and find books for toddlers"],
+    "activity": ["toddler activity book ages 2-4", "summer activity book for kids", "preschool workbook ages 3-5"],
+    "coloring": ["bold and easy coloring book for adults", "coloring book for kids ages 4-8", "adult coloring book stress relief"],
+    "puzzle": ["large print word search puzzle book", "word search for seniors", "brain games for adults"],
+    "journal": ["gratitude journal for women", "guided journal for men", "daily planner undated"],
+    "cookbook": ["high protein cookbook", "air fryer cookbook for beginners", "mediterranean diet cookbook"],
+    "workbook": ["kindergarten math workbook", "handwriting practice workbook", "3rd grade reading comprehension workbook"],
+    "travel": ["travel guide 2026", "national park guide book", "japan travel guide"],
+    "childrens-facts": ["fun facts book for kids", "national geographic kids almanac", "interesting facts for smart kids"]
+  },
+  "secondary": {
+    "crafts": ["crochet patterns for beginners", "woodworking projects book"],
+    "howto": ["home repair guide book", "gardening for beginners book"],
+    "textbook": ["anatomy coloring workbook", "nursing school study guide"],
+    "study-guide": ["ged study guide 2026", "sat prep book"],
+    "exam-simulator": ["nclex practice questions", "comptia practice tests"],
+    "medical": ["medical terminology workbook", "anatomy and physiology workbook"],
+    "user-guide": ["iphone user guide seniors", "laptop guide for seniors"],
+    "language": ["spanish workbook for beginners", "english grammar workbook"],
+    "health": ["strength training over 50 book illustrated", "yoga for beginners book"],
+    "selfhelp": ["self help workbook anxiety", "cbt workbook"],
+    "faith": ["bible study journal", "prayer journal for women"],
+    "parenting": ["baby memory book", "positive parenting book"],
+    "business": ["budget planner book", "small business bookkeeping log"],
+    "fiction": ["illustrated classic novels", "graphic novel bestseller"],
+    "history": ["illustrated history book", "world war 2 photo book"],
+    "biography": ["illustrated biography bestseller"],
+    "sports": ["golf log book", "football trivia book"],
+    "humor": ["funny gift book for adults", "dad jokes book"],
+    "poetry": ["illustrated poetry collection"],
+    "popular-science": ["illustrated science book for adults", "astronomy picture book"],
+    "reference": ["visual dictionary", "first aid guide book illustrated"],
+    "public-domain": ["illustrated classic edition"]
+  }
+}

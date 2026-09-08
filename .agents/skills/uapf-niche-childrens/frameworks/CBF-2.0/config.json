@@ -1,0 +1,98 @@
+{
+  "framework_id": "CBF 2.0",
+  "niche": "uapf-niche-childrens",
+  "overlay": "OV-CHILD",
+  "source_of_truth": "../../SKILL.md",
+
+  "age_bands": {
+    "AB-0": {"label": "board/baby", "ages": [0, 2], "reading_mode": "adult reads", "word_budget_total": [0, 200], "words_per_page": [2, 8], "type_floor_pt": [24, 36]},
+    "AB-1": {"label": "picture", "ages": [3, 5], "reading_mode": "adult performs", "word_budget_total": [200, 800], "sentences_per_spread": [1, 3], "type_floor_pt": [18, 24]},
+    "AB-2": {"label": "early reader", "ages": [6, 8], "reading_mode": "child decodes with support", "second_lock": "L1-L4 or grade", "type_floor_pt": [14, 18]},
+    "AB-3": {"label": "chapter/middle grade", "ages": [9, 12], "reading_mode": "independent", "type_floor_pt": [11, 14]}
+  },
+
+  "host_profiles": ["CB-BOARD", "CB-PIC", "CB-CONCEPT", "CB-ER", "CB-CHAP", "CB-FACT", "CB-WORK", "CB-ACT", "CB-COLOR", "CB-JOURNAL"],
+  "one_book_one_host_profile": true,
+  "guest_insert_max_fraction": 0.3333333333333333,
+
+  "page_targets": {
+    "AB-0_board": [24, 28],
+    "AB-1_picture_standard": 32,
+    "AB-1_picture_min": 24,
+    "AB-1_story_spreads": [12, 14],
+    "AB-2_early_reader": [32, 48],
+    "AB-2_chapter_len_pages": [2, 6],
+    "AB-3_chapter": [64, 120],
+    "AB-3_middle_grade_min": 120,
+    "function_books": [60, 110]
+  },
+
+  "trim_geometry": {
+    "picture_band_trim_in": [8.5, 8.5],
+    "picture_band_bleed_in": [8.625, 8.75],
+    "bleed_add_width_in": 0.125,
+    "bleed_add_height_in": 0.25,
+    "chapter_trim_options_in": [[5.25, 8.0], [6.0, 9.0]],
+    "workbook_trim_in": [8.5, 11.0],
+    "if_any_page_bleeds_whole_pdf_bleed": true,
+    "odd_pages_bleed": "right",
+    "even_pages_bleed": "left",
+    "export_crop_marks": false
+  },
+
+  "safe_zones_in": {
+    "critical_content_inside_trim": 0.5,
+    "child_writing_from_gutter": 0.75,
+    "quiet_zone_padding_min": 0.20,
+    "quiet_zone_padding_emerging_reader": [0.25, 0.35]
+  },
+
+  "typography": {
+    "font_roles": ["display", "child_readable_body", "calm_utility"],
+    "max_font_families_visible_per_page": 2,
+    "leading_min": 1.3,
+    "leading_learning_text": [1.4, 1.6],
+    "body_alignment": "left",
+    "justified_allowed": false,
+    "hyphenation_at_L1_L2": false,
+    "all_caps_body": false,
+    "type_is_real_embedded": true,
+    "art_generated_wordless": true
+  },
+
+  "color": {
+    "picture_band_mode": "full color",
+    "modes": ["full", "selective", "monochrome"],
+    "mode_locked_at_book_lock": true,
+    "standard_color_starts_page": 72,
+    "grayscale_proof_colored_text_pages": true,
+    "palette_lock_swatches": ["paper", "primary", "secondary", "accent", "ink", "skin", "hair", "clothing", "recurring_prop"]
+  },
+
+  "illustration": {
+    "model_sheet_required_before_page_one": true,
+    "model_sheet_views": ["front", "side", "three_quarter", "back"],
+    "model_sheet_expressions": ["neutral", "happy", "worried", "surprised", "active"],
+    "style_bible_required": true,
+    "reserved_text_zone_stated_in_prompt": true,
+    "min_dpi_at_placed_size": 300
+  },
+
+  "originality": {
+    "min_transformation_dimensions": 3,
+    "transformation_axes": ["cast/world", "motif vocabulary", "grid/scale", "palette", "typography", "pacing", "interaction"]
+  },
+
+  "print_release": {
+    "kdp_min_pages": 24,
+    "page_count_must_be_even": true,
+    "fonts_embedded_with_rights": true,
+    "physical_proof_is_color_authority": true,
+    "ai_disclosure_recorded": true
+  },
+
+  "deliverable": {
+    "age_range_and_grade_fields_set_to_band": true,
+    "description_speaks_to_gatekeeper": true
+  }
+}

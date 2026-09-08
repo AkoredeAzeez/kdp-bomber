@@ -1,0 +1,44 @@
+{
+  "framework_id": "USGPF 2.9",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_study_guide.py; type=manual require agent/render/research inspection.",
+  "gates": {
+    "GATE_1_configuration": [
+      {"id": "title_verbatim_clearance", "type": "manual", "text": "Title accepted verbatim; Title Clearance record with sources and scan date; non-affiliation statement queued if a protected exam name appears"},
+      {"id": "exam_format_evidence", "type": "manual", "text": "Exam Format Evidence record exists with live sources dated to this engagement; profile locked from evidence (Research Before Generation gate)"},
+      {"id": "scope_evidence_blueprint", "type": "manual", "text": "Examination Scope Evidence record exists; chapter plan mirrors the official blueprint with domains and weighting; syllabus-coverage map recorded chapter by chapter"},
+      {"id": "marketplace_integrity_modifier", "type": "manual", "text": "Marketplace-integrity modifier recorded for region-locked exams (jurisdiction, marketplace, bulletin source)"},
+      {"id": "subtitle_valid", "type": "python", "op": "validate_subtitle", "text": "Subtitle states the exact question count with 'Practice Questions', letters/numerals/spaces only, two rendered lines max"},
+      {"id": "byline_signature_plan", "type": "manual", "text": "Byline fetched live, collision-checked, locked; Title Design Signature cleared against the Catalog Design Register; Language Profile Card locked; assessment plan maps sets to chapters with seed recorded"},
+      {"id": "assessment_plan_split", "type": "python", "op": "questions_per_set", "text": "Set count and questions per set derived from operator-supplied total; sets map to chapters; numbering continuous 1..total"}
+    ],
+    "GATE_2_per_chapter": [
+      {"id": "template_complete", "type": "manual", "text": "Template complete: title, Learning Objectives box (exact lead line), intro prose, How to Use box, subchapters with Exam Tip/Common Mistake boxes, Key Points close"},
+      {"id": "chapter_floors", "type": "python", "op": "chapter_floors_ok", "text": ">=2 captioned data tables and >=2 content figures per chapter"},
+      {"id": "comprehensive_instruction", "type": "manual", "text": ">=3 substantive paragraphs per subchapter, definition -> mechanism -> applied example -> examiner relevance; practice items answerable from the chapter alone"},
+      {"id": "chapter_page_band", "type": "python", "op": "chapter_page_ok", "text": "Chapter measures 6 to 10 rendered pages"},
+      {"id": "chapters_total_ceiling", "type": "python", "op": "chapters_total_ok", "text": "Running chapters total projected against the 60-page absolute ceiling (61+ is a blocking FAIL); target band 50-60"},
+      {"id": "syllabus_coverage_progress", "type": "manual", "text": "Chapter maps to its blueprint domain; no domain silently dropped or merged"},
+      {"id": "chapter_render_audit", "type": "manual", "text": "Per-chapter format audit with rendered inspection; six-line floor verified; boxes unsplit; tables flush to margins; embedded figures or anchored prompt blocks; chapter preview delivered"}
+    ],
+    "GATE_3_assessment": [
+      {"id": "item_format_fidelity", "type": "manual", "text": "Every item's type, option count, labels, and instruction conventions match the Exam Format Evidence record; full-width types break the columns correctly"},
+      {"id": "set_to_chapter_mapping", "type": "manual", "text": "Set-to-chapter mapping honored; item difficulty mix follows the researched blueprint weighting; pure recall is the minority"},
+      {"id": "answer_count_match", "type": "python", "op": "answer_count_match", "text": "Question count equals answer count; numbering continuous without gaps or duplicates"},
+      {"id": "key_distribution_balanced", "type": "python", "op": "answer_key_quota", "text": "Answer-key distribution balanced per set within one of even (quota tolerance)"},
+      {"id": "run_cap_pattern_guards", "type": "python", "op": "pattern_guard_check", "text": "Run cap held; no four-letter permutation doubled; no two-letter alternation tripled; Two Option Law raises two-option cap to >=2 (default 3)"},
+      {"id": "explanation_word_cap", "type": "python", "op": "explanation_within_cap", "text": "Every answer entry carries an Explanation of at most 50 words, content-based, no letter references"},
+      {"id": "randomization_integrity", "type": "manual", "text": "Text at new key equals text at old key; option multisets match; seed recorded; pins, flags, and any auto-raised cap reported"},
+      {"id": "exhibit_minimalism", "type": "manual", "text": "Every declared exhibit embedded; no undeclared or merely illustrative exhibit; dimension labels never A through D"}
+    ],
+    "GATE_4_release": [
+      {"id": "syllabus_coverage_audit", "type": "manual", "text": "Every blueprint domain covered by a chapter and tested by mapped items in proportion to its weighting; any gap is a blocking FAIL"},
+      {"id": "item_format_recheck", "type": "manual", "text": "Item-format fidelity re-checked across the full bank against the evidence record"},
+      {"id": "two_pass_contents", "type": "manual", "text": "Printed folios equal actual for every entry; complete map; zero 'undefined' residue; no pseudo-headings before every Contents pass"},
+      {"id": "section_lengths", "type": "python", "op": "section_band_ok", "text": "Preface/Introduction/Conclusion each 1.40 to 1.55 pages; chapters total 50 to 60 pages"},
+      {"id": "contrast_and_folio", "type": "manual", "text": "Contrast >=4.5:1 on actual file values; compliance characters absent; table/margin alignment exact; front matter folio-free; Arabic numbering from Introduction with no restart; live folio fields"},
+      {"id": "strip_sweep", "type": "manual", "text": "No IMAGE PROMPT marker; balanced table tags; no symlinks; no embedded PDF"},
+      {"id": "marketplace_integrity_release", "type": "manual", "text": "Non-affiliation statement present where required; jurisdiction disclaimer complete; candidate bulletin in Suggested Readings; no implied relevance in marketplaces where the exam does not exist"},
+      {"id": "byline_and_status", "type": "manual", "text": "Byline appears exactly twice (title page, copyright), name only, no credentials; PASS only after actual file and rendered page inspection; UNVERIFIED blocks as FAIL"}
+    ]
+  }
+}

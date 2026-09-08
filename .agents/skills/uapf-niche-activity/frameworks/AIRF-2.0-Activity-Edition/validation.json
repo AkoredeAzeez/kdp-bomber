@@ -1,0 +1,38 @@
+{
+  "framework_id": "AIRF 2.0 Activity Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_activity.py; type=manual require agent/render/test-solve inspection.",
+  "gates": {
+    "GATE_1_contract_architecture": [
+      {"id": "title_trademark_claims", "type": "manual", "text": "Title preserved; trademark scan passed (no branded properties); medical/therapeutic claims stripped or softened"},
+      {"id": "family_and_language_class", "type": "manual", "text": "Dominant activity family + supporting families locked; Language-Independence Classification recorded per item"},
+      {"id": "audience_locked", "type": "manual", "text": "Audience band locked with accessibility route where applicable"},
+      {"id": "page_count_exact", "type": "python", "op": "validate_interior_page_count", "text": "Page map totals exactly 100 (or documented even 96-104 exception)"},
+      {"id": "count_ledger_reconciles", "type": "python", "op": "reconcile_count_ledger", "text": "Count ledger reconciles: promised count vs activity pages vs solution budget vs blank backs vs front/closing = approved total"},
+      {"id": "single_sided_budget", "type": "manual", "text": "Single-sided blank-back budget explicit for coloring/cut-out; subtitle count numbers match the ledger"},
+      {"id": "risk_register_frozen", "type": "manual", "text": "Risk register written; contract frozen with project_id/edition_id"}
+    ],
+    "GATE_2_manifest_sample": [
+      {"id": "manifest_before_page", "type": "manual", "text": "Every planned item has a manifest row with source data created before page design"},
+      {"id": "sample_demonstrates", "type": "python", "op": "validate_sample_map", "text": "10-page sample (when required) shows premise, instructions, >=4 substantive activities, visual system, answer loop; hardest mechanics prototyped"},
+      {"id": "visual_spec_locked", "type": "manual", "text": "Visual specification locked; sample images pass acceptance (ledger match, no unintended clues, contrast, safe text zones)"},
+      {"id": "originality_audit", "type": "manual", "text": "Originality vs references: functional completeness high, expressive similarity low; zero reference pixels in assets"}
+    ],
+    "GATE_3_full_content": [
+      {"id": "solvability_audit", "type": "manual", "text": "100% solvability audit per mechanic; uniqueness verified wherever promised (sudoku/kakuro/logic)"},
+      {"id": "duplicate_scan", "type": "python", "op": "word_list_overlap+diversity_quota_ok", "text": "Duplicate-puzzle scan on content hashes; word-search overlap under threshold; no duplicate grids/topologies"},
+      {"id": "difficulty_arc_monotone", "type": "python", "op": "difficulty_arc_monotone", "text": "Difficulty arc audited by test-solve; progression monotone within sections; labels match solve experience"},
+      {"id": "diversity_quotas_met", "type": "python", "op": "diversity_quota_ok", "text": "No supporting mechanic over ~40% of activity pages; no adjacent mechanic+theme repeats"},
+      {"id": "offensive_string_scan", "type": "manual", "text": "Accidental offensive-string scan passed on all letter grids in every declared direction"},
+      {"id": "independent_test_solve", "type": "manual", "text": "Independent test-solve of a representative sample plus all uniqueness-claim items from the rendered page, not source data"},
+      {"id": "human_qa", "type": "manual", "text": "Human QA: ambiguity, reading level, cultural fit, print-scale visibility, response-space adequacy, enjoyment"}
+    ],
+    "GATE_4_layout_sync_preflight": [
+      {"id": "post_pagination_sync", "type": "manual", "text": "item ID <-> final page number <-> answer entry <-> visual asset <-> locale: zero mismatches"},
+      {"id": "complete_solutions_section", "type": "manual", "text": "Every answer-bearing item present, correctly keyed, legible at print size; visual answers annotated"},
+      {"id": "final_count_confirmed", "type": "python", "op": "validate_interior_page_count", "text": "Exact page count and promised activity count confirmed on final PDF; no blanks/dupes/placeholders/crop marks/watermarks"},
+      {"id": "gutter_safe_zones", "type": "manual", "text": "Nothing clipped or trapped in the gutter; writing/coloring zones respect safe areas; blank backs positioned as budgeted"},
+      {"id": "print_fidelity", "type": "manual", "text": "Images 300 ppi effective; fonts embedded with full locale glyphs; B&W pages verified for grayscale fidelity"},
+      {"id": "cover_metadata_preflight", "type": "manual", "text": "Cover wrap after interior lock; metadata claims match files; AI disclosure recorded; live KDP previewer passes"}
+    ]
+  }
+}

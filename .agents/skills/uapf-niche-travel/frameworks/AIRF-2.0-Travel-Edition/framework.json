@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Travel Edition",
+  "niche": "uapf-niche-travel",
+  "overlay": "OV-TRAVEL",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_travel.py"
+  ]
+}

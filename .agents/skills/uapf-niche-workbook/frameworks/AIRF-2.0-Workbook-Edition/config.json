@@ -1,0 +1,147 @@
+{
+  "framework_id": "AIRF 2.0 Workbook Edition",
+  "niche": "uapf-niche-workbook",
+  "overlay": "OV-WORK",
+  "source_of_truth": "../../SKILL.md",
+  "derived_from": "UWGF v1.7",
+
+  "interior": {
+    "trim_in": [8.5, 11.0],
+    "margins_in": 0.7,
+    "body_font": "Times New Roman",
+    "body_pt_standard": [11, 12],
+    "body_pt_senior": [13, 14],
+    "body_alignment": "justified",
+    "lists_alignment": "left",
+    "line_spacing_standard": 1.15,
+    "line_spacing_senior": 1.5,
+    "chapter_heading_pt": 16,
+    "chapter_heading_style": "block_capitals_centered",
+    "band_heading_pt": 13,
+    "band_heading_style": "all_caps_bold_left",
+    "no_em_dashes": true
+  },
+
+  "tables": {
+    "bw_safe_only": true,
+    "native_word_objects_only": true,
+    "cell_fill": "white",
+    "text_color": "black",
+    "border_weight_pt": 0.5,
+    "border_color": "black",
+    "header_gray_shading_max_pct": 15,
+    "color_fills_allowed": false,
+    "text_alignment": "left",
+    "ascii_markdown_pipe_tables_allowed": false
+  },
+
+  "practice_unit": {
+    "pages_per_chapter_exact": 10,
+    "difficulty_bands_required": 3,
+    "band_labels": ["Foundation", "Development", "Mastery"],
+    "worksheet_share_min_pct": 70,
+    "worksheet_share_max_pct": 80,
+    "explanatory_text_share_min_pct": 20,
+    "explanatory_text_share_max_pct": 30,
+    "text_cap_pages_per_section": 0.5,
+    "exercise_types_per_unit_min": 3,
+    "exercise_type_library": [
+      "fill_in", "multiple_choice_objective", "short_answer",
+      "applied_scenario_case", "template_planning", "self_evaluation_rubric"
+    ],
+    "components": [
+      {"name": "concept_briefing", "pages_min": 0.5, "pages_max": 1.0},
+      {"name": "band_1_foundation", "pages_min": 2.5, "pages_max": 3.0},
+      {"name": "band_2_development", "pages_min": 3.0, "pages_max": 3.0},
+      {"name": "band_3_mastery", "pages_min": 2.5, "pages_max": 3.0},
+      {"name": "unit_checkpoint", "pages_min": 0.25, "pages_max": 0.5}
+    ]
+  },
+
+  "page_budget": {
+    "book_hard_cap_pages": 150,
+    "front_matter_pages": 6,
+    "introduction_pages": 2,
+    "chapter_pages_each": 10,
+    "conclusion_pages": 1.5,
+    "chapter_count_typical_min": 10,
+    "chapter_count_typical_max": 12,
+    "chapter_count_absolute_max_minimal_appendix": 13,
+    "reduce_chapter_count_never_depth_on_breach": true
+  },
+
+  "front_matter": {
+    "order": [
+      "title_page", "copyright_and_disclaimer", "preface",
+      "how_to_use_workbook", "auto_toc"
+    ],
+    "unnumbered": true,
+    "preface_pages_exact": 1,
+    "how_to_use_pages_exact": 1,
+    "page_numbering_starts_at": "introduction_page_1",
+    "author_name_source": "fakenamegenerator.com",
+    "author_name_format": "First Name, Initials. Surname",
+    "copyright_word_total_approx": 400,
+    "copyright_components": [
+      {"name": "copyright_notice", "words_min": 50, "words_max": 75},
+      {"name": "general_disclaimer_liability", "words_min": 150, "words_max": 200},
+      {"name": "educational_use_statement", "words_min": 75, "words_max": 100},
+      {"name": "professional_advice_notice", "words_min": 50, "words_max": 75},
+      {"name": "publication_info", "words_min": 25, "words_max": 50}
+    ]
+  },
+
+  "introduction": {
+    "pages_max": 2,
+    "paragraphs_only_no_bullets": true,
+    "sections": ["welcome", "what_you_will_learn", "prerequisites_and_preparation", "success_tips"],
+    "cross_reference_to_how_to_use": true
+  },
+
+  "conclusion": {
+    "pages_exact": 1.5,
+    "elements": ["recap", "encouragement", "next_steps", "honest_review_invitation"]
+  },
+
+  "back_matter_order": [
+    "answer_key_with_worked_solutions", "printable_blank_templates",
+    "progress_tracker", "glossary", "quick_reference_and_conversion_charts"
+  ],
+
+  "subtitle": {
+    "options_min": 6,
+    "options_max": 8,
+    "title_plus_subtitle_char_max": 200,
+    "subtitle_char_min": 50,
+    "subtitle_char_max": 150
+  },
+
+  "content_rules": {
+    "answer_key_complete_mandatory": true,
+    "worked_solutions_show_steps": true,
+    "key_matches_exercises_one_for_one": true,
+    "no_alcohol_pork_gambling": true,
+    "no_em_dashes": true,
+    "manuscript_in_title_language": true,
+    "operator_output_in_english": true,
+    "no_copyrighted_test_bank_reproduction": true,
+    "no_protected_exam_or_brand_names": true
+  },
+
+  "kdp": {
+    "category_placement_plan_count": 10,
+    "backend_keyword_slots": 7,
+    "backend_keyword_char_max": 50,
+    "description_char_min": 2000,
+    "description_char_max": 4000,
+    "description_parts": 7
+  },
+
+  "delivery": {
+    "format": "DOCX",
+    "rolling_manuscript": true,
+    "native_heading_styles": true,
+    "auto_toc_references_field": true,
+    "gate_line": "Type Proceed"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "framework_id": "AIRF 2.0 Popular Science Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_popular_science.py; type=manual require agent/render/source/consensus inspection. SKILL.md wins on any disagreement.",
+  "gates": {
+    "GATE_1_architecture_lock": [
+      {"id": "title_clearance_issued", "gate": 1, "type": "manual", "text": "Title Clearance Report issued; CLEAR or explained CAUTION; no institutional-affiliation implication"},
+      {"id": "central_question_inventory", "gate": 1, "type": "python", "op": "check_central_question_inventory", "text": "10-20 genuine reader questions inventoried; every chapter hook mapped to a real question"},
+      {"id": "consensus_map_drafted", "gate": 1, "type": "manual", "text": "Consensus map drafted: ESTABLISHED/FRONTIER/CONTESTED bands assigned to the planned territory"},
+      {"id": "structure_model_locked", "gate": 1, "type": "manual", "text": "Structure model locked (question-led/journey/field-guide); figure points fixed per chapter in the TOC"},
+      {"id": "subtitle_char_limit", "gate": 1, "type": "python", "op": "check_subtitle", "text": "Chosen title+subtitle combined <=200 characters; 6-8 options generated"},
+      {"id": "field_guide_entry_locked", "gate": 1, "type": "manual", "text": "Field-guide variant: entry field-architecture locked; species list verified against current taxonomy"},
+      {"id": "pen_name_identity_locked", "gate": 1, "type": "manual", "text": "Pen name (no invented credentials) and Book Identity Code locked, collision-checked"}
+    ],
+    "GATE_2_per_chapter": [
+      {"id": "explainer_stages_present", "gate": 2, "type": "python", "op": "explainer_stages_complete", "text": "All six explainer stages present: hook question, intuition-building, mechanism, evidence story, implications, wonder payoff"},
+      {"id": "analogy_states_break", "gate": 2, "type": "manual", "text": "Every analogy states where it breaks, at the point of use"},
+      {"id": "evidence_story_present", "gate": 2, "type": "manual", "text": "At least one HOW-we-know evidence story with verified people, dates, and results"},
+      {"id": "numbers_exact_and_true", "gate": 2, "type": "manual", "text": "Every number verified exact; every humanizing comparison recomputed and true; no truth-losing rounding"},
+      {"id": "consensus_labels_applied", "gate": 2, "type": "manual", "text": "Consensus-band labels applied; frontier claims flagged as frontier; no false certainty, no false balance"},
+      {"id": "no_mysticism_no_teleology", "gate": 2, "type": "manual", "text": "Zero mysticism-adjacent language; no teleology in evolutionary explanation"},
+      {"id": "terms_defined_build_order", "gate": 2, "type": "manual", "text": "Terms defined on first use and used consistently; chapter assumes only earlier chapters"},
+      {"id": "chapter_words_in_band", "gate": 2, "type": "python", "op": "check_chapter_words", "text": "Chapter length within 3,500-5,500 words"},
+      {"id": "figures_fixed_and_captioned", "gate": 2, "type": "manual", "text": "Figures inserted at fixed points, accurate, captioned, referenced in prose; Style Signature held"},
+      {"id": "field_guide_entry_fields", "gate": 2, "type": "python", "op": "field_guide_entry_complete", "text": "Field-guide entries carry all fields in locked order; look-alikes each carry a distinguishing feature"}
+    ],
+    "GATE_3_manuscript_completion": [
+      {"id": "cross_chapter_consistency", "gate": 3, "type": "manual", "text": "Terms, values, and analogies used identically everywhere; one value per constant, one spelling per species"},
+      {"id": "glossary_further_reading_verified", "gate": 3, "type": "manual", "text": "Glossary complete against every defined term; further-reading list verified real entry by entry; zero fabricated citations"},
+      {"id": "time_sensitive_dated", "gate": 3, "type": "manual", "text": "All time-sensitive claims dated; science-currency note carries correct month/year"},
+      {"id": "taxonomy_reverified", "gate": 3, "type": "manual", "text": "Nature titles: full taxonomy re-verification at production date; conservation statuses current"},
+      {"id": "manuscript_word_budget", "gate": 3, "type": "python", "op": "check_manuscript_plan", "text": "Chapter count 12-18 and total 55,000-80,000 words, internally feasible against per-chapter band"},
+      {"id": "visual_count_in_band", "gate": 3, "type": "python", "op": "check_visual_level", "text": "Figure count within the locked visual level band (MODERATE 15-25 or ABUNDANT 30-50)"}
+    ],
+    "GATE_4_consensus_audit_release": [
+      {"id": "consensus_classification_audit", "gate": 4, "type": "manual", "text": "Claim-by-claim consensus audit on finished manuscript; any frontier claim reading as settled fact blocks release"},
+      {"id": "quantitative_audit", "gate": 4, "type": "manual", "text": "Spot-recompute the full comparison set; verify no unit or magnitude error survived revision"},
+      {"id": "mysticism_overclaim_sweep", "gate": 4, "type": "manual", "text": "Mysticism/overclaim sweep on complete text including title, subtitle, and description metadata"},
+      {"id": "disclaimer_ai_disclosure", "gate": 4, "type": "manual", "text": "Disclaimer present and adapted (medical-adjacent, foraging-safety); AI-disclosure recorded"},
+      {"id": "rights_sweep", "gate": 4, "type": "manual", "text": "Figure sources clean; no institutional logos or implied affiliations; quotations within limits and attributed"},
+      {"id": "ebook_toc_index_bio", "gate": 4, "type": "manual", "text": "eBook linked TOC valid; print index built; About the Author credential-clean"}
+    ]
+  }
+}

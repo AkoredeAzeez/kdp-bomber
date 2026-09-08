@@ -1,0 +1,48 @@
+{
+  "framework_id": "AIRF 2.0 Biography Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_biography.py; type=manual require the expert-panel roles, source authentication, dignity judgment, or render inspection.",
+  "gates": {
+    "GATE_1_intake": [
+      {"id": "title_screened", "gate": 1, "type": "manual", "text": "Title confirmed and trademark/duplication-screened"},
+      {"id": "module_subniche_locked", "gate": 1, "type": "manual", "text": "Module (Biography/Memoir/True Crime) and sub-niche code locked in Intake Report"},
+      {"id": "subject_status", "gate": 1, "type": "manual", "text": "Subject name(s), subject status (deceased/living/minor), and contested-status flag set"},
+      {"id": "case_status", "gate": 1, "type": "manual", "text": "True Crime: case status locked (Resolved/Ongoing/Cold/Contested); allegation-language protocol activated where needed"},
+      {"id": "quotation_volume_set", "gate": 1, "type": "python", "op": "classify_quotation_volume", "text": "Quotation Volume flag set LOW/MEDIUM/HIGH from the known-quotation count"},
+      {"id": "architecture_selected", "gate": 1, "type": "manual", "text": "Architecture selected and confirmed"},
+      {"id": "profile_count_locked", "gate": 1, "type": "python", "op": "profile_count_match", "text": "BIO-COL: exact profile count locked and matches the title count"},
+      {"id": "dignity_battery_status", "gate": 1, "type": "manual", "text": "Dignity Battery status set (ACTIVE/STANDBY); page target set; all expert roles activated"},
+      {"id": "disclaimers_drafted", "gate": 1, "type": "manual", "text": "Mandatory module disclaimers drafted for copyright page; Intake Report produced and user-confirmed"}
+    ],
+    "GATE_2_structure": [
+      {"id": "toc_complete", "gate": 2, "type": "manual", "text": "TOC complete with all chapters, front matter, back matter; titles not generic placeholders"},
+      {"id": "page_allocation", "gate": 2, "type": "manual", "text": "Page allocation per chapter reviewed against page target"},
+      {"id": "matter_structure", "gate": 2, "type": "manual", "text": "Front and back matter confirmed with all mandatory elements; notes/bibliography style confirmed"},
+      {"id": "chronology_preverified", "gate": 2, "type": "manual", "text": "Key dates and event sequence verified for internal consistency before writing; contested passages flagged"},
+      {"id": "profile_map", "gate": 2, "type": "python", "op": "profile_count_match", "text": "BIO-COL: profile list finalized, count confirmed against title, four structural units mapped per profile"},
+      {"id": "source_ledger_template", "gate": 2, "type": "manual", "text": "True Crime: source-ledger template established; permitted source types confirmed; Dignity Battery criteria reviewed"}
+    ],
+    "GATE_3_chapter_profile": [
+      {"id": "no_invented_dialogue", "gate": 3, "type": "manual", "text": "No invented dialogue; all quoted speech traceable to a documented source"},
+      {"id": "scenes_labeled", "gate": 3, "type": "manual", "text": "Any reconstructed scenes labeled per Rule 2"},
+      {"id": "quotations_authenticated", "gate": 3, "type": "manual", "text": "All direct quotations authenticated per Rule 4 or explicitly caveated"},
+      {"id": "living_persons_review", "gate": 3, "type": "manual", "text": "Living-persons content reviewed by Legal & Privacy Counsel; allegation language used consistently"},
+      {"id": "chronology_audit", "gate": 3, "type": "manual", "text": "Chronology audit passed: dates internally consistent, age-at-event calculations correct"},
+      {"id": "profile_units_complete", "gate": 3, "type": "python", "op": "profile_units_complete", "text": "BIO-COL: profile includes all four units (Hook/Life/Contribution/Legacy)"},
+      {"id": "profile_length_consistent", "gate": 3, "type": "python", "op": "profile_length_consistency", "text": "BIO-COL: profile length within +/-10% of cohort and no profile more than 2x the shortest"},
+      {"id": "profile_section_words", "gate": 3, "type": "python", "op": "validate_profile_section_words", "text": "BIO-COL: each profile unit within its configured word range"},
+      {"id": "source_ledger_updated", "gate": 3, "type": "manual", "text": "Source Ledger updated: every factual claim logged with source type and citation before the gate closes"},
+      {"id": "dignity_battery_pass", "gate": 3, "type": "manual", "text": "True Crime / crime content: all seven Dignity Battery checks PASS before the chapter advances"}
+    ],
+    "GATE_4_completion": [
+      {"id": "gate3_all_passed", "gate": 4, "type": "manual", "text": "All chapters/profiles complete and Gate 3 passed individually"},
+      {"id": "source_ledger_audit", "gate": 4, "type": "manual", "text": "Full Source Ledger audited; uncited claims resolved; True Crime sources confirmed permitted types"},
+      {"id": "dignity_full_pass", "gate": 4, "type": "manual", "text": "Dignity Battery full-manuscript pass; cross-chapter pattern failures resolved"},
+      {"id": "chronology_full_pass", "gate": 4, "type": "manual", "text": "Chronology audit full-manuscript pass; ages and dates consistent; BIO-COL dates verified per subject"},
+      {"id": "quotation_master_list", "gate": 4, "type": "manual", "text": "Quotation master list: each authenticated or caveated; unverifiable quotes removed"},
+      {"id": "profile_count_final", "gate": 4, "type": "python", "op": "profile_count_match", "text": "BIO-COL: exact profile count verified against the title count"},
+      {"id": "bibliography_minimum", "gate": 4, "type": "python", "op": "bibliography_minimum", "text": "Biography/True Crime: bibliography meets the minimum source floor for the page count (20 under 250 pages, proportionally more above)"},
+      {"id": "disclaimers_present", "gate": 4, "type": "manual", "text": "Mandatory copyright-page disclaimers present and correct for the module; MEM-ATO collaborator disclosed on cover/copyright/acknowledgments"},
+      {"id": "matter_complete", "gate": 4, "type": "manual", "text": "Notes/endnotes complete; bibliography sectioned; front and back matter complete and ordered; photos captioned with rights"}
+    ]
+  }
+}

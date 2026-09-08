@@ -1,0 +1,128 @@
+{
+  "framework_id": "AIRF 2.0 Journal Edition",
+  "niche": "uapf-niche-journal",
+  "overlay": "OV-LOWC",
+  "source_of_truth": "../../SKILL.md",
+
+  "tiers": {
+    "TIER_1": "no-content: lined journals, notebooks, sketchbooks, guest/address/password books",
+    "TIER_2": "structured low-content: planners, logbooks, habit/workout/budget trackers",
+    "TIER_3": "guided/prompted: gratitude, prompted diary, grief, couples, anxiety, prayer journals"
+  },
+
+  "risk_regime": {
+    "tier1_2_default": "R0",
+    "tier2_medical_disclaimer": "medical-tracking disclaimer, still R0",
+    "tier3_range": ["R1", "R2", "R3", "R4"],
+    "clinical_reviewer_seated_at_min": "R2",
+    "crisis_resource_page_required_at_min": "R3"
+  },
+
+  "dating": {
+    "default": "UNDATED",
+    "dated_only_on_explicit_operator_declaration": true,
+    "year_in_title_triggers_confirmation": true,
+    "undated_date_field_style": "Date: ____"
+  },
+
+  "subtitle": {
+    "option_count_min": 6,
+    "option_count_max": 8,
+    "title_plus_subtitle_max_chars": 200,
+    "subtitle_min_chars": 50,
+    "subtitle_max_chars": 150,
+    "mark_one_recommended": true
+  },
+
+  "trim_in": {
+    "journals_diaries_prompted_default": [6, 9],
+    "planners_largeprint_medical_worksheet": [8.5, 11],
+    "pocket_logs": [[5, 8], [5.25, 8]]
+  },
+
+  "margins": {
+    "meet_kdp_minimums": true,
+    "no_bleed_default": true,
+    "gutter_in_under_150_pages": 0.375,
+    "gutter_scales_with_page_count": true
+  },
+
+  "typography": {
+    "label_prompt_face": "clean readable serif or humanist sans",
+    "label_prompt_pt_min": 10,
+    "label_prompt_pt_max": 12,
+    "large_print_label_pt_min": 14,
+    "large_print_line_spacing_in_min": 0.5,
+    "em_dashes_banned": true
+  },
+
+  "line_spacing_in": {
+    "adult_min": 0.28,
+    "adult_max": 0.32,
+    "senior_child_min": 0.5,
+    "rules_must_be_true_typeset": true,
+    "no_underscore_or_dot_runs": true
+  },
+
+  "color": {
+    "interior_default": "black ink",
+    "accent_scheme_lives_on_cover": true,
+    "interior_accent": "grayscale-safe tints at most",
+    "one_scheme_per_title": true,
+    "no_scheme_repeat_across_catalogue": true
+  },
+
+  "page_bands": {
+    "TIER_1": {"min": 100, "max": 120, "guest_book_min": 100, "guest_book_max": 150},
+    "TIER_2": {"min": 100, "max": 150, "planner_undated_min": 120, "planner_undated_max": 200},
+    "TIER_3": {"min": 120, "max": 200},
+    "kdp_minimum_pages": 24,
+    "never_publish_near_minimum": true
+  },
+
+  "page_system": {
+    "chapter_replaced_by_page_system": true,
+    "unit_pages_options": [1, 2],
+    "two_page_spread_left_role": "data capture",
+    "two_page_spread_right_role": "notes/sketch",
+    "repetition_count_even_aligned_for_spreads": true,
+    "unit_fidelity_identical_every_repetition": true
+  },
+
+  "front_matter_order": [
+    "Title page",
+    "Copyright page (author name from fakenamegenerator.com, First Name, Initials. Surname; tier/regime-tuned disclaimer)",
+    "This Book Belongs To (Tiers 1-2; optional Tier 3)",
+    "How to Use This Book (mandatory Tiers 2-3, optional Tier 1)",
+    "Support-framing + crisis-resource page (Tier 3, R3-R4)"
+  ],
+  "front_matter_excludes": ["preface", "auto-TOC"],
+
+  "keywords": {
+    "backend_fields": 7,
+    "chars_per_field_max": 50,
+    "no_title_or_subtitle_words": true,
+    "no_competitor_names": true,
+    "no_quality_claims": true
+  },
+
+  "kdp": {
+    "category_placement_count": 10,
+    "title_position_formula": "function + audience + format",
+    "function_keyword_in_title": true,
+    "description_chars_min": 2000,
+    "description_chars_max": 4000
+  },
+
+  "author_name": {
+    "source": "fakenamegenerator.com",
+    "format": "First Name, Initials. Surname"
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_word_tables_only": true,
+    "master_unit_built_once_and_duplicated": true,
+    "gates_end_with": "Type Proceed"
+  }
+}

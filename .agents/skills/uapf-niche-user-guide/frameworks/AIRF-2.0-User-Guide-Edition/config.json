@@ -1,0 +1,154 @@
+{
+  "framework_id": "AIRF 2.0 User Guide Edition",
+  "niche": "uapf-niche-user-guide",
+  "overlay": "OV-GUIDE",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "gutter_increase_above_pages": 500,
+    "font_family": "Times New Roman",
+    "body_pt_standard": 11,
+    "body_pt_seniors": 13,
+    "line_spacing_standard": 1.15,
+    "line_spacing_seniors": 1.5,
+    "body_alignment": "justified",
+    "h1_pt": 16,
+    "h1_style": "BLOCK CAPITAL LETTERS, centered, primary accent",
+    "h2_style": "Title Case, left, bold, secondary accent",
+    "procedure_title_pt": 13,
+    "keyboard_shortcut_font": "Courier New 10pt or bold bracketed",
+    "screenshot_frame_pt": 0.5,
+    "caption_pt": 9,
+    "notice_box_text_pt": 10
+  },
+
+  "page_bands": {
+    "compact": {"chapters_min": 6, "chapters_max": 10, "pages_min": 80, "pages_max": 150,
+                "scope": "core tasks only"},
+    "standard": {"chapters_min": 11, "chapters_max": 18, "pages_min": 180, "pages_max": 250,
+                 "scope": "all primary and secondary tasks"},
+    "extended": {"chapters_min": 19, "chapters_max": 28, "pages_min": 280, "pages_max": 350,
+                 "scope": "all tasks + advanced workflows + troubleshooting"}
+  },
+
+  "visual_density": {
+    "mode": "heavy_visual",
+    "images_min": 80,
+    "images_max_hint": 150,
+    "software_requires_annotated_screenshot_per_procedure": true,
+    "hardware_requires_labeled_component_diagram": true,
+    "screenshot_aspect_ratio": "16:9"
+  },
+
+  "audience": {
+    "declared_options": ["complete beginner", "intermediate", "power user", "all-levels"],
+    "standard": {"body_pt": 11, "line_spacing": 1.15},
+    "senior_large_print": {"body_pt": 13, "line_spacing": 1.5}
+  },
+
+  "subtitle": {
+    "candidate_count": 7,
+    "must_reference_version_where_space_allows": true,
+    "all_pass_trademark_screen": true
+  },
+
+  "warning_hierarchy": {
+    "levels": ["DANGER", "WARNING", "CAUTION", "NOTICE", "VERSION NOTE"],
+    "standards": ["ANSI Z535.6", "ISO/IEC 82079-1"],
+    "border_colors": {
+      "DANGER": "red-tinted",
+      "WARNING": "red-tinted",
+      "CAUTION": "amber",
+      "NOTICE": "blue or primary accent",
+      "VERSION NOTE": "secondary accent"
+    },
+    "placement": "at the step where the risk occurs",
+    "only_permissible_advisory_format": true
+  },
+
+  "procedure": {
+    "one_action_per_step": true,
+    "step_begins_with_action_verb": true,
+    "ui_element_names_bold": true,
+    "terminology_parity_absolute": true,
+    "pre_step_block_required": true,
+    "expected_result_required": true
+  },
+
+  "chapter_sequence": {
+    "fixed_openers": ["Getting Started", "Product Overview"],
+    "fixed_closers": ["Settings & Customization", "Maintenance & Updates", "Troubleshooting & Problem Solving"],
+    "organization": "task-oriented (by what users do, never by feature)",
+    "feature_organized_titles": "PROHIBITED"
+  },
+
+  "version_discipline": {
+    "named_on_cover": true,
+    "named_in_introduction_first_paragraph": true,
+    "named_in_kdp_metadata": true,
+    "title_page_parenthetical": "(Covers [Product] Version [X.X])",
+    "copyright_declaration_required": true,
+    "mandatory": true
+  },
+
+  "front_matter_order": [
+    "Title Page",
+    "Copyright Page",
+    "Table of Contents",
+    "Preface",
+    "How to Use This Book",
+    "Introduction"
+  ],
+
+  "front_matter_page_shapes": {
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "numbering_starts_at_introduction": true
+  },
+
+  "back_matter": {
+    "conclusion_pages": 1.5,
+    "appendix_required_elements": [
+      "Quick Reference Card",
+      "Keyboard Shortcuts Reference",
+      "Troubleshooting Index",
+      "Glossary of Terms",
+      "Interface Element Naming Index",
+      "Version History Note",
+      "Resource Directory"
+    ],
+    "appendix_required_count": 7,
+    "troubleshooting_top_problems": 10
+  },
+
+  "design_signature": {
+    "dimensions": ["palette family", "callout treatment", "chapter opening ornament",
+                   "title page composition", "callout naming set", "voice persona"],
+    "dimension_count": 6,
+    "no_repeat": true,
+    "voice_register": "precise, professional, efficiency-oriented"
+  },
+
+  "content_rules": {
+    "terminology_parity_absolute": true,
+    "task_oriented_mandatory": true,
+    "one_action_per_step": true,
+    "ui_names_bold": true,
+    "version_notes_mandatory_on_diff": true,
+    "copyright_disclaimer_non_negotiable": true,
+    "screenshots_current_to_version": true,
+    "anti_ai_language_enforced": true,
+    "no_em_dashes": false
+  },
+
+  "content_pathway": "Hybrid (web research + knowledge base)",
+
+  "screenshot_convention": {
+    "annotated_with_numbered_callouts": true,
+    "callout_table_below_each_screenshot": true,
+    "caption_format": "Figure [Chapter.N]: [UI state / component]",
+    "fallback_block": "[SCREENSHOT DESCRIPTION]"
+  }
+}

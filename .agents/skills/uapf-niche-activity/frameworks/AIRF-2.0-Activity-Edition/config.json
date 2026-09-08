@@ -1,0 +1,125 @@
+{
+  "framework_id": "AIRF 2.0 Activity Edition",
+  "niche": "uapf-niche-activity",
+  "overlay": "OV-ACT",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "default_pages": 100,
+    "exact_page_target": true,
+    "even_exception_min": 96,
+    "even_exception_max": 104,
+    "even_exception_requires_documented_reason": true,
+    "trim_in_default": [8.5, 11],
+    "trim_in_compact_alt": [6, 9],
+    "ink_default": "bw",
+    "color_only_when_concept_requires": true,
+    "bleed_default": false,
+    "bleed_when_full_page_art": true,
+    "image_ppi_effective": 300
+  },
+
+  "single_sided": {
+    "coloring_books": true,
+    "write_in_puzzle_books": false,
+    "budget_blank_reverse_from_start": true
+  },
+
+  "page_map_puzzle_dominant": {
+    "front_matter_pages": 4,
+    "activity_area_pages": 80,
+    "solutions_pages": 14,
+    "progress_tracker_pages": 1,
+    "notes_pages": 1,
+    "total": 100
+  },
+
+  "page_map_coloring_variant": {
+    "front_matter_pages": 4,
+    "design_count_min": 45,
+    "design_count_max": 48,
+    "each_design_has_blank_reverse": true,
+    "closing_pages": 2,
+    "solutions_section_required": false
+  },
+
+  "sample_map": {
+    "total_pages": 10,
+    "min_substantive_activities": 4,
+    "prototype_hardest_mechanics": true
+  },
+
+  "count_ledger": {
+    "never_counted_as_puzzles": [
+      "title_page", "copyright", "instructions", "answer_pages",
+      "blank_backs", "dividers", "certificates"
+    ],
+    "multi_activity_page_counts_each_only_if": "own distinct instruction, input, and expected response"
+  },
+
+  "difficulty": {
+    "arc": "progressive",
+    "label_systems": ["Easy/Medium/Hard", "star"],
+    "rated_on": ["reading_load", "rule_complexity", "visual_density", "working_memory_demand", "motor_precision", "solve_time"],
+    "never_rated_on_age_alone": true,
+    "monotone_within_sections": true
+  },
+
+  "diversity_quotas": {
+    "single_supporting_mechanic_max_fraction": 0.40,
+    "no_adjacent_mechanic_theme_repeat": true
+  },
+
+  "duplicate_scan": {
+    "method": "manifest_content_hashes",
+    "word_search_overlap_duplicate_threshold": 0.50,
+    "scan_targets": ["grids", "word_lists", "topologies", "clue_sets"]
+  },
+
+  "typography_by_audience": {
+    "children": {"font": "large rounded sans", "instruction_words": "minimal"},
+    "adults": {"font": "clean sans/slab hierarchy"},
+    "seniors_large_print": {"body_pt_min": 14, "grid_char_pt_min": 16, "contrast": "high"}
+  },
+
+  "grids": {
+    "sudoku_cell_in_min_standard": 0.4,
+    "sudoku_cell_larger_for_large_print": true,
+    "consistent_stroke_weight_book_wide": true
+  },
+
+  "three_layer_page_model": {
+    "layer_1": "generated background/illustration art",
+    "layer_2": "exact overlay text (instructions, clues, page numbers) as live layout text",
+    "layer_3": "answer-bearing marks (grids, letters, numbers, dots, coordinates) placed deterministically from source data",
+    "flatten_only_after_verification": true
+  },
+
+  "subtitle": {
+    "candidate_min": 3,
+    "candidate_max": 5,
+    "numbers_become_locked_count_promise": true
+  },
+
+  "answer_policy": {
+    "full_solutions_section_mandatory_for_answer_bearing": true,
+    "keyed_by": ["item_id", "final_page_number"],
+    "grouped_at_back": true,
+    "never_on_facing_page": true
+  },
+
+  "content_rules": {
+    "no_medical_or_therapeutic_claims": true,
+    "cognitive_benefit_framed_as_practice_only": true,
+    "manifest_before_page": true,
+    "solvability_100_percent": true,
+    "uniqueness_where_promised": true,
+    "accidental_offensive_string_scan": true,
+    "original_everything": true
+  },
+
+  "deliverable": {
+    "generator": "uapf image pipeline (one asset per call)",
+    "fonts_embedded_full_locale_glyphs": true
+  }
+}

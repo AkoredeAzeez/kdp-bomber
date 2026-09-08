@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 User Guide Edition",
+  "niche": "uapf-niche-user-guide",
+  "overlay": "OV-GUIDE",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_user_guide.py"
+  ]
+}

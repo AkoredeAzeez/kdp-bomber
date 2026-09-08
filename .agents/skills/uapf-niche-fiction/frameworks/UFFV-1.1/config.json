@@ -1,0 +1,18 @@
+{
+  "framework_id": "UFFV 1.1",
+  "niche": "uapf-niche-fiction",
+  "supersedes": "AIRF 2.0 Fiction Edition (OV-FIC)",
+  "source_of_truth": "../../UFFV_1.1_FRAMEWORK.md",
+  "pipeline": "../../UFFV_1.1_PIPELINE.md",
+  "overlays": ["OV-ROM","OV-THR","OV-MYS","OV-FAN","OV-SFI","OV-HOR","OV-LIT","OV-HIS","OV-YA","OV-ACT","OV-WFC","OV-FTH"],
+  "overlay_skills": {
+    "OV-ROM":"uapf-niche-fiction-romance","OV-THR":"uapf-niche-fiction-thriller",
+    "OV-MYS":"uapf-niche-fiction-mystery","OV-FAN":"uapf-niche-fiction-fantasy",
+    "OV-SFI":"uapf-niche-fiction-scifi","OV-HOR":"uapf-niche-fiction-horror",
+    "OV-LIT":"uapf-niche-fiction-literary","OV-HIS":"uapf-niche-fiction-historical",
+    "OV-YA":"uapf-niche-fiction-ya","OV-ACT":"uapf-niche-fiction-action",
+    "OV-WFC":"uapf-niche-fiction-womens","OV-FTH":"uapf-niche-fiction-faith"
+  },
+  "formats": ["FMT-NOVEL","FMT-NOVELLA","FMT-SHORT","FMT-SERIAL"],
+  "gates_note": "12 phases + 12 QA passes (+2 conditional) defined in UFFV_1.1_FRAMEWORK.md; every phase closes with 'Type Proceed'."
+}

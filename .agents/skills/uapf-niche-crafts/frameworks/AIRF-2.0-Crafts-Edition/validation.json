@@ -1,0 +1,204 @@
+{
+ "framework_id": "AIRF 2.0 Crafts Edition",
+ "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). All gates are type=manual: OV-CRAFT quality turns on expert sign-off, safety-callout placement, technical executability, and design/render inspection rather than computable formulas. Project count is taken verbatim from the title and is never computed; page bands and section counts are advisory ranges, so no python ops module exists.",
+ "gates": {
+  "GATE_1_pre_creation_foundation": [
+   {
+    "id": "trademark_report",
+    "type": "manual",
+    "text": "Trademark Clearance Report completed; verdict CLEAR or operator-approved CAUTION; all candidate subtitles passed the trademark screen"
+   },
+   {
+    "id": "sub_niche_assigned",
+    "type": "manual",
+    "text": "Sub-niche code assigned (CRAFT-FIBER/WOOD/GLASS/RESIN/PAPER/CANDLE-SOAP/CERAMIC/GENERAL/GARDEN/JEWELRY); secondary codes listed if multi-craft"
+   },
+   {
+    "id": "project_count_from_title",
+    "type": "manual",
+    "text": "Project count extracted from the title and recorded (or flagged unspecified); framework never invents or overrides it"
+   },
+   {
+    "id": "audience_difficulty",
+    "type": "manual",
+    "text": "Audience and difficulty range identified (skill level, age audience, complexity signal)"
+   },
+   {
+    "id": "auto_config_announced",
+    "type": "manual",
+    "text": "Auto-configuration announced (pathway, page band, visual density, font size, line spacing, Design Signature)"
+   },
+   {
+    "id": "expert_panel_confirmed",
+    "type": "manual",
+    "text": "Expert panel confirmed with the correct specialists for the sub-niche; safety standard set identified (OSHA/CPSC/ANSI as applicable)"
+   },
+   {
+    "id": "cultural_precheck",
+    "type": "manual",
+    "text": "Cultural-sensitivity pre-check: techniques requiring attribution identified before writing"
+   },
+   {
+    "id": "design_signature_not_repeat",
+    "type": "manual",
+    "text": "Operator confirmed the Design Signature is not a repeat (differs from last five; >=3 of 6 dimensions; no shared primary accent)"
+   }
+  ],
+  "GATE_2_content_development_per_project": [
+   {
+    "id": "project_unit_complete",
+    "type": "manual",
+    "text": "Every Project Unit has all required elements: Title, META line, Hero image/prompt, Materials with quantities, numbered one-action steps, Expected result, Project Facts Table"
+   },
+   {
+    "id": "safety_callout_at_hazard",
+    "type": "manual",
+    "text": "Safety Callout Box present at every hazard step, not only in the Introduction"
+   },
+   {
+    "id": "step_images_present",
+    "type": "manual",
+    "text": "Step images (or STEP IMAGE PROMPT blocks) present for every step"
+   },
+   {
+    "id": "no_brand_names",
+    "type": "manual",
+    "text": "No registered brand names in instructional text"
+   },
+   {
+    "id": "dual_measurements",
+    "type": "manual",
+    "text": "Measurements appear in both metric and imperial with correct marketplace primary"
+   },
+   {
+    "id": "pattern_abbrevs_defined",
+    "type": "manual",
+    "text": "Pattern abbreviations used are defined in the front-matter glossary"
+   },
+   {
+    "id": "cultural_attribution",
+    "type": "manual",
+    "text": "Cultural techniques attributed correctly"
+   },
+   {
+    "id": "anti_ai_language",
+    "type": "manual",
+    "text": "Anti-AI language protocol enforced; step verb family consistent with the Voice Persona"
+   },
+   {
+    "id": "step_images_every_step",
+    "type": "manual",
+    "text": "Project written step by step and EVERY Step N carries its own embedded image (photoreal/diagram, matches the step's action, realism law checked); fiber Round/Row patterns image every technique change and at minimum one per 5 rounds/rows; a step without its image FAILS this project"
+   }
+  ],
+  "GATE_3_section_review": [
+   {
+    "id": "section_divider_done",
+    "type": "manual",
+    "text": "Section Divider page completed with section overview and project preview thumbnails"
+   },
+   {
+    "id": "technically_executable",
+    "type": "manual",
+    "text": "All projects in the section technically executable as written; Master Multi-Craft Coordinator sign-off; no undocumented techniques"
+   },
+   {
+    "id": "specialist_reviews",
+    "type": "manual",
+    "text": "Textile Arts Specialist reviewed stitch notations; Construction & Home Systems Authority reviewed power-tool and chemical steps"
+   },
+   {
+    "id": "facts_table_accurate",
+    "type": "manual",
+    "text": "Project Facts Table accurate (gauge/tool sizes/cure times verified); time realistic for difficulty; cost reflects current market ranges"
+   },
+   {
+    "id": "photorealistic_continuity",
+    "type": "manual",
+    "text": "Hero/step images photorealistic (no vectors/cartoons); visual continuity maintained (same hands, tools, lighting, setting)"
+   },
+   {
+    "id": "section_within_band",
+    "type": "manual",
+    "text": "Section word count and page estimate within the page-band target"
+   }
+  ],
+  "GATE_4_final_certification": [
+   {
+    "id": "all_projects_present",
+    "type": "manual",
+    "text": "All N projects from the title present as complete Project Units; total count matches the title exactly"
+   },
+   {
+    "id": "front_matter_order",
+    "type": "manual",
+    "text": "Front matter complete and ordered: Title -> Copyright -> TOC -> Preface -> How to Use -> Introduction; Preface 1 page; How to Use 1 page; Conclusion 1.5 pages"
+   },
+   {
+    "id": "appendix_complete",
+    "type": "manual",
+    "text": "Appendix contains all seven elements (difficulty index, materials master list, glossary, conversion chart, supplier directory, planner template, troubleshooting)"
+   },
+   {
+    "id": "pagination_and_design",
+    "type": "manual",
+    "text": "Visible page numbers start at Introduction; front matter unnumbered; Design Signature and two-color interior applied consistently"
+   },
+   {
+    "id": "author_name_consistent",
+    "type": "manual",
+    "text": "Author name (First, M. Surname) consistent across Title Page, Copyright Page, and metadata"
+   },
+   {
+    "id": "safety_accuracy_100",
+    "type": "manual",
+    "text": "100% safety accuracy: all tool/chemical/electrical callouts validated against CPSC/OSHA/ANSI for the sub-niche"
+   },
+   {
+    "id": "cultural_validated_kdp",
+    "type": "manual",
+    "text": "Cultural attributions validated by the Textile Arts & Cultural Preservation Specialist; KDP category assignments confirmed; no prohibited AI-pattern language"
+   },
+   {
+    "id": "house_toc_skeleton",
+    "type": "manual",
+    "text": "HOUSE TOC ARCHITECTURE followed (operator directive 2026-08-19): Introduction (standard H2 set) -> CHAPTER 1 toolkit/materials -> CHAPTER 2 core techniques -> project chapters in one sanctioned grouping mode (difficulty ladder / category tiers with continuous project numbering / technique curriculum + flat PROJECT N headings) -> TROUBLESHOOTING chapter -> lettered Appendices (3-4 from the sub-niche menu) -> Acknowledgments"
+   },
+   {
+    "id": "heading_styles_live_toc",
+    "type": "manual",
+    "text": "Every chapter/part/project heading carries a real Word Heading style (H1 chapters/parts/flat projects, H2 in-chapter projects and subsections); the TOC is a LIVE Word field built from those styles, no hand-typed entries; direct-formatted bold text posing as a heading is a FAIL"
+   },
+   {
+    "id": "chapter_naming_law",
+    "type": "manual",
+    "text": "Chapter titles use 'CHAPTER N: DESCRIPTIVE NAME' in block caps (28pt+ at 8.5x11); tier chapters may carry '(PROJECTS X-Y)' ranges; PART openers used when 4+ product categories"
+   },
+   {
+    "id": "unit_vocabulary",
+    "type": "manual",
+    "text": "Project units use the exact house labels in house order (fiber: Skill Level/Yarn/Hook/Gauge/Finished Size/Abbreviations/Pattern Notes/Round-Row N/Assembly/Finishing; non-fiber: Difficulty/Time/Materials/Tools/Step N/Assembly/Finishing/Tip/Variation); improvised labels (What You Need, Supplies, Directions) are a FAIL"
+   },
+   {
+    "id": "back_matter_close",
+    "type": "manual",
+    "text": "Book closes Troubleshooting chapter -> Appendices A/B/C(+) -> Acknowledgments; safety checklist appendix present for baby/child-use projects; no generic Conclusion chapter"
+   },
+   {
+    "id": "heading_case_law",
+    "type": "manual",
+    "text": "Chapter-level headings (H1) are BLOCK LETTERS; subchapter headings (H2) are Sentence case; convention consistent through the whole book"
+   },
+   {
+    "id": "chapter_new_page",
+    "type": "manual",
+    "text": "Every H1 unit (chapter, part opener, appendix, Acknowledgments, flat PROJECT N) starts on a new page via page-break-before, never empty-paragraph stacks"
+   },
+   {
+    "id": "pagination_from_introduction",
+    "type": "manual",
+    "text": "Page numbers start at the Introduction as page 1; front matter shows no folios; final TOC reworked against the final rendered layout and verified entry by entry"
+   }
+  ]
+ }
+}

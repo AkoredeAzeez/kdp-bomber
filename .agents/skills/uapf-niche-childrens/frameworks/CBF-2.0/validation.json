@@ -1,0 +1,41 @@
+{
+  "framework_id": "CBF 2.0",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_childrens.py; type=manual require agent/render/proof inspection.",
+  "gates": {
+    "GATE_1_book_lock_and_architecture": [
+      {"id": "band_and_profile_locked", "type": "manual", "text": "Exactly one age band + reading mode + host profile locked; second lock (level/grade/edition) present where required"},
+      {"id": "title_cleared", "type": "manual", "text": "Title cleared (search + trademark/IP screen); subtitle carries age promise to the gatekeeper"},
+      {"id": "book_lock_recorded", "type": "manual", "text": "Trim, page target, ink/paper, bleed, color mode, word budget, and type floor recorded in Book Lock"},
+      {"id": "page_map_complete", "type": "manual", "text": "Page map assigns every page a role, word budget, text zone, art zone, color mode, page-turn job, bleed instruction, folio rule"},
+      {"id": "originality_transformations", "type": "manual", "text": "If references studied: Reference Pattern Report + Style Lock exist and 3+ originality transformations named"},
+      {"id": "model_sheet_and_style_bible", "type": "manual", "text": "Character model sheet and style bible complete before any page art"}
+    ],
+    "GATE_2_manuscript": [
+      {"id": "word_count_within_band", "type": "manual", "text": "Word count per page within band budget; total within Book Lock budget"},
+      {"id": "vocab_and_stakes_in_band", "type": "manual", "text": "Vocabulary, sentence length, and stakes inside the locked band; AB-2 level consistency verified"},
+      {"id": "read_aloud_pass", "type": "manual", "text": "Read-aloud pass performed for AB-0/AB-1 and all rhyming text (cadence, breath points, clean meter)"},
+      {"id": "page_turn_law", "type": "manual", "text": "Every narrative page pushes forward; no answer revealed before the turn; ending intentional"},
+      {"id": "appropriateness_battery", "type": "manual", "text": "Child-appropriateness battery passed; representation authentic, no tokenism or stereotype"},
+      {"id": "originality_audit", "type": "manual", "text": "No copied wording, characters, scenes, or source-identifying sequence"}
+    ],
+    "GATE_3_art_layout_typography": [
+      {"id": "wordless_art_real_type", "type": "manual", "text": "Every image wordless; all lettering is real embedded type; no AI pseudo-text remains"},
+      {"id": "text_zones_honored", "type": "manual", "text": "Quiet zone/opaque panel, >=0.20 in padding, no detail behind body copy, clean panel edges"},
+      {"id": "type_floor_and_alignment", "type": "python", "op": "type_floor_ok+alignment", "text": "Type at or above band floor, leading >=1.3, body copy left-aligned, no justified text, no all-caps body"},
+      {"id": "continuity_verified", "type": "manual", "text": "Character/world continuity verified against model sheet on every page; anatomy and tangency audit clean"},
+      {"id": "color_and_grayscale", "type": "manual", "text": "Color mode consistent with lock; palette lock held; grayscale proof of colored text pages passes"},
+      {"id": "thumbnail_sheet", "type": "manual", "text": "Thumbnail sheet: rhythm, hierarchy, color distribution OK; no source-identifying resemblance"},
+      {"id": "hundred_percent_render", "type": "manual", "text": "100% render: no collisions, clipping, or trim-unsafe critical content; gutter and paired-page balance OK"}
+    ],
+    "GATE_4_print_and_release": [
+      {"id": "page_count_and_economics", "type": "python", "op": "page_count_valid+color_class", "text": "Even page count; >=24 pages; page count vs. color-ink economics verified against live KDP values"},
+      {"id": "bleed_geometry", "type": "python", "op": "bleed_page_size", "text": "Entire PDF at correct bleed size (picture bands 8.625 x 8.75 for 8.5 x 8.5 trim); parity-correct trim boxes; no crop marks"},
+      {"id": "fonts_and_dpi", "type": "manual", "text": "All fonts embedded with commercial/embedding rights; images >=300 DPI at placed size"},
+      {"id": "safe_zones", "type": "manual", "text": "Critical content >=0.5 in inside trim; child working areas >=0.75 in from gutter; no white slivers at edges"},
+      {"id": "cover_and_age_match", "type": "manual", "text": "Cover wrap matches final page count/spine; age range on cover/description matches locked band"},
+      {"id": "ai_disclosure_and_recon", "type": "manual", "text": "AI-content disclosure recorded per KDP policy; live KDP specs recon rechecked and dated"},
+      {"id": "physical_proof", "type": "manual", "text": "Physical proof ordered and inspected (color, trim, gutter swallow, panel edges) - proof is the color authority"},
+      {"id": "correction_propagation", "type": "manual", "text": "Any correction reopened its gate and all downstream gates, with fresh evidence"}
+    ]
+  }
+}

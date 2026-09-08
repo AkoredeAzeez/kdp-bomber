@@ -1,0 +1,149 @@
+{
+  "framework_id": "AIRF 2.0 History Edition",
+  "niche": "uapf-niche-history",
+  "overlay": "OV-HIST",
+  "source_of_truth": "../../SKILL.md",
+  "note": "Structured constants extracted from ../../SKILL.md (authoritative). No prose; SKILL.md wins on any conflict.",
+
+  "sub_niches": {
+    "HIST-MIL": "Military History",
+    "HIST-POL": "Political History & Political Science",
+    "HIST-SOC": "Social & Cultural History",
+    "HIST-BIO": "Historical Biography",
+    "HIST-WLD": "World & Comparative History",
+    "HIST-REG": "Regional & National History",
+    "HIST-ANC": "Ancient & Classical History",
+    "HIST-MED": "Medieval History",
+    "HIST-MOD": "Early Modern History",
+    "HIST-CON": "Contemporary & Modern History",
+    "HIST-ORL": "Oral & Indigenous History",
+    "HIST-DIP": "Diplomatic & International History",
+    "HIST-ECO": "Economic History"
+  },
+
+  "architectures": {
+    "A_chronological_narrative": {
+      "default_for": ["HIST-MIL", "HIST-REG", "HIST-CON", "HIST-ANC", "HIST-MED", "HIST-MOD"],
+      "intro_words_min": 1500,
+      "intro_words_max": 2500,
+      "chapter_words_general_min": 3500,
+      "chapter_words_general_max": 6000,
+      "chapter_words_academic_max": 8000,
+      "chapters_min": 8,
+      "chapters_max": 16,
+      "conclusion_words_min": 1500,
+      "conclusion_words_max": 2000
+    },
+    "B_thematic_analysis": {
+      "default_for": ["HIST-POL", "HIST-SOC", "HIST-ECO", "HIST-DIP"],
+      "intro_words_min": 1500,
+      "intro_words_max": 2500,
+      "chapter_words_min": 4000,
+      "chapter_words_max": 7000,
+      "mandatory_chronological_overview_chapter_1": true
+    },
+    "C_biographical_narrative": {
+      "default_for": ["HIST-BIO"],
+      "chapters_min": 10,
+      "chapters_max": 18,
+      "no_hagiography": true
+    }
+  },
+
+  "page_bands": {
+    "general_narrative": {"pages_min": 200, "pages_max": 280, "words_min": 60000, "words_max": 85000},
+    "comprehensive_survey": {"pages_min": 280, "pages_max": 400, "words_min": 85000, "words_max": 120000},
+    "academic_monograph": {"pages_min": 300, "pages_max": 500, "words_min": 90000, "words_max": 150000},
+    "focused_short_history": {"pages_min": 150, "pages_max": 220, "words_min": 45000, "words_max": 65000}
+  },
+
+  "quotation_volume": {
+    "low_max_exclusive": 5,
+    "medium_min": 5,
+    "medium_max": 20,
+    "high_min_exclusive": 20,
+    "high_activates_per_chapter_authentication": true
+  },
+
+  "bibliography": {
+    "min_sources_under_200_pages": 15,
+    "page_pivot": 200,
+    "proportional_above_pivot": true,
+    "base_rate_per_pages": [15, 200],
+    "sections": ["Primary Sources", "Secondary Sources", "Online & Archival Sources"],
+    "mandatory": true
+  },
+
+  "glossary": {
+    "mandatory_when_terms_at_least": 10
+  },
+
+  "audience_calibration": ["General", "Academic", "Student", "Crossover"],
+  "tone_registers": ["Narrative", "Analytical", "Survey", "Polemic"],
+  "polemic_requires_explicit_user_instruction": true,
+
+  "trim": {
+    "standard_in": [6, 9],
+    "alt_short_in": [5.5, 8.5],
+    "academic_illustrated_in": [7, 10]
+  },
+
+  "typography": {
+    "body_pt_min": 11,
+    "body_pt_max": 12,
+    "body_fonts": ["Times New Roman", "Garamond", "Georgia"],
+    "chapter_title_pt_min": 18,
+    "chapter_title_pt_max": 22,
+    "chapter_title_weight": "bold",
+    "section_header_pt": 14,
+    "section_header_weight": "bold",
+    "sidebar_pt_min": 10,
+    "sidebar_pt_max": 11,
+    "block_quote_indent_in": 0.5,
+    "block_quote_pt_min": 10,
+    "block_quote_pt_max": 11,
+    "block_quote_single_spaced": true,
+    "notes_pt_min": 9,
+    "notes_pt_max": 10
+  },
+
+  "layout": {
+    "line_spacing_min": 1.15,
+    "line_spacing_max": 1.25,
+    "chapter_starts_new_page": true,
+    "no_widow_orphan": true,
+    "running_header_verso": "book title",
+    "running_header_recto": "chapter title",
+    "page_number_position": "bottom-center-or-bottom-outside"
+  },
+
+  "color": {
+    "default_interior": "black-and-white",
+    "premium_color_only_if_maps_central": true
+  },
+
+  "images": {
+    "map_caption_format": "Map [N]: [Descriptive Title]. [Time period if relevant]. [Source if licensed.]",
+    "timeline_recommended_span_years": 50,
+    "maps_recommended_for": ["HIST-MIL", "HIST-REG", "empire/colonial", "territorial change"]
+  },
+
+  "kdp_metadata": {
+    "keywords_required": 7,
+    "keyword_max_chars": 50,
+    "description_above_fold_chars": 200,
+    "description_below_fold_words_min": 400,
+    "description_below_fold_words_max": 600
+  },
+
+  "citation_styles": ["Chicago author-date", "Chicago footnote", "APA"],
+
+  "mandatory_disclaimer_present": true,
+
+  "protocols": {
+    "contested_event_protocol_when_contested_status_yes": true,
+    "quotation_authentication_mandatory": true,
+    "chronology_audit_mandatory": true,
+    "presentism_guard": true
+  }
+}

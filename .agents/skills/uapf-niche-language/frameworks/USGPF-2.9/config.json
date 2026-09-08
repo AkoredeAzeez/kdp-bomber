@@ -1,0 +1,121 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-language",
+  "overlay": "OV-LANG",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "trim_in": [8.5, 11.0],
+    "margins_in": 0.8,
+    "running_heads": false,
+    "body_font": "Times New Roman",
+    "body_pt": 11,
+    "line_spacing": 1.15,
+    "prose_alignment": "justified",
+    "left_aligned": ["dialogue_utterances", "vocabulary_tables", "drills", "answer_key"],
+    "color_tier": "PREMIUM_COLOR",
+    "paper": "white",
+    "grayscale_requires_operator_override": true
+  },
+
+  "dialogue_presentation": {
+    "speaker_label": "bold_source_language",
+    "target_utterance": "full_weight",
+    "translation_line": "italic_or_distinguishing_style",
+    "pronunciation_line": "lighter_weight_below_translation",
+    "spacing_before_speaker_twips": 120,
+    "register_label_at_head": ["FORMAL", "INFORMAL", "MIXED"]
+  },
+
+  "vocabulary_block": {
+    "table_width_dxa": 9936,
+    "alt_row_fill_hex": "F2F7FC",
+    "header_fill": "primary",
+    "header_text": "white_bold",
+    "columns": ["target_word_phrase", "source_translation_with_register"],
+    "register_labels": ["F", "I", "N"]
+  },
+
+  "unit_architecture": {
+    "elements_in_fixed_order": [
+      "communicative_goal",
+      "dialogue",
+      "vocabulary_block",
+      "grammar_point",
+      "drills",
+      "cultural_note"
+    ],
+    "no_element_omitted": true,
+    "no_element_inserted_between": true
+  },
+
+  "unit_limits": {
+    "dialogue_turns_min": 8,
+    "dialogue_turns_max": 16,
+    "vocabulary_items_min": 20,
+    "vocabulary_items_max": 40,
+    "grammar_points_per_unit": 1,
+    "grammar_examples_min": 3,
+    "grammar_examples_max": 5,
+    "drills_min": 3,
+    "drills_max": 5,
+    "cultural_note_words_min": 100,
+    "cultural_note_words_max": 150,
+    "unit_page_band_min": 4,
+    "unit_page_band_max": 8
+  },
+
+  "front_matter": {
+    "title_page_pages": 1,
+    "copyright_pages": 1,
+    "toc_pages": 1,
+    "introduction_pages_min": 1.40,
+    "introduction_pages_max": 1.55,
+    "sequence": ["title_page", "copyright_and_disclaimer", "table_of_contents", "introduction"]
+  },
+
+  "back_matter": {
+    "sequence": ["answer_key", "glossary", "appendix_a_conjugation", "appendix_b_pronunciation", "appendix_c_resources"],
+    "answer_key": "grouped_by_unit_and_drill_number",
+    "glossary": "alphabetical_bilingual_two_column",
+    "appendix_c_resources_must_be_real": true
+  },
+
+  "subtitle": {
+    "max_rendered_lines": 2,
+    "chars_allowed": "letters_numerals_spaces_only",
+    "lead": "communicative_promise_or_counted_element"
+  },
+
+  "byline": {
+    "format": "First Name, Initial. Surname",
+    "source": "fake_name_generator_live",
+    "interior_locations": 2,
+    "no_credentials_or_invented_biography": true
+  },
+
+  "pronunciation_systems": ["IPA", "romanization", "simplified_phonetic_respelling", "combination"],
+
+  "content_rules": {
+    "no_pork": true,
+    "no_alcohol": true,
+    "exclusion_is_silent": true,
+    "no_em_dashes": true,
+    "no_en_dashes": true,
+    "curly_apostrophes_only": true,
+    "one_grammar_point_per_unit": true,
+    "register_labeled_exhaustively": true,
+    "regional_variant_discipline": true,
+    "title_verbatim_law": true,
+    "no_invented_sources": true
+  },
+
+  "contrast_min_ratio": 4.5,
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true,
+    "non_latin_render_verified_on_raster": true
+  }
+}

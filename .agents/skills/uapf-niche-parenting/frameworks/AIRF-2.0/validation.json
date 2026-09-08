@@ -1,0 +1,42 @@
+{
+  "framework_id": "AIRF 2.0",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_parenting.py; type=manual require agent/render inspection.",
+  "gates": {
+    "GATE_1_authority_and_evidence": [
+      {"id": "medical_authority_locked", "type": "manual", "text": "Active Medical Authority declared in Phase 0 and consistent throughout; AAP or NHS never mixed; no US guidance in a UK book or vice versa"},
+      {"id": "milestones_as_ranges", "type": "manual", "text": "Every developmental milestone presented as a range with an upper professional-consultation threshold; no fixed-age 'will' statements"},
+      {"id": "stats_verified_live", "type": "manual", "text": "Every statistic and study verified live with source and date recorded; none from memory or framework docs"},
+      {"id": "safe_sleep_current", "type": "manual", "text": "Safe-sleep guidance matches the current Active Medical Authority recommendation"},
+      {"id": "feeding_nonjudgmental", "type": "manual", "text": "Feeding guidance non-judgmental; covers breastfeeding and formula appropriately"},
+      {"id": "immunization_referral_only", "type": "manual", "text": "Immunization section directs to the current live schedule resource rather than reproducing a static schedule"},
+      {"id": "name_etymologies_sourced", "type": "manual", "text": "No invented baby-name etymologies; uncertain origins labeled uncertain; variants documented as legitimate"}
+    ],
+    "GATE_2_structural_completeness": [
+      {"id": "stage_architecture_consistent", "type": "manual", "text": "Stage-based or age-band chapter structure consistent throughout for the Active Sub-Genre"},
+      {"id": "when_to_call_present", "type": "manual", "text": "'When to Call the Professional' box present in every health-adjacent chapter"},
+      {"id": "box_indicator_count", "type": "python", "op": "validate_when_to_call_box", "text": "Each box contains 3-8 specific actionable indicators and specifies an urgency level"},
+      {"id": "milestone_chart_present", "type": "manual", "text": "Milestone Reference Chart (developmental books) present in back matter with range data and Active Medical Authority citation"},
+      {"id": "appendices_practical", "type": "manual", "text": "All appendices carry practical value; stage-appropriate tools (birth plan, hospital bag checklist) included; no generic filler"},
+      {"id": "baby_name_entry_shape", "type": "manual", "text": "Baby-name entries follow the fixed entry sequence (name, origin, meaning, pronunciation, variants, optional associations, optional siblings)"}
+    ],
+    "GATE_3_voice_and_safety": [
+      {"id": "reassurance_voice", "type": "manual", "text": "Reassurance-with-honesty voice consistent: no false cheerfulness, no unnecessary alarm"},
+      {"id": "ppd_clinical", "type": "manual", "text": "Postpartum depression content uses clinical language and directs to professional support; no claim that lifestyle/devotional practice alone treats it"},
+      {"id": "neurodiversity_ack", "type": "manual", "text": "Neurodiversity acknowledged in milestone and developmental content"},
+      {"id": "referral_language_present", "type": "manual", "text": "Professional referral language present wherever grief, mental health, domestic violence, or abuse is mentioned"},
+      {"id": "resources_verified_live", "type": "manual", "text": "Crisis and support resources verified live for current contacts and regional suitability; no static carryover"},
+      {"id": "no_legal_advice", "type": "manual", "text": "No legal advice about divorce, custody, or family law; readers directed to a family law attorney"},
+      {"id": "no_body_before_after", "type": "manual", "text": "No before-and-after body imagery in pregnancy/postpartum chapters"}
+    ],
+    "GATE_4_production_and_kdp": [
+      {"id": "front_matter_order", "type": "manual", "text": "Front matter in correct order per Book Architecture; page numbering begins with Introduction as page 1"},
+      {"id": "back_matter_complete", "type": "manual", "text": "Back matter complete: Conclusion (~1.5 pages), Milestone Chart where applicable, Appendices, Resources"},
+      {"id": "typography", "type": "manual", "text": "Times New Roman throughout, 12 pt body, 1.15 spacing; When-to-Call boxes visually distinguished and consistently formatted"},
+      {"id": "image_auto_rule", "type": "python", "op": "images_required", "text": "One chapter-opening image per chapter generated and inserted at any page count; every image has caption and alt text"},
+      {"id": "page_band_check", "type": "python", "op": "check_page_band", "text": "Projected page count falls within the sub-genre page band (defaults; competitor research may override)"},
+      {"id": "images_safe_diverse", "type": "manual", "text": "Images show diverse realistic families; no idealized-body comparisons; no dangerous-behavior demonstrations"},
+      {"id": "uniqueness_audit", "type": "manual", "text": "Uniqueness audit passed: chapter structure, milestone data, voice, and examples distinct from any prior parenting book this session"},
+      {"id": "clean_render", "type": "manual", "text": "Final DOCX renders cleanly: no clipped tables, broken headings, or orphaned section titles; auto-TOC populated"}
+    ]
+  }
+}

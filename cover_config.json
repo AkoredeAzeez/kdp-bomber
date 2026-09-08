@@ -1,0 +1,16 @@
+{
+  "book_folder": "C:/Users/DELL/Genie/CodexBookStudio/EngineTest_DutchOven",
+  "front_art": "cover_front_art.png",
+  "trim_width_in": 6.0,
+  "trim_height_in": 9.0,
+  "page_count": 180,
+  "paper": "color",
+  "title": "The Weeknight Dutch Oven",
+  "subtitle": "85 One-Pot Dinners for Busy Families",
+  "author": "Mara J. Ellison",
+  "back_headline": "Make Weeknights Simpler",
+  "back_text": "Put a satisfying family dinner on the table without juggling a sinkful of pans.\nThese 85 one-pot recipes turn everyday ingredients into cozy weeknight meals with practical, streamlined preparation.\nLet the Dutch oven do the work while you spend less time cooking and more time together.",
+  "spine_color": "#172A3A",
+  "accent_color": "#C75B39",
+  "output_prefix": "The_Weeknight_Dutch_Oven_Cover"
+}

@@ -1,0 +1,58 @@
+{
+  "framework_id": "AIRF 2.0 Sports Edition",
+  "note": "Gate-checkable projection of the QA Checklist (Gates 1-4) in ../../SKILL.md (authoritative). type=python checks are computable via genie_sports.py; type=manual require agent/render inspection.",
+  "gates": {
+    "GATE_1_contract_and_architecture": [
+      {"id": "title_verbatim", "type": "manual", "text": "Exact title recorded verbatim; manuscript language confirmed"},
+      {"id": "sub_niche_and_modules", "type": "manual", "text": "Primary sub-niche identified; content modules activated from the Step 0.2 routing table"},
+      {"id": "expert_roles", "type": "manual", "text": "Expert roles confirmed; Domain Master filled with the sub-niche credential baseline"},
+      {"id": "trademark_screen", "type": "manual", "text": "Trademark screen completed across required registries; sport-organization name concerns documented and risk-classified"},
+      {"id": "special_checks", "type": "manual", "text": "OV-SPORT special checks documented: performance promises, safety implications, regulatory content, youth content, medical-outcome claims"},
+      {"id": "competitor_page_target", "type": "manual", "text": "5-10 competitors identified; page-count range/average/median calculated; page target recommended and justified"},
+      {"id": "page_band_sanity", "type": "python", "op": "check_page_band", "text": "Recommended page target sits within (or is justified against) the sub-niche baseline page band"},
+      {"id": "body_type_by_segment", "type": "python", "op": "validate_body_pt", "text": "Selected body point size falls within the dominant audience segment's allowed range"},
+      {"id": "unique_fingerprint", "type": "manual", "text": "Unique design fingerprint created; confirmed it does not replicate a prior OV-SPORT or OV-HEALTH book"},
+      {"id": "module_status_flags", "type": "manual", "text": "MKT Modifier, FIELD-SAFETY BATTERY, and OV-HEALTH R2 inheritance statuses each confirmed ACTIVE or NOT APPLICABLE with rationale"},
+      {"id": "pre_toc_report_complete", "type": "python", "op": "pre_toc_item_count", "text": "Pre-TOC Report contains all 19 required items and closes with the exact Proceed line"}
+    ],
+    "GATE_2_toc_and_structure": [
+      {"id": "prep_spine_precedes", "type": "manual", "text": "PREPARATION SPINE appears before all technique chapters (outdoor/fishing/hunting/survival); NOT in appendix"},
+      {"id": "field_safety_precedes", "type": "manual", "text": "FIELD-SAFETY BATTERY is a distinct major section preceding technique content (survival/bushcraft/hunting)"},
+      {"id": "r2_screening_before_week1", "type": "manual", "text": "Medical readiness/safety screening chapter present before first week of programming (R2-inherited titles)"},
+      {"id": "skill_arc_planned", "type": "manual", "text": "Every technique chapter has a planned four-stage Skill-Progression arc in chapter notes"},
+      {"id": "coaching_module_present", "type": "manual", "text": "Coaching Session-Plan Module and age-band progression tables planned in every skill-family chapter (coaching titles)"},
+      {"id": "no_unqualified_outcome_headings", "type": "manual", "text": "No chapter/subchapter heading implies a measurable performance outcome or replaces professional life-safety instruction"},
+      {"id": "regulatory_sections_labeled", "type": "manual", "text": "Regulatory content appears only in jurisdiction-labeled, date-marked, reader-verification-linked sections (hunting/fishing)"},
+      {"id": "front_back_matter_planned", "type": "manual", "text": "Front/back matter confirmed: copyright disclaimers, Preface (1 p), How to Use (1 p), niche-specific mandatory appendices"}
+    ],
+    "GATE_3_chapter_content": [
+      {"id": "sr2_four_stages", "type": "manual", "text": "SR2: all four Skill-Progression stages present (Fundamentals, Drills w/ 3-level standards, Game/Field Application, Fault Catalog)"},
+      {"id": "sr2_stage_count", "type": "python", "op": "validate_skill_progression", "text": "SR2 computable projection: chapter declares all 4 stages in order, drills have 3 graded levels, fault catalog holds 3-5 faults"},
+      {"id": "sr3_measurable_standards", "type": "manual", "text": "SR3: every drill has a measurable success standard at beginner/intermediate/advanced; no vague 'until comfortable'"},
+      {"id": "sr4_r2_content", "type": "manual", "text": "SR4 (if R2 inherited): each training week has modification table, stop-training warning signs, referral triggers; Sports Medicine sign-off"},
+      {"id": "r2_mileage_progression", "type": "python", "op": "validate_weekly_mileage", "text": "Running weekly mileage increase within the 10% conservative ceiling unless a stated rationale justifies more"},
+      {"id": "coaching_session_minutes", "type": "python", "op": "session_plan_minutes", "text": "Coaching session-plan block percentages sum to 100 and resolve to concrete minutes for the chosen session duration"},
+      {"id": "sr5_prep_spine_body", "type": "manual", "text": "SR5 (outdoor): PREPARATION SPINE complete and in body position before technique content"},
+      {"id": "sr6_field_safety_conservative", "type": "manual", "text": "SR6 (FIELD-SAFETY BATTERY active): life-safety content sourced to a named authority; no bravado; high-stakes disclaimer visible on all life-safety pages"},
+      {"id": "sr7_mkt_labels", "type": "manual", "text": "SR7 (MKT active): every regulatory table/paragraph carries jurisdiction + date label; reader-verification CTA at section close"},
+      {"id": "sr8_safe_sport", "type": "manual", "text": "SR8 (youth): USOC Safe Sport compliance confirmed; Pedagogy Specialist sign-off"},
+      {"id": "sr9_qualified_outcomes", "type": "manual", "text": "SR9: performance-outcome claims qualified with starting level, commitment, variation caveat, evidence basis"},
+      {"id": "sr10_brand_generic", "type": "manual", "text": "SR10: no brand-name gear recommendations; specification/certification language only"},
+      {"id": "sr11_anti_ai", "type": "manual", "text": "SR11: anti-AI language protocol followed; discipline-native language with measurement precision"},
+      {"id": "sr12_no_fake_endorsement", "type": "manual", "text": "SR12: no fabricated endorsements, governing-body approvals, or external review claims"}
+    ],
+    "GATE_4_final_manuscript": [
+      {"id": "prep_spine_intact", "type": "manual", "text": "PREPARATION SPINE intact in body position (not appendix) for all applicable sub-niches"},
+      {"id": "field_safety_intact", "type": "manual", "text": "FIELD-SAFETY BATTERY intact; high-stakes disclaimer callouts throughout life-safety sections; no bravado survives"},
+      {"id": "sr2_all_chapters", "type": "manual", "text": "SR2 verified across all chapters: no technique chapter missing any of the four stages"},
+      {"id": "sr4_all_programs", "type": "manual", "text": "SR4 verified: all training sections carry R2 content at structural and phase level; OV-HEALTH disclaimer on copyright page"},
+      {"id": "mkt_audit", "type": "manual", "text": "MKT audit: all regulatory content jurisdiction/date labeled, verification CTA at each close, currency disclaimer on copyright page, unverifiable content removed"},
+      {"id": "disclaimers_present", "type": "manual", "text": "All required copyright-page disclaimers present per activated modules (sporting-activity always; health-and-exercise; regulations-currency; high-stakes)"},
+      {"id": "front_matter_and_conclusion", "type": "manual", "text": "Front matter complete; Introduction is printed page 1; Conclusion ~1.5 pages, forward-looking, not a chapter recap"},
+      {"id": "typography_consistency", "type": "manual", "text": "Body font/size consistent; chapter headings 16pt block caps centered; subheads title case bold left; body justified; template zones left-aligned; styles mapped"},
+      {"id": "word_production", "type": "manual", "text": "Native styles applied; TOC field updated; page numbering restarts Arabic 1 at Introduction; front matter unnumbered; no broken cross-references"},
+      {"id": "image_audit", "type": "manual", "text": "Every required image present or fallback prompt supplied; no image covers text/tables/safety boxes/page numbers; captions and alt text complete"},
+      {"id": "deliverable_package", "type": "manual", "text": "Deliverable package complete: editable source, print-ready PDF, image manifest with alt text, commissioned supplemental files"}
+    ]
+  }
+}

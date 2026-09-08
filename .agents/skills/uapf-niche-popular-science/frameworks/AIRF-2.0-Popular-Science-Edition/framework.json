@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Popular Science Edition",
+  "niche": "uapf-niche-popular-science",
+  "overlay": "OV-POPSCI",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_popular_science.py"
+  ]
+}

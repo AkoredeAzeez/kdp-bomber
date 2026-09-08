@@ -1,0 +1,150 @@
+{
+  "framework_id": "AIRF 2.0",
+  "niche": "uapf-niche-faith",
+  "overlay": "OV-FAITH",
+  "source_of_truth": "../../SKILL.md",
+
+  "phase0": {
+    "tradition_declaration_required_before_generation": true,
+    "day_count_extracted_and_locked_from_title": true,
+    "declared_unit_count_is_hard_contract": true,
+    "reference_style": "Chicago Notes and Bibliography",
+    "risk_baseline": "R1",
+    "risk_grief_suffering": "R4"
+  },
+
+  "sub_genres": [
+    "Daily Devotional",
+    "Prayer Journal",
+    "Scripture Study Guide",
+    "Topical Devotional",
+    "Liturgical Companion",
+    "Contemplative",
+    "Theological Reflection"
+  ],
+
+  "unit_daily_devotional": {
+    "components_in_order": ["Scripture", "Reflection", "Prayer", "Application"],
+    "scripture_verses_daily_min": 1,
+    "scripture_verses_daily_max": 4,
+    "scripture_verses_weekly_study_max": 12,
+    "reflection_words_min": 200,
+    "reflection_words_max": 350,
+    "prayer_words_min": 50,
+    "prayer_words_max": 120,
+    "application_questions_min": 1,
+    "application_questions_max": 3,
+    "unit_words_min": 450,
+    "unit_words_max": 600,
+    "unit_words_exclude_scripture_quote": true
+  },
+
+  "chapter_architecture": {
+    "part_groupings": {
+      "30": [[3, 10], [5, 6]],
+      "52": [[4, 13], [6, null]],
+      "90": [[3, 30], [9, 10]],
+      "365": [[12, null], [52, null]]
+    },
+    "non_numbered_chapters_min": 8,
+    "non_numbered_chapters_max": 14,
+    "non_numbered_chapter_opener_words_min": 250,
+    "non_numbered_chapter_opener_words_max": 400
+  },
+
+  "page_bands_6x9_tnr": {
+    "30": [90, 130],
+    "52": [130, 180],
+    "90": [200, 280],
+    "365": [400, 520],
+    "Scripture Study Guide": [160, 240],
+    "Prayer Journal": [120, 180],
+    "Topical Devotional": [150, 220],
+    "verify_against_live_competitor_research": true
+  },
+
+  "interior": {
+    "trim_in": [6, 9],
+    "margins_in": 0.7,
+    "body_font": "Times New Roman",
+    "body_pt": 12,
+    "body_line_spacing": 1.15,
+    "day_header_pt": 14,
+    "day_header": "bold, centered, all caps",
+    "sub_label_pt": 11,
+    "sub_label": "bold, left-aligned, small caps",
+    "scripture_pt": 12,
+    "scripture": "italic, block-indented 0.5 in left and right, citation right-aligned final line",
+    "part_opener_pt": 16,
+    "day_numeral_pt_min": 20,
+    "day_numeral_pt_max": 24,
+    "interior_black_and_white": true,
+    "no_color_dependent_meaning": true,
+    "prayer_journal_writing_lines_min": 6,
+    "prayer_journal_writing_lines_max": 10,
+    "word_style_map": {
+      "Heading 1": "Part/Section titles",
+      "Heading 2": "Day/Unit header",
+      "Heading 3": "Unit sub-labels (REFLECTION, PRAYER, APPLICATION)",
+      "Body Text": "main prose",
+      "Block Text": "scripture quotations"
+    }
+  },
+
+  "imagery": {
+    "one_image_per_part_opener_any_page_count": true,
+    "no_photorealistic_sacred_figures": true,
+    "sacred_figure_style": "abstract, symbolic, or iconographic only",
+    "caption_and_alt_text_required": true
+  },
+
+  "scripture_copyright": {
+    "default_to_public_domain": true,
+    "public_domain": ["KJV", "WEB", "ASV", "Darby", "YLT", "Webster", "Pickthall (Quran)", "JPS 1917 Tanakh"],
+    "modern_verse_limits": {
+      "NIV": 500,
+      "ESV": 1000
+    },
+    "modern_permission_required": ["NIV", "ESV", "NASB", "NLT", "The Message", "CSB", "NKJV", "NRSV", "CEB", "NRSVue"],
+    "post_1928_assume_copyright": true,
+    "never_silently_switch_translation": true,
+    "translation_acknowledgment_page_required": true
+  },
+
+  "front_matter_order": [
+    "Half-title page",
+    "Full title page",
+    "Copyright page (+ translation credit line + AI-image disclosure if applicable)",
+    "Faith-specific disclaimer",
+    "Dedication (optional)",
+    "Preface (~1 page)",
+    "How to Use This Book (~1 page)",
+    "Translation Acknowledgment page",
+    "Automatic Table of Contents",
+    "Introduction (begins as page 1)"
+  ],
+
+  "back_matter": [
+    "Conclusion (~1.5 pages)",
+    "Scripture Index (alphabetical by book, with unit numbers)",
+    "Topical Index (optional, books over 200 pages)",
+    "Further Reading and Resources (8-15 titles)",
+    "Crisis and Pastoral Support Resources (verified live)",
+    "About the Author (pseudonym only)"
+  ],
+
+  "theological_boundaries": {
+    "no_prosperity_promises": true,
+    "no_healing_guarantees": true,
+    "no_spiritual_victim_blaming": true,
+    "no_coercive_language": true,
+    "no_unsupervised_clinical_framing": true
+  },
+
+  "kdp": {
+    "page_numbering_begins": "Introduction",
+    "author": "pseudonym only, no invented credentials",
+    "further_reading_min": 8,
+    "further_reading_max": 15
+  }
+}

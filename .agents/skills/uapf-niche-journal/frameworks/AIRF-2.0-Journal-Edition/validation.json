@@ -1,0 +1,44 @@
+{
+  "framework_id": "AIRF 2.0 Journal Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_journal.py; type=manual require agent/render/practitioner inspection.",
+  "gates": {
+    "GATE_1_specification": [
+      {"id": "trademark_risk_screen", "type": "manual", "text": "Trademark/risk screen reported; title clear or flagged"},
+      {"id": "tier_and_regime", "type": "manual", "text": "Tier classified and justified; risk regime assigned (R0 / R1-R4)"},
+      {"id": "dated_confirmed", "type": "manual", "text": "Dated/undated confirmed; undated unless operator declared otherwise"},
+      {"id": "page_system_specified", "type": "manual", "text": "Every field, label, line count, checkbox of every unit; repetition count with arithmetic; all special pages listed"},
+      {"id": "trim_margins_typography_stated", "type": "manual", "text": "Trim size, margins/gutter, page total, and typography tier (standard vs large print) stated"},
+      {"id": "subtitle_limits", "type": "python", "op": "subtitle_valid", "text": "Working subtitle from 6-8 options; title+subtitle <=200 chars; subtitle 50-150 chars"},
+      {"id": "page_total_within_band", "type": "python", "op": "page_total+check_page_band", "text": "Repetition-count arithmetic yields a page total inside the tier's KDP page band"},
+      {"id": "accent_scheme_unique", "type": "manual", "text": "Accent scheme selected and verified unique against the catalogue"},
+      {"id": "proceed_gate", "type": "manual", "text": "Message ends with Type Proceed; nothing generated past the gate"}
+    ],
+    "GATE_2_unit_approval": [
+      {"id": "master_unit_to_spec", "type": "manual", "text": "Master repeating unit rendered exactly to spec; all labels verbatim from approved spec"},
+      {"id": "field_label_reality", "type": "manual", "text": "Subject-Matter Practitioner review of every field against the real task; fields added/deleted as needed"},
+      {"id": "line_spacing_writable", "type": "python", "op": "line_spacing_ok", "text": "Line spacing physically writable for the audience (adult 0.28-0.32 in; senior/child >=0.5 in)"},
+      {"id": "response_space_sized", "type": "manual", "text": "Response spaces sized to expected answers"},
+      {"id": "prompt_arc_and_regime", "type": "manual", "text": "Tier 3: full prompt list reviewed - no duplicates, arc verified, regime-compliant; R3-R4 framing and crisis-resource page present"},
+      {"id": "native_word_rules", "type": "manual", "text": "Tables and rules are native Word objects; no underscores-as-lines"},
+      {"id": "content_and_emdash", "type": "manual", "text": "Content-standards and em-dash ban verified across all labels and prompts"}
+    ],
+    "GATE_3_assembly": [
+      {"id": "walkthrough_audit_7", "type": "manual", "text": "Page-system walkthrough audit: simulate 7 consecutive days/entries of real use; any friction is a blocking correction"},
+      {"id": "spread_logic_locked", "type": "python", "op": "spread_alignment", "text": "Left/right roles consistent book-wide; first unit lands on correct verso/recto after front matter; two-page units never split; repetition-count parity verified"},
+      {"id": "unit_fidelity_spotcheck", "type": "manual", "text": "Spot-check units at start, middle, end - structurally identical"},
+      {"id": "repetition_arithmetic_matches", "type": "python", "op": "page_total", "text": "Repetition-count arithmetic matches the delivered page total; total within KDP limits for the trim"},
+      {"id": "front_matter_order", "type": "manual", "text": "Front matter order correct; copyright/disclaimer tuned to tier and regime; author name in house format"},
+      {"id": "dated_content_absent", "type": "manual", "text": "Dated content absent (or correct, if a dated edition was declared)"},
+      {"id": "reference_pages_current", "type": "manual", "text": "Reference pages accurate to current guidelines (medical logs)"}
+    ],
+    "GATE_4_release": [
+      {"id": "pdf_preflight", "type": "manual", "text": "Final PDF preflight at exact trim; margins and gutter pass KDP preflight; no live elements outside safe area"},
+      {"id": "spec_matches_interior", "type": "manual", "text": "Undated status, page count, and trim in subtitle/description match the actual interior"},
+      {"id": "spine_width_computed", "type": "manual", "text": "Cover spine width computed for the final page count and paper color"},
+      {"id": "trademark_reconfirmed", "type": "manual", "text": "Trademark findings re-confirmed against final title, subtitle, and cover text"},
+      {"id": "crisis_page_positions", "type": "manual", "text": "R3-R4: crisis-resource page present in required positions; no therapeutic claims anywhere in book or metadata"},
+      {"id": "catalogue_uniqueness", "type": "manual", "text": "Catalogue uniqueness confirmed (scheme, cover treatment, unit design differ from all prior titles)"},
+      {"id": "content_emdash_sweep", "type": "manual", "text": "Content-standards and em-dash sweeps re-run on the final build"}
+    ]
+  }
+}

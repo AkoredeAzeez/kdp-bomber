@@ -1,0 +1,138 @@
+{
+  "framework_id": "AIRF 2.0 Self-Help Edition",
+  "niche": "uapf-niche-selfhelp",
+  "overlay": "OV-SELF",
+  "source_of_truth": "../../SKILL.md",
+
+  "risk_tiers": {
+    "codes": ["R4", "R2", "R1"],
+    "combine_rule": "apply highest tier present when signals span tiers",
+    "sub_category_tier": {
+      "abuse_recovery_domestic_violence": "R4",
+      "eating_disorder_recovery": "R4",
+      "anxiety_phobias_ocd": "R4",
+      "grief_loss_bereavement": "R4",
+      "trauma_recovery_general": "R4",
+      "relationships_attachment_codependency": "R2",
+      "emotional_intelligence_emotional_health": "R2",
+      "mental_wellness_stress_burnout": "R2",
+      "mindset_limiting_beliefs": "R2",
+      "self_esteem_identity_authenticity": "R2",
+      "habits_productivity_time_management": "R1",
+      "motivation_goal_setting_success": "R1",
+      "social_skills_communication": "R1"
+    }
+  },
+
+  "typography_profiles": {
+    "standard_adult_r1_r2": {"body_pt": 12, "line_spacing": 1.15},
+    "reflective_therapeutic_r2_heavy_r4": {"body_pt": 12, "line_spacing": 1.5},
+    "seniors": {"body_pt": 13, "line_spacing": 1.15},
+    "dense_workbook": {"body_pt": 11, "line_spacing": 1.15}
+  },
+
+  "interior": {
+    "trim_in": [6, 9],
+    "margins_in": 0.7,
+    "gutter_increase_only_when_binding_requires": true,
+    "body_font": "Times New Roman",
+    "body_alignment": "justified",
+    "lists_worksheets_tables_alignment": "left",
+    "chapter_heading": {"style": "Heading 1", "align": "center", "pt": 14, "bold": true, "case": "block_caps"},
+    "subchapter_heading": {"style": "Heading 2", "align": "left", "case": "capitalized"},
+    "third_level_heading": {"style": "Heading 3", "align": "left", "case": "sentence", "use": "sparingly"},
+    "front_matter_unnumbered": true,
+    "arabic_numbering_starts_at": "Introduction"
+  },
+
+  "reference_style": {
+    "R4": "APA 7",
+    "R2": "APA 7",
+    "R1": "APA 7 (Chicago Author-Date acceptable for research-oriented titles)"
+  },
+
+  "chapter_formula": [
+    "relatable_opening_scenario",
+    "concept_introduction",
+    "evidence_aware_explanation",
+    "exercises_and_reflection",
+    "integration_close"
+  ],
+
+  "structural_formula_by_tier": {
+    "R4": {"parts": 3, "chapter_split": {"part_1": "1-3", "part_2": "4-7", "part_3": "8-11"},
+      "appendices": ["A_crisis_resources", "B_exercises_reference", "C_recommended_reading_professional_resources"]},
+    "R2": {"parts": 3, "chapter_split": {"part_1": "1-3", "part_2": "4-8", "part_3": "9-11"},
+      "appendices": ["A_worksheets_and_trackers", "B_recommended_reading_professional_resources"]},
+    "R1": {"parts": 3, "chapter_split": {"part_1": "1-3", "part_2": "4-8", "part_3": "9-11"},
+      "appendices": ["A_quick_reference_system_summary", "B_templates_trackers_worksheets"]}
+  },
+
+  "page_band_targets": {
+    "note": "Live competitor research is primary; these bands are fallback starting points",
+    "R4": [190, 240],
+    "R2": [170, 220],
+    "R1": [150, 200]
+  },
+
+  "front_matter_order": [
+    "half_title_page_when_appropriate",
+    "full_title_page",
+    "copyright_page",
+    "category_specific_disclaimer",
+    "dedication_when_included",
+    "preface",
+    "how_to_use_this_book",
+    "automatic_table_of_contents",
+    "introduction"
+  ],
+
+  "section_lengths": {
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "conclusion_pages": 1.5
+  },
+
+  "subtitle": {
+    "options_count": 5,
+    "preserve_exact_title": true,
+    "prohibited_claims": ["guaranteed healing", "fixed-time recovery", "certain transformation"],
+    "provide_char_count": true
+  },
+
+  "visual_strategy": {
+    "modes": ["photorealistic", "clean_2d_line_illustration", "mixed"],
+    "auto_generate_at_any_page_count": true,
+    "r4_forbidden_imagery": ["distress", "isolation", "body_harm", "conflict", "perfectionist_transformation"],
+    "alt_text_required": true
+  },
+
+  "content_rules": {
+    "preserve_exact_title": true,
+    "no_diagnosis": true,
+    "no_treatment_claims": true,
+    "no_guaranteed_or_timed_outcomes": true,
+    "no_fabricated_research": true,
+    "no_fabricated_case_studies_as_real": true,
+    "no_invented_author_credentials": true,
+    "no_rapid_healing_language": true,
+    "no_coercive_exercises": true,
+    "no_blame_framing": true,
+    "no_crisis_misinformation": true,
+    "r4_exercises_optional": true,
+    "r4_crisis_resources_appendix_mandatory": true,
+    "verify_crisis_info_live": true,
+    "anti_ai_language_protocol": true
+  },
+
+  "kdp": {
+    "select_two_categories": true,
+    "reference_style_default": "APA 7"
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

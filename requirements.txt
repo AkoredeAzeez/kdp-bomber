@@ -1,0 +1,16 @@
+# Genie runtime dependencies (installed automatically on first run by genie_bootstrap.py)
+# Core — required for manuscript, cover, wrap, A+, and QA production:
+python-docx>=1.1.0
+Pillow>=10.0.0
+reportlab>=4.0.0
+numpy>=1.24.0
+PyMuPDF>=1.23.0
+# Headless free image fallback (interior placeholders during a Claude limit):
+gradio_client>=1.0.0
+# Optional scripted image alternate (only used if OPENAI_API_KEY is set):
+openai>=1.30.0
+ebooklib
+# Video ads studio (uapf-video-studio, MAX): neural voiceover for ad narration.
+# Stock video/images use free Pexels/Pixabay (a free PEXELS_API_KEY in .env makes
+# it automatic + HD); ffmpeg is installed by the first-run bootstrap.
+edge-tts>=6.1.0

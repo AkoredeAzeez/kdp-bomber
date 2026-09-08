@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python .agents/skills/uapf-quality-gates/render_qa.py *)",
+      "PowerShell(python .agents/skills/uapf-quality-gates/format_qa.py *)",
+      "PowerShell(python .agents/skills/uapf-quality-gates/page_count_gate.py *)",
+      "PowerShell(python .agents/skills/uapf-quality-gates/fingerprint_registry.py check *)",
+      "PowerShell(python .agents/skills/uapf-automation-calendar/automation_calendar.py status)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-Item *)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__find"
+    ]
+  }
+}

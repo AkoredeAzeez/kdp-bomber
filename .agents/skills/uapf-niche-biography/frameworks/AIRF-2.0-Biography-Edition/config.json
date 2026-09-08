@@ -1,0 +1,154 @@
+{
+  "framework_id": "AIRF 2.0 Biography Edition",
+  "niche": "uapf-niche-biography",
+  "overlay": "OV-BIO",
+  "source_of_truth": "../../SKILL.md",
+
+  "modules": {
+    "biography": ["BIO-SNG", "BIO-COL", "BIO-HIS", "BIO-LIV", "BIO-AUT", "BIO-UNA"],
+    "memoir": ["MEM-AUT", "MEM-ATO", "MEM-PER"],
+    "true_crime": ["TC-NRT", "TC-COL", "TC-ADT"]
+  },
+
+  "architectures": {
+    "BIO-A": {
+      "name": "Cradle-to-Grave Chronological",
+      "chapter_count": [10, 18],
+      "chapter_words": [4000, 7000],
+      "chapter_words_expanded_max": 9000,
+      "intro_words": [1500, 2500]
+    },
+    "BIO-B": {"name": "Thematic Biography", "chapter_count": [8, 14], "orientation_chapter_1_mandatory": true},
+    "BIO-C": {
+      "name": "Collective Profile Unit",
+      "intro_words": [1500, 2500],
+      "conclusion_words": [1000, 1500],
+      "profile_units": ["hook", "life", "contribution", "legacy"],
+      "unit_words": {
+        "hook": [150, 300],
+        "life": [300, 600],
+        "contribution": [400, 800],
+        "legacy": [200, 400]
+      },
+      "profile_length_consistency_pct": 10,
+      "max_profile_multiple_of_shortest": 2,
+      "profile_count_matches_title": true
+    },
+    "MEM-A": {
+      "name": "Linear Narrative Memoir",
+      "chapter_count": [10, 16],
+      "chapter_words": [3500, 6000],
+      "prologue_words": [500, 1200],
+      "intro_words": [800, 1500]
+    },
+    "MEM-B": {"name": "Thematic/Episodic Memoir", "orientation_words": [500, 1000]},
+    "TC-A": {
+      "name": "Single Case Narrative",
+      "total_words": [60000, 90000],
+      "intro_words": [1500, 2500],
+      "conclusion_words": [1000, 1500],
+      "opens_with_world_not_crime": true
+    },
+    "TC-B": {"name": "Case Portfolio", "case_section_consistency_pct": 15}
+  },
+
+  "page_band_targets": {
+    "biography_general": {"pages": [220, 320], "words": [65000, 95000]},
+    "biography_comprehensive": {"pages": [300, 450], "words": [90000, 135000]},
+    "collective_biography": {"pages": [180, 280], "words": [55000, 85000]},
+    "memoir_standard": {"pages": [200, 280], "words": [60000, 85000]},
+    "memoir_extended": {"pages": [260, 360], "words": [78000, 108000]},
+    "true_crime_single": {"pages": [230, 320], "words": [68000, 95000]},
+    "true_crime_portfolio": {"pages": [220, 350], "words": [65000, 105000]}
+  },
+
+  "quotation_volume": {
+    "LOW": "<5",
+    "MEDIUM": "5-20",
+    "HIGH": ">20"
+  },
+
+  "interior": {
+    "trim_standard_in": [6, 9],
+    "trim_compact_in": [5.5, 8.5],
+    "trim_photo_heavy_in": [7, 10],
+    "body_pt": [11, 12],
+    "body_fonts": ["Times New Roman", "Garamond", "Georgia"],
+    "chapter_title_pt": [18, 22],
+    "profile_header_pt": [14, 16],
+    "profile_subheader_pt": 12,
+    "section_header_pt": 14,
+    "block_quote": {"indent_in": 0.5, "pt": [10, 11], "spacing": "single"},
+    "footnote_pt": [9, 10],
+    "line_spacing": [1.15, 1.25],
+    "chapter_starts_new_page": true,
+    "no_widow_orphan": true,
+    "page_numbers": "bottom center or bottom outside",
+    "color": "black and white interior default"
+  },
+
+  "subtitle": {
+    "options_count": 3,
+    "avoid_hyperbole": ["definitive", "explosive", "shocking", "scandalous"],
+    "no_prejudging_unresolved_legal_matters": true
+  },
+
+  "dignity_battery": {
+    "applies_to": ["TC-NRT", "TC-COL", "TC-ADT", "any crime/violence/victimization content"],
+    "checks": [
+      "victim_humanity_first",
+      "no_gore_lingering",
+      "minor_protection",
+      "ongoing_case_language",
+      "source_integrity",
+      "family_and_survivor_dignity",
+      "no_perpetrator_glorification"
+    ],
+    "all_must_pass": true
+  },
+
+  "front_matter_order": [
+    "title page",
+    "copyright page (with module disclaimers)",
+    "dedication (optional)",
+    "acknowledgments (conditional)",
+    "author's note / note on sources (conditional)",
+    "note on methodology (recommended for unauthorized bio and true crime)",
+    "table of contents",
+    "list of photographs/figures (if images)",
+    "introduction or prologue on Arabic page 1"
+  ],
+  "copyright_disclaimers": "mandatory per module; exact prose in SKILL.md Front Matter Requirements (not inlined)",
+
+  "back_matter": {
+    "notes_endnotes_mandatory": ["biography", "true_crime"],
+    "bibliography_mandatory": ["biography", "true_crime"],
+    "bibliography_sections": ["Primary Sources", "Secondary Sources", "Court Records & Official Documents", "Journalism", "Online & Archival Sources"],
+    "index_recommended": ["biography", "true_crime"],
+    "notes_style": "Chicago preferred"
+  },
+
+  "bibliography": {
+    "min_sources_under_250_pages": 20,
+    "scaling_at_or_above_250": "proportional",
+    "scaling_basis_pages": 250
+  },
+
+  "content_flags": {
+    "no_invented_dialogue": true,
+    "reconstructed_scenes_labeled": true,
+    "living_persons_legal_review_every_chapter": true,
+    "allegation_language_consistent": true,
+    "minor_protection": true,
+    "quotation_authentication": true,
+    "chronology_audit": true,
+    "no_hagiography_no_hatchet_job": true,
+    "source_ledger_completed_before_gate3": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "framework_id": "AIRF 2.0 Workbook Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_workbook.py; type=manual require agent judgement or render inspection. SKILL.md wins on any disagreement.",
+  "gates": {
+    "GATE_1_accuracy": [
+      {"id": "facts_verified", "type": "manual", "text": "Every fact, term, formula, and exercise premise verified by the Domain Master (target >=95% accuracy; sources >=90% authoritative)"},
+      {"id": "exercises_solved", "type": "manual", "text": "Every exercise independently solved by the Assessment Auditor; solutions reproduce the key exactly"},
+      {"id": "no_unsupported_knowledge", "type": "manual", "text": "No exercise requires knowledge not provided by the briefing or prior units"},
+      {"id": "labelled_images_accurate", "type": "manual", "text": "Labelled images accurate; all labels correct and in the manuscript language"}
+    ],
+    "GATE_2_structure": [
+      {"id": "chapter_exactly_10_pages", "type": "python", "op": "validate_chapter_pages", "text": "Chapter is exactly 10 pages"},
+      {"id": "three_bands_ramped", "type": "python", "op": "difficulty_bands_ok", "text": "Three difficulty bands present, labelled, and genuinely ramped (Foundation -> Development -> Mastery)"},
+      {"id": "worksheet_share_and_types", "type": "python", "op": "worksheet_share_ok+exercise_types_ok", "text": "Worksheet share 70-80%; at least three exercise types used"},
+      {"id": "concept_briefing_cap", "type": "manual", "text": "Concept briefing within the 0.5-page-per-section text cap"},
+      {"id": "response_spaces_sized", "type": "manual", "text": "Response spaces sized for real handwriting"},
+      {"id": "chapter_appended", "type": "manual", "text": "Chapter appended to the rolling DOCX before the gate"}
+    ],
+    "GATE_3_layout_formatting": [
+      {"id": "trim_margins_font_justified", "type": "manual", "text": "8.5 x 11 trim, 0.7-inch margins, Times New Roman, body fully justified"},
+      {"id": "tables_bw_safe", "type": "manual", "text": "All tables native Word objects: white cells, black half-point borders, header shading <=15% gray, no color fills, all table text left-aligned"},
+      {"id": "no_pseudo_tables_no_em_dash", "type": "manual", "text": "No ASCII/markdown/pipe pseudo-tables; no em dashes anywhere"},
+      {"id": "styles_toc_numbering", "type": "manual", "text": "Headings on real Word styles; auto-TOC updates cleanly; page numbering starts at the Introduction; front matter unnumbered and in locked order"},
+      {"id": "bw_legible", "type": "manual", "text": "All imagery and shading legible in pure B&W print"},
+      {"id": "visual_identity_unique", "type": "manual", "text": "Visual identity unique against the catalogue (typographic/structural, not color)"}
+    ],
+    "GATE_4_release": [
+      {"id": "answer_key_complete", "type": "manual", "text": "Answer key complete: every exercise answered, every problem's solution worked step-by-step, model answers/rubrics for open items, zero gaps"},
+      {"id": "key_matches_exercises", "type": "manual", "text": "Key numbering and values match the final printed exercises one-for-one after all corrections"},
+      {"id": "page_budget_verified", "type": "python", "op": "project_pages+page_budget_ok", "text": "Total pages <=150; budget arithmetic re-verified; Introduction 2 pp; Preface and How to Use 1 p each; Conclusion exactly 1.5 pp"},
+      {"id": "appendices_complete", "type": "manual", "text": "Appendices complete (key, templates, tracker, glossary); progress tracker rows match the final unit list"},
+      {"id": "trademark_and_standards", "type": "manual", "text": "Trademark findings re-confirmed against final title and subtitle; content standards swept; manuscript language consistent"},
+      {"id": "competency_coverage", "type": "manual", "text": "100% of promised competencies covered by at least one unit"}
+    ]
+  }
+}

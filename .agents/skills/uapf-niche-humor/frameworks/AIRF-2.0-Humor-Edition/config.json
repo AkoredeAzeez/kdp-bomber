@@ -1,0 +1,210 @@
+{
+  "framework_id": "AIRF 2.0 Humor Edition",
+  "niche": "uapf-niche-humor",
+  "overlay": "OV-HUMOR",
+  "source_of_truth": "../../SKILL.md",
+  "note": "Structured constants extracted from ../../SKILL.md (authoritative). No prose; SKILL.md wins on any conflict.",
+
+  "matrix": {
+    "slot_id_format": "AUD-OCC-PAIN",
+    "axes": ["audience", "occasion", "pain_point"]
+  },
+
+  "title": {
+    "candidates_required": 3,
+    "title_words_min": 3,
+    "title_words_max": 8,
+    "combined_title_subtitle_max_chars": 200,
+    "title_language_equals_content_language": true
+  },
+
+  "scoring_rubric": {
+    "criteria": {
+      "demand": {"min": 0, "max": 3},
+      "differentiation": {"min": 0, "max": 3},
+      "seasonal_fit": {"min": 0, "max": 1},
+      "price_band_health": {"min": 0, "max": 1},
+      "category_access": {"min": 0, "max": 2}
+    },
+    "max_points": 10,
+    "proceed_threshold": 7,
+    "proceed_with_justification_min": 5,
+    "kill_at_or_below": 4,
+    "no_zero_allowed_in": ["demand", "differentiation"]
+  },
+
+  "structure": {
+    "structural_unit": "chapter",
+    "chapters_min": 8,
+    "chapters_max": 12,
+    "chapter_body_words_min": 600,
+    "chapter_body_words_max": 900,
+    "beat_blueprint": [
+      "opener_page", "quote_page", "hook", "subchapter_1_escalation",
+      "list_device", "subchapter_2_turn", "closing_beat", "optional_value_element"
+    ],
+    "hook_words_min": 120,
+    "hook_words_max": 180,
+    "subchapter_words_min": 150,
+    "subchapter_words_max": 220,
+    "list_items_min": 3,
+    "list_items_max": 6,
+    "value_element_max_per_chapter": 1,
+    "value_element_max_per_book": 4
+  },
+
+  "page_band": {
+    "target_min": 80,
+    "target_max": 120,
+    "hard_cap": 120
+  },
+
+  "physical": {
+    "trim_in": [6, 9],
+    "body_pt_standard_min": 11,
+    "body_pt_standard_max": 12,
+    "body_pt_senior_min": 13,
+    "body_pt_senior_max": 14,
+    "line_spacing_default": 1.15,
+    "line_spacing_alt": 1.5,
+    "line_spacing_senior": 1.5,
+    "mirrored_margins": true
+  },
+
+  "typography": {
+    "display_serif_font": "Playfair Display",
+    "body_font": "Lato",
+    "japanese_display_font": "Noto Serif JP",
+    "japanese_body_font": "Noto Sans JP",
+    "chapter_heading_pt": 24,
+    "chapter_heading_case": "block-letter-all-caps",
+    "chapter_heading_style": "Heading 1",
+    "chapter_heading_align": "center",
+    "subchapter_case": "all-caps",
+    "subchapter_style": "Heading 2",
+    "subchapter_align": "left",
+    "body_align": "justified",
+    "lists_align": "left",
+    "closing_beat_style": "centered-italic",
+    "named_styles_only": true,
+    "em_dashes_banned": true
+  },
+
+  "quote_page": {
+    "required_per_chapter_min": 1,
+    "lines_min": 2,
+    "lines_max": 4,
+    "max_words": 18,
+    "attribution_format": "Name Initial., age, absurd chapter-related job title",
+    "age_min": 25,
+    "age_max": 70,
+    "original_joke_only": true,
+    "job_titles_never_repeat_within_language": true
+  },
+
+  "front_matter": {
+    "dedication_max_words": 30,
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "how_to_use_closer": "that is the whole system.",
+    "introduction_words_min": 350,
+    "introduction_words_max": 500,
+    "introduction_is_printed_page_1": true,
+    "order": ["half_title", "copyright", "dedication", "preface", "how_to_use", "toc", "introduction"],
+    "folios_start_at_introduction": true
+  },
+
+  "back_matter": {
+    "conclusion_pages": 1,
+    "author_bio_words_min": 60,
+    "author_bio_words_max": 90,
+    "review_request_neutral_only": true
+  },
+
+  "toc": {
+    "no_page_numbers": true,
+    "fits_one_page_up_to_chapters": 10,
+    "two_pages_allowed_chapters_min": 11,
+    "two_pages_allowed_chapters_max": 12,
+    "word_machinery_only": true
+  },
+
+  "color": {
+    "interior": "black-and-white-only",
+    "tints_or_shaded_panels": false,
+    "color_surface": "cover-only"
+  },
+
+  "image_quotas_per_chapter": {
+    "inline_min": 2,
+    "spot_min": 2,
+    "quote_page_illustration_min": 1,
+    "full_page_optional": 1,
+    "styles": ["A_minimalist_continuous_line", "B_detailed_character_line_hatched"],
+    "prompt_numbering": "Chapter.Sequence",
+    "mandatory_constraints_clause": "black and white line art only, no text in image, no logos, no color, no real persons"
+  },
+
+  "humor_registers": {
+    "count": 5,
+    "one_per_book_locked_at_phase_1": true,
+    "names": ["warm-dry", "deadpan-absurd", "energetic-relatable", "gentle-celebratory", "insider-professional"]
+  },
+
+  "joke_quotas_per_chapter": {
+    "required_types": ["observational", "absurdist", "wordplay_or_misdirection", "situational"],
+    "no_device_repeats_within_chapter": true
+  },
+
+  "content_restrictions": {
+    "no_alcohol": true,
+    "no_pork": true,
+    "no_gambling_positive": true,
+    "comfort_props_allowed": ["tea", "coffee", "chocolate"],
+    "no_real_private_individuals": true,
+    "no_mocking_protected_characteristics": true,
+    "applies_to": ["text", "quotes", "attributions", "lists", "images", "image_prompts", "covers", "a_plus_content", "metadata"]
+  },
+
+  "pen_name": {
+    "source": "fakenamegenerator.com",
+    "format": "First Name, Initial(s). Surname",
+    "lives_on": "copyright-page"
+  },
+
+  "kdp_metadata": {
+    "categories_required": 3,
+    "keywords_required": 7,
+    "keyword_max_chars": 50,
+    "description_max_chars": 4000,
+    "price_band_usd_min": 7.99,
+    "price_band_usd_max": 14.99,
+    "royalty_model": "60 percent of list minus printing cost"
+  },
+
+  "cover": {
+    "treatment": "typographic-or-hand-lettered",
+    "front_carries": "title-and-subtitle-only",
+    "spine_threshold_pages": 100,
+    "spine_carries": "title-only-top-to-bottom",
+    "back_hook_lines_min": 3,
+    "back_hook_lines_max": 5,
+    "no_icons_badges_or_selling_points": true,
+    "candidates_required": 3
+  },
+
+  "seasonal_lock_by": {
+    "christmas": "mid-October",
+    "mothers_day": "late-March",
+    "valentines_day": "late-December",
+    "fathers_day": "late-April",
+    "review_compounding_weeks_min": 6,
+    "review_compounding_weeks_max": 8
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "rolling_single_manuscript": true,
+    "gate_line": "Type Proceed."
+  }
+}

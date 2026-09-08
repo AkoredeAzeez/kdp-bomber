@@ -1,0 +1,128 @@
+{
+  "framework_id": "AIRF 2.0 Public Domain Edition",
+  "niche": "uapf-niche-public-domain",
+  "overlay": "OV-PD",
+  "source_of_truth": "../../SKILL.md",
+
+  "legal_term_rules": {
+    "us_rolling_offset_years": 96,
+    "us_pd_cutoff_note": "PD in the US if first published before (production_year - 96); as of 2026 that is before 1930",
+    "us_renewal_analysis_range": [1930, 1977],
+    "life_plus_70_years": 70,
+    "life_plus_70_note": "EU/DE and UK: author must have died more than 70 full calendar years before the production year",
+    "no_assumption_no_override": true
+  },
+
+  "legal_checklist_points": [
+    "author_death_date (>=2 independent authoritative sources)",
+    "us_publication_date",
+    "eu_de_status_life_plus_70",
+    "uk_status_life_plus_70",
+    "translation_copyright (specific translation must independently clear)",
+    "illustration_copyright (each illustration independently PD or newly created)",
+    "edition_specific_additions_copyright (no in-copyright editorial layer)"
+  ],
+
+  "trademark_screen": {
+    "registers": ["WIPO", "USPTO", "EUIPO", "TMview"],
+    "nice_classes": [16, 9, 41],
+    "avoid_classics_imprint_trade_dress": true
+  },
+
+  "edition_types": [
+    "annotated_edition",
+    "illustrated_edition",
+    "study_guide_companion",
+    "bilingual_parallel_text",
+    "introduced_edition",
+    "selected_collected_works"
+  ],
+
+  "value_add_floor": {
+    "note": "Minimum for KDP differentiation; thin garnish fails.",
+    "annotations_per_chapter_min_avg": "several",
+    "original_illustrations_min": 10,
+    "intro_plus_apparatus_ratio_min": 0.15,
+    "intro_plus_apparatus_ratio_study_guide_target": [0.15, 0.20],
+    "annotated_novel_apparatus_ratio": [0.15, 0.25]
+  },
+
+  "critical_introduction": {
+    "words_min": 3000,
+    "words_max": 8000,
+    "original_writing": true,
+    "verified_facts_only": true,
+    "spoiler_warning_if_discusses_ending": true
+  },
+
+  "discussion_questions": {
+    "per_major_section_min": 8,
+    "per_major_section_max": 12,
+    "whole_work_min": 20,
+    "whole_work_max": 40,
+    "original_open_ended_quote_anchored": true
+  },
+
+  "page_bands": {
+    "study_guide": [120, 220],
+    "selected_works": [250, 450],
+    "selected_works_per_work_headnote_pages": [1, 2]
+  },
+
+  "interior": {
+    "trim_in_options": [[5.5, 8.5], [6.0, 9.0]],
+    "body_font_class": "classic book serif",
+    "body_pt": 11,
+    "justified": true,
+    "footnote_pt": 9,
+    "footnotes_have_separator_rule": true,
+    "one_note_system_throughout": true,
+    "apparatus_visibly_distinct_from_classic_text": true,
+    "bilingual_language_a_verso_b_recto_paragraph_aligned": true,
+    "no_classics_series_trade_dress_mimicry": true,
+    "pd_plates_reproduced_clean_unaltered": true
+  },
+
+  "metadata": {
+    "subtitle_options_min": 6,
+    "subtitle_options_max": 8,
+    "title_plus_subtitle_max_chars": 200,
+    "differentiator_word_required_in_title_or_subtitle": ["annotated", "illustrated", "translated"],
+    "pen_name_candidates_min": 3,
+    "pen_name_candidates_max": 5,
+    "pen_name_format": "First M. Last",
+    "pen_name_framing": "Edited with an Introduction by [Pen Name]",
+    "pen_name_no_invented_credentials": true,
+    "original_author_listed_as_author": true,
+    "pen_name_listed_as_editor_contributor": true
+  },
+
+  "copyright_claim": {
+    "claim_new_material_only": true,
+    "state_text_is_public_domain": true,
+    "source_text_statement_required": true,
+    "note_on_the_text_required": true,
+    "ai_disclosure": true
+  },
+
+  "content_rules": {
+    "value_add_original_only": true,
+    "no_paraphrase_of_in_copyright_apparatus": true,
+    "modern_copyright_quarantine": true,
+    "text_never_silently_altered": true,
+    "modernization_policy_stated_in_note_on_text": true,
+    "apparatus_facts_verified": true,
+    "no_fabricated_citations": true,
+    "attribution_law": true,
+    "strip_pd_transcription_project_apparatus": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "single_cumulative_manuscript": true,
+    "one_unit_at_a_time": true,
+    "handoff_line": "Type Proceed",
+    "ebook_linked_toc_includes_apparatus": true,
+    "note_links_resolve_both_directions": true
+  }
+}

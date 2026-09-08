@@ -1,0 +1,47 @@
+{
+  "framework_id": "USGPF 2.9",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_exam_simulator.py; type=manual require agent/render/research inspection.",
+  "gates": {
+    "GATE_1_configuration": [
+      {"id": "routing_confirmed", "type": "manual", "text": "OV-EXSIM routing signals confirmed and recorded; Children's Category Research completed and stored"},
+      {"id": "exam_format_evidence", "type": "manual", "text": "Exam Format Evidence record exists with live sources dated to this engagement (Research Before Generation gate)"},
+      {"id": "title_clearance_nonaffiliation", "type": "manual", "text": "Title Clearance record with sources and date; non-affiliation statement drafted for Copyright page naming the exam owner"},
+      {"id": "language_card", "type": "manual", "text": "Language Profile Card locked"},
+      {"id": "subtitle_valid", "type": "python", "op": "validate_subtitle", "text": "Subtitle states the exact total with 'Practice Questions', letters/numerals/spaces only, fits two lines"},
+      {"id": "byline_signature", "type": "manual", "text": "Byline fetched live from FNG, collision-checked, locked; Title Design Signature cleared the distinctness gate"},
+      {"id": "assessment_plan_split", "type": "python", "op": "questions_per_set", "text": "Set count and questions per set derived from operator-supplied total; sets mapped to domains with blueprint-proportional weighting; seed recorded"},
+      {"id": "content_fixed_patterns", "type": "manual", "text": "Content-fixed correct-answer patterns authored at blueprint time; exhibit positions declared and justified (default zero); Domain Master reviewed blueprint coverage"}
+    ],
+    "GATE_2_per_set": [
+      {"id": "stem_quality", "type": "manual", "text": "Every stem is a complete self-contained question; no double negatives; no trick constructions"},
+      {"id": "distractor_quality", "type": "manual", "text": "Distractors plausible, mutually exclusive, parallel in grammar and length to the key; no absurd throwaway options"},
+      {"id": "single_defensible_answer", "type": "manual", "text": "Domain Master confirmation recorded for every item: exactly one single defensible correct answer"},
+      {"id": "positional_language_absent", "type": "manual", "text": "No 'all of the above', 'none of the above', or option-letter references in stems or options (or pinning status recorded)"},
+      {"id": "rationale_completeness", "type": "python", "op": "explanation_within_cap", "text": "Every rationale addresses every distractor; 50 words or fewer; content-based (no letter references)"},
+      {"id": "column_layout", "type": "manual", "text": "Two equal columns, separator rule on, set subhead full-width; full-width break for scenario/exhibit items"},
+      {"id": "literal_numbering", "type": "python", "op": "answer_count_match", "text": "Question numbers and option letters are typed text; no Word auto-numbering; numbering continuous from prior set with no gaps or duplicates"},
+      {"id": "answer_pattern_audit", "type": "python", "op": "pattern_guard_check", "text": "Answer Pattern Audit on the built file: distribution within tolerance, max run within effective cap, no doubled 4-permutation, no tripled 2-alternation"},
+      {"id": "compliance_and_standards", "type": "manual", "text": "Compliance sweep PASS (em/en dashes absent, curly apostrophes, no AI voice); Content Standards PASS; Amazon Content Policy scan PASS"},
+      {"id": "rendered_inspection", "type": "manual", "text": "Set pages rasterized and inspected; column balance, folio, margin alignment verified"}
+    ],
+    "GATE_3_randomization": [
+      {"id": "engine_run_seed", "type": "manual", "text": "Engine run on the complete bank from the recorded seed; per-set report delivered (before/after distributions and runs, moves, pins, flags, effective cap)"},
+      {"id": "integrity_check", "type": "manual", "text": "Text at each new key equals text at original key; option multisets match for every item"},
+      {"id": "key_distribution_balanced", "type": "python", "op": "answer_key_quota", "text": "Balanced key distribution per set within one of even (quota tolerance)"},
+      {"id": "two_option_law", "type": "python", "op": "resolve_run_cap", "text": "Any two-option in-sequence type carries a run cap of at least 2 (shipped default 3); auto-raise logged"},
+      {"id": "answers_division_mirror", "type": "manual", "text": "ANSWERS AND EXPLANATIONS generated from the randomized mapping; Practice Exam N subheads mirror the question division one to one; both divisions two-column"},
+      {"id": "numbering_alignment", "type": "python", "op": "answer_count_match", "text": "Every answer entry number matches its question number across the full bank"},
+      {"id": "score_guide_no_probability", "type": "manual", "text": "Score Interpretation Guide: no pass-probability claims; performance bands descriptive; study strategies reference appendices and sourced resources only"}
+    ],
+    "GATE_4_release": [
+      {"id": "score_guide_band", "type": "python", "op": "section_band_ok", "text": "Score Interpretation Guide measures 1.40 to 1.55 pages on the render; corrections via substantive content only"},
+      {"id": "how_to_use_band", "type": "python", "op": "section_band_ok", "text": "How to Use This Book measures 1.40 to 1.55 pages on the render"},
+      {"id": "appendix_a_sourced", "type": "manual", "text": "Appendix A Exam Blueprint Summary sourced from the Exam Format Evidence record; disclaimed as subject to change; no invented statistics"},
+      {"id": "appendix_b_budget", "type": "python", "op": "time_per_question", "text": "Appendix B Time-Per-Question Budget calculation shown (researched time limit / item count); pacing strategies practical"},
+      {"id": "two_pass_contents", "type": "manual", "text": "Two-pass Contents gate: printed folios equal actual for every entry; no 'undefined' strings; live folio fields; front matter folio-free"},
+      {"id": "strip_sweep", "type": "manual", "text": "Every IMAGE PROMPT block removed; opening and closing table tags balance; marker string absent"},
+      {"id": "contrast_byline_nonaffiliation", "type": "manual", "text": "Contrast >=4.5:1 for every pair; byline appears exactly twice (title page, copyright), name only; non-affiliation statement present on copyright page"},
+      {"id": "no_invented_and_zero_correction", "type": "manual", "text": "No invented statistics/regulations/thresholds/attributions anywhere including marketing; Operator Zero Correction Standard met; release record written"}
+    ]
+  }
+}

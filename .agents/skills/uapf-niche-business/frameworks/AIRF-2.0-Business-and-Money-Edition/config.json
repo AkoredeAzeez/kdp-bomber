@@ -1,0 +1,151 @@
+{
+  "framework_id": "AIRF 2.0 Business and Money Edition",
+  "niche": "uapf-niche-business",
+  "overlay": "OV-BIZ",
+  "source_of_truth": "../../SKILL.md",
+  "framework_of_record": "AIRF 2.0 Business and Money Edition",
+
+  "risk_regime": {
+    "value": "R3",
+    "mandatory_every_title": true,
+    "waivable": false
+  },
+
+  "interior": {
+    "trim_in": [6, 9],
+    "margins_in": 0.7,
+    "increase_gutter_when_binding_requires": true,
+    "body_font": "Times New Roman",
+    "grayscale_safe_interior": true,
+    "front_matter_page_numbers_visible": false,
+    "introduction_is_visible_page": 1
+  },
+
+  "typography_decision_table": {
+    "standard_adult_business": {"body_pt": 12, "line_spacing": 1.15},
+    "dense_reference_accounting": {"body_pt": 11, "line_spacing": 1.15},
+    "beginner_senior_money": {"body_pt": 13, "line_spacing": 1.15},
+    "chapter_h1": {"style": "Heading 1", "pt": 14, "bold": true, "align": "center", "case": "block"},
+    "subchapter_h2": {"style": "Heading 2", "align": "left", "case": "capitalized"},
+    "heading_h3": "only when needed"
+  },
+
+  "charts": {
+    "grayscale_legible": true,
+    "axis_zero_based_unless_labeled": true,
+    "never_exaggerate_gains_or_shrink_risk": true
+  },
+
+  "subtitle": {
+    "options_count": 5,
+    "post_clearance_only": true,
+    "preserve_title_verbatim": true,
+    "prohibited": [
+      "guaranteed wealth",
+      "guaranteed or passive income promise",
+      "fixed-time financial freedom",
+      "market-beating returns",
+      "certain business success",
+      "tax elimination",
+      "risk-free",
+      "specific earnings figure"
+    ]
+  },
+
+  "pseudonym": {
+    "format": "First Name M. Surname",
+    "source": "random-name-generator",
+    "credentials_attached": false,
+    "conflict_searched": true
+  },
+
+  "reference_styles": {
+    "apa_7": ["management", "marketing", "careers", "personal finance", "behavioral economics"],
+    "chicago_author_date": ["economics", "analytics"],
+    "chicago_notes_bibliography": ["business history", "biography"],
+    "jurisdiction_standard": "statutes and tax authorities, naming authority and year"
+  },
+
+  "tiers": [
+    "Regulated Financial",
+    "Financial Guidance",
+    "Venture",
+    "Organizational",
+    "Commercial",
+    "Analytical"
+  ],
+
+  "edition_type": {
+    "options": ["year-stamped", "evergreen"],
+    "year_stamped_topics": ["tax", "retirement", "allowance/contribution limits"],
+    "annual_edition_update_pass": true
+  },
+
+  "competitor_research": {
+    "min_comparables": 10,
+    "max_comparables": 20,
+    "format": "print",
+    "statistics": ["mean", "median", "min", "max", "central_range"],
+    "median_preferred_on_outliers": true,
+    "never_single_outlier_sets_target": true
+  },
+
+  "page_bands": {
+    "beginner_personal_finance": [140, 200],
+    "standard_business_career": [180, 250],
+    "dense_reference_analytical": [220, 300]
+  },
+
+  "compulsory_image_rule": {
+    "auto_insert_all_any_page_count": true,
+    "quantity_by_content_need_not_page_count": true,
+    "placeholder_pattern": "[IMG-XX]",
+    "manifest_file": "image_manifest.md",
+    "chart_alt_text_includes_key_numbers": true
+  },
+
+  "front_matter_order": [
+    "half-title (when appropriate)",
+    "full title page",
+    "copyright page",
+    "category-specific financial and legal disclaimer",
+    "dedication (optional)",
+    "preface (~1 page)",
+    "how to use this book (~1 page)",
+    "automatic live TOC",
+    "introduction on visible Arabic page 1"
+  ],
+
+  "copyright_page": {
+    "no_publisher_line": true,
+    "no_isbn": true,
+    "no_placeholders_unless_user_supplied": true,
+    "disclaimer_text": "see SKILL.md Front matter / Content Rules (do not inline prose)"
+  },
+
+  "back_matter": {
+    "conclusion_pages": 1.5,
+    "appendices": "practical value only, no filler; see SKILL.md Back matter",
+    "links_verified_before_finalization": true
+  },
+
+  "layout_laws": {
+    "body_prose": "justified",
+    "lists_steps_worked_examples_worksheets_formulas_questions_tables": "left aligned",
+    "no_em_dashes": true,
+    "one_marketplace_number_convention_per_manuscript": true
+  },
+
+  "dynamic_facts_log": {
+    "one_per_project": true,
+    "row_per_time_sensitive_figure": true,
+    "each_figure_dated_as_of_month_year": true,
+    "jurisdiction_labeled": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

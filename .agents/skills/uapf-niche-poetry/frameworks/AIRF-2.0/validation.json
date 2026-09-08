@@ -1,0 +1,46 @@
+{
+  "framework_id": "AIRF 2.0",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_poetry.py; type=manual require craft/originality/cadence review, live research, or render inspection.",
+  "gates": {
+    "GATE_1_originality_and_copyright": [
+      {"id": "emotional_arc_declared", "type": "manual", "text": "Active Emotional Arc declared and documented in Phase 0 Summary"},
+      {"id": "entry_count_locked", "type": "manual", "text": "DECLARED ENTRY COUNT locked and confirmed"},
+      {"id": "epigraph_rights", "type": "manual", "text": "All epigraphs public-domain with attribution, or rights-cleared with documentation"},
+      {"id": "no_paraphrased_quotes", "type": "manual", "text": "No paraphrased famous quotes presented as original writing"},
+      {"id": "no_recycled_affirmations", "type": "manual", "text": "No recycled widely-circulated affirmation phrases presented as original compositions"},
+      {"id": "no_imitative_pieces", "type": "manual", "text": "No substantially imitative pieces resembling copyrighted poets' work without transformation"}
+    ],
+    "GATE_2_structure_and_arc": [
+      {"id": "sections_map_arc", "type": "manual", "text": "Section structure maps to Active Emotional Arc: opening begins at starting register; final section arrives at declared destination"},
+      {"id": "section_count", "type": "python", "op": "validate_section_count", "text": "Collection has 4-8 sections"},
+      {"id": "poems_per_section", "type": "python", "op": "validate_poems_per_section", "text": "Each section contains 8-20 poems"},
+      {"id": "entry_count_exact", "type": "python", "op": "verify_entry_count", "text": "DECLARED ENTRY COUNT verified: total distinct complete entries = exactly N"},
+      {"id": "sections_distinct", "type": "manual", "text": "Each section contains distinct work; Section 3 content could not move to Section 1 without emotional incoherence"},
+      {"id": "no_stub_entries", "type": "manual", "text": "No entry is a stub, placeholder, or filler"},
+      {"id": "index_first_lines", "type": "manual", "text": "Index of First Lines built for poetry collections"},
+      {"id": "day_numbers_sequential", "type": "python", "op": "verify_day_sequence", "text": "Day numbers (if applicable) sequential and complete with no gaps"}
+    ],
+    "GATE_3_quality_originality_cadence": [
+      {"id": "cliche_audit", "type": "manual", "text": "Cliche audit passed: prohibited stock imagery and phrases absent, or present only in demonstrably transformed context"},
+      {"id": "variety_quota", "type": "python", "op": "variety_quota", "text": "No core theme appears more times than the size-banded quota allows in substantially identical form"},
+      {"id": "present_tense", "type": "manual", "text": "Present-tense rule verified for all affirmations"},
+      {"id": "cadence_sample", "type": "python", "op": "cadence_sample_size", "text": "Cadence audit: at least 10% sample from each section read aloud; no awkward stress, no arbitrary breaks, no inert affirmations"},
+      {"id": "specificity_test", "type": "manual", "text": "Every section contains at least 3 entries using concrete, particular images not interchangeable with generic inspirational content"},
+      {"id": "healing_disclaimer", "type": "manual", "text": "Mental health / healing disclaimer present if collection makes healing claims"},
+      {"id": "crisis_resources", "type": "manual", "text": "Crisis resources present and verified live if collection addresses grief, trauma, or mental health themes"}
+    ],
+    "GATE_4_production_and_kdp": [
+      {"id": "front_matter_order", "type": "manual", "text": "Front matter in correct order per Book Architecture"},
+      {"id": "back_matter_complete", "type": "manual", "text": "Back matter complete: Closing Note, Index of First Lines, About Author, Resources where applicable"},
+      {"id": "typography", "type": "manual", "text": "Times New Roman throughout; poem body 12pt 1.5 spacing; affirmation 13pt italic; section titles 16pt bold"},
+      {"id": "white_space_intentional", "type": "manual", "text": "White space treated as intentional design; short poems not forced to fill pages"},
+      {"id": "images_present", "type": "manual", "text": "All images generated and inserted (auto-rule at any page count)"},
+      {"id": "image_style", "type": "manual", "text": "Images use abstract or painterly style appropriate to emotional register, not literal illustration"},
+      {"id": "image_caption_alt", "type": "manual", "text": "Every image has caption and alt text"},
+      {"id": "auto_toc", "type": "manual", "text": "Automatic TOC populated and updateable; section-level entries for poetry collections"},
+      {"id": "folio_start_intro", "type": "manual", "text": "Page numbering begins with Introduction as page 1"},
+      {"id": "uniqueness_audit", "type": "manual", "text": "This collection's arc, section structure, imagery, voice, and range distinct from any previous poetry/affirmations book this session"},
+      {"id": "clean_render", "type": "manual", "text": "Final DOCX renders cleanly: correct poem spacing, no broken stanzas across pages, no orphaned section titles"}
+    ]
+  }
+}

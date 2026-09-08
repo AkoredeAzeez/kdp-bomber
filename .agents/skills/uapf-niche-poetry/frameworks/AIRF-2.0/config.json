@@ -1,0 +1,141 @@
+{
+  "framework_id": "AIRF 2.0",
+  "niche": "uapf-niche-poetry",
+  "overlay": "OV-POET",
+  "source_of_truth": "../../SKILL.md",
+
+  "sub_genres": [
+    "poetry_collection",
+    "daily_affirmations",
+    "quotes_wisdom",
+    "spoken_word",
+    "prose_poetry_lyric_essay",
+    "themed_blessing",
+    "odes",
+    "haiku_formal_verse"
+  ],
+
+  "interior": {
+    "trim_in": [6.0, 9.0],
+    "margins_in": 0.7,
+    "body_font": "Times New Roman",
+    "poem_body_pt": 12,
+    "poem_body_line_spacing": 1.5,
+    "affirmation_pt": 13,
+    "affirmation_style": "italic",
+    "day_number_pt": 11,
+    "day_number_style": "bold_allcaps",
+    "section_title_pt": 16,
+    "section_title_style": "bold_centered",
+    "poem_title_pt": 12,
+    "poem_title_style": "bold",
+    "epigraph_pt": 11,
+    "epigraph_style": "italic_centered",
+    "reflection_pt": 12,
+    "reflection_line_spacing": 1.15,
+    "image_style": "abstract_or_painterly_not_photorealistic"
+  },
+
+  "structure": {
+    "sections_min": 4,
+    "sections_max": 8,
+    "poems_per_section_min": 8,
+    "poems_per_section_max": 20,
+    "sections_map_to_emotional_arc": true,
+    "sections_not_interchangeable": true
+  },
+
+  "affirmation_unit": {
+    "required": ["day_number", "affirmation"],
+    "optional": ["reflection", "journaling_prompt"],
+    "affirmation_sentences_min": 1,
+    "affirmation_sentences_max": 4,
+    "reflection_words_min": 50,
+    "reflection_words_max": 150,
+    "unit_total_words_max": 300,
+    "tense": "present",
+    "person": "first_person_singular"
+  },
+
+  "variety_quota": {
+    "note": "Max repetitions of any single core idea in substantially identical form, by collection size. Applies to collections of 30+ entries.",
+    "applies_at_min_entries": 30,
+    "bands": [
+      {"min": 30, "max": 60, "max_reps": 3},
+      {"min": 61, "max": 120, "max_reps": 5},
+      {"min": 121, "max": 200, "max_reps": 6},
+      {"min": 201, "max": 365, "max_reps": 8}
+    ]
+  },
+
+  "cadence_audit": {
+    "sample_fraction": 0.10,
+    "sample_scope": "per_section",
+    "min_sample": 1
+  },
+
+  "page_band_targets": {
+    "note": "Defaults only; always verify against live Amazon competitor research. 6x9 trim.",
+    "affirmations_30_day": [60, 100],
+    "affirmations_90_day": [140, 200],
+    "affirmations_365_day": [280, 400],
+    "poetry_collection_60_100_poems": [100, 180],
+    "spoken_word_20_50_pieces": [80, 140],
+    "quotes_wisdom_100_200": [120, 200],
+    "haiku_100_300": [60, 120]
+  },
+
+  "haiku_syllables": [5, 7, 5],
+
+  "image_rule": {
+    "section_opener_image_any_page_count": true,
+    "one_image_per_section": true,
+    "caption_and_alt_required": true
+  },
+
+  "front_matter": {
+    "sequence": ["half_title", "full_title", "copyright", "disclaimer_if_claims", "dedication_optional", "preface", "how_to_use", "auto_toc", "introduction"],
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "introduction_max_pages": 1,
+    "introduction_is_page_one": true
+  },
+
+  "back_matter": {
+    "sequence": ["closing_note", "acknowledgments_optional", "about_author", "index_of_first_lines", "recommended_reading", "resources_if_applicable"],
+    "closing_note_pages": 1,
+    "recommended_reading_min": 5,
+    "recommended_reading_max": 10,
+    "index_of_first_lines_for_poetry": true
+  },
+
+  "auto_config": {
+    "reference_style": "Chicago Notes and Bibliography",
+    "risk_baseline": "R1",
+    "risk_elevated_for_trauma": "R3",
+    "cliche_prohibition": true,
+    "variety_quota_active_at_entries": 30
+  },
+
+  "copyright": {
+    "all_content_original_and_unpublished": true,
+    "public_domain_cutoff_year": 1928,
+    "public_domain_quotable_with_attribution": true,
+    "modern_poets_require_permission": true
+  },
+
+  "content_rules": {
+    "cliche_audit_mandatory": true,
+    "no_paraphrased_famous_quotes_as_original": true,
+    "no_recycled_circulating_affirmations_as_original": true,
+    "present_tense_affirmations": true,
+    "first_person_singular_affirmations": true,
+    "no_em_dashes": true,
+    "no_en_dashes": true,
+    "curly_apostrophes_only": true,
+    "healing_claims_require_disclaimer_and_crisis_resources": true,
+    "no_invented_author_credentials": true
+  },
+
+  "contrast_min_ratio": 4.5
+}

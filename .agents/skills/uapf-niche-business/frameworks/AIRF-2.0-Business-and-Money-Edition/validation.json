@@ -1,0 +1,46 @@
+{
+  "framework_id": "AIRF 2.0 Business and Money Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_business.py; type=manual require agent verification, live-source checks, or render inspection. R3 is mandatory for every gate.",
+  "gates": {
+    "GATE_1_configuration": [
+      {"id": "title_verbatim", "gate": 1, "type": "manual", "text": "Title recorded verbatim, character for character, in every artifact so far"},
+      {"id": "jurisdiction_stated", "gate": 1, "type": "manual", "text": "Language, marketplace, and tax/legal jurisdiction identified and stated"},
+      {"id": "trademark_screen", "gate": 1, "type": "manual", "text": "Elevated trademark screen completed and dated, databases logged; GREEN or user-acknowledged YELLOW/RED"},
+      {"id": "r3_active", "gate": 1, "type": "manual", "text": "Tier plus risk classification recorded; R3 confirmed active and not downgraded"},
+      {"id": "edition_type", "gate": 1, "type": "manual", "text": "Year-stamped vs evergreen decision recorded"},
+      {"id": "page_target", "gate": 1, "type": "python", "op": "recommend_page_target", "text": "10-20 valid comparables; exclusions applied; mean/median/min/max/central range computed; median-preferred target justified"},
+      {"id": "typography_selected", "gate": 1, "type": "manual", "text": "Typography, reference style, and visual strategy selected with rationale"},
+      {"id": "pseudonym_clean", "gate": 1, "type": "manual", "text": "Pseudonym generated (First Name M. Surname), conflict-searched, zero credentials attached"},
+      {"id": "subtitles_no_promise", "gate": 1, "type": "manual", "text": "Five subtitles generated post-clearance; none contains an income/outcome promise; one recommended"}
+    ],
+    "GATE_2_structure": [
+      {"id": "unique_toc", "gate": 2, "type": "manual", "text": "TOC is a unique architecture for this title; learning journey fits the tier; no duplicate chapter purposes"},
+      {"id": "risk_woven", "gate": 2, "type": "manual", "text": "Regulated Financial titles: risk education, jurisdiction notes, referral integration visible in the sequence"},
+      {"id": "allocation_sums", "gate": 2, "type": "manual", "text": "Page allocation sums to the competitor-informed target"},
+      {"id": "front_matter_order", "gate": 2, "type": "manual", "text": "Front matter in required order; disclaimer matches tier and names the right professionals; investment-risk statement where relevant"},
+      {"id": "copyright_clean", "gate": 2, "type": "manual", "text": "Copyright page clean: no placeholder publisher/ISBN/credentials"},
+      {"id": "word_skeleton", "gate": 2, "type": "manual", "text": "6x9, 0.7in margins, Times New Roman, real Heading styles, live TOC field, Introduction = visible page 1"}
+    ],
+    "GATE_3_per_chapter": [
+      {"id": "math_audit", "gate": 3, "type": "manual", "text": "Every worked example recomputed independently; assumptions stated; marketplace-correct conventions; losing/break-even scenarios where honesty requires"},
+      {"id": "dynamic_facts", "gate": 3, "type": "manual", "text": "Every time-sensitive figure verified live, as-of-dated, jurisdiction-labeled, logged in the Dynamic-Facts Verification Log"},
+      {"id": "no_promises", "gate": 3, "type": "manual", "text": "No outcome promises, urgency, scarcity, personal recommendations, or pressure framing"},
+      {"id": "referral_language", "gate": 3, "type": "manual", "text": "Referral / out-of-scope language present where triggered"},
+      {"id": "entity_protocol", "gate": 3, "type": "manual", "text": "Real-company/living-person protocol satisfied for every named entity; hypotheticals labeled"},
+      {"id": "content_standards", "gate": 3, "type": "manual", "text": "No prohibited business models/imagery (alcohol, pork, gambling, adult, predatory lending, MLM/pyramid); ethical alternatives where natural"},
+      {"id": "visuals_present", "gate": 3, "type": "python", "op": "image_rule", "text": "Compulsory image rule honored for the projected page count; visuals inserted with caption+alt text or [IMG-XX] plus complete manifest row; charts grayscale-legible, honest axes"},
+      {"id": "voice_audit", "gate": 3, "type": "manual", "text": "No AI filler phrases, no em dashes, no recycled examples; body justified, lists/tables left aligned"}
+    ],
+    "GATE_4_release": [
+      {"id": "title_everywhere", "gate": 4, "type": "manual", "text": "Title verbatim in every location including metadata and cover"},
+      {"id": "facts_log_complete", "gate": 4, "type": "manual", "text": "Full Dynamic-Facts Verification Log complete: one row per volatile figure, all re-checked"},
+      {"id": "examples_reverified", "gate": 4, "type": "manual", "text": "All worked examples re-verified book-wide; cross-chapter numeric consistency"},
+      {"id": "convention_consistency", "gate": 4, "type": "manual", "text": "One currency/number/jurisdiction convention throughout; cross-market figures labeled with currency codes"},
+      {"id": "compliance_final", "gate": 4, "type": "manual", "text": "Disclaimer, earnings-claims compliance, and professional-boundary language final-checked in manuscript, subtitle, description, imagery"},
+      {"id": "conclusion_shape", "gate": 4, "type": "manual", "text": "Conclusion about 1.5 formatted pages; appendices practically valuable; every resource link and program name verified current"},
+      {"id": "render_clean", "gate": 4, "type": "manual", "text": "TOC and fields updated; numbering correct from Introduction; no clipped tables, stretched images, broken headings, orphans; rendered page by page"},
+      {"id": "uniqueness_audit", "gate": 4, "type": "manual", "text": "Uniqueness audit passed against catalogue and sibling series volumes"},
+      {"id": "ai_disclosure", "gate": 4, "type": "manual", "text": "AI-image disclosure recorded where required; references confirmed real; no fabricated source anywhere"}
+    ]
+  }
+}

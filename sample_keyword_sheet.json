@@ -1,0 +1,357 @@
+{
+ "niche": "Chair Yoga for Seniors",
+ "marketplace": "US",
+ "generated": "2026-08-15",
+ "keywords": [
+  {
+   "keyword": "chair yoga for seniors",
+   "difficulty": 59,
+   "band": "HARD",
+   "est_sales_day": 28.26,
+   "est_rev_month": 12708.94,
+   "top10_avg_bsr": 9000,
+   "title_density": 7,
+   "autocomplete_variants": 24
+  },
+  {
+   "keyword": "chair yoga for seniors over 60",
+   "difficulty": 24,
+   "band": "EASY",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 9,
+   "autocomplete_variants": 7
+  },
+  {
+   "keyword": "chair exercises for seniors",
+   "difficulty": 64,
+   "band": "HARD",
+   "est_sales_day": 7.97,
+   "est_rev_month": 3583.28,
+   "top10_avg_bsr": 40000,
+   "title_density": 1,
+   "autocomplete_variants": 20
+  },
+  {
+   "keyword": "yoga for seniors",
+   "difficulty": 45,
+   "band": "MODERATE",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 2,
+   "autocomplete_variants": 17
+  },
+  {
+   "keyword": "senior fitness book",
+   "difficulty": 71,
+   "band": "HARD",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 4,
+   "autocomplete_variants": 6
+  },
+  {
+   "keyword": "balance exercises for seniors",
+   "difficulty": 88,
+   "band": "VERY HARD",
+   "est_sales_day": 11.81,
+   "est_rev_month": 5309.14,
+   "top10_avg_bsr": 26000,
+   "title_density": 1,
+   "autocomplete_variants": 22
+  },
+  {
+   "keyword": "chair yoga weight loss",
+   "difficulty": 33,
+   "band": "EASY",
+   "est_sales_day": 28.26,
+   "est_rev_month": 12708.94,
+   "top10_avg_bsr": 9000,
+   "title_density": 1,
+   "autocomplete_variants": 22
+  },
+  {
+   "keyword": "gentle yoga for beginners",
+   "difficulty": 68,
+   "band": "HARD",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 4,
+   "autocomplete_variants": 5
+  },
+  {
+   "keyword": "stretching for seniors",
+   "difficulty": 35,
+   "band": "MODERATE",
+   "est_sales_day": 18.85,
+   "est_rev_month": 8475.38,
+   "top10_avg_bsr": 15000,
+   "title_density": 7,
+   "autocomplete_variants": 8
+  },
+  {
+   "keyword": "10 minute chair yoga",
+   "difficulty": 87,
+   "band": "VERY HARD",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 5,
+   "autocomplete_variants": 21
+  },
+  {
+   "keyword": "chair yoga for weight loss for seniors",
+   "difficulty": 41,
+   "band": "MODERATE",
+   "est_sales_day": 51.88,
+   "est_rev_month": 23329.68,
+   "top10_avg_bsr": 4000,
+   "title_density": 4,
+   "autocomplete_variants": 15
+  },
+  {
+   "keyword": "wall pilates for seniors",
+   "difficulty": 30,
+   "band": "EASY",
+   "est_sales_day": 7.97,
+   "est_rev_month": 3583.28,
+   "top10_avg_bsr": 40000,
+   "title_density": 2,
+   "autocomplete_variants": 22
+  },
+  {
+   "keyword": "strength training for seniors over 60",
+   "difficulty": 25,
+   "band": "EASY",
+   "est_sales_day": 7.97,
+   "est_rev_month": 3583.28,
+   "top10_avg_bsr": 40000,
+   "title_density": 4,
+   "autocomplete_variants": 19
+  },
+  {
+   "keyword": "core exercises for seniors",
+   "difficulty": 86,
+   "band": "VERY HARD",
+   "est_sales_day": 11.81,
+   "est_rev_month": 5309.14,
+   "top10_avg_bsr": 26000,
+   "title_density": 6,
+   "autocomplete_variants": 18
+  },
+  {
+   "keyword": "chair yoga book with pictures",
+   "difficulty": 76,
+   "band": "VERY HARD",
+   "est_sales_day": 18.85,
+   "est_rev_month": 8475.38,
+   "top10_avg_bsr": 15000,
+   "title_density": 5,
+   "autocomplete_variants": 11
+  },
+  {
+   "keyword": "somatic exercises for seniors",
+   "difficulty": 41,
+   "band": "MODERATE",
+   "est_sales_day": 4.32,
+   "est_rev_month": 1942.18,
+   "top10_avg_bsr": 70000,
+   "title_density": 4,
+   "autocomplete_variants": 6
+  }
+ ],
+ "marketplaces": [
+  {
+   "code": "US",
+   "est_rev_month": 48200,
+   "opportunity": 58,
+   "note": "crowded but huge"
+  },
+  {
+   "code": "UK",
+   "est_rev_month": 14100,
+   "opportunity": 71
+  },
+  {
+   "code": "DE",
+   "est_rev_month": 9800,
+   "opportunity": 83,
+   "note": "no direct DE equivalent in top 10"
+  },
+  {
+   "code": "FR",
+   "est_rev_month": 4300,
+   "opportunity": 77
+  },
+  {
+   "code": "IT",
+   "est_rev_month": 2900,
+   "opportunity": 66
+  },
+  {
+   "code": "ES",
+   "est_rev_month": 2600,
+   "opportunity": 64
+  },
+  {
+   "code": "CA",
+   "est_rev_month": 6900,
+   "opportunity": 62
+  },
+  {
+   "code": "AU",
+   "est_rev_month": 4100,
+   "opportunity": 69
+  },
+  {
+   "code": "JP",
+   "est_rev_month": 3500,
+   "opportunity": 44
+  }
+ ],
+ "seasonal": [
+  {
+   "keyword": "chair yoga for seniors",
+   "snapshots": [
+    {
+     "date": "2025-09",
+     "top10_avg_bsr": 16000
+    },
+    {
+     "date": "2025-10",
+     "top10_avg_bsr": 15200
+    },
+    {
+     "date": "2025-11",
+     "top10_avg_bsr": 14100
+    },
+    {
+     "date": "2025-12",
+     "top10_avg_bsr": 11800
+    },
+    {
+     "date": "2026-01",
+     "top10_avg_bsr": 6200
+    },
+    {
+     "date": "2026-02",
+     "top10_avg_bsr": 7800
+    },
+    {
+     "date": "2026-03",
+     "top10_avg_bsr": 10500
+    },
+    {
+     "date": "2026-04",
+     "top10_avg_bsr": 12800
+    },
+    {
+     "date": "2026-05",
+     "top10_avg_bsr": 14500
+    },
+    {
+     "date": "2026-06",
+     "top10_avg_bsr": 16800
+    },
+    {
+     "date": "2026-07",
+     "top10_avg_bsr": 17600
+    },
+    {
+     "date": "2026-08",
+     "top10_avg_bsr": 16900
+    }
+   ]
+  },
+  {
+   "keyword": "senior fitness book",
+   "snapshots": [
+    {
+     "date": "2025-09",
+     "top10_avg_bsr": 30000
+    },
+    {
+     "date": "2025-10",
+     "top10_avg_bsr": 29500
+    },
+    {
+     "date": "2025-11",
+     "top10_avg_bsr": 28800
+    },
+    {
+     "date": "2025-12",
+     "top10_avg_bsr": 24000
+    },
+    {
+     "date": "2026-01",
+     "top10_avg_bsr": 13500
+    },
+    {
+     "date": "2026-02",
+     "top10_avg_bsr": 17800
+    },
+    {
+     "date": "2026-03",
+     "top10_avg_bsr": 22500
+    },
+    {
+     "date": "2026-04",
+     "top10_avg_bsr": 26000
+    },
+    {
+     "date": "2026-05",
+     "top10_avg_bsr": 28500
+    },
+    {
+     "date": "2026-06",
+     "top10_avg_bsr": 30500
+    },
+    {
+     "date": "2026-07",
+     "top10_avg_bsr": 31000
+    },
+    {
+     "date": "2026-08",
+     "top10_avg_bsr": 30200
+    }
+   ]
+  },
+  {
+   "keyword": "wall pilates for seniors",
+   "snapshots": [
+    {
+     "date": "2026-02",
+     "top10_avg_bsr": 52000
+    },
+    {
+     "date": "2026-03",
+     "top10_avg_bsr": 44000
+    },
+    {
+     "date": "2026-04",
+     "top10_avg_bsr": 38000
+    },
+    {
+     "date": "2026-05",
+     "top10_avg_bsr": 33000
+    },
+    {
+     "date": "2026-06",
+     "top10_avg_bsr": 30000
+    },
+    {
+     "date": "2026-07",
+     "top10_avg_bsr": 27500
+    },
+    {
+     "date": "2026-08",
+     "top10_avg_bsr": 24800
+    }
+   ]
+  }
+ ]
+}

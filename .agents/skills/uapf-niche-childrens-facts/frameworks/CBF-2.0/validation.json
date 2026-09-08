@@ -1,0 +1,60 @@
+{
+  "framework_id": "CBF 2.0",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). OV-CFACT inherits all OV-CHILD gates; where OV-CFACT tightens a rule, the tighter rule governs. type=python checks are computable via genie_childrens_facts.py; type=manual require agent/render/source inspection.",
+  "gates": {
+    "GATE_1_title_analysis_and_book_lock": [
+      {"id": "band_locked", "type": "manual", "text": "Age band locked (AB-1 / AB-2-L1 / AB-2-L2 / AB-2-L3 / AB-3) with signal evidence stated"},
+      {"id": "kd_locked", "type": "manual", "text": "Knowledge depth level locked (KD-1 / KD-2 / KD-3)"},
+      {"id": "host_profile_cbfact", "type": "manual", "text": "Host profile confirmed as CB-FACT; any narrative frame is a guest device <= one-sixth of pages"},
+      {"id": "trim_locked", "type": "manual", "text": "Trim locked: 8.5 x 11 default or 8.5 x 8.5 (illustrated only) with justification"},
+      {"id": "page_target_even", "type": "python", "op": "page_count_valid", "text": "Target page count set and even; KDP minimum 24 confirmed"},
+      {"id": "count_claim_extracted", "type": "manual", "text": "Fact count claim extracted from title and recorded; minimum fact production target set"},
+      {"id": "superlative_inventory", "type": "manual", "text": "Superlative inventory complete (all superlatives in title/concept noted and flagged)"},
+      {"id": "curiosity_map", "type": "manual", "text": "Curiosity Map (section sequence, familiar -> exotic) drafted and recorded in Book Lock"},
+      {"id": "facts_per_spread_target", "type": "python", "op": "facts_per_spread_valid", "text": "Facts-per-spread target within OV-CFACT limits (max 8 per spread)"},
+      {"id": "type_floors_recorded", "type": "python", "op": "type_floor_ok", "text": "Type floors recorded for body, callout/Wow, gloss, caption - all above minimums"},
+      {"id": "color_and_accents", "type": "manual", "text": "Full color confirmed; section accent colors planned (4-8); bleed flag ON with bleed dims recorded"},
+      {"id": "verification_protocol_active", "type": "manual", "text": "Dual-source verification protocol ACTIVE; child-safety battery PENDING; read-aloud flag set"}
+    ],
+    "GATE_2_manuscript_and_fact_verification": [
+      {"id": "sections_per_curiosity_map", "type": "manual", "text": "All sections complete per Curiosity Map; order follows curiosity logic (familiar -> exotic)"},
+      {"id": "fact_spread_unit", "type": "manual", "text": "Every themed spread follows the Fact-Spread Unit: header + anchor + cluster + Wow Callout + optional Quiz"},
+      {"id": "fact_count_reconciled", "type": "python", "op": "fact_count_reconcile", "text": "Total individually numbered facts equals or exceeds the title count claim"},
+      {"id": "no_orphan_facts", "type": "manual", "text": "No fact appears on a page without thematic context (no orphan facts)"},
+      {"id": "verification_log_complete", "type": "manual", "text": "Verification log complete: every fact has two independent authoritative sources recorded"},
+      {"id": "superlative_audit", "type": "manual", "text": "Every superlative verified; volatile superlatives dated inline in text"},
+      {"id": "number_lock", "type": "manual", "text": "All quantities/statistics/dimensions verified and hedged; unit consistency confirmed"},
+      {"id": "concrete_example_law", "type": "manual", "text": "Every abstract concept followed immediately by a concrete analogy"},
+      {"id": "quiz_answers_adjacent", "type": "manual", "text": "Quick Quiz answerable from spread content; answers immediately adjacent; no 'see page X'"},
+      {"id": "vocab_and_gloss", "type": "manual", "text": "Stretch-word count per spread within limits; on-page gloss on every spread with a stretch word"},
+      {"id": "back_matter_complete", "type": "manual", "text": "Glossary, source list (>=2 per major fact), index (AB-3/KD-3 or KD-2 >64pp), Further Reading complete"},
+      {"id": "read_aloud_or_na", "type": "manual", "text": "Read-aloud cadence test PASSED (AB-1 and AB-2-L1) or NOT APPLICABLE"},
+      {"id": "appropriateness_battery_cfact", "type": "manual", "text": "Child-appropriateness battery PASSED incl. OV-CFACT extensions (death/predation, human body, history, environment, scary content)"},
+      {"id": "final_spread_best_fact", "type": "manual", "text": "Final spread delivers the most astonishing fact in the book"}
+    ],
+    "GATE_3_interior_design_art_layout": [
+      {"id": "accent_colors_distinct", "type": "manual", "text": "One distinct hue per section; all pass AA contrast; colorblind sim run on diagrams/bands"},
+      {"id": "layer_template_order", "type": "manual", "text": "Fact-spread layouts follow the 12-layer template; no body text below the quiet-zone/panel layer"},
+      {"id": "text_zone_reserved", "type": "manual", "text": "Every illustration/photo brief stated the exact reserved zone BEFORE art was generated"},
+      {"id": "real_typeset_everywhere", "type": "manual", "text": "All headers, facts, callouts, quiz, gloss, captions, and diagram labels are real editable type - no AI lettering"},
+      {"id": "diagram_labels_and_title", "type": "manual", "text": "All diagram labels real typeset with a title and scale indicator where relevant"},
+      {"id": "sidebar_law", "type": "python", "op": "sidebar_law", "text": "Sidebars on no more than 40% of spreads; all visually subordinate to anchor fact"},
+      {"id": "treatment_consistent", "type": "manual", "text": "Photo vs. illustration treatment consistent per Book Lock; no random alternation"},
+      {"id": "navigation_badge", "type": "manual", "text": "Running fact-number badge (if count-claim book) visible and consistently positioned"},
+      {"id": "bleed_and_parity", "type": "python", "op": "bleed_page_size", "text": "Bleed art extends to media edge; odd pages bleed right, even bleed left; correct bleed dims"},
+      {"id": "safe_zone_and_grayscale", "type": "manual", "text": "Critical content inside trim + 0.5 in safe zone; grayscale proof of colored text pages passes"},
+      {"id": "render_reviews", "type": "manual", "text": "Thumbnail, 100%-render, and spread-view reviews pass; no source-identifying resemblance to references"}
+    ],
+    "GATE_4_production_preflight_release": [
+      {"id": "page_count_and_color", "type": "python", "op": "page_count_valid+color_class", "text": "Even page count within KDP range; premium color confirmed <72pp / standard 72+"},
+      {"id": "fact_count_final", "type": "python", "op": "fact_count_reconcile", "text": "Numbered facts in final PDF equal or exceed title claim"},
+      {"id": "superlatives_dated_final", "type": "manual", "text": "All volatile superlatives dated in final text; no undated volatile superlative remains"},
+      {"id": "verification_log_on_record", "type": "manual", "text": "Verification log confirmed complete and available for internal record"},
+      {"id": "pdf_boxes_correct", "type": "manual", "text": "Fixed-layout export; MediaBox/BleedBox cover bleed page; TrimBox parity-correct; no crop marks"},
+      {"id": "fonts_and_dpi", "type": "manual", "text": "All fonts embedded, no substituted glyphs; all images >=300 DPI at placed size"},
+      {"id": "real_type_preflight", "type": "manual", "text": "Text extraction/preflight confirms real type throughout; no AI lettering"},
+      {"id": "physical_proof", "type": "manual", "text": "Physical proof ordered and reviewed (trim, paper, accent saturation, spread gutter, Wow legibility)"},
+      {"id": "ai_disclosure_and_safety", "type": "manual", "text": "KDP AI-disclosure met; child-safety battery re-confirmed; all gate statuses current with evidence"}
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "framework_id": "AIRF 2.0 Reference Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_reference.py; type=manual require agent/render/source inspection. SKILL.md wins on any disagreement.",
+  "gates": {
+    "GATE_1_title_lock": [
+      {"id": "subtype_locked", "gate": 1, "type": "manual", "text": "Sub-type locked (REF-FACT/REF-TRIVIA/REF-LIST/REF-REF) with signal evidence; secondary sub-type (<25% pages) documented if present"},
+      {"id": "count_claim_achievable", "gate": 1, "type": "python", "op": "check_count_claim", "text": "Title count claim achievable within entry density and target page range for the sub-type"},
+      {"id": "trademark_and_uniqueness", "gate": 1, "type": "manual", "text": "Trademark and competitive uniqueness screen run; conflicts noted before proceeding"},
+      {"id": "superlative_inventory", "gate": 1, "type": "manual", "text": "Every superlative in title/concept flagged by tier (volatile/semi-stable/fixed)"},
+      {"id": "adult_audience_confirmed", "gate": 1, "type": "manual", "text": "Adult audience unambiguous; OV-CFACT/OV-CHILD re-route check clear"},
+      {"id": "round_architecture_documented", "gate": 1, "type": "python", "op": "validate_round_architecture", "text": "REF-TRIVIA: rounds x fixed questions-per-round consistent; total in target-question band; difficulty ladder positions valid"},
+      {"id": "page_count_even_and_ranged", "gate": 1, "type": "python", "op": "check_page_count", "text": "Target page count even and within KDP-supported range for the sub-type"},
+      {"id": "book_lock_complete", "gate": 1, "type": "manual", "text": "Book Lock output complete; three subtitles generated and selection recorded; KDP category targets identified"}
+    ],
+    "GATE_2_manuscript_verification": [
+      {"id": "entry_count_meets_claim", "gate": 2, "type": "python", "op": "check_count_claim", "text": "Total verified entry count meets or exceeds the title count claim; no padding, no double-count"},
+      {"id": "why_note_present", "gate": 2, "type": "manual", "text": "REF-FACT: every anchor and supporting-cluster fact carries a WHY note meeting adult-depth standard"},
+      {"id": "single_answer_defensibility", "gate": 2, "type": "manual", "text": "REF-TRIVIA: every question has exactly one defensible answer; disputed resolved-with-note or removed; no unlisted-technicality traps"},
+      {"id": "stated_criteria_applied", "gate": 2, "type": "manual", "text": "REF-LIST: ranking methodology note precedes list; stated criteria referenced by every entry"},
+      {"id": "locked_template_applied", "gate": 2, "type": "manual", "text": "REF-REF: every lookup entry follows the locked template without deviation"},
+      {"id": "verification_log_complete", "gate": 2, "type": "manual", "text": "Every entry has two independent authoritative sources on record; volatile records confirmed against source dated within 2 years"},
+      {"id": "volatile_dated_inline", "gate": 2, "type": "manual", "text": "Superlative audit complete; volatile superlatives carry inline (as of [year]) date stamp in body text"},
+      {"id": "duplicate_scan_clear", "gate": 2, "type": "manual", "text": "Full duplicate-entry scan complete; no fact/question/entry appears twice; result recorded"},
+      {"id": "entry_length_consistency", "gate": 2, "type": "python", "op": "check_entry_length_consistency", "text": "REF-LIST: all entries within 20% of target word count (REF-REF: within 30%)"},
+      {"id": "front_and_back_matter", "gate": 2, "type": "manual", "text": "Front matter (title/copyright/TOC/introduction) and per-sub-type back matter (index/bibliography) complete"}
+    ],
+    "GATE_3_interior_design": [
+      {"id": "trim_geometry_match", "gate": 3, "type": "manual", "text": "Trim and page geometry match Book Lock; all pages at correct bleed dimensions"},
+      {"id": "type_floors_met", "gate": 3, "type": "manual", "text": "Type floors met on every page: body 10pt, questions 11pt, headers 14pt, sidebar/index 9pt; fonts embedded"},
+      {"id": "body_left_aligned", "gate": 3, "type": "manual", "text": "All body/entry text left-aligned (not full-justified); headers styled consistently throughout"},
+      {"id": "answers_visually_separated", "gate": 3, "type": "manual", "text": "REF-TRIVIA: answers section visually distinct; no answer visible on any question page"},
+      {"id": "sidebar_law", "gate": 3, "type": "manual", "text": "Sidebars on no more than 40% of pages; all sidebars subordinate to main entry"},
+      {"id": "color_accessible", "gate": 3, "type": "manual", "text": "Spot/full-color (if used) consistent and AA-passing; no critical info by color alone"},
+      {"id": "index_formatted", "gate": 3, "type": "manual", "text": "Index alphabetical with hanging indent for sub-entries; folios and running headers correct and consistent"}
+    ],
+    "GATE_4_preflight_release": [
+      {"id": "page_count_final_even", "gate": 4, "type": "python", "op": "check_page_count", "text": "Final page count even and within KDP-supported range for the trim and ink mode"},
+      {"id": "final_count_reconciliation", "gate": 4, "type": "python", "op": "check_count_claim", "text": "Verified count in final PDF equals or exceeds count claim"},
+      {"id": "superlative_reconfirmed", "gate": 4, "type": "manual", "text": "Superlative audit re-confirmed on final text; no undated volatile claim survives"},
+      {"id": "verification_log_on_file", "gate": 4, "type": "manual", "text": "Verification log complete, no entry UNVERIFIED; duplicate-scan and disputed-answer logs on file"},
+      {"id": "pdf_fixed_layout_embedded", "gate": 4, "type": "manual", "text": "Fixed-layout PDF at correct bleed on every page; all fonts embedded; real editable text; images >=300 DPI; AI-disclosure met"},
+      {"id": "proof_and_metadata_final", "gate": 4, "type": "manual", "text": "Physical proof reviewed; KDP category/keywords/description final; title count claim matches actual count"}
+    ]
+  }
+}

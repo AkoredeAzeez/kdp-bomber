@@ -1,0 +1,53 @@
+{
+  "framework_id": "AIRF 2.0 Self-Help Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). No deterministic ops file exists for this niche (page bands are research-driven fallbacks, not a fixed formula), so all gates are type=manual and require agent/render inspection.",
+  "gates": {
+    "GATE_1_safety_and_compliance": [
+      {"id": "risk_tier_assigned", "type": "manual", "text": "Risk tier (R4/R2/R1) correctly assigned in Phase 0 and consistently applied throughout"},
+      {"id": "disclaimer_tier_appropriate", "type": "manual", "text": "Disclaimer page present, tier-appropriate, neither overstates nor understates scope"},
+      {"id": "no_diagnosis", "type": "manual", "text": "No diagnostic language anywhere in the manuscript"},
+      {"id": "no_treatment_claims", "type": "manual", "text": "No treatment claims anywhere in the manuscript"},
+      {"id": "no_guaranteed_outcomes", "type": "manual", "text": "No guaranteed-outcome or timed-outcome language anywhere"},
+      {"id": "no_rapid_healing", "type": "manual", "text": "No rapid-healing language anywhere"},
+      {"id": "no_fabricated_evidence", "type": "manual", "text": "No fabricated research, statistics, or case studies presented as real"},
+      {"id": "no_invented_credentials", "type": "manual", "text": "No invented author credentials"},
+      {"id": "r4_exercises_optional", "type": "manual", "text": "All R4 exercises include the optional-exercise declaration"},
+      {"id": "r4_crisis_appendix", "type": "manual", "text": "At R4: Crisis Resources appendix present with verified, active contacts"},
+      {"id": "r4_how_to_use_safety", "type": "manual", "text": "At R4: How to Use This Book includes safety guidance and non-linear reading permission"},
+      {"id": "referral_language_per_chapter", "type": "manual", "text": "At R4 and R2: professional-referral language appears in each chapter contextually"},
+      {"id": "no_coercive_exercises", "type": "manual", "text": "No coercive exercises"},
+      {"id": "no_blame_framing", "type": "manual", "text": "No blame-framing directed at the reader"}
+    ],
+    "GATE_2_structure_and_completeness": [
+      {"id": "chapter_count_matches_toc", "type": "manual", "text": "Chapter count matches the approved TOC"},
+      {"id": "five_part_chapter_formula", "type": "manual", "text": "Every chapter follows the five-part formula: scenario -> concept -> evidence -> exercises -> integration"},
+      {"id": "specific_opening_scenario", "type": "manual", "text": "No chapter opens with a generic warm-up; opening scenario is specific to that chapter's theme"},
+      {"id": "conclusion_length", "type": "manual", "text": "Conclusion is approximately 1.5 formatted pages; not shorter, not extended into a new chapter"},
+      {"id": "conclusion_no_new_concept", "type": "manual", "text": "Conclusion introduces no new major concept or method"},
+      {"id": "front_matter_order", "type": "manual", "text": "Front matter appears in correct order"},
+      {"id": "intro_page_one", "type": "manual", "text": "Introduction begins on visible page 1 (Arabic numeral); no front-matter page numbers visible"},
+      {"id": "appendices_present_value", "type": "manual", "text": "All required appendices present and contain genuine reader value (no generic filler)"},
+      {"id": "references_complete", "type": "manual", "text": "References section complete; all citations verified"}
+    ],
+    "GATE_3_evidence_and_accuracy": [
+      {"id": "statistics_verifiable", "type": "manual", "text": "All statistics traced to verifiable, current published sources"},
+      {"id": "researchers_real", "type": "manual", "text": "All named researchers and quoted findings are real and accurately attributed"},
+      {"id": "case_examples_framed", "type": "manual", "text": "All case examples framed as fictional composites or appropriately sourced"},
+      {"id": "crisis_resources_verified_live", "type": "manual", "text": "All crisis resource contacts verified active and regionally accurate at generation date"},
+      {"id": "competitor_data_current", "type": "manual", "text": "All Amazon competitor page-count data is current, not carried forward"},
+      {"id": "trademark_recorded", "type": "manual", "text": "Trademark search date and databases recorded; status rationale documented"},
+      {"id": "citation_style_consistent", "type": "manual", "text": "APA 7 (or selected style) applied consistently across in-text citations and reference list"},
+      {"id": "no_outdated_facts", "type": "manual", "text": "No outdated laws, guidelines, or statistics presented as current"}
+    ],
+    "GATE_4_production_and_uniqueness": [
+      {"id": "page_count_in_range", "type": "manual", "text": "Page count falls within the competitor-informed target range"},
+      {"id": "images_inserted_or_prompted", "type": "manual", "text": "All images generated and inserted, or complete fallback prompts placed at exact insertion points with placement, caption, alt text"},
+      {"id": "visual_safety", "type": "manual", "text": "No image violates visual safety rules (no graphic distress, before/after body comparison, instant-healing imagery, or unauthorized real person)"},
+      {"id": "architecture_distinct", "type": "manual", "text": "Chapter architecture, opening patterns, exercise sequence, example set, and image arrangement demonstrably distinct from any prior UAPF self-help title"},
+      {"id": "anti_ai_language", "type": "manual", "text": "Anti-AI language protocol applied; no prohibited filler terms present as defaults"},
+      {"id": "voice_calibration", "type": "manual", "text": "Voice calibration consistent with assigned risk tier throughout"},
+      {"id": "word_formatting", "type": "manual", "text": "Times New Roman throughout, correct heading styles, live TOC field populated/updateable, page numbers correct, no orphaned headings or clipped tables/images"},
+      {"id": "page_by_page_render", "type": "manual", "text": "Final document rendered page by page and visually inspected before delivery"}
+    ]
+  }
+}

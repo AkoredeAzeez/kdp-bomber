@@ -1,0 +1,177 @@
+{
+  "framework_id": "AIRF 2.0 Sports Edition",
+  "niche": "uapf-niche-sports",
+  "overlay": "OV-SPORT",
+  "source_of_truth": "../../SKILL.md",
+
+  "sub_niches": {
+    "racket_stick_sports": {"modules": ["skill_progression", "ov_health_r2_if_training"]},
+    "aquatic_sports": {"modules": ["skill_progression", "aquatic_safety_supplement"]},
+    "running_endurance": {"modules": ["skill_progression", "ov_health_r2_full"]},
+    "cycling_multisport": {"modules": ["skill_progression", "ov_health_r2_full"]},
+    "coaching_sport_development": {"modules": ["skill_progression", "coaching_session_plan", "age_progression_tables"]},
+    "fishing": {"modules": ["skill_progression", "preparation_spine", "mkt_modifier", "regulatory_dating"]},
+    "hunting": {"modules": ["skill_progression", "preparation_spine", "field_safety_battery", "mkt_modifier", "regulatory_dating"]},
+    "outdoor_recreation": {"modules": ["preparation_spine", "leave_no_trace", "ov_health_r2_if_conditioning"]},
+    "survival_bushcraft": {"modules": ["preparation_spine", "field_safety_battery_full", "conservative_authority_sourcing", "high_stakes_disclaimer"]}
+  },
+
+  "skill_progression": {
+    "stages": ["fundamentals", "drills_with_reps_and_standards", "game_or_field_application", "self_diagnosis_fault_catalog"],
+    "stage_count": 4,
+    "order_fixed": true,
+    "may_not_collapse": true,
+    "drill_standard_levels": ["beginner", "intermediate", "advanced"],
+    "fault_catalog_min": 3,
+    "fault_catalog_max": 5
+  },
+
+  "coaching_session_plan": {
+    "blocks": [
+      {"element": "warm_up", "pct": 15},
+      {"element": "skill_block_1_fundamentals", "pct": 20},
+      {"element": "drill_block", "pct": 25},
+      {"element": "small_sided_game_or_field_application", "pct": 30},
+      {"element": "cool_down_and_debrief", "pct": 10}
+    ],
+    "pct_total": 100,
+    "age_bands": {
+      "ages_6_10": {"session_min": 45, "session_max": 60},
+      "ages_11_14": {"session_min": 60, "session_max": 75},
+      "ages_15_18": {"session_min": 75, "session_max": 90},
+      "adults_recreational": {"session_min": 60, "session_max": 75},
+      "adults_competitive": {"session_min": 75, "session_max": 90}
+    }
+  },
+
+  "audience_segments": {
+    "S1_recreational_adult": {"body_pt_min": 12, "body_pt_max": 13},
+    "S2_serious_amateur": {"body_pt_min": 11, "body_pt_max": 12},
+    "S3_youth": {"body_pt_min": 13, "body_pt_max": 14},
+    "S4_coach": {"body_pt_min": 12, "body_pt_max": 13},
+    "S5_outdoor_adventurer": {"body_pt_min": 12, "body_pt_max": 13},
+    "S6_experienced_outdoorsperson": {"body_pt_min": 11, "body_pt_max": 12}
+  },
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "margins_in_dense_tables_min": 0.65,
+    "body_font": "Times New Roman",
+    "line_spacing_youth_senior": 1.5,
+    "line_spacing_general_adult": 1.3,
+    "line_spacing_dense_technical": 1.15,
+    "body_pt_over_55": [13, 14],
+    "chapter_heading": {"pt": 16, "font": "Times New Roman", "bold": true, "case": "block-letters", "align": "center", "style": "Heading 1"},
+    "subchapter_heading": {"case": "title", "bold": true, "align": "left", "style": "Heading 2"},
+    "body_justified": true,
+    "left_aligned_zones": ["drill_steps", "session_plan_tables", "safety_callout_boxes", "fault_catalogs", "regulatory_tables", "gear_lists", "warning_panels"],
+    "landscape_appendix_allowed": true
+  },
+
+  "color_and_fingerprint": {
+    "principal_colors": 2,
+    "accent_colors_min": 1,
+    "accent_colors_max": 2,
+    "palettes_by_sub_niche": {
+      "racket_stick_sports": "court-inspired (clay red/white, court blue/yellow, green/white) + neutral",
+      "outdoor_recreation": "earth tones (forest green, slate, ochre, bark brown) + high-contrast accent",
+      "running_endurance": "high-energy (cobalt, orange, charcoal) + clean neutral",
+      "hunting_fishing": "heritage (olive drab, rust, cream, hunter orange accent), reads in grayscale",
+      "survival_bushcraft": "functional muted (earth tones, khaki, black)",
+      "coaching_youth": "energetic bright primary + structured neutral"
+    },
+    "grayscale_intelligible": true,
+    "wcag_aa_text_on_color": true,
+    "field_safety_panels_distinct_in_grayscale": true
+  },
+
+  "preparation_spine": {
+    "precedes_all_technique": true,
+    "not_in_appendix": true,
+    "components_in_order": ["gear_list_brand_generic", "conditions_assessment", "navigation_basics", "leave_no_trace_ethics"],
+    "navigation_requires_bailout_route": true
+  },
+
+  "field_safety_battery": {
+    "precedes_first_technique_chapter": true,
+    "not_in_appendix": true,
+    "contents_in_order": [
+      "water_acquisition_and_purification",
+      "hypothermia_and_heat_exposure",
+      "navigation_failure_protocol",
+      "emergency_communication_and_signaling",
+      "firearms_safety_hunting_only"
+    ],
+    "high_stakes_disclaimer_on_every_life_safety_page": true,
+    "named_authorities": ["NOLS Wilderness Medicine", "Wilderness Medical Society", "SOLO Wilderness Medicine", "American Red Cross Wilderness First Aid"],
+    "boiling_c_sea_level": 100,
+    "distress_signal_rule_of_three": true
+  },
+
+  "mkt_modifier": {
+    "applies_to": ["hunting", "fishing"],
+    "jurisdiction_label_required": true,
+    "date_label_required": true,
+    "reader_verification_call_to_action_at_section_close": true,
+    "copyright_page_regulations_currency_disclaimer": true,
+    "unverifiable_regulatory_content": "Gate 4 HOLD"
+  },
+
+  "ov_health_r2": {
+    "inherited_for": ["running_endurance", "cycling_multisport", "any_periodized_or_multiweek_program"],
+    "screening_chapter_before_first_week": true,
+    "per_week_modification_table": true,
+    "stop_training_warning_signs_per_phase": true,
+    "running_weekly_mileage_increase_ceiling_pct": 10,
+    "ov_health_disclaimer_on_copyright_page": true
+  },
+
+  "page_bands": {
+    "racket_stick_sports": [150, 220],
+    "aquatic_sports": [140, 200],
+    "running_endurance": [160, 230],
+    "cycling_multisport": [150, 220],
+    "coaching_sport_development": [180, 270],
+    "fishing": [140, 200],
+    "hunting": [150, 220],
+    "outdoor_recreation": [140, 200],
+    "survival_bushcraft": [200, 300],
+    "note": "baseline orientation from competitor medians; defer to Step 0.5 competitor research"
+  },
+
+  "gear_rule": {
+    "brand_generic": true,
+    "certifying_body_may_be_named": true,
+    "manufacturer_names_prohibited": true
+  },
+
+  "front_matter_order": [
+    "half_title",
+    "full_title",
+    "copyright",
+    "dedication_optional",
+    "acknowledgments_optional",
+    "preface_1_page",
+    "how_to_use_1_page",
+    "toc_word_field",
+    "introduction_page_1"
+  ],
+
+  "copyright_disclaimers": {
+    "all_titles": "general sporting-activity disclaimer",
+    "training_program_r2": "OV-HEALTH health-and-exercise disclaimer",
+    "hunting_fishing": "regulations-currency disclaimer",
+    "survival_bushcraft": "high-stakes disclaimer"
+  },
+
+  "phase0_pre_toc_report_items": 19,
+  "trim_default_note": "8.5 x 11 default; 0.7 in margins default",
+  "reference_style": "APA 7",
+  "deliverable": {
+    "format": "DOCX + print-ready PDF",
+    "native_styles": true,
+    "toc_word_field": true,
+    "page_numbering_restarts_arabic_1_at_introduction": true
+  }
+}

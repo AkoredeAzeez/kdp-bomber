@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Journal Edition",
+  "niche": "uapf-niche-journal",
+  "overlay": "OV-LOWC",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_journal.py"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-study-guide",
+  "overlay": "OV-STUDY",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "trim_dxa": [12240, 15840],
+    "margins_in": 0.8,
+    "footer_distance_in": 0.6,
+    "gutter_in": 0,
+    "text_width_dxa": 9936,
+    "running_heads": false,
+    "body_font": "Times New Roman",
+    "body_pt": 11,
+    "line_spacing": 1.15,
+    "line_dxa": 276,
+    "justification": "full",
+    "min_reader_pt": 11,
+    "scaffold_min_pt": 10,
+    "color_tier": "PREMIUM COLOR",
+    "paper": "WHITE",
+    "min_contrast_ratio": 4.5,
+    "assessment_styles_left_aligned": ["QStem", "QOpt", "AnsNum", "AnsExpl", "Instr"]
+  },
+
+  "headings": {
+    "h1_pt": 22,
+    "h1_case": "BLOCK CAPITALS",
+    "h1_align": "center",
+    "h1_new_page": true,
+    "h2_pt": 16,
+    "h2_case": "Capitalized",
+    "h2_align": "left",
+    "subchapter_six_line_floor": 6
+  },
+
+  "title_page": {
+    "title_pt": 48,
+    "title_case": "BLOCK CAPITALS",
+    "title_max_lines": 3,
+    "subtitle_pt": 14,
+    "subtitle_color": "black",
+    "subtitle_max_lines": 2,
+    "byline_pt": 14
+  },
+
+  "toc": {
+    "level1_pt": 12,
+    "level2_pt": 11,
+    "level2_indent_dxa": 360,
+    "right_tab_dxa": 9936,
+    "native_field": true,
+    "update_on_open": true
+  },
+
+  "boxes": {
+    "names": ["LEARNING OBJECTIVES", "HOW TO USE THIS CHAPTER", "EXAM TIP", "COMMON MISTAKE", "KEY POINTS"],
+    "width_dxa": 9936,
+    "rows": 2,
+    "label_pt": 11,
+    "label_case": "BLOCK CAPITALS",
+    "body_pt": 11,
+    "body_line_spacing": 1.15,
+    "border_pt": 1,
+    "cant_split": true
+  },
+
+  "data_tables": {
+    "header_repeats": true,
+    "caption_format": "Table N.n  Title",
+    "caption_position": "above",
+    "border_pt": 0.5,
+    "min_per_chapter": 2,
+    "flush_width_dxa": 9936
+  },
+
+  "figures": {
+    "content_size_in": [6.9, 3.8],
+    "content_dpi_min": 300,
+    "content_caption_format": "Figure N.n",
+    "min_content_per_chapter": 2,
+    "exhibit_size_in": [3.2, 2.4],
+    "exhibit_caption_format": "Figure QS.n",
+    "exhibit_default_count": 0,
+    "exhibit_dimension_labels": ["X", "Y"],
+    "content_prompt_min_words": 100,
+    "exhibit_prompt_min_words": 60
+  },
+
+  "columns": {
+    "count": 2,
+    "separation_dxa": 576,
+    "separation_in": 0.4,
+    "separator_rule": true
+  },
+
+  "page_bands": {
+    "chapter_min_pages": 6,
+    "chapter_max_pages": 10,
+    "chapters_total_min": 50,
+    "chapters_total_max": 60,
+    "chapters_total_target": [52, 58],
+    "chapters_absolute_ceiling": 60,
+    "section_band_pages": [1.40, 1.55],
+    "section_band_applies_to": ["Preface", "Introduction", "Conclusion"]
+  },
+
+  "chapter_template": {
+    "learning_objectives_min": 3,
+    "learning_objectives_max": 6,
+    "learning_objectives_lead_line": "After completing this chapter, you will be able to",
+    "intro_min_paragraphs": 2,
+    "subchapter_min_paragraphs": 3,
+    "key_points_min": 3,
+    "key_points_max": 6,
+    "order": ["title", "LEARNING OBJECTIVES", "intro_prose", "HOW TO USE THIS CHAPTER", "subchapters", "KEY POINTS"]
+  },
+
+  "assessment": {
+    "total_is_only_operator_setting": true,
+    "default_option_count": 4,
+    "run_cap_default": 1,
+    "two_option_run_cap_default": 3,
+    "two_option_run_cap_min": 2,
+    "quota_balance_tolerance": 1,
+    "explanation_max_words": 50,
+    "numbering": "continuous 1..total",
+    "literal_numbering": true,
+    "pattern_guards": {
+      "no_doubled_4perm": true,
+      "no_tripled_2alt": true
+    },
+    "answers_never_adjacent_to_questions": true,
+    "answer_form": "N. Answer: X) full option text",
+    "explanation_form": "Explanation: reasoning"
+  },
+
+  "subtitle": {
+    "candidate_count": 5,
+    "must_state_total_count": true,
+    "must_contain_phrase": "Practice Questions",
+    "chars_allowed": "letters numerals spaces only",
+    "max_lines": 2
+  },
+
+  "appendices": {
+    "A": {"title": "Examination Day Checklist", "approx_items": 10},
+    "B": {"title": "Subject Calculation Quick Reference"},
+    "C": {"title": "Key Thresholds and Values Quick Reference"}
+  },
+
+  "byline": {
+    "source": "Fake Name Generator",
+    "format": "First Name, Initial, period, Surname",
+    "appears_exactly": 2,
+    "no_credentials": true
+  },
+
+  "content_rules": {
+    "no_pork": true,
+    "no_alcohol": true,
+    "exclusion_is_silent": true,
+    "no_em_dash": true,
+    "no_en_dash": true,
+    "ranges_written_with": "to",
+    "curly_apostrophes_only": true,
+    "no_invented_facts": true,
+    "nominative_exam_naming_only": true,
+    "title_verbatim_immutable": true
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

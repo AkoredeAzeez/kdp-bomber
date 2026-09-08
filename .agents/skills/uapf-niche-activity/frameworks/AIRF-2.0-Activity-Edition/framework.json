@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Activity Edition",
+  "niche": "uapf-niche-activity",
+  "overlay": "OV-ACT",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_activity.py"
+  ]
+}

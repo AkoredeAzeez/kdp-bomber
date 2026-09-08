@@ -1,0 +1,10 @@
+{
+  "primary_agent": "claude",
+  "failover_agent": "codex",
+  "return_to_primary": true,
+  "auto_failover_on": ["USAGE_LIMIT", "RATE_LIMIT"],
+  "executables": {
+    "claude": "auto",
+    "codex": "auto"
+  }
+}

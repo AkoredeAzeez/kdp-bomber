@@ -1,0 +1,59 @@
+{
+  "framework_id": "AIRF 2.0 How-To Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_howto.py; type=manual require agent/render or domain-expert inspection.",
+  "gates": {
+    "GATE_1_pre_creation_foundation": [
+      {"id": "trademark_clear", "type": "manual", "text": "Trademark Clearance Report complete; verdict CLEAR or operator-approved CAUTION; all subtitle candidates screened"},
+      {"id": "skill_domain_assigned", "type": "manual", "text": "Skill Domain code assigned from the ten-domain table"},
+      {"id": "audience_prereq_documented", "type": "manual", "text": "Audience, declared skill level, and prerequisite floor documented"},
+      {"id": "outcome_promise_specific", "type": "manual", "text": "Outcome promise identified and is specific + achievable"},
+      {"id": "quick_win_by_ch3", "type": "python", "op": "quick_win_chapter", "text": "Quick-Win Deliverable identified and achievable by end of Chapter 3 (or 20% of chapters, whichever comes first)"},
+      {"id": "book_size_and_page_band", "type": "python", "op": "classify_book_size", "text": "Chapter count maps to a book size and its competitor-informed page band"},
+      {"id": "config_announced", "type": "manual", "text": "Auto-configuration announced (pathway, page band, visual density, font, spacing, Design Signature)"},
+      {"id": "panel_confirmed", "type": "manual", "text": "Expert panel confirmed for the domain (Construction Authority for HOWTO-TRADE, etc.)"},
+      {"id": "safety_standards_identified", "type": "manual", "text": "Applicable safety standards (OSHA/CPSC/ANSI/NEC/EPA) identified for the domain"},
+      {"id": "licensed_trade_disclaimer_decided", "type": "manual", "text": "Licensed-trade disclaimer requirement confirmed and drafted if required"}
+    ],
+    "GATE_2_per_chapter_content": [
+      {"id": "learning_objective", "type": "manual", "text": "Chapter Learning Objective stated at chapter open (one measurable sentence)"},
+      {"id": "pre_step_materials", "type": "manual", "text": "Every procedure has a Pre-Step Materials block listing all tools and quantities before Step 1"},
+      {"id": "one_action_per_step", "type": "manual", "text": "Every step contains exactly one action verb and one instruction"},
+      {"id": "decision_points_at_forks", "type": "manual", "text": "Decision Point Boxes present at every procedural fork"},
+      {"id": "failure_recovery_after_procedure", "type": "manual", "text": "Failure-Recovery Boxes present after every complete procedure"},
+      {"id": "safety_callouts_at_hazard", "type": "manual", "text": "Safety Callout Boxes present at every hazard step, not only in the Introduction"},
+      {"id": "step_images_present", "type": "manual", "text": "Step image or STEP IMAGE PROMPT block present for every step"},
+      {"id": "no_undefined_terms", "type": "manual", "text": "No undefined technical terms introduced without definition"},
+      {"id": "measurements_specific", "type": "manual", "text": "Measurements specific (no 'enough', 'adequate', or 'as needed')"},
+      {"id": "metric_and_imperial", "type": "manual", "text": "Both metric and imperial measurements present for every measurement"},
+      {"id": "anti_ai_language", "type": "manual", "text": "Anti-AI language protocol enforced; no prohibited phrases"},
+      {"id": "chapter_checkpoint", "type": "manual", "text": "Chapter ends with a Chapter Checkpoint (3-5 bullets)"}
+    ],
+    "GATE_3_instructional_design_audit": [
+      {"id": "executable_by_declared_reader", "type": "manual", "text": "Instructional Design Authority confirms every procedure executable at the declared skill level"},
+      {"id": "domain_expert_accuracy", "type": "manual", "text": "Domain expert confirms technique accuracy"},
+      {"id": "mental_execution_trace", "type": "manual", "text": "Mental execution trace complete: first-time reader can follow every step without external knowledge"},
+      {"id": "quick_win_delivered", "type": "manual", "text": "Quick-Win Chapter delivers a tangible, demonstrable reader result"},
+      {"id": "decision_points_cover_conditions", "type": "manual", "text": "All Decision Point Boxes cover all realistic conditions; no uncovered fork"},
+      {"id": "failure_recovery_real", "type": "manual", "text": "Failure-Recovery Boxes derived from real practitioner failure patterns, confirmed by domain expert"},
+      {"id": "safety_callouts_validated", "type": "manual", "text": "Safety callouts validated against applicable OSHA/CPSC/ANSI/NEC/EPA standard; none missing or incorrect"},
+      {"id": "licensed_trade_disclaimer_in_chapter", "type": "manual", "text": "Licensed-trade disclaimer present in chapter if required"},
+      {"id": "chapter_within_page_band", "type": "python", "op": "check_page_band", "text": "Chapter word count and page estimate keep the book within page-band targets"}
+    ],
+    "GATE_4_final_certification": [
+      {"id": "zone_1_complete", "type": "python", "op": "zone_boundaries", "text": "Zone 1 (Foundation & Quick Win): outcome promise introduced, prerequisites stated, Quick Win delivered by Chapter 3"},
+      {"id": "zone_2_no_prereq_gaps", "type": "manual", "text": "Zone 2 (Core Skill Expansion): chapters sequence without prerequisite gaps"},
+      {"id": "zone_3_present", "type": "manual", "text": "Zone 3 (Mastery & Continuation): advanced techniques, troubleshooting synthesis, next-steps guidance present"},
+      {"id": "front_matter_complete", "type": "manual", "text": "Front matter complete and in order: Title -> Copyright -> TOC -> Preface -> How to Use -> Introduction"},
+      {"id": "section_lengths", "type": "manual", "text": "Preface exactly 1 page; How to Use exactly 1 page; Conclusion exactly 1.5 pages"},
+      {"id": "licensed_trade_disclaimer_copyright", "type": "manual", "text": "Licensed-trade disclaimer on Copyright Page if required"},
+      {"id": "seven_appendix_elements", "type": "python", "op": "appendix_complete", "text": "All seven Appendix elements present"},
+      {"id": "pagination_starts_intro", "type": "manual", "text": "Visible page numbers start at Introduction (page 1); front matter unnumbered"},
+      {"id": "design_signature_consistent", "type": "manual", "text": "Design Signature consistent across all chapters and not repeating the last five register entries"},
+      {"id": "author_name_consistent", "type": "manual", "text": "Author name consistent across Title Page, Copyright Page, all metadata"},
+      {"id": "kdp_categories", "type": "manual", "text": "KDP categories confirmed correct"},
+      {"id": "no_ai_pattern_language", "type": "manual", "text": "No prohibited AI-pattern language in any chapter"},
+      {"id": "safety_accuracy_100", "type": "manual", "text": "Safety accuracy 100%: all callouts validated against applicable professional standards"},
+      {"id": "terms_defined_and_glossary", "type": "manual", "text": "All technical terms defined in body text at first use and in the Glossary appendix"}
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "genie-website",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8741", "--directory", "state/marketing/website"],
+      "port": 8741
+    }
+  ]
+}

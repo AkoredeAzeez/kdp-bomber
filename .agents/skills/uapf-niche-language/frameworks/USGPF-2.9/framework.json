@@ -1,0 +1,14 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-language",
+  "overlay": "OV-LANG",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_language.py"
+  ]
+}

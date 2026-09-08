@@ -1,0 +1,133 @@
+{
+  "framework_id": "AIRF 2.0 How-To Edition",
+  "niche": "uapf-niche-howto",
+  "overlay": "OV-HOWTO",
+  "source_of_truth": "../../SKILL.md",
+
+  "skill_domains": [
+    "HOWTO-TRADE", "HOWTO-CRAFT-SKILL", "HOWTO-GARDEN", "HOWTO-COOK-BAKE",
+    "HOWTO-DIGITAL", "HOWTO-BUSINESS", "HOWTO-WELLNESS", "HOWTO-CREATIVE",
+    "HOWTO-OUTDOOR", "HOWTO-GENERAL"
+  ],
+
+  "trademark": {
+    "registries": ["USPTO Class 16", "USPTO Class 9", "EUIPO", "UKIPO", "CIPO", "IP Australia", "JPO"],
+    "verdicts": ["CLEAR", "CAUTION", "BLOCKED"],
+    "generic_exempt_terms": ["guide", "beginner", "step-by-step", "complete", "practical"]
+  },
+
+  "quick_win": {
+    "target_chapter": 3,
+    "percent_of_chapters_alt": 0.20,
+    "rule": "by end of Chapter 3 OR by 20% of total chapters, whichever comes first",
+    "extended_may_use_ch4_with_operator_approval": true
+  },
+
+  "book_sizes": {
+    "compact":  {"chapters": [8, 12],  "pages": [80, 150],  "quick_win_chapter": 3},
+    "standard": {"chapters": [13, 20], "pages": [180, 250], "quick_win_chapter": 3},
+    "extended": {"chapters": [21, 30], "pages": [280, 350], "quick_win_chapter": 3}
+  },
+
+  "zones": {
+    "zone_1_foundation_quick_win": {"chapters": "1-3", "share": 0.20},
+    "zone_2_core_skill_expansion": {"chapters": "4-penultimate", "share": 0.65},
+    "zone_3_mastery_continuation": {"chapters": "final-1-to-2", "share": 0.15}
+  },
+
+  "visual_density": {
+    "moderate": {"images": [40, 70], "for": "text-dominant skill guides"},
+    "heavy": {"images": [80, 150], "for": "trade, craft-skill, and outdoor titles"}
+  },
+
+  "typography": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "gutter_increase_above_pages": 500,
+    "body_font": "Times New Roman",
+    "body_pt_standard": 11,
+    "body_pt_seniors": 13,
+    "line_spacing_standard": 1.15,
+    "line_spacing_senior_workbook": 1.5,
+    "body_alignment": "justified",
+    "chapter_heading": {"pt": 16, "case": "block_caps", "align": "center", "color": "primary_accent"},
+    "subchapter_heading": {"case": "title", "align": "left", "bold": true, "color": "secondary_accent"},
+    "procedure_title": {"pt": 13, "case": "title", "bold": true, "align": "left", "color": "primary_accent"}
+  },
+
+  "procedure_architecture": {
+    "one_action_per_step": true,
+    "one_verb_per_step": true,
+    "pre_step_materials_block_required": true,
+    "fields": ["skill_level", "time_required", "tools_and_materials", "steps", "expected_result", "if_result_does_not_match"],
+    "step_image_per_step": true,
+    "step_image_type": "realistic_photograph_only"
+  },
+
+  "mandatory_boxes": {
+    "decision_point_box": "at every procedural fork where a wrong path damages materials, wastes significant time, or creates a hazard",
+    "failure_recovery_box": "after every complete procedure, and inside steps at high-failure points; fields SYMPTOM/CAUSE/CORRECTION/PREVENTION",
+    "safety_callout_box": "at every hazard step, not only in the Introduction",
+    "chapter_checkpoint_box": "end of every chapter, 3-5 bullets"
+  },
+
+  "front_matter_order": [
+    "title_page",
+    "copyright_page",
+    "table_of_contents",
+    "preface",
+    "how_to_use_this_book",
+    "introduction"
+  ],
+
+  "section_lengths": {
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "conclusion_pages": 1.5
+  },
+
+  "back_matter_appendix_elements": [
+    "skill_progression_checklist",
+    "tools_and_materials_master_list",
+    "troubleshooting_quick_reference",
+    "safety_reference_card",
+    "glossary_of_terms",
+    "resource_directory",
+    "measurement_and_conversion_charts"
+  ],
+
+  "subtitle": {"candidates_count": 7, "all_must_pass_trademark": true},
+
+  "design_signature": {
+    "dimensions": ["palette_family", "callout_treatment", "chapter_opening_ornament",
+      "title_page_composition", "callout_naming_set", "voice_persona"],
+    "no_repeat_of_last_n": 5,
+    "consecutive_same_domain_must_differ_on_min_dimensions": 3,
+    "consecutive_same_domain_no_shared_primary_accent": true
+  },
+
+  "content_rules": {
+    "quick_win_by_chapter_3": true,
+    "procedures_executable_as_written": true,
+    "decision_point_at_every_fork": true,
+    "failure_recovery_after_every_procedure": true,
+    "safety_callout_at_point_of_hazard": true,
+    "licensed_trade_disclaimer_copyright_and_chapters": true,
+    "every_measurement_specific": true,
+    "measurements_metric_and_imperial": true,
+    "outcome_promise_specific_and_achievable": true,
+    "chapter_checkpoints_mandatory": true,
+    "define_every_technical_term_first_use_and_glossary": true,
+    "anti_ai_language_protocol": true
+  },
+
+  "safety_standards": ["OSHA", "CPSC", "ANSI", "NEC", "EPA"],
+
+  "measurement_primary_by_marketplace": {"US": "imperial", "UK": "metric", "AU": "metric", "EU": "metric"},
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "live_auto_toc": true
+  }
+}

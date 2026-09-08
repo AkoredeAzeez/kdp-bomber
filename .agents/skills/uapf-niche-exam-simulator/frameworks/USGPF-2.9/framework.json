@@ -1,0 +1,14 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-exam-simulator",
+  "overlay": "OV-EXSIM",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_exam_simulator.py"
+  ]
+}

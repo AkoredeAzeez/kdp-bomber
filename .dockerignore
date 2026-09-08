@@ -1,0 +1,12 @@
+.git
+__pycache__
+*.pyc
+node_modules
+
+# These get symlinked onto the Railway volume at container start (see
+# deploy/entrypoint.sh) so they persist across restarts/redeploys. Do not
+# ship your local Windows-generated copies into the image.
+Books/
+state/
+cover_db/
+catalog/

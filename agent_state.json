@@ -1,0 +1,31 @@
+{
+  "project_id": "tacoma-user-guide-2026-us",
+  "active_production_agent": "codex",
+  "current_phase": "manuscript_drafting",
+  "current_chapter": 0,
+  "current_section": "front_matter",
+  "last_completed_item": "phase0_foundation",
+  "next_unfinished_item": "front_matter_title_page",
+  "completed_items": [
+    "license_check_exit_0",
+    "trademark_screen_caution_approved",
+    "classification_lock",
+    "covered_version_lock",
+    "product_architecture_map",
+    "task_analysis",
+    "audience_definition",
+    "configuration",
+    "approved_toc",
+    "source_register_initialized",
+    "claim_ledger_initialized"
+  ],
+  "validation_status": {
+    "gate_1": "PASS_WITH_RECORDED_CAUTION",
+    "gate_2": "NOT_RUN",
+    "gate_3": "NOT_RUN",
+    "gate_4": "NOT_RUN",
+    "render_qa": "NOT_RUN"
+  },
+  "blockers": ["BLK-001", "BLK-002"],
+  "last_valid_checkpoint": "2026-08-11T00:00:00+01:00"
+}

@@ -1,0 +1,151 @@
+{
+  "framework_id": "AIRF 2.0 Crafts Edition",
+  "niche": "uapf-niche-crafts",
+  "overlay": "OV-CRAFT",
+  "source_of_truth": "../../SKILL.md",
+
+  "interior": {
+    "trim_in": [8.5, 11],
+    "margins_in": 0.7,
+    "increase_inside_margin_above_pages": 500,
+    "body_font": "Times New Roman",
+    "body_pt_standard": 11,
+    "body_pt_seniors_large_print": 13,
+    "line_spacing_standard": 1.15,
+    "line_spacing_seniors_large_print": 1.5,
+    "body_alignment": "justified",
+    "interior_color": "two-color",
+    "color_roles": ["primary_accent", "secondary_accent"]
+  },
+
+  "typography": {
+    "section_heading_pt": 16,
+    "section_heading_style": "block caps, centered, primary accent",
+    "project_title_pt": 14,
+    "project_title_style": "title case, centered, primary accent, bold",
+    "meta_line_pt": 10,
+    "meta_line_style": "small caps or italic, centered, secondary accent",
+    "subheading_pt": 11,
+    "subheading_style": "title case, left, bold, secondary accent",
+    "section_divider_title_pt": 20,
+    "section_divider_title_style": "block caps, white, centered"
+  },
+
+  "sub_niches": [
+    "CRAFT-FIBER", "CRAFT-WOOD", "CRAFT-GLASS", "CRAFT-RESIN", "CRAFT-PAPER",
+    "CRAFT-CANDLE-SOAP", "CRAFT-CERAMIC", "CRAFT-GENERAL", "CRAFT-GARDEN", "CRAFT-JEWELRY"
+  ],
+
+  "project_count": {
+    "source": "title_only",
+    "framework_never_invents_or_overrides": true,
+    "unspecified_flag_and_size_to_band": true
+  },
+
+  "page_bands": {
+    "compact": {"project_min": 25, "project_max": 40, "page_min": 80, "page_max": 150, "sections_min": 3, "sections_max": 4},
+    "standard": {"project_min": 41, "project_max": 75, "page_min": 180, "page_max": 250, "sections_min": 5, "sections_max": 6},
+    "extended": {"project_min": 76, "project_max": 120, "page_min": 280, "page_max": 350, "sections_min": 7, "sections_max": 10}
+  },
+
+  "visual_density": {
+    "mode": "heavy_visual",
+    "image_count_min": 80,
+    "image_count_max_plus": 150,
+    "per_project": "one hero image + one image per key step",
+    "hero_placement": "top of project unit, immediately after META line",
+    "hero_style": "photorealistic only"
+  },
+
+  "content_pathway": {
+    "default": "hybrid (web research + knowledge base)",
+    "override_when_operator_uploads_references": true
+  },
+
+  "project_unit_required_elements": [
+    "project_title", "meta_line", "hero_image", "materials_and_tools",
+    "numbered_steps_one_action_each", "step_images", "expected_result", "project_facts_table"
+  ],
+
+  "meta_line": {
+    "fields": ["difficulty", "time", "cost"],
+    "difficulty_levels": ["Beginner", "Intermediate", "Advanced"],
+    "mandatory_on_every_project": true
+  },
+
+  "two_projects_per_page": {
+    "allowed_when": "under 6 steps and no pattern chart and no full-page photo",
+    "full_page_min_when": "stitch pattern, chart, full-page photo, or more than 8 steps",
+    "project_units_must_be_contained": true
+  },
+
+  "step_rules": {
+    "one_action_per_step": true,
+    "materials_listed_before_step_1": true,
+    "no_material_introduced_mid_step": true
+  },
+
+  "measurements": {
+    "both_metric_and_imperial_required": true,
+    "us_marketplace_primary": "imperial",
+    "us_marketplace_secondary": "metric",
+    "uk_au_eu_marketplace_primary": "metric",
+    "uk_au_eu_marketplace_secondary": "imperial"
+  },
+
+  "front_matter_order": [
+    "title_page", "copyright_page", "table_of_contents", "preface",
+    "how_to_use_this_book", "introduction"
+  ],
+
+  "front_matter_lengths": {
+    "preface_pages": 1,
+    "how_to_use_pages": 1,
+    "introduction_words_min": 1500,
+    "introduction_words_max": 2500,
+    "pagination_starts_at_introduction": true
+  },
+
+  "back_matter": {
+    "conclusion_pages": 1.5,
+    "appendix_required": [
+      "project_difficulty_index", "materials_master_list", "stitch_technique_glossary",
+      "measurement_conversion_chart", "supplier_directory", "project_planner_template",
+      "troubleshooting_quick_reference"
+    ]
+  },
+
+  "subtitle": {
+    "candidate_count": 7,
+    "must_pass_trademark_screen": true
+  },
+
+  "design_signature": {
+    "dimension_count": 6,
+    "dimensions": ["accent_palette_family", "callout_treatment", "chapter_opening_ornament",
+                   "title_page_composition", "callout_naming_set", "voice_persona"],
+    "must_differ_from_last_n_signatures": 5,
+    "min_differing_dimensions_vs_recent": 3,
+    "no_shared_primary_accent_consecutive": true
+  },
+
+  "safety_callout": {
+    "placement": "at the hazard step, never only in preface",
+    "border_color": "red-tinted",
+    "fill": "white",
+    "standards_by_sub_niche": {
+      "CRAFT-WOOD": "OSHA tool standards",
+      "CRAFT-CANDLE-SOAP": "CPSC chemical standards",
+      "CRAFT-GLASS": "ANSI blade safety"
+    }
+  },
+
+  "content_rules": {
+    "no_registered_brand_names_in_instructional_text": true,
+    "brand_names_allowed_only_in_supplier_directory": true,
+    "pattern_abbreviations_defined_in_front_matter_and_glossary": true,
+    "cultural_techniques_require_attribution": true,
+    "anti_ai_language_enforced": true,
+    "author_name_format": "First Name, Middle Initial. Surname"
+  }
+}

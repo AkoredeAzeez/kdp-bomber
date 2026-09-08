@@ -1,0 +1,140 @@
+{
+  "framework_id": "AIRF 2.0",
+  "niche": "uapf-niche-parenting",
+  "overlay": "OV-PARENT",
+  "source_of_truth": "../../SKILL.md",
+
+  "sub_genres": [
+    "pregnancy_prenatal",
+    "newborn_infant_care",
+    "toddler_early_childhood",
+    "middle_childhood",
+    "teen_parenting",
+    "baby_names",
+    "relationships_dating_marriage",
+    "divorce_coparenting_blended",
+    "grandparenting",
+    "general_parenting_method"
+  ],
+
+  "medical_authority_by_market": {
+    "US": ["AAP", "HealthyChildren.org", "CDC"],
+    "UK": ["NHS", "NHS Start for Life", "NICE"],
+    "CA": ["CPS"],
+    "AU": ["RACP", "Raising Children Network"],
+    "dual_US_UK": "label each claim; never blend AAP and NHS"
+  },
+
+  "auto_config": {
+    "reference_style": "APA 7",
+    "risk_baseline": "R2",
+    "risk_R3_topics": ["postpartum depression", "domestic violence", "abuse", "divorce trauma"],
+    "risk_R4_topics": ["pregnancy loss", "stillbirth", "NICU", "grief"],
+    "voice_register": "reassurance-with-honesty"
+  },
+
+  "when_to_call_box": {
+    "mandatory_in_health_adjacent_chapters": true,
+    "min_indicators": 3,
+    "max_indicators": 8,
+    "urgency_levels": ["call your pediatrician", "seek urgent care", "call emergency services"],
+    "uses_active_medical_authority_thresholds": true,
+    "removable_for_space": false,
+    "format": "Word text box or shaded block with clear label"
+  },
+
+  "interior": {
+    "trim_in": [6, 9],
+    "margins_in": 0.7,
+    "body_font": "Times New Roman",
+    "body_pt": 12,
+    "body_line_spacing": 1.15,
+    "chapter_heading": {"font": "Times New Roman", "pt": 14, "bold": true, "align": "center", "case": "all-caps"},
+    "subchapter_heading": {"font": "Times New Roman", "pt": 12, "bold": true, "align": "left", "case": "title"},
+    "box_label": {"font": "Times New Roman", "pt": 11, "bold": true, "case": "all-caps", "align": "center"},
+    "box_content": {"font": "Times New Roman", "pt": 11, "line_spacing": 1.0, "align": "left", "bullets": true},
+    "milestone_entry_pt": 11,
+    "callout_quick_note": {"font": "Times New Roman", "pt": 11, "italic": true, "boxed": true},
+    "milestone_charts_as_word_table": true
+  },
+
+  "image_rule": {
+    "auto_rule_any_page_count": true,
+    "chapter_opening_image_per_chapter": true,
+    "default_style": "photorealistic",
+    "concept_chart_process_style": "2D illustration",
+    "requires_caption_and_alt_text": true,
+    "prohibited": [
+      "idealized-body comparisons",
+      "before-and-after body imagery in pregnancy/postpartum chapters",
+      "endangering behaviors shown as illustrative"
+    ]
+  },
+
+  "page_bands": {
+    "pregnancy_prenatal": {"chapters_min": 12, "chapters_max": 16, "pages_min": 220, "pages_max": 320},
+    "newborn_infant_care": {"chapters_min": 8, "chapters_max": 12, "pages_min": 180, "pages_max": 260},
+    "toddler_early_childhood": {"chapters_min": 8, "chapters_max": 12, "pages_min": 160, "pages_max": 240},
+    "teen_parenting": {"chapters_min": 10, "chapters_max": 14, "pages_min": 200, "pages_max": 280},
+    "baby_names": {"format": "entry", "pages_min": 200, "pages_max": 400},
+    "relationships_dating_marriage": {"chapters_min": 10, "chapters_max": 14, "pages_min": 200, "pages_max": 280},
+    "divorce_coparenting_blended": {"chapters_min": 8, "chapters_max": 12, "pages_min": 180, "pages_max": 240},
+    "general_parenting_method": {"chapters_min": 10, "chapters_max": 14, "pages_min": 200, "pages_max": 280},
+    "note": "defaults only; always verify against live Amazon competitor research"
+  },
+
+  "baby_name_entry_sequence": [
+    "name",
+    "origin",
+    "meaning",
+    "pronunciation",
+    "variants_alternate_spellings",
+    "notable_associations_optional",
+    "sibling_name_suggestions_optional"
+  ],
+
+  "milestone_rule": {
+    "must_be_range_not_fixed_age": true,
+    "must_state_upper_consultation_threshold": true,
+    "acknowledge_neurodiversity": true
+  },
+
+  "content_rules": {
+    "no_cross_market_medical_blend": true,
+    "no_full_immunization_schedule_reproduction": true,
+    "no_legal_advice_divorce_custody_family_law": true,
+    "no_invented_name_etymologies": true,
+    "uncertain_etymology_must_be_labeled": true,
+    "no_fabricated_author_credentials": true,
+    "verify_statistics_and_resources_live": true,
+    "postpartum_depression_requires_clinical_referral": true
+  },
+
+  "front_matter_order": [
+    "half_title",
+    "full_title",
+    "copyright",
+    "parenting_medical_disclaimer",
+    "dedication_optional",
+    "preface_1_page",
+    "how_to_use_1_page",
+    "auto_toc",
+    "introduction_page_1"
+  ],
+
+  "back_matter": [
+    "conclusion_1_5_pages",
+    "milestone_reference_chart_developmental",
+    "appendices",
+    "resources_and_referrals",
+    "disclaimer_page_back",
+    "about_author_pseudonym"
+  ],
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_styles": true,
+    "auto_toc": true,
+    "page_numbering_starts_at_introduction": true
+  }
+}

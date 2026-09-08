@@ -1,0 +1,149 @@
+{
+  "framework_id": "AIRF 2.0 Reference Edition",
+  "niche": "uapf-niche-reference",
+  "overlay": "OV-REF",
+  "source_of_truth": "../../SKILL.md",
+
+  "sub_types": {
+    "REF-FACT": {"name": "Adult Fact Book", "entry_unit": "anchor-fact + supporting cluster + WHY note"},
+    "REF-TRIVIA": {"name": "Trivia / Quiz Book", "entry_unit": "question-answer pair in rounds"},
+    "REF-LIST": {"name": "List / Ranking Book", "entry_unit": "ranked entry with stated criteria"},
+    "REF-REF": {"name": "Quick Reference Handbook", "entry_unit": "lookup entry, index-first"}
+  },
+  "secondary_subtype_max_page_pct": 25,
+
+  "trim": {
+    "REF-FACT": {"default_in": [6, 9], "bleed_in": [6.125, 9.25], "alt_in": [5.5, 8.5]},
+    "REF-TRIVIA": {"default_in": [5.5, 8.5], "bleed_in": [5.625, 8.75], "alt_in": [6, 9]},
+    "REF-LIST": {"default_in": [6, 9], "bleed_in": [6.125, 9.25]},
+    "REF-REF": {"default_in": [6, 9], "alt_in": [8.5, 11]}
+  },
+  "page_rules": {
+    "must_be_even": true,
+    "kdp_min_pages": 24,
+    "page_count_range": {
+      "REF-TRIVIA": [100, 200],
+      "REF-LIST": [100, 200],
+      "REF-FACT": [100, 300],
+      "REF-REF": [100, 300]
+    }
+  },
+
+  "entry_density": {
+    "REF-FACT": [
+      {"trim_in": [6, 9], "entries_per_page": [1.5, 2], "target_pages": [120, 160]},
+      {"trim_in": [5.5, 8.5], "entries_per_page": [1.5, 1.5], "target_pages": [140, 180]},
+      {"trim_in": [8.5, 11], "entries_per_page": [2, 3], "target_pages": [100, 140]}
+    ],
+    "REF-TRIVIA": [
+      {"trim_in": [5.5, 8.5], "questions_per_page": [8, 10], "target_rounds": [25, 50], "target_questions": [250, 500], "target_pages": [120, 200]},
+      {"trim_in": [6, 9], "questions_per_page": [10, 12], "target_rounds": [30, 50], "target_questions": [300, 600], "target_pages": [100, 160]}
+    ],
+    "REF-LIST": [
+      {"entries": 50, "words_per_entry": [150, 250], "pages_6x9": [80, 120]},
+      {"entries": 100, "words_per_entry": [100, 180], "pages_6x9": [100, 160]},
+      {"entries": 200, "words_per_entry": [60, 100], "pages_6x9": [100, 140]},
+      {"entries": 500, "words_per_entry": [25, 50], "pages_6x9": [100, 150]}
+    ],
+    "REF-REF": [
+      {"entries": [200, 500], "words_per_entry": [40, 80], "pages_6x9": [100, 200]},
+      {"entries": [500, 1000], "words_per_entry": [20, 50], "pages_6x9": [120, 200]},
+      {"entries": [1000, null], "words_per_entry": [15, 30], "pages_6x9": [200, 300]}
+    ]
+  },
+
+  "fact_cluster": {
+    "sections_per_book": [5, 12],
+    "units_per_section": [4, 15],
+    "supporting_facts_per_cluster": [3, 8],
+    "depth_sidebar_pct_of_clusters": [25, 40],
+    "depth_sidebar_words": [50, 150],
+    "why_note_required": true,
+    "why_note_min_sentence_per_supporting": 1
+  },
+
+  "trivia_rounds": {
+    "questions_per_round_options": {"standard": 10, "extended": 20, "mini": 5},
+    "difficulty_ladder": {"accessible": [1, 3], "moderate": [4, 7], "specialist": [8, 10]},
+    "total_rounds_per_book": [10, 50],
+    "no_adjacent_same_theme": true,
+    "answers_separation_min_pages": 5,
+    "answer_page_carries_round_and_question_number": true,
+    "no_answer_info_on_question_page": true,
+    "separation_models": ["chapter-level", "book-level"]
+  },
+  "trivia_scoring": {
+    "base_points_per_correct": 1,
+    "specialist_bonus_points": 2,
+    "specialist_tier_questions": [8, 10],
+    "interpretation_tiers": 4
+  },
+
+  "list_rules": {
+    "entry_length_consistency_pct": 20,
+    "ranking_methodology_note_required": true,
+    "methodology_fields": ["dimensions", "weighting", "source_universe", "exclusions", "as_of_date"]
+  },
+  "ref_rules": {
+    "entry_length_consistency_pct": 30,
+    "default_organization": "alphabetical",
+    "alt_organization": ["chronological", "taxonomic"],
+    "tab_index_when_pages_over": 200,
+    "index_required": true
+  },
+
+  "typography": {
+    "font_roles": ["display", "body", "utility"],
+    "type_floors_pt": {
+      "body": 10,
+      "question_trivia": 11,
+      "answer_trivia": 10,
+      "section_or_round_header": 14,
+      "sidebar_or_source_reference": 9,
+      "index": 9,
+      "running_header_or_folio": 9
+    },
+    "body_alignment": "left",
+    "justify_body": false
+  },
+
+  "margins_in": {
+    "REF-FACT_6x9": {"outside": 0.75, "inside": 0.75, "top": 0.75, "bottom": 0.75, "sidebar_col": [1.5, 2], "sidebar_rule": 0.125},
+    "REF-TRIVIA_5.5x8.5": {"outside": 0.625, "inside": 0.75, "top": 0.625, "bottom": 0.625, "question_line_spacing": 1.5}
+  },
+
+  "color": {
+    "standard_mode": "black_and_white",
+    "spot_color_max_accents": 1,
+    "spot_color_must_pass_AA": true,
+    "no_info_by_color_alone": true,
+    "full_color_only_if_brief_requires": true
+  },
+
+  "content_rules": {
+    "dual_source_verification": true,
+    "sources_min_per_entry": 2,
+    "count_claim_is_contractual": true,
+    "count_short_user_flag_pct": 10,
+    "no_padding": true,
+    "why_depth_active_subtype": "REF-FACT",
+    "single_answer_defensibility_subtype": "REF-TRIVIA",
+    "stated_criteria_subtype": "REF-LIST",
+    "locked_template_subtype": "REF-REF",
+    "superlative_tiers": ["volatile", "semi_stable", "fixed"],
+    "volatile_requires_inline_date": true,
+    "volatile_source_max_age_years": 2,
+    "sidebar_max_page_pct": 40
+  },
+
+  "back_matter": {
+    "index_required_ref_ref": true,
+    "index_required_over_pages": 150,
+    "bibliography_required": true
+  },
+
+  "kdp": {
+    "categories_per_title": 2,
+    "keyword_fields": 7
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "framework_id": "AIRF 2.0 Health Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_health.py; type=manual require agent/render/claims inspection. R2 risk regime is mandatory and non-waivable.",
+  "gates": {
+    "GATE_1_pre_creation": [
+      {"id": "r2_active", "type": "manual", "text": "R2 regime confirmed active and non-waivable for this title"},
+      {"id": "medical_clearance_ch1", "type": "manual", "text": "Medical-clearance and safety chapter is Chapter 1 in the TOC; no technique instruction precedes it"},
+      {"id": "trademark_and_subtitle", "type": "manual", "text": "Trademark screen complete and disclosed; subtitle free of outcome/weight-loss/cure promises; protected program names not used as generic"},
+      {"id": "subniche_and_audience", "type": "manual", "text": "Sub-niche specialist(s) correctly activated (A-J); audience segment assigned"},
+      {"id": "competitor_set_valid", "type": "python", "op": "competitor_count_valid", "text": "Competitor set is 5-10 current relevant titles, no low-content/outliers"},
+      {"id": "page_target_in_band", "type": "python", "op": "in_band", "text": "Recommended page target sits inside the proven competitor-derived band (or documented deviation)"},
+      {"id": "design_fingerprint_unique", "type": "manual", "text": "Design fingerprint recorded and structurally distinct from prior Pegasus titles"},
+      {"id": "sources_current", "type": "manual", "text": "Source list current: relevant guidelines (ACSM/CDC/NIH/discipline bodies) confirmed accessible"}
+    ],
+    "GATE_2_per_chapter": [
+      {"id": "contraindications_before_instructions", "type": "manual", "text": "Every Technique Unit carries its contraindications block BEFORE the instructions"},
+      {"id": "universal_modifications", "type": "manual", "text": "Every technique has seated + standing/supported + adaptive modifications with readiness criteria and stop rules"},
+      {"id": "exact_prescription_variables", "type": "manual", "text": "All prescription variables exact: reps, sets, duration, rest, holds, breath ratio, RPE/HR"},
+      {"id": "evidence_labels_no_claims", "type": "manual", "text": "Every health claim carries its evidence-hierarchy label; zero diagnosis/cure/weight-loss language"},
+      {"id": "terminology_correct", "type": "manual", "text": "Traditional terminology correct (pinyin/Sanskrit + translation); cultural framing respectful"},
+      {"id": "full_image_sequence", "type": "python", "op": "validate_technique_panels", "text": "Every technique has its full step-by-step image sequence (min 3 panels, same demonstrator); a single finished-pose image is a hard failure"},
+      {"id": "premium_design_elements", "type": "manual", "text": "Styled opener, shaded technique header bars, tinted callout panels, colored accents present and grayscale-legible"},
+      {"id": "no_ai_phrases_no_filler", "type": "manual", "text": "No anti-AI-protocol phrase violations; no filler sections"},
+      {"id": "references_ch1_screening", "type": "manual", "text": "Chapter references (not repeats) the Chapter 1 screening protocol"}
+    ],
+    "GATE_3_post_manuscript": [
+      {"id": "subniche_accuracy_audit", "type": "manual", "text": "Sub-niche accuracy audit: form, terminology, cueing, load prescription, program fidelity"},
+      {"id": "contraindication_completeness", "type": "manual", "text": "Contraindication completeness audit against current professional guidelines, 100% standard"},
+      {"id": "claims_sweep", "type": "manual", "text": "Every therapeutic assertion qualified and sourced; scope-of-practice intact; no invented credentials or endorsements anywhere"},
+      {"id": "program_uses_taught_techniques", "type": "manual", "text": "Program chapters use only previously taught techniques; progression logic and safety gates verified"},
+      {"id": "back_matter_title_specific", "type": "manual", "text": "Back matter is title-specific (trackers/checklists match the actual program), not boilerplate"},
+      {"id": "copyright_disclaimer", "type": "manual", "text": "Copyright page carries the health-and-exercise disclaimer"}
+    ],
+    "GATE_4_production": [
+      {"id": "native_toc_fields", "type": "manual", "text": "Native Word TOC, page fields, captions, cross-references updated; Introduction = printed page 1; no folios in front matter"},
+      {"id": "preface_howto_conclusion_pages", "type": "manual", "text": "Preface and How to Use each exactly 1 rendered page; conclusion ~1.5 pages"},
+      {"id": "typography_matches_audience", "type": "python", "op": "body_typography", "text": "Typography matches the audience decision (13-14 pt for senior/large-print titles); safety callouts grayscale-legible"},
+      {"id": "visual_render_check", "type": "manual", "text": "Page-by-page render: no clipping, overlap, orphaned headings, stretched text, table breakage, missing images, or images covering instructions"},
+      {"id": "final_page_count_in_band", "type": "python", "op": "in_band", "text": "Final page count within the approved target band"},
+      {"id": "ai_disclosure_rights", "type": "manual", "text": "AI-disclosure and rights records complete per UAPF release governance"}
+    ]
+  }
+}

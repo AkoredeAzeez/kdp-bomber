@@ -1,0 +1,189 @@
+{
+  "framework_id": "AIRF 2.0 Medical Edition",
+  "niche": "uapf-niche-medical",
+  "overlay": "OV-MEDT",
+  "source_of_truth": "../../SKILL.md",
+  "specializes": "OV-TEXT",
+
+  "interior": {
+    "trim_in": [8.5, 11.0],
+    "margins_in": 0.7,
+    "gutter_in_when_required": 0.875,
+    "interior_bleed": false,
+    "body_font": "Times New Roman",
+    "body_pt_standard": 12,
+    "body_pt_dense_reference": 11,
+    "line_spacing_over_200pp": 1.15,
+    "body_alignment": "justified",
+    "h1_pt": 18,
+    "h1_bold": true,
+    "h2_pt": 14,
+    "h2_bold": true,
+    "h2_color": "accent",
+    "h3_pt": 12,
+    "h3_bold": true,
+    "h3_color": "black",
+    "caption_pt_range": [10, 11],
+    "caption_style": "italic",
+    "color_count": 2,
+    "color_roles": ["primary", "accent"],
+    "learning_objectives_box_tint_opacity_pct": [10, 15],
+    "table_header_tint_opacity_pct": [15, 20]
+  },
+
+  "page_floors": {
+    "min_pages_per_chapter": 23,
+    "book_total_min": 400,
+    "book_total_max": 550,
+    "chapter_count_min": 10,
+    "chapter_count_max": 20,
+    "override_all_defaults": true
+  },
+
+  "page_to_word_calibration": {
+    "words_per_full_text_page_min": 650,
+    "words_per_full_text_page_max": 700,
+    "image_plus_caption_page_fraction": 0.3333,
+    "feature_box_page_fraction_min": 0.25,
+    "feature_box_page_fraction_max": 0.3333,
+    "chapter_body_word_floor": 13000,
+    "reference_worked_example": {
+      "pages": 23,
+      "subchapter_images": 5,
+      "feature_boxes": 6,
+      "stated_body_words_min": 13500,
+      "stated_body_words_max": 14500
+    }
+  },
+
+  "learner_bands": [
+    {"level": "preclinical", "page_band": [400, 500]},
+    {"level": "clinical_clerkship", "page_band": [450, 550]},
+    {"level": "nursing_allied_health", "page_band": [400, 500]},
+    {"level": "postgraduate_licensing", "page_band": [400, 550]},
+    {"level": "practitioner_reference", "page_band": [400, 550]}
+  ],
+
+  "chapter_distribution": {
+    "foundational_min": 1,
+    "foundational_max": 2,
+    "topic_system_min": 8,
+    "topic_system_max": 16,
+    "closing_min": 1,
+    "closing_max": 2
+  },
+
+  "chapter_structure": {
+    "opener_words": [500, 800],
+    "body_sections_per_chapter_min": 4,
+    "body_sections_per_chapter_max": 6,
+    "synthesis_close_words": [500, 800],
+    "learning_objectives_min": 4,
+    "learning_objectives_max": 6,
+    "bloom_preference": ["Apply", "Analyze", "Evaluate"],
+    "no_practice_questions": true
+  },
+
+  "feature_boxes": {
+    "select_min": 3,
+    "select_max": 5,
+    "custom_named": true,
+    "border_color": "accent",
+    "library": [
+      "Clinical Pearl", "Red Flag Alert", "Pathophysiology Spotlight",
+      "Pharmacological Rationale", "Evidence Base", "Differential Diagnosis Compass",
+      "Special Populations", "Anatomy Connection"
+    ]
+  },
+
+  "visual": {
+    "default_level": "abundant",
+    "figures_per_book_range": [30, 50],
+    "one_photorealistic_image_per_numbered_subchapter": true,
+    "diagrams_schematics_flowcharts_allowed": false,
+    "hard_rule_22": true,
+    "sanctioned_styles": [
+      "photorealistic_anatomical_teaching_model",
+      "clinical_assessment_scenario",
+      "clinical_imaging_facsimile",
+      "histology_microscopy_field"
+    ],
+    "image_prompt_parts": 6,
+    "image_label_max": 12,
+    "image_background": "#FFFFFF"
+  },
+
+  "reference_mode": {
+    "floor": "R2",
+    "r2_two_independent_sources": true,
+    "escalate_to_r3_when_high_consequence_jurisdiction_dependent": true,
+    "downgrade_to_r1_allowed": false,
+    "source_currency_years_max": 5,
+    "citation_style_medical": "AMA",
+    "citation_style_nursing_allied": "APA 7",
+    "accuracy_floor_pct": 100,
+    "accuracy_floor_categories": [
+      "contraindications", "red_flag_signs", "life_threatening_drug_interactions",
+      "dosing_context", "drug_mechanisms_and_class", "named_classification_diagnostic_criteria"
+    ]
+  },
+
+  "drug_naming": {
+    "generic_only": true,
+    "first_use_format": "generic name [pharmacological class]",
+    "brand_names_allowed": false,
+    "dosing_requires_formulary_sentence": true,
+    "formulary_verification_sentence": "Dose ranges provided are for educational orientation only; verify all doses against the current local formulary, institutional protocol, and current prescribing guidelines before clinical application."
+  },
+
+  "subtitle": {
+    "options_min": 6,
+    "options_max": 8,
+    "title_plus_subtitle_char_max": 200
+  },
+
+  "pen_names": {
+    "options_min": 3,
+    "options_max": 5,
+    "format": "First M. Surname",
+    "credentials_allowed": false
+  },
+
+  "front_matter_order": [
+    "title_page", "copyright_page", "list_of_figures", "list_of_tables",
+    "list_of_abbreviations", "linked_toc", "preface_how_to_use"
+  ],
+  "back_matter_order": [
+    "appendix_a_drug_class_reference", "appendix_b_normal_lab_values",
+    "appendix_c_onward_title_specific", "clinical_glossary", "references", "index", "about_the_author"
+  ],
+  "page_numbering": {
+    "front_matter": "roman_unnumbered_visible",
+    "arabic_starts_at": "preface_page_1"
+  },
+
+  "content_rules": {
+    "eponym_stripping": true,
+    "no_practice_questions": true,
+    "no_em_dashes": true,
+    "no_ai_register_filler": true,
+    "no_fabricated_citations": true,
+    "no_fabricated_pen_name_credentials": true,
+    "locked_title_immutable": true,
+    "mandatory_clinical_disclaimer_full_on_copyright_page": true,
+    "condensed_disclaimer_at_chapter_open_when_dosing_or_emergency": true,
+    "book_identity_code_suffix": "+OV-MEDT",
+    "forbidden_repetition_axis_trio": ["A", "B", "D"]
+  },
+
+  "kdp": {
+    "max_categories": 2,
+    "keyword_slots": 7
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "native_word_heading_styles": true,
+    "live_updateable_toc_field": true
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "framework_id": "AIRF 2.0 Travel Edition",
+  "niche": "uapf-niche-travel",
+  "overlay": "OV-TRAVEL",
+  "source_of_truth": "../../SKILL.md",
+
+  "trim_options": {
+    "6x9": {
+      "trim_in": [6, 9],
+      "canvas_in": [6.125, 9.25],
+      "safe_margin_in": 0.5,
+      "opener_px": [1838, 2775],
+      "bleed": true
+    },
+    "8.5x11": {
+      "trim_in": [8.5, 11],
+      "canvas_in": [8.625, 11.25],
+      "safe_margin_in": 0.7,
+      "opener_px": [2588, 3375],
+      "bleed": true
+    },
+    "ask_operator_no_silent_default": true
+  },
+
+  "page_budget": {
+    "studio_owner_hard_cap": 100,
+    "studio_owner_reserve_pages": 2,
+    "studio_owner_target_min": 96,
+    "studio_owner_target_max": 100,
+    "client_default": "near_competitor_median",
+    "client_common_range": [100, 110],
+    "client_may_raise": true,
+    "deployment_marker": ".genie_owner"
+  },
+
+  "competitor_benchmark": {
+    "min_titles": 10,
+    "target_titles": 20,
+    "median_weighted_over_mean": true,
+    "exclude": ["journals", "notebooks", "standalone maps", "non-comparable page counts"]
+  },
+
+  "typography": {
+    "font_family": "Times New Roman",
+    "body_pt_general": 11,
+    "body_pt_accessible": 12,
+    "body_pt_seniors": [13, 14],
+    "line_spacing_default": 1.15,
+    "line_spacing_accessible": 1.5,
+    "h1_pt": 16,
+    "h1_style": "bold BLOCK LETTERS centered",
+    "h2_pt": [13, 14],
+    "h3_pt": [11, 12],
+    "caption_pt": [9, 10],
+    "page_number_pt": 9,
+    "page_number_position": "bottom-center",
+    "body_alignment": "justified",
+    "no_first_line_indent": true
+  },
+
+  "color": {
+    "accent_count": 2,
+    "accent_a_role": "darker structural",
+    "accent_b_role": "brighter supporting",
+    "body_text_color": "black",
+    "no_neon": true,
+    "cmyk_safe": true,
+    "no_default_teal_orange": true,
+    "palette_unique_per_title": true
+  },
+
+  "venue_entry": {
+    "template_points": 11,
+    "entries_per_page": 2,
+    "layout": "two-column",
+    "fill_target_pct": [80, 90],
+    "entry_never_splits": true
+  },
+
+  "chapter_functions": {
+    "required_count": 12,
+    "ultimate_experiences_min": 15,
+    "ultimate_experiences_max": 20
+  },
+
+  "itineraries": {
+    "day_counts": [3, 7, 14]
+  },
+
+  "section_divider": {
+    "full_bleed_photo": true,
+    "title_panel_pt": 16,
+    "title_panel_style": "solid Accent A or B, centered, BLOCK LETTERS bold",
+    "panel_within_safe_area_in": 0.5
+  },
+
+  "maps": {
+    "generator": "ChatGPT Image 2.0 (gpt-image-2)",
+    "overview_slot": "IMG-MAP-OVERVIEW",
+    "district_slot_pattern": "IMG-MAP-<DISTRICT>",
+    "min_count": 4,
+    "min_count_ceiling_hint": 5,
+    "formula": "1 overview + one per district chapter",
+    "one_locked_style": true,
+    "single_map_book_fails_gate3": true
+  },
+
+  "qr_codes": {
+    "size_in_min": 0.75,
+    "size_in_max": 1.0,
+    "quiet_zone_required": true,
+    "test_from_final_pdf": true
+  },
+
+  "image_contract": {
+    "cover_slot": "IMG-COVER",
+    "opener_slot_pattern": "IMG-OP-<SECTION>",
+    "venue_slot_pattern": "IMG-<VENUE>",
+    "map_slot_pattern": "IMG-MAP-<NAME>",
+    "photo_generator": "uapf-flow-image-pipeline",
+    "map_generator": "ChatGPT Image 2.0 (gpt-image-2)",
+    "opener_per_major_chapter": true,
+    "inline_per_substantial_subsection": true
+  },
+
+  "volatile_facts": {
+    "band_label": "as of [season year]",
+    "verify_before_draft": true,
+    "verify_at_release": true,
+    "never_invent": true
+  },
+
+  "content_rules": {
+    "no_alcohol": true,
+    "no_pork_dishes": true,
+    "exclusion_no_exceptions": true,
+    "no_em_dashes": true,
+    "no_third_party_brands": true,
+    "non_affiliation_language_required": true,
+    "locked_title_immutable": true,
+    "edition_year_marker_mandatory": true
+  },
+
+  "front_matter_pages": {
+    "interior_title": 1,
+    "copyright_disclaimer": 1,
+    "preface": 1,
+    "how_to_use": 1,
+    "toc": [1, 2],
+    "introduction_opener": 1,
+    "unnumbered": true,
+    "numbering_restarts_at_introduction": true
+  },
+
+  "conclusion": {
+    "target_pages": 1.5,
+    "honest_review_request": true,
+    "no_new_major_facts": true
+  },
+
+  "author_identity": {
+    "source": "fakenamegenerator.com",
+    "format": "First Name, Initial(s). Surname",
+    "on_cover": false
+  },
+
+  "deliverable": {
+    "format": "DOCX",
+    "rolling_master": true,
+    "live_auto_toc": true,
+    "disconnected_chapter_files": "FAIL"
+  }
+}

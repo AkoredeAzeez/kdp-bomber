@@ -1,0 +1,42 @@
+{
+  "framework_id": "AIRF 2.0 Public Domain Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_public_domain.py; type=manual require agent/legal/render inspection. SKILL.md wins on any disagreement. The 7-Point Legal Verification Checklist is a HARD GATE: failure at ANY point stops the project.",
+  "gates": {
+    "GATE_1_legal_and_architecture_lock": [
+      {"id": "legal_report_cleared", "type": "manual", "text": "7-Point Legal Verification Report complete: all seven points PASS with evidence and check-dates; overall status CLEARED with marketplace list"},
+      {"id": "us_term_math", "type": "python", "op": "us_public_domain_status", "text": "US publication-date point: pub year vs (production_year - 96) cutoff; 1930-1977 requires conclusive renewal analysis"},
+      {"id": "life_plus_70_math", "type": "python", "op": "life_plus_70_pd", "text": "EU/DE and UK points: author died more than 70 full calendar years before the production year"},
+      {"id": "source_text_identified", "type": "manual", "text": "Exact source text identified, archived, and declared in the Note on the Text"},
+      {"id": "translation_cleared", "type": "manual", "text": "Translation (if any) independently verified PD or newly produced"},
+      {"id": "illustrations_cleared", "type": "manual", "text": "Every candidate illustration independently verified PD or newly created"},
+      {"id": "edition_and_floor", "type": "manual", "text": "Edition type and value-add layer locked and substantial by the stated floor"},
+      {"id": "title_differentiator", "type": "manual", "text": "Title/subtitle state the differentiator; clearance report CLEAR/explained CAUTION"},
+      {"id": "penname_identity_code", "type": "manual", "text": "Pen name (editor framing) and Book Identity Code locked"}
+    ],
+    "GATE_2_per_unit": [
+      {"id": "base_text_matches_source", "type": "manual", "text": "Base-text passage matches the identified source exactly (spot-collation; spelling policy applied consistently)"},
+      {"id": "annotations_verified", "type": "manual", "text": "Every annotation factually verified; allusion identifications correct; no note paraphrases an in-copyright note"},
+      {"id": "apparatus_original_and_distinct", "type": "manual", "text": "Editorial prose is original, in the locked voice, and clearly distinguishable from the classic text"},
+      {"id": "quotations_exact", "type": "manual", "text": "Quotations exact and cited to chapter/section"},
+      {"id": "illustrations_placed", "type": "manual", "text": "Illustrations placed at declared points with correct credits and captions"},
+      {"id": "no_modern_copyright", "type": "manual", "text": "No modern-copyright element has entered the unit"}
+    ],
+    "GATE_3_manuscript_completion": [
+      {"id": "full_collation", "type": "manual", "text": "Full collation pass: complete text present, chapters in original order, no dropped or duplicated passages"},
+      {"id": "note_numbering_resolves", "type": "manual", "text": "Annotation numbering continuous and correct; every note anchor resolves"},
+      {"id": "intro_facts_reverified", "type": "manual", "text": "Introduction facts re-verified; chronology dates cross-checked"},
+      {"id": "glossary_and_questions", "type": "manual", "text": "Glossary covers the archaic terms actually flagged; discussion questions map to the whole work"},
+      {"id": "legal_reverification", "type": "manual", "text": "LEGAL RE-VERIFICATION (mandatory): re-run all seven points against the finished manuscript; any failure stops handoff"},
+      {"id": "copyright_page_correct", "type": "manual", "text": "Copyright page claims copyright only in new material and states the PD status of the text"}
+    ],
+    "GATE_4_differentiation_release": [
+      {"id": "differentiation_statement", "type": "manual", "text": "Differentiation statement drafted explicitly (word count of intro, number of annotations/illustrations/questions) and mirrored in metadata"},
+      {"id": "differentiation_floor_met", "type": "python", "op": "meets_differentiation_floor", "text": "Value-add is substantial by the floor: 10+ original illustrations OR apparatus ratio >= 0.15"},
+      {"id": "title_keyword_matches_content", "type": "manual", "text": "Title/subtitle contain the differentiator keyword matching the actual content"},
+      {"id": "description_leads_value_add", "type": "manual", "text": "Description leads with the value-add, not the classic's plot"},
+      {"id": "competitive_distinct", "type": "manual", "text": "Edition is meaningfully distinct from the free/cheap copies of the same text"},
+      {"id": "rights_sweep_final", "type": "manual", "text": "Zero in-copyright elements; illustration credits complete; AI-disclosure recorded"},
+      {"id": "ebook_links_resolve", "type": "manual", "text": "eBook: linked TOC includes apparatus entries; note links resolve both directions"}
+    ]
+  }
+}

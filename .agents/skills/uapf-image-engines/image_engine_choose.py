@@ -1,0 +1,334 @@
+#!/usr/bin/env python3
+"""
+IMAGE ENGINE CHOICE - uapf-image-engines (CLAUDE ENGINE)
+========================================================
+Lets the client pick which image engine a book uses, at book intake.
+Detects what is actually usable on THIS machine, records the choice into
+the project, and every image in that book then uses it. Run --detect to
+present the menu, --set to lock the choice, --get to read it back.
+
+  python image_engine_choose.py --detect
+  python image_engine_choose.py --project <folder> --set <flux|sdxl|qwen|hidream|flow|codex>
+  python image_engine_choose.py --project <folder> --get
+
+No OpenAI API key is ever used. Codex here means Codex's own native
+gpt-image tool (driven via codex exec), not the OpenAI API.
+"""
+import argparse, json, os, shutil, subprocess, sys
+
+ENGINES = {
+    "flux":  ("FLUX.1-schnell", "Free. Photoreal interiors (cookbook, health, travel, crafts). Commercial-safe.", "hf"),
+    "sdxl":  ("Stable Diffusion XL", "Free. Line art, coloring pages, stylized children's illustration.", "hf"),
+    "qwen":  ("Qwen-Image-2512", "Free (Apache 2.0). Best when the image must show readable text (labeled diagrams, posters). Arena rank 39/76, score 1125 — significant upgrade over the previous qwen-image (rank 60).", "hf"),
+    "hidream": ("HiDream-O1-Image", "Free (MIT). Commercial-safe, photoreal. Arena rank 42/76, score 1117. Strong alternative to FLUX for interiors; no API key needed.", "hf"),
+    "flow":  ("Google Flow", "Free. Broad interiors. Needs a Google login in the browser.", "browser"),
+    "codex": ("Codex gpt-image", "Top quality and realism. Needs the Codex CLI and a Codex/OpenAI account.", "codex"),
+    "gemini": ("Gemini API (Google key; may require billing)", "Google removed free API image quota in 2026 (429 limit:0 on free keys). Works only with a billed Google key. Never the Gemini web app (visible watermark).", "gemini"),
+    "pollinations": ("Pollinations (free backup)", "Free, keyless (optional free sk_ token raises limits). Softer model: auto-polished (upscale+sharpen). BACKUP role: used automatically when codex hits its limit or fails.", "pollinations"),
+    "cloudflare": ("Cloudflare Workers AI (free, FLUX-schnell)", "Free ~10,000 neurons/day (about 100 images, no card), headless, commercial-safe, parallel-friendly. Your own free Cloudflare account: CF_ACCOUNT_ID + CF_API_TOKEN in .env. Separate quota, so it raises your total free ceiling.", "cloudflare"),
+}
+DEFAULT = "flow"   # book-content primary (operator directive 2026-08-23)
+
+# Book-CONTENT (interior) image engine order (operator directive 2026-08-23):
+# Google Flow first (best quality, needs the operator's logged-in Chrome), then
+# Cloudflare Workers AI (free, headless, no browser), then Codex gpt-image, then
+# the other free engines. The agent tries them in order and auto-falls to the
+# next when one is blocked/unavailable/fails, so a book never stalls. Covers and
+# A+ keep their own Codex-default rule (unchanged).
+PRIORITY = ["flow", "cloudflare", "codex", "flux", "gemini", "hidream", "sdxl", "qwen", "pollinations"]
+
+def _hf_ready():
+    if os.environ.get("HF_TOKEN"):
+        return True
+    try:
+        return "HF_TOKEN" in subprocess.run(
+            ["reg", "query", r"HKCU\Environment", "/v", "HF_TOKEN"],
+            capture_output=True, text=True).stdout
+    except Exception:
+        return False
+
+def _codex_ready():
+    return bool(shutil.which("codex"))
+
+def _gemini_ready():
+    if os.environ.get("GEMINI_API_KEY"):
+        return True
+    d = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(5):
+        envp = os.path.join(d, ".env")
+        if os.path.exists(envp) and "GEMINI_API_KEY=" in open(envp, encoding="utf-8-sig").read():
+            return True
+        d = os.path.dirname(d)
+    return False
+
+def _cloudflare_ready():
+    if os.environ.get("CF_ACCOUNT_ID") and os.environ.get("CF_API_TOKEN"):
+        return True
+    d = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(5):
+        envp = os.path.join(d, ".env")
+        if os.path.exists(envp):
+            txt = open(envp, encoding="utf-8-sig").read()
+            if "CF_ACCOUNT_ID=" in txt and "CF_API_TOKEN=" in txt:
+                return True
+        d = os.path.dirname(d)
+    return False
+
+def readiness(kind):
+    if kind == "hf":
+        return "ready" if _hf_ready() else "needs a free Hugging Face token (one-time)"
+    if kind == "cloudflare":
+        return "ready" if _cloudflare_ready() else "needs a free Cloudflare account (CF_ACCOUNT_ID + CF_API_TOKEN in .env, no card)"
+    if kind == "codex":
+        return "ready" if _codex_ready() else "needs the Codex CLI + a Codex/OpenAI account"
+    if kind == "gemini":
+        return "ready" if _gemini_ready() else "needs a BILLED Google key in .env (free API image quota removed 2026)"
+    if kind == "pollinations":
+        return "ready (keyless; free sk_ token in .env raises limits)"
+    return "ready (log in to Google in the browser when prompted)"
+
+# Client-friendly labels and one-line plain descriptions shown in the menu
+MENU_META = {
+    "codex":       ("Codex  (gpt-image-2)",     "Top quality & realism — needs your Codex/OpenAI account",    "Best quality"),
+    "flux":        ("FLUX.1-schnell",            "Great photoreal interiors: food, crafts, travel — free",      "Free / recommended default"),
+    "hidream":     ("HiDream-O1-Image",          "Photoreal interiors & portraits — free, MIT license",         "Free"),
+    "qwen":        ("Qwen-Image-2512",           "Best when images need readable text: diagrams, labels — free","Free"),
+    "sdxl":        ("Stable Diffusion XL",       "Line art, coloring pages, stylized children's illustration — free", "Free"),
+    "gemini":      ("Gemini API  (Google)",      "Excellent quality — needs your free Google AI Studio key",    "Free (own key)"),
+    "cloudflare":  ("Cloudflare Workers AI",     "~100 free images/day — needs a free Cloudflare account",     "Free (own account)"),
+    "flow":        ("Google Flow",               "Broad general interiors — needs a Google browser login",      "Free (browser)"),
+    "pollinations":("Pollinations",              "Soft, polished output — completely free, no account at all",  "Free / no setup"),
+}
+
+STATUS_ICON = {"ready": "✓", "needs": "○", "browser": "⊙"}
+
+def _status(kind):
+    r = readiness(kind)
+    if r == "ready" or r.startswith("ready ("):
+        return "✓ Ready"
+    if "browser" in r:
+        return "⊙ Browser login"
+    return "○ One-time setup needed"
+
+def detect():
+    print("Choose the image engine for this book. Available on this computer:\n")
+    for k, (name, desc, kind) in ENGINES.items():
+        print(f"  {k:12} {name:28} [{readiness(kind)}]")
+        print(f"               {desc}")
+    print(f"\nDefault if you do not choose: {DEFAULT} ({ENGINES[DEFAULT][0]}).")
+    print("You can pick a different engine for every book.")
+
+def menu():
+    """Client-friendly numbered menu — paste this directly into the chat."""
+    keys = list(ENGINES.keys())
+    print("Here are your image options for this book — just tell me which number you prefer:\n")
+    for i, k in enumerate(keys, 1):
+        _, _, kind = ENGINES[k]
+        label, plain_desc, cost = MENU_META.get(k, (ENGINES[k][0], ENGINES[k][1], ""))
+        status = _status(kind)
+        print(f"  {i}.  {label}")
+        print(f"       {plain_desc}")
+        print(f"       {cost}  |  {status}")
+        print()
+    default_n = keys.index(DEFAULT) + 1
+    print(f"Default if you skip: {default_n} ({ENGINES[DEFAULT][0]} — free, works everywhere).")
+    print("Just say a number, a name, or \"the free one\" — I'll handle the rest.\n")
+    # Machine-readable map for Genie to parse the client's reply
+    mapping = "  ".join(f"{i+1}={k}" for i, k in enumerate(keys))
+    print(f"MENU_MAP: {mapping}")
+
+def _ready_bool(engine):
+    """True if this engine is usable without an interactive/browser step. Flow is
+    special: its readiness (a logged-in Chrome) is verified by the agent at run
+    time via the browser sign-in gate, so the script reports it as 'agent-checked'
+    and always keeps it first in the order."""
+    kind = ENGINES[engine][2]
+    if engine == "flow":
+        return None  # agent verifies the Chrome sign-in gate at runtime
+    if kind == "hf":
+        return _hf_ready()
+    if kind == "cloudflare":
+        return _cloudflare_ready()
+    if kind == "codex":
+        return _codex_ready()
+    if kind == "gemini":
+        return _gemini_ready()
+    if kind == "pollinations":
+        return True
+    return None
+
+def auto_order():
+    """The book-content engine order with readiness, in PRIORITY sequence. The
+    agent walks this list and uses the first it can actually run: Flow if its
+    Chrome sign-in gate passes, else the first ready keyless engine."""
+    out = []
+    for e in PRIORITY:
+        if e not in ENGINES:
+            continue
+        rb = _ready_bool(e)
+        out.append({"engine": e, "name": ENGINES[e][0],
+                    "ready": ("agent-checked" if rb is None else bool(rb))})
+    return out
+
+
+# ---- PER-TITLE ENGINE ANALYSIS (operator directive 2026-08-28) --------------
+# Before ANY image generation, analyse which of Google Flow and Cloudflare
+# Workers AI suits THIS title, then lock and use that engine. Deterministic and
+# explainable: keyword/niche signals plus current readiness, never a coin flip.
+
+_FLOW_NICHES = {"cookbook", "travel", "crafts", "howto", "health", "health-fitness",
+                "user-guide", "childrens-facts", "sports", "parenting"}
+_CF_NICHES = {"selfhelp", "business", "faith", "journal", "poetry", "biography",
+              "history", "humor", "popular-science", "fiction"}
+_FLOW_WORDS = ("cook", "recipe", "food", "kitchen", "baking", "meal", "diet",
+               "travel", "guide", "city", "garden", "craft", "crochet", "knit",
+               "woodwork", "diy", "workout", "yoga", "fitness", "nature",
+               "animal", "bird", "photo")
+_CF_WORDS = ("mindset", "habit", "business", "money", "prayer", "faith",
+             "journal", "poem", "poetry", "history", "memoir", "story")
+_DIAGRAM_WORDS = ("wiring", "diagram", "circuit", "schematic", "welding",
+                  "anatomy", "formula", "equation", "engineering", "blueprint")
+
+
+def analyze_flow_vs_cloudflare(title, niche=None):
+    """Score Flow vs Cloudflare for one title. Returns a dict with the choice,
+    both scores, and human-readable reasons."""
+    t = (title or "").lower()
+    n = (niche or "").lower()
+    flow, cf, notes = 0, 0, []
+
+    if n in _FLOW_NICHES:
+        flow += 2; notes.append("niche '%s' is photoreal-led: Flow renders real subjects best" % n)
+    if n in _CF_NICHES:
+        cf += 2; notes.append("niche '%s' uses occasional conceptual/lifestyle images: Cloudflare's headless batch is a better fit" % n)
+    fw = [w for w in _FLOW_WORDS if w in t]
+    if fw:
+        flow += min(3, len(fw)); notes.append("title signals photoreal subjects (%s)" % ", ".join(fw[:4]))
+    cw = [w for w in _CF_WORDS if w in t]
+    if cw:
+        cf += min(3, len(cw)); notes.append("title signals conceptual imagery (%s)" % ", ".join(cw[:4]))
+    dw = [w for w in _DIAGRAM_WORDS if w in t]
+    if dw:
+        notes.append("WARNING: '%s' suggests technical diagrams: build those with matplotlib, "
+                     "never a diffusion engine (AI garbles labels/symbols)" % ", ".join(dw[:3]))
+
+    cf_ready = bool(_cloudflare_ready())
+    if not cf_ready:
+        flow += 1; notes.append("Cloudflare credentials not set in .env; Flow leads unless its Chrome gate fails")
+    else:
+        notes.append("Cloudflare is ready (headless, no browser needed)")
+    notes.append("Flow needs the operator's logged-in Chrome; if its sign-in gate fails at run time, fall to the other engine, then the global order")
+
+    if flow == cf:
+        flow += 1; notes.append("tie: Flow wins ties for realism (global order also puts it first)")
+    choice = "flow" if flow > cf else "cloudflare"
+    return {"choice": choice, "flow_score": flow, "cloudflare_score": cf,
+            "cloudflare_ready": cf_ready, "title": title, "niche": n or None,
+            "reasons": notes}
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--project")
+    ap.add_argument("--detect", action="store_true")
+    ap.add_argument("--menu", action="store_true",
+                    help="print client-friendly numbered menu (Genie pastes this into chat)")
+    ap.add_argument("--set")
+    ap.add_argument("--get", action="store_true")
+    ap.add_argument("--auto", action="store_true",
+                    help="print the book-content engine order (Flow, Cloudflare, Codex, ...) with readiness")
+    ap.add_argument("--analyze", action="store_true",
+                    help="Flow vs Cloudflare analysis for one title; with --project, locks the winner")
+    ap.add_argument("--title", help="book title for --analyze")
+    ap.add_argument("--niche", help="routed niche key for --analyze")
+    a = ap.parse_args()
+
+    if a.analyze:
+        if not a.title:
+            sys.exit("--analyze needs --title \"<book title>\"")
+        res = analyze_flow_vs_cloudflare(a.title, a.niche)
+        print("ENGINE ANALYSIS: %s" % a.title)
+        print("  Flow %d vs Cloudflare %d  ->  USE %s"
+              % (res["flow_score"], res["cloudflare_score"], res["choice"].upper()))
+        for r in res["reasons"]:
+            print("   - " + r)
+        if a.project:
+            sf = os.path.join(os.path.abspath(a.project), "state", "image_engine.json")
+            os.makedirs(os.path.dirname(sf), exist_ok=True)
+            rec = {"engine": res["choice"], "name": ENGINES[res["choice"]][0],
+                   "analysis": res}
+            with open(sf, "w", encoding="utf-8") as f:
+                json.dump(rec, f, indent=1)
+            print("  locked into %s" % sf)
+        print(json.dumps({"choice": res["choice"]}))
+        return
+
+    if a.auto:
+        print("Book-content image engine order (try in sequence, auto-fall to the next):")
+        for i, r in enumerate(auto_order(), 1):
+            state = ("try (agent verifies Chrome login)" if r["ready"] == "agent-checked"
+                     else ("ready" if r["ready"] else "not set up"))
+            print(f"  {i}. {r['engine']:11} {r['name']:34} [{state}]")
+        print(json.dumps({"order": [r["engine"] for r in auto_order()]}))
+        return
+    if a.menu:
+        menu(); return
+    if a.detect or (not a.set and not a.get):
+        detect(); return
+
+    statef = os.path.join(os.path.abspath(a.project), "state", "image_engine.json") if a.project else None
+    if a.set:
+        if a.set not in ENGINES:
+            sys.exit(f"unknown engine '{a.set}'. Choose from: {', '.join(ENGINES)}")
+        if not a.project:
+            sys.exit("--set needs --project")
+        os.makedirs(os.path.dirname(statef), exist_ok=True)
+        rec = {"engine": a.set, "name": ENGINES[a.set][0]}
+        if a.set == "codex":
+            # AUTO-REPAIR LAW (operator directive 2026-08-19): when codex is
+            # chosen, verify it can actually generate: auto-repair what a
+            # machine can fix (incl. the ~/.codex/config.toml sandbox fix);
+            # if still broken, arm the POLLINATIONS free backup so the book's
+            # images generate immediately anyway (never imageless, never
+            # stalled, never a silent switch: the fallback is reported).
+            # Timing: images generate INLINE per chapter (compulsory).
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(
+                "codex_image_repair",
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "codex_image_repair.py"))
+            cir = importlib.util.module_from_spec(spec); spec.loader.exec_module(cir)
+            healthy, findings = cir.check(smoke=False)
+            repairs = []
+            if not healthy:
+                repairs = cir.repair()
+                healthy, findings = cir.check(smoke=False)
+            rec["codex_health"] = "healthy" if healthy else "broken"
+            rec["generation_timing"] = "inline-per-chapter (or immediately after the manuscript)"
+            if not healthy:
+                rec["fallback_engine"] = "pollinations"
+            json.dump(rec, open(statef, "w"), indent=1)
+            print(f"image engine for this book locked: {a.set} ({ENGINES[a.set][0]})")
+            for f in findings: print("  -", f)
+            for r in repairs: print("  repair:", r)
+            if healthy:
+                print("  codex verified: images will generate inline per chapter (or start")
+                print("  automatically the moment the manuscript finishes). No waiting.")
+            else:
+                print("  codex is still broken after auto-repair: THIS book's images will")
+                print("  generate with the free Pollinations backup immediately instead")
+                print("  (fallback armed, polished output). Finish the one-time step above")
+                print("  and pick codex again next book.")
+            return
+        json.dump(rec, open(statef, "w"), indent=1)
+        print(f"image engine for this book locked: {a.set} ({ENGINES[a.set][0]})")
+        note = readiness(ENGINES[a.set][2])
+        if note != "ready" and "ready (" not in note:
+            print(f"  one-time setup: {note}")
+    elif a.get:
+        if statef and os.path.exists(statef):
+            print(json.load(open(statef))["engine"])
+        else:
+            print(DEFAULT)
+
+if __name__ == "__main__":
+    main()

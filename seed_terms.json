@@ -1,0 +1,205 @@
+{
+ "_comment": "Per-niche Amazon search terms for seeding a fresh cover_db. Terms marked used_2026_08 are the exact searches from the proven 2026-08 stocking run; the rest are the recommended equivalents for niches stocked before terms were recorded. Add a second term when the first yields under ~30 keepers.",
+ "health": {
+  "terms": [
+   "chair yoga for seniors book",
+   "anti inflammatory diet book"
+  ]
+ },
+ "cookbook": {
+  "terms": [
+   "diabetic cookbook for beginners",
+   "mediterranean diet cookbook"
+  ]
+ },
+ "textbook": {
+  "terms": [
+   "anatomy and physiology textbook"
+  ],
+  "used_2026_08": true
+ },
+ "medical": {
+  "terms": [
+   "medical surgical nursing book"
+  ],
+  "used_2026_08": true
+ },
+ "workbook": {
+  "terms": [
+   "workbook for adults practice",
+   "anxiety therapy workbook",
+   "kindergarten workbook"
+  ],
+  "used_2026_08": true
+ },
+ "study-guide": {
+  "terms": [
+   "nclex study guide",
+   "ged study guide"
+  ]
+ },
+ "exam-simulator": {
+  "terms": [
+   "exam prep practice tests"
+  ],
+  "used_2026_08": true
+ },
+ "childrens": {
+  "terms": [
+   "bedtime story book for kids",
+   "picture book ages 3-5"
+  ]
+ },
+ "childrens-facts": {
+  "terms": [
+   "facts book for kids"
+  ],
+  "used_2026_08": true
+ },
+ "activity": {
+  "terms": [
+   "activity book for adults"
+  ],
+  "used_2026_08": true
+ },
+ "crafts": {
+  "terms": [
+   "crochet for beginners book",
+   "knitting patterns book"
+  ]
+ },
+ "selfhelp": {
+  "terms": [
+   "self help books for women",
+   "overthinking book"
+  ]
+ },
+ "howto": {
+  "terms": [
+   "home repair diy guide",
+   "woodworking for beginners book",
+   "gardening for beginners book"
+  ],
+  "used_2026_08": true
+ },
+ "humor": {
+  "terms": [
+   "funny gift book"
+  ],
+  "used_2026_08": true
+ },
+ "history": {
+  "terms": [
+   "world war 2 history book",
+   "american history book"
+  ]
+ },
+ "fiction": {
+  "terms": [
+   "historical fiction novel",
+   "fiction novel book club"
+  ],
+  "used_2026_08": true
+ },
+ "public-domain": {
+  "terms": [
+   "classic literature deluxe edition",
+   "classic novels hardcover collection"
+  ],
+  "used_2026_08": true
+ },
+ "travel": {
+  "terms": [
+   "travel guide 2026",
+   "national parks travel guide"
+  ]
+ },
+ "user-guide": {
+  "terms": [
+   "iphone for seniors guide",
+   "computers for seniors guide book",
+   "user guide manual for beginners and seniors",
+   "android phone for seniors guide",
+   "ipad for seniors guide"
+  ],
+  "used_2026_08": true
+ },
+ "journal": {
+  "terms": [
+   "guided journal for women",
+   "gratitude journal"
+  ]
+ },
+ "faith": {
+  "terms": [
+   "daily devotional book"
+  ],
+  "used_2026_08": true
+ },
+ "business": {
+  "terms": [
+   "small business book",
+   "leadership book"
+  ]
+ },
+ "biography": {
+  "terms": [
+   "biography memoir book"
+  ],
+  "used_2026_08": true
+ },
+ "parenting": {
+  "terms": [
+   "parenting toddlers book"
+  ],
+  "used_2026_08": true
+ },
+ "sports": {
+  "terms": [
+   "sports book history greatest",
+   "golf book for beginners",
+   "fishing for beginners book"
+  ],
+  "used_2026_08": true
+ },
+ "language": {
+  "terms": [
+   "learn spanish for beginners book",
+   "learn french for beginners book"
+  ],
+  "used_2026_08": true
+ },
+ "poetry": {
+  "terms": [
+   "poetry collection book",
+   "poetry books bestsellers",
+   "love poems book"
+  ],
+  "used_2026_08": true
+ },
+ "reference": {
+  "terms": [
+   "reference book desk encyclopedia",
+   "dictionary thesaurus reference",
+   "world atlas book"
+  ],
+  "used_2026_08": true
+ },
+ "popular-science": {
+  "terms": [
+   "popular science book",
+   "science books for adults"
+  ],
+  "used_2026_08": true
+ },
+ "coloring": [
+  "bold and easy coloring book for adults",
+  "adult coloring book stress relief",
+  "coloring book for kids ages 4-8"
+ ],
+ "puzzle": [
+  "large print word search puzzle book",
+  "word search for seniors",
+  "brain games puzzle book for adults"
+ ]
+}

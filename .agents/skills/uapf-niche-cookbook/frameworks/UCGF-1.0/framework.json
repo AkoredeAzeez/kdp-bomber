@@ -1,0 +1,14 @@
+{
+  "framework_id": "UCGF 1.0",
+  "niche": "uapf-niche-cookbook",
+  "overlay": "OV-COOK",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_cookbook.py"
+  ]
+}

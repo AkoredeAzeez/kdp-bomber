@@ -1,0 +1,48 @@
+{
+  "framework_id": "AIRF 2.0 Textbook Edition",
+  "note": "Gate-checkable projection of the QA Checklist in ../../SKILL.md (authoritative). type=python checks are computable via genie_textbook.py; type=manual require agent/render/citation inspection. OV-TEXT is also the default template for any title with no dedicated overlay.",
+  "gates": {
+    "GATE_1_post_phase0": [
+      {"id": "title_clearance_report", "type": "manual", "text": "Title Clearance Report issued; rating CLEAR or explained low-confusion CAUTION"},
+      {"id": "domain_mapped", "type": "python", "op": "validate_domain", "text": "Domain detected and mapped to one of the nine engine domains; panel configured; Engineering Directive activated if applicable"},
+      {"id": "subtitle_under_200", "type": "python", "op": "subtitle_length_valid", "text": "Subtitle locked; combined title+subtitle under 200 characters; compliance-checked"},
+      {"id": "config_locked", "type": "manual", "text": "Audience, visual level, reference approach, assessment architecture, supplementary materials all locked with reasons"},
+      {"id": "color_pairing_unique", "type": "manual", "text": "Two-color primary+accent pairing locked and collision-checked unique against the catalog"},
+      {"id": "structural_signature_locked", "type": "manual", "text": "Opener style, section flow, feature-box names, close style locked and rotated vs prior titles"},
+      {"id": "pen_name_valid", "type": "manual", "text": "Pen name First M. Last, no honorifics, not reused, collision-screened"},
+      {"id": "toc_page_plan", "type": "python", "op": "validate_total_pages", "text": "TOC complete with per-chapter image plan and page targets; Engineering: min 23 pp/chapter and 400-550 total confirmed arithmetically"},
+      {"id": "phase0_gate", "type": "manual", "text": "Phase 0 gate passed per UAPF gate protocol"}
+    ],
+    "GATE_2_per_chapter": [
+      {"id": "opener_words", "type": "python", "op": "word_count_in_range", "text": "Opens in the locked opener style; 500-750 word opening; no narrative bullet lists"},
+      {"id": "learning_objectives", "type": "python", "op": "validate_objective_count", "text": "Learning Objectives box present, styled to spec; 3-5 Bloom-verb measurable objectives, each assessment/exposition traced"},
+      {"id": "section_headings", "type": "python", "op": "validate_section_count", "text": "3-5 major numbered X.Y sections, headings bold ACCENT color, Times New Roman"},
+      {"id": "figures_present", "type": "manual", "text": "All planned figures present at their exact points; captions beneath (max two lines); referenced in prose; white backgrounds verified"},
+      {"id": "engineering_rules", "type": "python", "op": "validate_chapter_pages+answer_key_coverage", "text": "Engineering: every subchapter has its realistic photographic image, chapter is 23+ pages, NO practice questions anywhere"},
+      {"id": "assessment_mapped", "type": "manual", "text": "Non-Engineering: assessment items original, objective-mapped, numbered for the answer key"},
+      {"id": "quantitative_verified", "type": "manual", "text": "Every calculation recalculated; every value/unit/conversion checked; code tested where execution is claimed"},
+      {"id": "standards_cited", "type": "manual", "text": "Standards/guidelines cited with issuing body, edition, date; domain risk-regime language present"},
+      {"id": "cases_original_no_emdash", "type": "manual", "text": "All cases fictional/de-identified; no copied prose/examples/structures; no em dashes"},
+      {"id": "feature_boxes", "type": "python", "op": "validate_feature_box_count", "text": "Feature boxes used per plan (3-5) under this book's custom names"},
+      {"id": "close_words", "type": "python", "op": "word_count_in_range", "text": "Closes in the locked style (500-750 words) with narrative bridge; appended once, never regenerated"}
+    ],
+    "GATE_3_manuscript_complete": [
+      {"id": "front_matter_numbering", "type": "manual", "text": "Front matter complete and ordered; roman/arabic numbering correct; TOC page numbers match layout"},
+      {"id": "disclaimer", "type": "manual", "text": "Discipline-adapted disclaimer on copyright page, extended with domain risk language"},
+      {"id": "back_matter_answer_key", "type": "python", "op": "answer_key_coverage", "text": "Answer key with worked solutions covers 100% of assessment items (where assessment exists); glossary, references, index, About the Author present"},
+      {"id": "citations_ledger", "type": "manual", "text": "Citations-to-Verify ledger resolved or explicitly surfaced to the operator; zero fabricated citations"},
+      {"id": "objective_trace_audit", "type": "manual", "text": "Objective-to-assessment (or exposition) trace audit passes book-wide"},
+      {"id": "structural_conformance", "type": "manual", "text": "No drift from the locked signature; figure numbering continuous; list of figures/tables matches actuals"},
+      {"id": "total_pages_in_band", "type": "python", "op": "validate_total_pages", "text": "Total page count in band (Engineering 400-550)"},
+      {"id": "two_color_held", "type": "manual", "text": "No third color anywhere; heading/box/table tints correct"}
+    ],
+    "GATE_4_release": [
+      {"id": "pdf_preflight", "type": "manual", "text": "PDF preflight: 8.5x11, 0.7in margins (plus gutter), fonts embedded, images 300 DPI at placed size, whites 255/255/255"},
+      {"id": "ebook", "type": "manual", "text": "eBook: linked TOC/NCX, no manual page numbers, tables reflow-safe"},
+      {"id": "metadata_match_under_200", "type": "python", "op": "subtitle_length_valid", "text": "Metadata title/subtitle/author matches cover and interior; under 200 characters; category and keywords accurate"},
+      {"id": "ai_disclosure_rights", "type": "manual", "text": "AI-disclosure status recorded per KDP policy; rights review clean (no logos, trade dress, copyrighted figures, real-person likenesses)"},
+      {"id": "high_risk_read", "type": "manual", "text": "Final read of high-risk passages (medical/legal/engineering/financial) against the domain regime"},
+      {"id": "catalog_log", "type": "manual", "text": "Catalog log updated: title, pen name, color pairing, structural signature, marketplace, language"}
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "framework_id": "USGPF 2.9",
+  "niche": "uapf-niche-study-guide",
+  "overlay": "OV-STUDY",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_study_guide.py"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "framework_id": "AIRF 2.0 Humor Edition",
+  "niche": "uapf-niche-humor",
+  "overlay": "OV-HUMOR",
+  "source_of_truth": "../../SKILL.md",
+  "decomposition_status": "complete",
+  "components": [
+    "config.json",
+    "validation.json",
+    "phases.md",
+    "rules.md",
+    "genie_humor.py"
+  ]
+}

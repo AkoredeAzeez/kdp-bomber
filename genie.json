@@ -1,0 +1,15 @@
+{
+ "name": "Genie",
+ "_note": "Default Genie brand: dark neutral scrim over stock footage, teal accent. Copy this file to <yourbrand>.json and change the palette + pill_text to match a client brand. No flat background colour is used; the footage is the background.",
+ "palette": {
+  "ink": "#F4F7F8",
+  "ink2": "#AEB9C4",
+  "ink3": "#6C7A87",
+  "accent": "#32E6E2",
+  "accent2": "#7C5CFF",
+  "green": "#4ADE80",
+  "scrim": "#06070A",
+  "panel": "#0F141A"
+ },
+ "pill_text": "#08100F"
+}
