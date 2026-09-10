@@ -32,15 +32,34 @@ STARTED_MARKER="$DATA_DIR/.genie_started"
 COMPLETE_SIGNAL="$DATA_DIR/BOOK_COMPLETE"
 BLOCKED_SIGNAL="$DATA_DIR/NEEDS_OPERATOR"
 
+CLAUDE_TOKEN_FILE="$DATA_DIR/claude_oauth_token.txt"
+
 mkdir -p "$LOG_DIR" "$DATA_DIR/home" "$PENDING_DIR" "$ACTIVE_DIR" "$DONE_DIR"
 
 log() { echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] $*"; }
 
+cd "$APP_DIR"
+
+# --- Start the HTTP API first, before anything that might block ----------
+# It has to be up even if we have no Claude token yet -- that's how a
+# frontend can POST one in via /setup/claude-token (see api_server.py).
+DATA_DIR="$DATA_DIR" APP_DIR="$APP_DIR" python3 "$APP_DIR/deploy/api_server.py" \
+  >> "$LOG_DIR/api_server.log" 2>&1 &
+API_PID=$!
+log "API server started (pid $API_PID), logging to $LOG_DIR/api_server.log"
+
+# --- Get a Claude token: env var (operator-set) or file (frontend-submitted) --
+if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ ! -f "$CLAUDE_TOKEN_FILE" ]; then
+  log "No CLAUDE_CODE_OAUTH_TOKEN yet. Waiting for one -- either set the Railway"
+  log "variable, or POST it to /setup/claude-token (run 'claude setup-token' on"
+  log "your own machine first to get the string to send). Checking every 30s."
+fi
+while [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ ! -f "$CLAUDE_TOKEN_FILE" ]; do
+  sleep 30
+done
 if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
-  log "FATAL: CLAUDE_CODE_OAUTH_TOKEN is not set."
-  log "On your own machine: run 'claude setup-token', log in with your Claude subscription,"
-  log "then paste the printed token into this Railway service's variables."
-  exit 1
+  CLAUDE_CODE_OAUTH_TOKEN=$(cat "$CLAUDE_TOKEN_FILE")
+  log "Picked up a Claude token submitted via the API."
 fi
 export CLAUDE_CODE_OAUTH_TOKEN
 
@@ -56,14 +75,6 @@ for dir in Books state cover_db catalog; do
   fi
   ln -sfn "$DATA_DIR/$dir" "$APP_DIR/$dir"
 done
-
-cd "$APP_DIR"
-
-# --- Start the HTTP API alongside the supervisor (shares this volume) ----
-DATA_DIR="$DATA_DIR" APP_DIR="$APP_DIR" python3 "$APP_DIR/deploy/api_server.py" \
-  >> "$LOG_DIR/api_server.log" 2>&1 &
-API_PID=$!
-log "API server started (pid $API_PID), logging to $LOG_DIR/api_server.log"
 
 # One-time migration: if BOOK_BRIEF is still set (the old single-book setup),
 # seed it as the first queue entry instead of using it directly.

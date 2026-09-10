@@ -35,6 +35,7 @@ ACTIVE_DIR = QUEUE_DIR / "active"
 DONE_DIR = QUEUE_DIR / "done"
 DB_PATH = DATA_DIR / "genie.db"
 BLOCKED_SIGNAL = DATA_DIR / "NEEDS_OPERATOR"
+CLAUDE_TOKEN_FILE = DATA_DIR / "claude_oauth_token.txt"
 API_TOKEN = os.environ.get("API_TOKEN", "")
 
 for d in (PENDING_DIR, ACTIVE_DIR, DONE_DIR):
@@ -169,6 +170,38 @@ def compose_brief(payload: CreateBook) -> str:
 
 @app.get("/health")
 def health():
+    return {"ok": True}
+
+
+class SetupToken(BaseModel):
+    token: str
+
+
+@app.get("/setup/status")
+def setup_status():
+    """Unauthenticated on purpose -- a frontend needs to know whether to show
+    the 'paste your Claude token' screen before it has any token to send as
+    auth. Reveals only a boolean, never the token itself."""
+    have_token = bool(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")) or CLAUDE_TOKEN_FILE.exists()
+    return {"claude_token_set": have_token}
+
+
+@app.post("/setup/claude-token")
+def set_claude_token(payload: SetupToken, authorization: Optional[str] = Header(None)):
+    """Called once by the frontend with the string the person got from
+    running `claude setup-token` on their own machine (that step itself
+    can't be done from a web form -- it's their subscription login). The
+    supervisor loop in entrypoint.sh polls for this file and picks it up
+    without needing a restart."""
+    check_auth(authorization)
+    token = payload.token.strip()
+    if not token:
+        raise HTTPException(400, "token is empty")
+    CLAUDE_TOKEN_FILE.write_text(token, encoding="utf-8")
+    try:
+        os.chmod(CLAUDE_TOKEN_FILE, 0o600)
+    except OSError:
+        pass
     return {"ok": True}
 
 

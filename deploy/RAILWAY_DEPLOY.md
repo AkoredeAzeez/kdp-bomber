@@ -16,10 +16,24 @@ claude setup-token
 ```
 
 This logs in with your existing Claude subscription and prints a token.
-Copy it -- you'll paste it into Railway as `CLAUDE_CODE_OAUTH_TOKEN` in step 3.
 This is *not* an Anthropic API key and does not switch you to pay-per-token
 billing; it authenticates the CLI against your normal plan the same way an
-interactive login would.
+interactive login would. That login step can't be done from a web form --
+it's a real subscription sign-in -- so whoever's Claude plan this runs
+against has to run this command themselves, once.
+
+Two ways to get the resulting string into the deployment:
+- **Railway variable** (step 3): paste it as `CLAUDE_CODE_OAUTH_TOKEN`.
+- **Via the API, from your frontend** (step 6): the container boots and
+  serves the API even with no token set yet -- it just waits, checking
+  every 30s, instead of crash-looping. `GET /setup/status` (no auth
+  needed) tells your frontend whether to show a "paste your Claude token"
+  screen; `POST /setup/claude-token {"token": "..."}` (needs the
+  `API_TOKEN` bearer auth) submits it, and the supervisor picks it up
+  within 30 seconds, no redeploy required. Useful for the 5-separate-people
+  plan: each person runs `setup-token` on their own machine and pastes the
+  result into their own frontend instance, instead of you collecting five
+  tokens and setting five Railway variables by hand.
 
 ## 2. Create the Railway project
 
@@ -162,10 +176,14 @@ need to type by hand again is a title.
 
 First, give the service a public URL: `railway domain` (or Settings ->
 Networking -> Generate Domain in the dashboard). Every request needs
-`Authorization: Bearer <API_TOKEN>` (the value you set in step 3).
+`Authorization: Bearer <API_TOKEN>` (the value you set in step 3) except
+`GET /setup/status`, which is deliberately open so a frontend can check it
+before it has anything to authenticate with.
 
 | Method | Path | Body | Does |
 |---|---|---|---|
+| GET | `/setup/status` | - | `{"claude_token_set": bool}` -- no auth needed. Use this to decide whether to show the token-entry screen |
+| POST | `/setup/claude-token` | `{"token": "..."}` | Submits the string from `claude setup-token` (run on the person's own machine, see step 1). Picked up within 30s, no redeploy |
 | POST | `/books` | `{"title": "..."}` (only field required; `marketplace`, `language`, `pages_per_chapter`, `max_pages`, `image_engine`, `non_negotiables` all optional) | Queues a new book, returns `{id, status}` |
 | GET | `/books` | - | Lists every book with live status: `queued`, `in_progress`, `blocked`, `complete`, `deleted` |
 | GET | `/books/{id}` | - | One book's detail |
