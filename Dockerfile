@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         fontconfig \
     && rm -rf /var/lib/apt/lists/*
 
-# Pinned to the version this Dockerfile was written against. Bump deliberately.
-RUN npm install -g @anthropic-ai/claude-code@2.1.263
+# Pinned to the versions this Dockerfile was written against. Bump deliberately.
+RUN npm install -g @anthropic-ai/claude-code@2.1.263 @openai/codex@0.153.0
 
 WORKDIR /app
 COPY . /app

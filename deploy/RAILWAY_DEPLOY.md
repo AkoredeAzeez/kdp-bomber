@@ -35,6 +35,36 @@ Two ways to get the resulting string into the deployment:
   result into their own frontend instance, instead of you collecting five
   tokens and setting five Railway variables by hand.
 
+### 1b. Optional: Codex (ChatGPT) auth, for covers/A+ content
+
+CLAUDE.md routes cover art and A+ Content generation through Codex when
+it's available, falling back to a free image engine when it isn't -- so
+this is optional, and production is never blocked waiting for it (unlike
+the Claude token above).
+
+Codex's ChatGPT-subscription login doesn't have a `setup-token`
+equivalent -- there's no single exportable long-lived string. It's a small
+OAuth bundle (`access_token` + `refresh_token` + `id_token`) that the
+`codex` CLI refreshes on its own over time, stored at `~/.codex/auth.json`.
+So instead of pasting one string, run `codex login` on your own machine
+(browser sign-in with your ChatGPT account) if you haven't, then open
+`~/.codex/auth.json` and send its **entire contents**:
+
+```
+curl -X POST https://<your-domain>/setup/codex-auth \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d "{\"auth_json\": $(cat ~/.codex/auth.json)}"
+```
+
+Treat this like copying a browser session, not a purpose-built export
+token -- it's more sensitive than the Claude token (a stolen copy is usable
+until you log that ChatGPT session out), and it stops working if you ever
+log out of that session locally. Fine for your own use; think twice before
+asking each of the 5 people to hand you this file versus just skipping
+Codex for their deployments and letting the free image engine handle
+covers too.
+
 ## 2. Create the Railway project
 
 1. Push this folder to a GitHub repo (Railway deploys from a repo or via its
@@ -182,8 +212,9 @@ before it has anything to authenticate with.
 
 | Method | Path | Body | Does |
 |---|---|---|---|
-| GET | `/setup/status` | - | `{"claude_token_set": bool}` -- no auth needed. Use this to decide whether to show the token-entry screen |
+| GET | `/setup/status` | - | `{"claude_token_set": bool, "codex_auth_set": bool}` -- no auth needed. Use this to decide which setup screens to show |
 | POST | `/setup/claude-token` | `{"token": "..."}` | Submits the string from `claude setup-token` (run on the person's own machine, see step 1). Picked up within 30s, no redeploy |
+| POST | `/setup/codex-auth` | `{"auth_json": {...}}` | Optional. Submits the full contents of `~/.codex/auth.json` (see step 1b) |
 | POST | `/books` | `{"title": "..."}` (only field required; `marketplace`, `language`, `pages_per_chapter`, `max_pages`, `image_engine`, `non_negotiables` all optional) | Queues a new book, returns `{id, status}` |
 | GET | `/books` | - | Lists every book with live status: `queued`, `in_progress`, `blocked`, `complete`, `deleted` |
 | GET | `/books/{id}` | - | One book's detail |
@@ -245,3 +276,5 @@ around it:
 - **The API has no auth if you skip `API_TOKEN`.** Once you generate a
   public domain (section 6), the create/list/download/delete endpoints are
   reachable by anyone who has the URL unless `API_TOKEN` is set.
+- **Codex auth, if you set it up, is a copied OAuth session, not a scoped
+  token.** See 1b -- know what you're sending before you POST it anywhere.

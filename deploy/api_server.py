@@ -36,6 +36,7 @@ DONE_DIR = QUEUE_DIR / "done"
 DB_PATH = DATA_DIR / "genie.db"
 BLOCKED_SIGNAL = DATA_DIR / "NEEDS_OPERATOR"
 CLAUDE_TOKEN_FILE = DATA_DIR / "claude_oauth_token.txt"
+CODEX_AUTH_FILE = DATA_DIR / "home" / ".codex" / "auth.json"
 API_TOKEN = os.environ.get("API_TOKEN", "")
 
 for d in (PENDING_DIR, ACTIVE_DIR, DONE_DIR):
@@ -180,10 +181,11 @@ class SetupToken(BaseModel):
 @app.get("/setup/status")
 def setup_status():
     """Unauthenticated on purpose -- a frontend needs to know whether to show
-    the 'paste your Claude token' screen before it has any token to send as
-    auth. Reveals only a boolean, never the token itself."""
-    have_token = bool(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")) or CLAUDE_TOKEN_FILE.exists()
-    return {"claude_token_set": have_token}
+    the 'paste your token' screens before it has any token to send as auth.
+    Reveals only booleans, never the tokens themselves."""
+    have_claude = bool(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")) or CLAUDE_TOKEN_FILE.exists()
+    have_codex = CODEX_AUTH_FILE.exists()
+    return {"claude_token_set": have_claude, "codex_auth_set": have_codex}
 
 
 @app.post("/setup/claude-token")
@@ -200,6 +202,37 @@ def set_claude_token(payload: SetupToken, authorization: Optional[str] = Header(
     CLAUDE_TOKEN_FILE.write_text(token, encoding="utf-8")
     try:
         os.chmod(CLAUDE_TOKEN_FILE, 0o600)
+    except OSError:
+        pass
+    return {"ok": True}
+
+
+class SetupCodexAuth(BaseModel):
+    auth_json: dict
+
+
+@app.post("/setup/codex-auth")
+def set_codex_auth(payload: SetupCodexAuth, authorization: Optional[str] = Header(None)):
+    """Codex has no single long-lived export token the way `claude
+    setup-token` does -- its ChatGPT-subscription login is an OAuth bundle
+    (access_token + refresh_token + id_token) that Codex refreshes itself
+    over time. So this expects the *entire contents* of the person's own
+    ~/.codex/auth.json (after they've run `codex login` on their own
+    machine), not a single pasted string. It's written verbatim to the
+    container's Codex home so Codex's own refresh logic keeps working --
+    treat this like copying a browser session, not a purpose-built token:
+    more sensitive than the Claude one, and it dies if they log out that
+    session locally. Codex is optional here (used for covers/A+ content and
+    as an image-engine fallback); production is never blocked waiting for
+    this the way it's blocked on the Claude token."""
+    check_auth(authorization)
+    required = {"tokens"}
+    if not required.issubset(payload.auth_json.keys()):
+        raise HTTPException(400, "doesn't look like a Codex auth.json (missing 'tokens')")
+    CODEX_AUTH_FILE.parent.mkdir(parents=True, exist_ok=True)
+    CODEX_AUTH_FILE.write_text(json.dumps(payload.auth_json), encoding="utf-8")
+    try:
+        os.chmod(CODEX_AUTH_FILE, 0o600)
     except OSError:
         pass
     return {"ok": True}

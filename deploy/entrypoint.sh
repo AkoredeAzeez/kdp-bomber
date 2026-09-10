@@ -19,6 +19,11 @@
 #   $DATA_DIR/NEEDS_OPERATOR   -> stop nudging, wait for you to intervene
 # If a turn fails because the Claude subscription's usage limit was hit, it
 # backs off and retries instead of giving up.
+#
+# Auth is frontend-driven, not a hard Railway-variable requirement:
+#   POST /setup/claude-token {"token": "..."}   -- required, blocks production until set
+#   POST /setup/codex-auth   {"auth_json": {...}} -- optional, covers/A+ fallback if absent
+# See deploy/api_server.py and RAILWAY_DEPLOY.md sections 1b and 6.
 set -uo pipefail
 
 DATA_DIR="/data"
@@ -33,6 +38,7 @@ COMPLETE_SIGNAL="$DATA_DIR/BOOK_COMPLETE"
 BLOCKED_SIGNAL="$DATA_DIR/NEEDS_OPERATOR"
 
 CLAUDE_TOKEN_FILE="$DATA_DIR/claude_oauth_token.txt"
+CODEX_AUTH_FILE="$DATA_DIR/home/.codex/auth.json"  # HOME=/data/home is set in the Dockerfile
 
 mkdir -p "$LOG_DIR" "$DATA_DIR/home" "$PENDING_DIR" "$ACTIVE_DIR" "$DONE_DIR"
 
@@ -62,6 +68,17 @@ if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
   log "Picked up a Claude token submitted via the API."
 fi
 export CLAUDE_CODE_OAUTH_TOKEN
+
+# --- Codex (ChatGPT) auth is optional, non-blocking -----------------------
+# Used for cover/A+ content generation and as an image-engine fallback
+# (CLAUDE.md's own Codex skills already handle it being absent -- they fall
+# back to a free image engine rather than stalling). POST /setup/codex-auth
+# writes here; nothing in this loop waits on it.
+if [ -f "$CODEX_AUTH_FILE" ]; then
+  log "Codex (ChatGPT) auth found."
+else
+  log "No Codex (ChatGPT) auth yet -- optional, covers/A+ will fall back to a free image engine until POST /setup/codex-auth is called."
+fi
 
 # --- Persist Genie's output/state across restarts and redeploys ----------
 # Railway volumes mount at one path (/data here). Move each of these dirs
