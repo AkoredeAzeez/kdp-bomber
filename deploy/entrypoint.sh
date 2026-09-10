@@ -1,19 +1,38 @@
 #!/usr/bin/env bash
-# Supervisor loop for running Genie unattended on Railway.
+# Supervisor loop for running Genie unattended on Railway, across multiple
+# books, driven by a queue on the volume and (optionally) the HTTP API in
+# deploy/api_server.py.
 #
-# Starts (or resumes) one long-lived Claude Code conversation and keeps
-# nudging it forward turn by turn. If a turn fails because the Claude
-# subscription's usage limit was hit, it backs off and retries instead of
-# giving up. There is no external "is the book done yet" signal shipped in
-# this Community package (scripts/project_status.py referenced in CLAUDE.md
-# does not exist here), so this loop runs until you stop the Railway
-# service yourself -- check Books/<project>/ on the volume periodically.
+# Books are read from a queue directory on the volume:
+#   /data/queue/pending/<id>.txt   drop/POST a new brief here to enqueue it
+#   /data/queue/active/<id>.txt    the brief currently being worked (one at a time)
+#   /data/queue/done/<ts>_<id>.txt finished briefs, archived
+#
+# Add a book to the queue without a frontend:
+#   railway volume files upload ./my_brief.txt /queue/pending/<any-id>.txt
+# Or via the API: POST /books {"title": "..."} -- see deploy/api_server.py.
+#
+# Completion is detected via marker files Genie is instructed to create
+# (this package doesn't ship the scripts/project_status.py completion gate
+# CLAUDE.md references, so we can't check that):
+#   $DATA_DIR/BOOK_COMPLETE    -> archive this book, start the next queued one
+#   $DATA_DIR/NEEDS_OPERATOR   -> stop nudging, wait for you to intervene
+# If a turn fails because the Claude subscription's usage limit was hit, it
+# backs off and retries instead of giving up.
 set -uo pipefail
 
 DATA_DIR="/data"
 APP_DIR="/app"
 LOG_DIR="$DATA_DIR/logs"
-mkdir -p "$LOG_DIR" "$DATA_DIR/home"
+QUEUE_DIR="$DATA_DIR/queue"
+PENDING_DIR="$QUEUE_DIR/pending"
+ACTIVE_DIR="$QUEUE_DIR/active"
+DONE_DIR="$QUEUE_DIR/done"
+STARTED_MARKER="$DATA_DIR/.genie_started"
+COMPLETE_SIGNAL="$DATA_DIR/BOOK_COMPLETE"
+BLOCKED_SIGNAL="$DATA_DIR/NEEDS_OPERATOR"
+
+mkdir -p "$LOG_DIR" "$DATA_DIR/home" "$PENDING_DIR" "$ACTIVE_DIR" "$DONE_DIR"
 
 log() { echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] $*"; }
 
@@ -40,26 +59,61 @@ done
 
 cd "$APP_DIR"
 
-# --- Book brief (first boot only) -----------------------------------------
-BRIEF_FILE="$DATA_DIR/book_brief.txt"
-if [ ! -f "$BRIEF_FILE" ]; then
-  if [ -z "${BOOK_BRIEF:-}" ]; then
-    log "FATAL: no book brief on the volume and no BOOK_BRIEF variable set."
-    log "Set the BOOK_BRIEF Railway variable (title, marketplace, language,"
-    log "pages/chapter, max page count, image-engine choice, any non-negotiables)"
-    log "before the first boot, then redeploy."
-    exit 1
-  fi
-  printf '%s' "$BOOK_BRIEF" > "$BRIEF_FILE"
-  log "Saved book brief to $BRIEF_FILE"
+# --- Start the HTTP API alongside the supervisor (shares this volume) ----
+DATA_DIR="$DATA_DIR" APP_DIR="$APP_DIR" python3 "$APP_DIR/deploy/api_server.py" \
+  >> "$LOG_DIR/api_server.log" 2>&1 &
+API_PID=$!
+log "API server started (pid $API_PID), logging to $LOG_DIR/api_server.log"
+
+# One-time migration: if BOOK_BRIEF is still set (the old single-book setup),
+# seed it as the first queue entry instead of using it directly.
+if [ -n "${BOOK_BRIEF:-}" ] && [ ! -f "$DATA_DIR/.env_brief_seeded" ]; then
+  printf '%s' "$BOOK_BRIEF" > "$PENDING_DIR/env-seed-$(date -u +%s).txt"
+  touch "$DATA_DIR/.env_brief_seeded"
+  log "Seeded the BOOK_BRIEF variable into the queue. You can remove that variable now; the queue drives production from here on."
 fi
 
-STARTED_MARKER="$DATA_DIR/.genie_started"
-RETRY_SECONDS="${RETRY_SECONDS:-1800}"   # backoff when a limit/error is hit
-IDLE_SECONDS="${IDLE_SECONDS:-15}"       # pause between clean turns
-CONTINUE_PROMPT="Resume production automatically. Keep following auto-advance and the chapter-by-chapter build law without waiting for confirmation, until the book is fully drafted, formatted, gated, and its KDP metadata package is delivered. If you are genuinely blocked on something only the operator can do (payment, credentials, a final Publish click, a HIGH RISK trademark result), record it clearly in the decision log and state exactly what you did instead, then stop."
+RETRY_SECONDS="${RETRY_SECONDS:-1800}"           # backoff on a limit/error
+IDLE_SECONDS="${IDLE_SECONDS:-15}"               # pause between clean turns
+IDLE_QUEUE_SECONDS="${IDLE_QUEUE_SECONDS:-600}"  # pause when the queue is empty
+BLOCKED_POLL_SECONDS="${BLOCKED_POLL_SECONDS:-3600}"  # pause while blocked on you
+
+COMPLETION_INSTRUCTION="Operational note for this unattended deployment: when this book's manuscript, formatting gates, and KDP metadata package are fully complete and delivered, run a Bash command to create an empty file at exactly this path: touch $COMPLETE_SIGNAL -- that signals the supervisor to archive this book and start the next queued one. If you are genuinely blocked on something only the operator can do (payment, credentials, a final Publish click, a HIGH RISK trademark result) and there is no further independent progress to make right now, run: touch $BLOCKED_SIGNAL -- that pauses the supervisor until the operator clears it. Do not create either file unless one of those conditions is actually true."
+CONTINUE_PROMPT="Resume production automatically. Keep following auto-advance and the chapter-by-chapter build law without waiting for confirmation. $COMPLETION_INSTRUCTION"
 
 while true; do
+  # --- Blocked on the operator: stop nudging, just wait ------------------
+  if [ -f "$BLOCKED_SIGNAL" ]; then
+    log "Blocked on an operator-only action -- see the decision/blocker log in Books/<project>/."
+    log "Delete $BLOCKED_SIGNAL (e.g. 'railway volume files delete /NEEDS_OPERATOR') once handled, to resume."
+    sleep "$BLOCKED_POLL_SECONDS"
+    continue
+  fi
+
+  # --- Previous book finished: archive it and clear state ----------------
+  if [ -f "$COMPLETE_SIGNAL" ]; then
+    log "Book complete."
+    for f in "$ACTIVE_DIR"/*.txt; do
+      [ -e "$f" ] || continue
+      mv "$f" "$DONE_DIR/$(date -u +%Y%m%dT%H%M%SZ)_$(basename "$f")"
+    done
+    rm -f "$COMPLETE_SIGNAL" "$STARTED_MARKER"
+  fi
+
+  # --- Nothing in progress: pull the next queued brief --------------------
+  if [ ! -f "$STARTED_MARKER" ]; then
+    NEXT=$(ls -1 "$PENDING_DIR" 2>/dev/null | sort | head -n1 || true)
+    if [ -z "$NEXT" ]; then
+      log "Queue empty. POST /books or drop a brief into $PENDING_DIR to start the next book. Checking again in ${IDLE_QUEUE_SECONDS}s."
+      sleep "$IDLE_QUEUE_SECONDS"
+      continue
+    fi
+    mv "$PENDING_DIR/$NEXT" "$ACTIVE_DIR/$NEXT"
+    log "Starting next queued book: $NEXT"
+  fi
+
+  ACTIVE_FILE=$(ls -1 "$ACTIVE_DIR"/*.txt 2>/dev/null | head -n1 || true)
+
   if [ -f "$STARTED_MARKER" ]; then
     log "Resuming existing Genie session (claude --continue)..."
     OUTPUT=$(claude -p --continue "$CONTINUE_PROMPT" \
@@ -68,8 +122,10 @@ while true; do
       2> "$LOG_DIR/stderr.last.log")
     EXIT_CODE=$?
   else
-    log "Starting new Genie session from the book brief..."
-    OUTPUT=$(claude -p "$(cat "$BRIEF_FILE")" \
+    log "Starting new Genie session from $ACTIVE_FILE..."
+    OUTPUT=$(claude -p "$(cat "$ACTIVE_FILE")
+
+$COMPLETION_INSTRUCTION" \
       --permission-mode bypassPermissions \
       --output-format json \
       2> "$LOG_DIR/stderr.last.log")

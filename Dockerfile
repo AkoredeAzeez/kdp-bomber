@@ -26,7 +26,8 @@ RUN mkdir -p /usr/share/fonts/truetype/genie \
 
 RUN python3 -m venv /opt/venv \
     && /opt/venv/bin/pip install --no-cache-dir --upgrade pip \
-    && /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
+    && /opt/venv/bin/pip install --no-cache-dir -r requirements.txt \
+    && /opt/venv/bin/pip install --no-cache-dir -r deploy/requirements-api.txt
 ENV PATH="/opt/venv/bin:${PATH}"
 
 RUN chmod +x /app/deploy/entrypoint.sh

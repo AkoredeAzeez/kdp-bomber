@@ -1,0 +1,5 @@
+# Deps for deploy/api_server.py only -- kept separate from the top-level
+# requirements.txt, which is Genie's own runtime dependency list.
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9

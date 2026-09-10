@@ -18,3 +18,8 @@ node_modules/
 # OS/editor cruft
 .DS_Store
 Thumbs.db
+
+# Per-person Railway provisioning config/output (auth tokens + book briefs
+# in, generated API tokens + domains out) -- local only, never committed.
+deploy/people.local.json
+deploy/provisioned.local.json

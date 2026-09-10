@@ -39,25 +39,38 @@ interactive login would.
    `state/`, `cover_db/`, and the Claude session (so `--continue` survives a
    restart) persist. Without this, every redeploy starts from zero.
 
-## 3. Set variables
+## 3. Set the required variables
 
 Service -> Variables:
 
 | Variable | Value |
 |---|---|
 | `CLAUDE_CODE_OAUTH_TOKEN` | the token from step 1 |
-| `BOOK_BRIEF` | the full book brief, see below |
+| `API_TOKEN` | any random string you make up, e.g. `openssl rand -hex 24` |
 
-`BOOK_BRIEF` is only read once, on first boot, and saved to the volume
-(`/data/book_brief.txt`). To start a different book later, either edit that
-file directly (via `railway ssh` / the volume) or wipe the volume and set a
-new `BOOK_BRIEF`.
+`API_TOKEN` is the bearer token your frontend sends to the API in step 6 --
+without it, anyone with the Railway public URL can create/delete books. Pick
+a different one per person if you're doing the 5-separate-projects setup.
 
-Write the brief the same way you would type it to Genie interactively --
-include the things CLAUDE.md's autopilot section needs (title, marketplace,
-language, target pages per chapter, max page count, any non-negotiables) --
-**plus one line pinning the image engine**, since there's no logged-in
-browser on this server:
+Ignore the other empty rows Railway auto-detected by scanning the repo
+(`DATA_DIR`, `APP_DIR`, `BRIEF_FILE`, `CONTINUE_PROMPT`, `STARTED_MARKER`,
+`EXIT_CODE` are internal to `entrypoint.sh` and aren't meant to be set from
+outside; `CF_API_TOKEN`, `OPENAI_API_KEY`, `GEMINI_API_KEY`,
+`POLLINATIONS_TOKEN`, `KOKORO_ENDPOINT` are optional credentials for
+image/audio engines you aren't using yet).
+
+Books are queued as files on the volume, not as a variable -- see step 3b.
+(There's still a `BOOK_BRIEF` variable as a fallback for a quick first test:
+if set, its contents are copied into the queue once on first boot and then
+ignored from then on. Prefer the queue for anything beyond the very first
+book.)
+
+### 3b. Queue a book
+
+Write the brief as you'd type it to Genie interactively -- title,
+marketplace, language, target pages per chapter, max page count, any
+non-negotiables -- **plus one line pinning the image engine**, since
+there's no logged-in browser on this server:
 
 > Use the FLUX.1-schnell image engine (Hugging Face, no API key needed) for
 > every interior image on this book. Do not attempt Google Flow or any
@@ -65,6 +78,42 @@ browser on this server:
 
 (Cloudflare Workers AI is a faster free alternative if you set
 `CF_API_TOKEN`/`CF_ACCOUNT_ID` in Railway's variables too -- optional.)
+
+Save that as a local `.txt` file, then upload it into the pending queue:
+
+```
+railway link                # once, to point the CLI at this project/service
+railway volume files upload ./my_first_book.txt /queue/pending/001.txt
+```
+
+The supervisor picks up queue files in sorted-filename order, one at a
+time. To queue book 2 while book 1 is still running, just upload another
+file (`002.txt`, or any name -- it sorts alphabetically) -- no redeploy, no
+touching Variables. It'll be picked up automatically the moment the
+current book signals it's done (see 3c).
+
+### 3c. How it knows a book is done
+
+This package doesn't ship the `scripts/project_status.py` completion gate
+CLAUDE.md references, so the supervisor can't check that. Instead, every
+prompt it sends Genie includes an instruction to create a marker file the
+moment the book (manuscript, gates, KDP metadata) is genuinely complete --
+the supervisor watches for that file, archives the finished brief into
+`/data/queue/done/`, and starts the next queued one automatically. A
+second marker means "blocked on something only you can do" (payment,
+credentials, a Publish click, a HIGH RISK trademark result) -- the
+supervisor stops nudging and just waits, checking back hourly, until you
+clear it:
+
+```
+railway volume files delete /NEEDS_OPERATOR
+```
+
+This relies on Genie reliably remembering to create that file across a
+long autonomous run -- it's a repeated instruction (sent on every turn,
+not just the first), which helps, but it's not a hard guarantee the way a
+real completion gate would be. Spot-check `Books/<project>/` occasionally
+rather than trusting it blindly, especially early on.
 
 ## 4. Deploy, then watch the first run closely
 
@@ -86,24 +135,72 @@ don't just walk away on the very first run. Specifically check:
 Once you've confirmed one limit-hit-and-resume cycle actually works, it's
 reasonable to leave it running unattended.
 
-## 5. Checking in / stopping it
+## 5. Checking in
 
-There's no "book is done" signal the supervisor can detect on its own --
-CLAUDE.md references a `scripts/project_status.py` completion gate that
-isn't actually shipped in this Community package, so the loop just keeps
-nudging Genie forward turn after turn indefinitely. To check progress,
-either:
+The supervisor auto-advances through the queue on its own now (3c), so you
+don't have to babysit book-to-book handoffs. Still worth checking in
+occasionally, since the completion signal is a best-effort convention, not
+a guarantee:
 
 - Browse the volume's `Books/<project>/` folder for delivered
-  chapters/DOCX/PDF files, or
+  chapters/DOCX/PDF files.
+- `/data/queue/done/` shows which briefs it believes it finished, and when.
 - `railway ssh` into the running container and read
   `/data/logs/session_history.log`, or ask it directly with
   `claude -p --continue "Are you done? What's left?"`.
 
-When the book is actually finished (or stuck on an operator-only gate --
-payment, credentials, a Publish click, a HIGH RISK trademark result), stop
-the Railway service so it stops consuming compute. Restarting it later
-resumes the same conversation via `--continue`.
+Once the whole queue is empty and nothing's pending, it's safe to stop the
+Railway service to stop consuming compute -- restarting it later picks
+back up (`--continue`) if a book is mid-flight, or waits for a new queued
+brief if not.
+
+## 6. The API (for your frontend)
+
+`deploy/api_server.py` runs alongside the supervisor in the same container
+and exposes a small REST API for a frontend to drive -- all you should ever
+need to type by hand again is a title.
+
+First, give the service a public URL: `railway domain` (or Settings ->
+Networking -> Generate Domain in the dashboard). Every request needs
+`Authorization: Bearer <API_TOKEN>` (the value you set in step 3).
+
+| Method | Path | Body | Does |
+|---|---|---|---|
+| POST | `/books` | `{"title": "..."}` (only field required; `marketplace`, `language`, `pages_per_chapter`, `max_pages`, `image_engine`, `non_negotiables` all optional) | Queues a new book, returns `{id, status}` |
+| GET | `/books` | - | Lists every book with live status: `queued`, `in_progress`, `blocked`, `complete`, `deleted` |
+| GET | `/books/{id}` | - | One book's detail |
+| GET | `/books/{id}/files` | - | Lists downloadable files once complete (pulled from `publish_manifest.json`) |
+| GET | `/books/{id}/download?path=<path from /files>` | - | Streams that file |
+| DELETE | `/books/{id}` | - | Deletes the book's files. Refuses (409) while `in_progress` unless `?force=true` |
+
+Example, once you have a title:
+
+```
+curl -X POST https://<your-domain>/books \
+  -H "Authorization: Bearer <API_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "My Next Book"}'
+```
+
+That's it for input -- everything else (marketplace, language, image engine)
+falls back to sane defaults baked into `compose_brief()` in
+`deploy/api_server.py`, so a bare title is enough to enqueue a full book. A
+book stays around, files included, until you explicitly `DELETE` it -- so
+"don't delete it yet, I'll come back to it" is just "don't call DELETE
+yet"; nothing auto-expires.
+
+Two honest limits on this, worth knowing before you build the frontend
+around it:
+- **Matching a finished book back to its `Books/<folder>` is a heuristic**
+  (title-normalized match, falling back to "most recently modified
+  folder"), because Genie names that folder itself and nothing here
+  controls it. Fine when one book is in flight at a time (which is how the
+  supervisor runs, per book -- see 3b); don't count on perfect accuracy if
+  you ever queue wildly similar titles back to back.
+- **The SQLite file (`/data/genie.db`) lives on the same volume as
+  everything else** -- it's real persistent storage, but it's a single
+  file with no replication. Fine for one operator's dashboard; don't treat
+  it as a production database for someone else's data without backups.
 
 ## What's different from running Genie locally
 
@@ -122,7 +219,11 @@ resumes the same conversation via `--continue`.
   Railway project isolated -- no other secrets, no production
   infrastructure -- since a container with all permissions bypassed is a
   real blast-radius decision, not a formality.
-- **No automatic "it's done" detection.** See section 5.
+- **"It's done" detection is a marker file Genie is instructed to create**,
+  not a real completion gate. See section 3c.
 - **Usage-limit detection is a best-effort text match**, not a documented
   API contract -- verify it once per section 4 rather than trusting it
   blind on the first real run.
+- **The API has no auth if you skip `API_TOKEN`.** Once you generate a
+  public domain (section 6), the create/list/download/delete endpoints are
+  reachable by anyone who has the URL unless `API_TOKEN` is set.
